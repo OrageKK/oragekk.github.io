@@ -1,0 +1,144 @@
+<template>
+  <div>
+    <footer class="footer-colum" v-if="enable">
+      <div class="busuanzi">
+        <span id="busuanzi_container_site_pv" style="display: none">
+          本站总访问量
+          <span id="busuanzi_value_site_pv"></span>次
+          <span class="post-meta-divider">|</span>
+        </span>
+        <span id="busuanzi_container_site_uv" style="display: none">
+          您是本站第
+          <span id="busuanzi_value_site_uv"></span>位访问者
+        </span>
+      </div>
+      <div class="footer-wrap">
+        <div class="footer" v-html="content"></div>
+        <div class="copyright">{{ copyright }}</div>
+      </div>
+    </footer>
+  </div>
+</template>
+<script setup>
+import { usePageFrontmatter } from "@vuepress/client";
+import { isString } from "@vuepress/shared";
+import { computed, watch } from "vue";
+import {
+  usePageAuthor,
+  useThemeLocaleData,
+} from "@theme-hope/composables/index";
+import { useRouter } from "vue-router";
+import script from "../utils/busuanzi.pure";
+
+// 或取 vue-router 实例
+const router = useRouter();
+
+// 可以直接侦听一个 ref
+watch(router, async (to, from) => {
+  if (to.path != from.path) {
+    script.fetch();
+  }
+  console.log(to.path);
+});
+
+const frontmatter = usePageFrontmatter();
+const themeLocale = useThemeLocaleData();
+const author = usePageAuthor();
+const enable = computed(() => {
+  const { copyright, footer } = frontmatter.value;
+  return (
+    footer !== false &&
+    Boolean(copyright || footer || themeLocale.value.displayFooter)
+  );
+});
+const content = computed(() => {
+  const { footer } = frontmatter.value;
+  return footer === false
+    ? false
+    : isString(footer)
+    ? footer
+    : themeLocale.value.footer || "";
+});
+const copyright = computed(() =>
+  "copyright" in frontmatter.value
+    ? frontmatter.value.copyright
+    : "copyright" in themeLocale.value
+    ? themeLocale.value.copyright
+    : author.value.length
+    ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
+    : false
+);
+</script>
+<style lang="scss">
+.footer-colum {
+  position: relative;
+
+  display: flex;
+  //   flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-inline-start: calc(var(--sidebar-space) + 2rem);
+  padding-inline-end: 2rem;
+  border-top: 1px solid var(--border-color);
+
+  background: var(--bg-color);
+  color: var(--dark-grey);
+
+  text-align: center;
+
+  transition: border-top-color var(--color-transition),
+    background var(--color-transition), padding var(--transform-transition);
+
+  @media (max-width: hope-config.$tablet) {
+    padding-inline-start: 2rem;
+  }
+
+  @media (min-width: hope-config.$pc) {
+    z-index: 50;
+    padding-inline-start: 2rem;
+  }
+
+  @media print {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @media (max-width: hope-config.$mobile) {
+    display: block;
+  }
+  .footer-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .no-sidebar &,
+  .sidebar-collapsed & {
+    padding-inline-start: 2rem;
+  }
+
+  .footer {
+    margin: 0.5rem 1rem;
+    font-size: 14px;
+
+    @media print {
+      display: none;
+    }
+  }
+  .busuanzi {
+    font-size: 14px;
+  }
+  .copyright {
+    margin: 6px 0;
+    font-size: 13px;
+  }
+}
+
+.page:not(.not-found) + .footer-colum {
+  margin-top: -2rem;
+}
+</style>
