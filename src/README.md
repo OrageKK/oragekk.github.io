@@ -7,7 +7,7 @@ heroImage: /logo.svg
 heroText: Oragekk's Blog
 tagline: Goals determine what you are going to be. —— Julius Erving
 heroFullScreen: true
-bgImage: https://file.mo7.cc/api/public/bz?idx=3
+bgImage: https://file.mo7.cc/api/public/bz?idx=1
 projects:
   - icon: project
     name: project name

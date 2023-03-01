@@ -1,14 +1,20 @@
 import { getDirname, path } from "@vuepress/utils";
 import { defineUserConfig } from "vuepress";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
-import { hopeTheme } from "vuepress-theme-hope";
+import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
 import theme from "./theme.js";
-import { localTheme } from "./theme/index";
 const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
   base: "/",
-  head: [["meta", { name: "referrer", content: "no-referrer-when-downgrade" }]],
+  lang: "zh-CN",
+  head: [
+    ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
+    // ["script", { src: path.resolve(__dirname, "./public/special/love.js") }],
+    // ["script", { src: path.resolve(__dirname, "./public/special/popper.ts") }],
+  ],
+  // 开发模式html模版
+  templateDev: "src/.vuepress/templates/dev.html",
   locales: {
     "/": {
       lang: "en-US",
@@ -45,6 +51,33 @@ export default defineUserConfig({
           },
         },
       ],
+    }),
+    // 看板娘插件
+    ohmylive2dPlugin({
+      // 在这里进行配置
+      source: "/assets",
+      models: [
+        {
+          scale: 0.3,
+          path: "/lafei_4/lafei_4.model3.json",
+        },
+        {
+          scale: 0.7,
+          path: "/z46_2/z46_2.model3.json",
+        },
+        {
+          scale: 0.3,
+          path: "/sipeibojue_5/sipeibojue_5.model3.json",
+        },
+      ],
+      tips: {
+        style: {
+          width: 150,
+          height: 100,
+          offsetX: 0,
+          offsetY: 90,
+        },
+      },
     }),
   ],
 

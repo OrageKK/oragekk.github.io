@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer-colum" v-if="enable">
+    <footer class="footer-colum" v-show="enable">
       <div class="busuanzi">
         <span id="busuanzi_container_site_pv" style="display: none">
           本站总访问量
@@ -27,20 +27,17 @@ import {
   usePageAuthor,
   useThemeLocaleData,
 } from "@theme-hope/composables/index";
-import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 import script from "../utils/busuanzi.pure";
 
-// 或取 vue-router 实例
-const router = useRouter();
-
+// 或取 当前vue-router 实例
+const router = useRoute();
 // 可以直接侦听一个 ref
 watch(router, async (to, from) => {
   if (to.path != from.path) {
     script.fetch();
   }
-  console.log(to.path);
 });
-
 const frontmatter = usePageFrontmatter();
 const themeLocale = useThemeLocaleData();
 const author = usePageAuthor();
@@ -69,12 +66,12 @@ const copyright = computed(() =>
     : false
 );
 </script>
+
 <style lang="scss">
 .footer-colum {
   position: relative;
-
+  z-index: 2;
   display: flex;
-  //   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -85,8 +82,12 @@ const copyright = computed(() =>
   padding-inline-end: 2rem;
   border-top: 1px solid var(--border-color);
 
-  background: var(--bg-color);
-  color: var(--dark-grey);
+  // background: var(--bg-color);
+  background: url("https://file.mo7.cc/api/public/bz?idx=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  color: #fff;
 
   text-align: center;
 
