@@ -2,6 +2,7 @@ import { getDirname, path } from "@vuepress/utils";
 import { defineUserConfig } from "vuepress";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
+import {lovePlugin} from "./plugins/love";
 import theme from "./theme.js";
 const __dirname = getDirname(import.meta.url);
 
@@ -11,7 +12,7 @@ export default defineUserConfig({
   head: [
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
     // ["script", { src: path.resolve(__dirname, "./public/special/love.js") }],
-    // ["script", { src: path.resolve(__dirname, "./public/special/popper.ts") }],
+    ["script", { src: path.resolve(__dirname, "./public/special/time.js") }],
   ],
   // 开发模式html模版
   templateDev: "src/.vuepress/templates/dev.html",
@@ -31,6 +32,9 @@ export default defineUserConfig({
   theme,
 
   plugins: [
+    lovePlugin({
+      a:"abc"
+    }),
     searchProPlugin({
       // 索引全部内容
       indexContent: true,

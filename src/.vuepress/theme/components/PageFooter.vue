@@ -16,6 +16,7 @@
         <div class="footer" v-html="content"></div>
         <div class="copyright">{{ copyright }}</div>
       </div>
+      <span id="runtime_span"></span>
     </footer>
   </div>
 </template>
@@ -70,7 +71,6 @@ const copyright = computed(() =>
 <style lang="scss">
 .footer-colum {
   position: relative;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,6 +136,9 @@ const copyright = computed(() =>
   .copyright {
     margin: 6px 0;
     font-size: 13px;
+  }
+  #runtime_span {
+    font-size: 14px;
   }
 }
 
