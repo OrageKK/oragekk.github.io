@@ -2,19 +2,19 @@ import { App, PageOptions, PluginFunction } from "vuepress";
 import { getDirname, path } from '@vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
-export interface Options {
+export interface Live2DAssistOptions {
   a: string;
 }
-const lovePlugin = (options?: Options): PluginFunction => {
+const live2DAssistPlugin = (options?: Live2DAssistOptions): PluginFunction => {
   return (app) => {
     return {
-      name: "vuepress-plugin-love",
+      name: "vuepress-plugin-live2d-assist",
       define: {
         omlOptions: options,
       },
       multiple: false,
-      clientConfigFile:path.resolve(__dirname, './clientConfig.ts'),
+      clientConfigFile:path.resolve(__dirname, './live2d-assist-client-config.ts'),
     };
   };
 };
-export { lovePlugin };
+export { live2DAssistPlugin };

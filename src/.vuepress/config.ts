@@ -2,8 +2,10 @@ import { getDirname, path } from "@vuepress/utils";
 import { defineUserConfig } from "vuepress";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
-import {lovePlugin} from "./plugins/love";
+import { ribbonPlugin } from "./plugins/vuepress-plugin-ribbon";
 import theme from "./theme.js";
+import { live2DAssistPlugin } from "./plugins/vuepress-plugin-live2DAssist";
+
 const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
@@ -11,18 +13,18 @@ export default defineUserConfig({
   lang: "zh-CN",
   head: [
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
-    // ["script", { src: path.resolve(__dirname, "./public/special/love.js") }],
-    ["script", { src: path.resolve(__dirname, "./public/special/time.js") }],
+    // ["script", { src: "/special/love.js" }],
+    ["script", { src: "/special/time.js" }],
   ],
   // 开发模式html模版
   templateDev: "src/.vuepress/templates/dev.html",
   locales: {
+    // "/": {
+    //   lang: "en-US",
+    //   title: "Oragekk's Blog",
+    //   description: "A blog demo for vuepress-theme-hope",
+    // },
     "/": {
-      lang: "en-US",
-      title: "Oragekk's Blog",
-      description: "A blog demo for vuepress-theme-hope",
-    },
-    "/zh/": {
       lang: "zh-CN",
       title: "Oragekk's Blog",
       description: "vuepress-theme-hope 的博客演示",
@@ -32,8 +34,15 @@ export default defineUserConfig({
   theme,
 
   plugins: [
-    lovePlugin({
-      a:"abc"
+    // 看板娘辅助插件
+    live2DAssistPlugin({
+      a: "123",
+    }),
+    // 彩带插件
+    ribbonPlugin({
+      zIndex: 1,
+      alpha: 0.8,
+      size: 150,
     }),
     searchProPlugin({
       // 索引全部内容

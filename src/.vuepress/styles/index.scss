@@ -3,34 +3,59 @@
 .wl-power {
   display: none;
 }
-
-.theme-container .page.blog {
-  padding-bottom: 0 !important;
-}
-
 .blog-hero {
   margin-bottom: 0 !important;
-}
-.mask {
-//   z-index: 2;
+  z-index: 2;
 }
 .blog-page-wrapper {
-  // background-image: url(assets/img/wallhaven-9mjoy1.png);
-  // background-repeat: repeat-y;
-  // background-size: contain;
-  // background-color: aqua;
-  padding-top: 2rem !important;
   background-image: linear-gradient(to right, #51c4d3ac, #ed2f6ba3);
-//   z-index: 2;
+  padding-top: 2rem !important;
+  z-index: 2;
 }
-// .page {
-//   z-index: 2;
-//   transition: background var(--color-transition), box-shadow var(--color-transition), padding var(--transform-transition), transform var(--transform-transition);
-//   backdrop-filter: var(--theme-color) var(--border-color);
-// }
-// .sidebar {
-//   z-index: 3;
-// }
-// .toggle-sidebar-wrapper {
-//   z-index: 2;
-// }
+.sidebar {
+  z-index: 3;
+}
+.page {
+  z-index: 2;
+  background-color: transparent;
+}
+[data-theme="light"] .article-item .article,
+[data-theme="light"] .page .blogger-info,
+[data-theme="light"] .page .blog-info-list,
+[data-theme="light"] .pagination-wrapper .navigate-wrapper .navigate,
+[data-theme="light"] .pagination-wrapper .navigate-wrapper input,
+[data-theme="light"] .pagination-wrapper .page-number div,
+[data-theme="light"] .wl-panel,
+[data-theme="light"] .back-to-top {
+  background-color: #ffffffb3;
+}
+
+[data-theme="dark"] .article-item .article,
+[data-theme="dark"] .page .blogger-info,
+[data-theme="dark"] .page .blog-info-list,
+[data-theme="dark"] .pagination-wrapper .navigate-wrapper .navigate,
+[data-theme="dark"] .pagination-wrapper .navigate-wrapper input,
+[data-theme="dark"] .pagination-wrapper .page-number div,
+[data-theme="dark"] .wl-panel,
+[data-theme="dark"] .back-to-top {
+  background-color: #1d2025b3;
+}
+.article-item .article,
+.page .blogger-info,
+.page .blog-info-list,
+.pagination-wrapper .page-number div,
+.pagination-wrapper .navigate-wrapper .navigate,
+.pagination-wrapper .navigate-wrapper input,
+.back-to-top {
+  -webkit-backdrop-filter: saturate(150%) blur(0.75rem);
+  backdrop-filter: saturate(150%) blur(0.75rem);
+}
+
+[data-theme=light] .blog-hero .mask:after {
+  background: #000;
+  opacity: .3!important
+}
+[data-theme=dark] .blog-hero .mask:after {
+  background: #000;
+  opacity: .7!important
+}

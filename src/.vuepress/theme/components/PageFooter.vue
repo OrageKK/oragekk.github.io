@@ -1,24 +1,22 @@
 <template>
-  <div>
-    <footer class="footer-colum" v-show="enable">
-      <div class="busuanzi">
-        <span id="busuanzi_container_site_pv" style="display: none">
-          本站总访问量
-          <span id="busuanzi_value_site_pv"></span>次
-          <span class="post-meta-divider">|</span>
-        </span>
-        <span id="busuanzi_container_site_uv" style="display: none">
-          您是本站第
-          <span id="busuanzi_value_site_uv"></span>位访问者
-        </span>
-      </div>
-      <div class="footer-wrap">
-        <div class="footer" v-html="content"></div>
-        <div class="copyright">{{ copyright }}</div>
-      </div>
-      <span id="runtime_span"></span>
-    </footer>
-  </div>
+  <footer class="footer-colum" v-show="enable">
+    <div class="busuanzi">
+      <span id="busuanzi_container_site_pv" style="display: none">
+        本站总访问量
+        <span id="busuanzi_value_site_pv"></span>次
+        <span class="post-meta-divider">|</span>
+      </span>
+      <span id="busuanzi_container_site_uv" style="display: none">
+        您是本站第
+        <span id="busuanzi_value_site_uv"></span>位访问者
+      </span>
+    </div>
+    <div class="footer-wrap">
+      <div class="footer" v-html="content"></div>
+      <div class="copyright">{{ copyright }}</div>
+    </div>
+    <span id="runtime_span"></span>
+  </footer>
 </template>
 <script setup>
 import { usePageFrontmatter } from "@vuepress/client";
@@ -69,21 +67,40 @@ const copyright = computed(() =>
 </script>
 
 <style lang="scss">
+.footer-colum:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+[data-theme="light"] .footer-colum:before {
+  background: #000;
+  opacity: 0.3;
+}
+[data-theme="dark"] .footer-colum:before {
+  background: #000;
+  opacity: 0.7;
+}
 .footer-colum {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  z-index: 2;
+  margin: 0rem;
 
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   padding-inline-start: calc(var(--sidebar-space) + 2rem);
   padding-inline-end: 2rem;
-  border-top: 1px solid var(--border-color);
+  // border-top: 1px solid var(--border-color);
 
   // background: var(--bg-color);
-  background: url("https://file.mo7.cc/api/public/bz?idx=1");
+  background-image: url("https://file.mo7.cc/api/public/bz?idx=1");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: bottom;
@@ -116,32 +133,35 @@ const copyright = computed(() =>
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
+    z-index: 5;
+    .footer {
+      margin: 0.5rem 1rem;
+      font-size: 14px;
+
+      @media print {
+        display: none;
+      }
+    }
+    .copyright {
+      margin: 6px 0;
+      font-size: 13px;
+    }
   }
   .no-sidebar &,
   .sidebar-collapsed & {
     padding-inline-start: 2rem;
   }
 
-  .footer {
-    margin: 0.5rem 1rem;
-    font-size: 14px;
-
-    @media print {
-      display: none;
-    }
-  }
   .busuanzi {
     font-size: 14px;
+    z-index: 5;
   }
-  .copyright {
-    margin: 6px 0;
-    font-size: 13px;
-  }
+
   #runtime_span {
     font-size: 14px;
+    z-index: 5;
   }
 }
-
 .page:not(.not-found) + .footer-colum {
   margin-top: -2rem;
 }

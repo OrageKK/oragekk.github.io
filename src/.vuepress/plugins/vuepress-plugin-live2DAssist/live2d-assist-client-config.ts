@@ -1,7 +1,6 @@
 import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
-import { Options } from "./love";
+// import { Options } from ".";
 import { onMounted } from "vue";
-declare const omlOptions: Options;
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {

@@ -59,31 +59,31 @@ export default localTheme({
     name:"上冬十二"
   },
   locales: {
-    "/": {
-      // navbar
-      navbar: enNavbar,
+    // "/": {
+    //   // navbar
+    //   navbar: enNavbar,
 
-      // sidebar
-      sidebar: enSidebar,
+    //   // sidebar
+    //   sidebar: enSidebar,
 
-      footer: "Default footer",
+    //   footer: "Default footer",
 
-      displayFooter: false,
+    //   displayFooter: false,
 
-      blog: {
-        description: "A FrontEnd programmer",
-        intro: "/intro.html",
-      },
+    //   blog: {
+    //     description: "A FrontEnd programmer",
+    //     intro: "/intro.html",
+    //   },
 
-      metaLocales: {
-        editLink: "Edit this page on GitHub",
-      },
-    },
+    //   metaLocales: {
+    //     editLink: "Edit this page on GitHub",
+    //   },
+    // },
 
     /**
      * Chinese locale config
      */
-    "/zh/": {
+    "/": {
       // navbar
       navbar: zhNavbar,
 
