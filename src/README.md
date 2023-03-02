@@ -2,42 +2,42 @@
 home: true
 layout: BlogHome
 icon: home
-title: Home
+title: 主页
 heroImage: /logo.svg
 heroText: Oragekk's Blog
-tagline: Goals determine what you are going to be. —— Julius Erving
 heroFullScreen: true
+tagline: Goals determine what you are going to be. —— Julius Erving
 bgImage: https://file.mo7.cc/api/public/bz?idx=1
 projects:
   - icon: project
-    name: project name
-    desc: project detailed description
-    link: https://your.project.link
+    name: 项目名称
+    desc: 项目详细描述
+    link: https://你的项目链接
 
   - icon: link
-    name: link name
-    desc: link detailed description
-    link: https://link.address
+    name: 链接名称
+    desc: 链接详细描述
+    link: https://链接地址
 
   - icon: book
-    name: book name
-    desc: Detailed description of the book
-    link: https://link.to.your.book
+    name: 书籍名称
+    desc: 书籍详细描述
+    link: https://你的书籍链接
 
   - icon: article
-    name: article name
-    desc: Detailed description of the article
-    link: https://link.to.your.article
+    name: 文章名称
+    desc: 文章详细描述
+    link: https://你的文章链接
 
   - icon: friend
-    name: friend name
-    desc: Detailed description of friend
-    link: https://link.to.your.friend
+    name: 伙伴名称
+    desc: 伙伴详细介绍
+    link: https://你的伙伴链接
 
   - icon: /logo.svg
-    name: custom item
-    desc: Detailed description of this custom item
-    link: https://link.to.your.friend
+    name: 自定义项目
+    desc: 自定义详细介绍
+    link: https://你的自定义链接
 
 footer: <div><span>Powered by <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank">VuePress</a></span>|<span>Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">Hope</a></span></div>
 ---

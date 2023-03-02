@@ -5,7 +5,7 @@ import { onMounted } from "vue";
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
     router.beforeEach((to) => {
-      console.log("before navigation" + to.path);
+      // console.log("before navigation" + to.path);
       if (to.path == "/") {
         switchOml(true);
       } else {
@@ -13,7 +13,7 @@ export default defineClientConfig({
       }
     });
     router.afterEach((to) => {
-      console.log("after navigation" + to.path);
+      // console.log("after navigation" + to.path);
     });
   },
   setup() {

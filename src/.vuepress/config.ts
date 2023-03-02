@@ -30,7 +30,7 @@ export default defineUserConfig({
       description: "vuepress-theme-hope 的博客演示",
     },
   },
-
+  
   theme,
 
   plugins: [

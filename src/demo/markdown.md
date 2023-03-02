@@ -1,58 +1,58 @@
 ---
-title: Markdown Enhance
+title: Markdown 展示
 icon: markdown
 order: 2
 category:
-  - Guide
+  - 使用指南
 tag:
   - Markdown
 ---
 
-VuePress basically generate pages from Markdown files. So you can use it to generate documentation or blog sites easily.
+VuePress 主要从 Markdown 文件生成页面。因此，你可以使用它轻松生成文档或博客站点。
 
-You should create and write Markdown files, so that VuePress can convert them to different pages according to file structure.
+你应该创建和编写 Markdown 文件，以便 VuePress 可以根据文件结构将它们转换为不同的页面。
 
 <!-- more -->
 
-## Markdown Introduction
+## Markdown 介绍
 
-If you are a new learner and don’t know how to write Markdown, please read [Markdown Intro](https://theme-hope.vuejs.press/cookbook/markdown/) and [Markdown Demo](https://theme-hope.vuejs.press/cookbook/markdown/demo.html).
+如果你是一个新手，还不会编写 Markdown，请先阅读 [Markdown 介绍](https://theme-hope.vuejs.press/zh/cookbook/markdown/) 和 [Markdown 演示](https://theme-hope.vuejs.press/zh/cookbook/markdown/demo.html)。
 
-## Markdown Config
+## Markdown 配置
 
-VuePress introduce configuration for each Markdown page using Frontmatter.
+VuePress 通过 Frontmatter 为每个 Markdown 页面引入配置。
 
 ::: info
 
-Frontmatter is a important concept in VuePress. If you don’t know it, you need to read [Frontmatter Introduction](https://theme-hope.vuejs.press/cookbook/vuepress/page.html#front-matter).
+Frontmatter 是 VuePress 中很重要的一个概念，如果你不了解它，你需要阅读 [Frontmatter 介绍](https://theme-hope.vuejs.press/zh/cookbook/vuepress/page.html#front-matter)。
 
 :::
 
-## Markdown Extension
+## Markdown 扩展
 
-The Markdown content in VuePress will be parsed by [markdown-it](https://github.com/markdown-it/markdown-it), which supports [syntax extensions](https://github.com/markdown-it/markdown-it#syntax-extensions) via markdown-it plugins.
+VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来解析 Markdown 内容，因此可以借助于 markdown-it 插件来实现 [语法扩展](https://github.com/markdown-it/markdown-it#syntax-extensions) 。
 
-### VuePress Enhancement
+### VuePress 扩展
 
-To enrich document writing, VuePress has extended Markdown syntax.
+为了丰富文档写作，VuePress 对 Markdown 语法进行了扩展。
 
-For these extensions, please read [Markdown extensions in VuePress](https://theme-hope.vuejs.press/basic/vuepress/markdown.html).
+关于这些扩展，请阅读 [VuePress 中的 Markdown 扩展](https://theme-hope.vuejs.press/zh/cookbook/vuepress/markdown.html)。
 
-### Theme Enhancement
+### 主题扩展
 
-By using [`vuepress-plugin-md-enhance`][md-enhance], the theme extends more Markdown syntax and provides richer writing functions.
+通过 [`vuepress-plugin-md-enhance`][md-enhance]，主题扩展了更多 Markdown 语法，提供更加丰富的写作功能。
 
-#### Custom Container
+#### 自定义容器
 
 ::: v-pre
 
-Safely use {{ variable }} in Markdown.
+安全的在 Markdown 中使用 {{ variable }}。
 
 :::
 
-::: info Custom Title
+::: info 自定义标题
 
-A custom information container with `code`, [link](#custom-container).
+信息容器，包含 `代码` 与 [链接](#自定义容器)。
 
 ```js
 const a = 1;
@@ -60,55 +60,35 @@ const a = 1;
 
 :::
 
-::: tip Custom Title
+::: tip 自定义标题
 
-A custom tip container
-
-:::
-
-::: warning Custom Title
-
-A custom warning container
+提示容器
 
 :::
 
-::: danger Custom Title
+::: warning 自定义标题
 
-A custom danger container
-
-:::
-
-::: details Custom Title
-
-A custom details container
+警告容器
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/container.html)
+::: danger 自定义标题
 
-#### Tabs
-
-::: tabs#fruit
-
-@tab apple
-
-Apple
-
-@tab banana
-
-Banana
-
-@tab orange
-
-Orange
+危险容器
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/tabs.html)
+::: details 自定义标题
 
-#### Code Tabs
+详情容器
 
-::: code-tabs#shell
+:::
+
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/container.html)
+
+#### 代码块
+
+::: code-tabs
 
 @tab pnpm
 
@@ -130,66 +110,66 @@ npm i -D vuepress-theme-hope
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/code-tabs.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/code-tabs.html)
 
-#### Superscript and Subscript
+#### 上下角标
 
 19^th^ H~2~O
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/sup-sub.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/sup-sub.html)
 
-#### Align
+#### 自定义对齐
 
 ::: center
 
-I am center
+我是居中的
 
 :::
 
 ::: right
 
-I am right align
+我在右对齐
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/align.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/align.html)
 
 #### Attrs
 
-A **word**{#word} having id.
+一个拥有 ID 的 **单词**{#word}。
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/attrs.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/attrs.html)
 
-#### Footnote
+#### 脚注
 
-This text has footnote[^first].
+此文字有脚注[^first].
 
-[^first]: This is footnote content
+[^first]: 这是脚注内容
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/footnote.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/footnote.html)
 
-#### Mark
+#### 标记
 
-You can mark ==important words== .
+你可以标记 ==重要的内容== 。
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/mark.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/mark.html)
 
-#### Tasklist
+#### 任务列表
 
-- [x] Plan A
-- [ ] Plan B
+- [x] 计划 1
+- [ ] 计划 2
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/tasklist.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/tasklist.html)
 
-#### Image Enhancement
+### 图片增强
 
-Support setting color scheme and size
+支持为图片设置颜色模式和大小
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/image.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/image.html)
 
-#### Chart
+#### 图表
 
-::: chart A Scatter Chart
+::: chart 一个散点图案例
 
 ```json
 {
@@ -197,7 +177,7 @@ Support setting color scheme and size
   "data": {
     "datasets": [
       {
-        "label": "Scatter Dataset",
+        "label": "散点数据集",
         "data": [
           { "x": -10, "y": 0 },
           { "x": 0, "y": 10 },
@@ -221,11 +201,11 @@ Support setting color scheme and size
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/chart.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/chart.html)
 
 #### Echarts
 
-::: echarts A line chart
+::: echarts 一个折线图案例
 
 ```json
 {
@@ -247,20 +227,20 @@ Support setting color scheme and size
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/echarts.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/echarts.html)
 
-#### Flowchart
+#### 流程图
 
 ```flow
-cond=>condition: Process?
-process=>operation: Process
-e=>end: End
+cond=>condition: 是否执行操作?
+process=>operation: 操作
+e=>end: 结束
 
 cond(yes)->process->e
 cond(no)->e
 ```
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/flowchart.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/flowchart.html)
 
 #### Mermaid
 
@@ -284,35 +264,35 @@ flowchart TB
     two --> c2
 ```
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/mermaid.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/mermaid.html)
 
-#### Tex
+#### Tex 语法
 
 $$
 \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
 = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^i r \cdots (r-i+1) (\log y)^{r-i}} {\omega^i} \right\}
 $$
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/tex.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/tex.html)
 
-#### Include files
+#### 导入文件
 
 @include(./README.md{11-17})
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/include.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/include.html)
 
-#### Code Demo
+#### 代码演示
 
-::: normal-demo A normal demo
+::: normal-demo 一个普通 Demo
 
 ```html
 <h1>VuePress Theme Hope</h1>
-<p>Is <span id="very">very</span> powerful!</p>
+<p><span id="very">非常</span>强大!</p>
 ```
 
 ```js
 document.querySelector("#very").addEventListener("click", () => {
-  alert("Very powerful!");
+  alert("非常强大");
 });
 ```
 
@@ -324,17 +304,17 @@ span {
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/demo.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/demo.html)
 
-#### Stylize
+#### 样式化
 
-Donate Mr.Hope a cup of coffee. _Recommended_
+向 Mr.Hope 捐赠一杯咖啡。 _Recommended_
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/stylize.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/stylize.html)
 
-#### Playground
+#### 交互演示
 
-::: playground#ts TS demo
+::: playground#ts TS 案例
 
 @file index.ts
 
@@ -348,11 +328,11 @@ speak(msg);
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/playground.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/playground.html)
 
-#### Vue Playground
+#### Vue 交互演示
 
-::: vue-playground Vue Playground
+::: vue-playground Vue 交互演示
 
 @file App.vue
 
@@ -371,26 +351,26 @@ const msg = ref("Hello World!");
 
 :::
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/vue-playground.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/vue-playground.html)
 
-#### Presentation
+#### 幻灯片
 
 @slidestart
 
-## Slide 1
+## 幻灯片 1
 
-A paragraph with some text and a [link](https://mrhope.site)
-
----
-
-## Slide 2
-
-- Item 1
-- Item 2
+一个有文字和 [链接](https://mrhope.site) 的段落
 
 ---
 
-## Slide 3.1
+## 幻灯片 2
+
+- 项目 1
+- 项目 2
+
+---
+
+## 幻灯片 3.1
 
 ```js
 const a = 1;
@@ -398,7 +378,7 @@ const a = 1;
 
 --
 
-## Slide 3.2
+## 幻灯片 3.2
 
 $$
 J(\theta_0,\theta_1) = \sum_{i=0}
@@ -406,6 +386,6 @@ $$
 
 @slideend
 
-- [View Detail](https://theme-hope.vuejs.press/guide/markdown/presentation.html)
+- [查看详情](https://theme-hope.vuejs.press/zh/guide/markdown/presentation.html)
 
-[md-enhance]: https://md-enhance.vuejs.press/
+[md-enhance]: https://md-enhance.vuejs.press/zh/

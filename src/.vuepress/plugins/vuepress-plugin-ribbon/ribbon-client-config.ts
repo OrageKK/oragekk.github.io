@@ -22,18 +22,18 @@ export default defineClientConfig({
           ribbonOptions.size
         );
       }
-      if (to.path != "/") {
+      if (to.path == "/" || to.path == "/zh/") {
+        bgRemove()
+      } else {
         // 子页添加背景
         sUbPageAddBg()
-      } else {
-        bgRemove()
       }
     });
   },
   setup() {
     onMounted(() => {
       const path = usePageData().value.path;
-      if (path == "/") {
+      if (path == "/"||path == "/zh/") {
         script.ribbon(
           "home",
           ribbonOptions.zIndex,
@@ -58,11 +58,12 @@ export default defineClientConfig({
 
 function sUbPageAddBg() {
   if (document.querySelector(".page-bg")) {
+    console.log("return")
     return;
   }
   var div = document.createElement("div");
   div.style.cssText =
-    "position:fixed;top:0;left:0;z-index:1;width:100%;height:100%;pointer-events:none;background:var(--bg-color-blur)";
+    "position:fixed;top:0;left:0;z-index:2;width:100%;height:100%;pointer-events:none;background:var(--bg-color-blur)";
   div.className = "page-bg";
   document.getElementsByClassName("theme-container")[0].appendChild(div);
 }

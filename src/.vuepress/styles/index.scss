@@ -13,12 +13,13 @@
   z-index: 2;
 }
 .sidebar {
-  z-index: 3;
+  z-index: 4;
 }
 .page {
-  z-index: 2;
-  background-color: transparent;
+  z-index: 3;
+  background-color: transparent !important;
 }
+
 [data-theme="light"] .article-item .article,
 [data-theme="light"] .page .blogger-info,
 [data-theme="light"] .page .blog-info-list,
@@ -26,7 +27,8 @@
 [data-theme="light"] .pagination-wrapper .navigate-wrapper input,
 [data-theme="light"] .pagination-wrapper .page-number div,
 [data-theme="light"] .wl-panel,
-[data-theme="light"] .back-to-top {
+[data-theme="light"] .back-to-top
+[data-theme="light"] .page-bg {
   background-color: #ffffffb3;
 }
 
@@ -37,7 +39,8 @@
 [data-theme="dark"] .pagination-wrapper .navigate-wrapper input,
 [data-theme="dark"] .pagination-wrapper .page-number div,
 [data-theme="dark"] .wl-panel,
-[data-theme="dark"] .back-to-top {
+[data-theme="dark"] .back-to-top
+[data-theme="dark"] .page-bg {
   background-color: #1d2025b3;
 }
 .article-item .article,
