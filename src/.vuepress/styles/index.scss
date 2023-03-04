@@ -4,22 +4,33 @@
   display: none;
 }
 .blog-hero {
-  margin-bottom: 0 !important;
+  // margin-bottom: 0 !important;
   z-index: 2;
 }
 .blog-page-wrapper {
-  background-image: linear-gradient(to right, #51c4d3ac, #ed2f6ba3);
-  padding-top: 2rem !important;
+  // background-image: linear-gradient(to right, #51c4d3ac, #ed2f6ba3);
+  // backdrop-filter:saturate(150%) blur(12px);
+  // padding-top: 2rem !important;
   z-index: 2;
 }
-.sidebar {
+.theme-container .sidebar {
   z-index: 4;
+  background-color: transparent;
 }
-.page {
-  z-index: 3;
-  background-color: transparent !important;
+[data-theme="light"] #main-content.page {
+  background-color: #fffc;
 }
-
+[data-theme="dark"] #main-content.page {
+  background-color: #1d2025cc;
+}
+#main-content.page {
+  backdrop-filter: saturate(150%) blur(0.75rem);
+  z-index: 2;
+}
+.page.not-found {
+  max-width: none;
+  background-color: transparent;
+}
 [data-theme="light"] .article-item .article,
 [data-theme="light"] .page .blogger-info,
 [data-theme="light"] .page .blog-info-list,
@@ -27,8 +38,7 @@
 [data-theme="light"] .pagination-wrapper .navigate-wrapper input,
 [data-theme="light"] .pagination-wrapper .page-number div,
 [data-theme="light"] .wl-panel,
-[data-theme="light"] .back-to-top
-[data-theme="light"] .page-bg {
+[data-theme="light"] .back-to-top [data-theme="light"] .page-bg {
   background-color: #ffffffb3;
 }
 
@@ -39,8 +49,7 @@
 [data-theme="dark"] .pagination-wrapper .navigate-wrapper input,
 [data-theme="dark"] .pagination-wrapper .page-number div,
 [data-theme="dark"] .wl-panel,
-[data-theme="dark"] .back-to-top
-[data-theme="dark"] .page-bg {
+[data-theme="dark"] .back-to-top [data-theme="dark"] .page-bg {
   background-color: #1d2025b3;
 }
 .article-item .article,
@@ -54,11 +63,11 @@
   backdrop-filter: saturate(150%) blur(0.75rem);
 }
 
-[data-theme=light] .blog-hero .mask:after {
+[data-theme="light"] .blog-hero .mask:after {
   background: #000;
-  opacity: .3!important
+  opacity: 0.3 !important;
 }
-[data-theme=dark] .blog-hero .mask:after {
+[data-theme="dark"] .blog-hero .mask:after {
   background: #000;
-  opacity: .7!important
+  opacity: 0.7 !important;
 }

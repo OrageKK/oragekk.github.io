@@ -1,0 +1,80 @@
+<template>
+  <div class="page-bg"></div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "BlogBg",
+});
+</script>
+<style lang="scss">
+@keyframes move {
+    0%,to {
+        background-size: 130vmax 130vmax,80vmax 80vmax,90vmax 90vmax,110vmax 110vmax,90vmax 90vmax;
+        background-position: -80vmax -80vmax,60vmax -30vmax,10vmax 10vmax,-30vmax -10vmax,50vmax 50vmax
+    }
+
+    25% {
+        background-size: 100vmax 100vmax,90vmax 90vmax,100vmax 100vmax,90vmax 90vmax,60vmax 60vmax;
+        background-position: -60vmax -60vmax,50vmax -40vmax,0vmax 10vmax,-40vmax -20vmax,40vmax 40vmax
+    }
+
+    50% {
+        background-size: 90vmax 90vmax,100vmax 100vmax,80vmax 80vmax,90vmax 90vmax,60vmax 60vmax;
+        background-position: -70vmax -70vmax,40vmax -40vmax,0vmax 10vmax,-50vmax -30vmax,30vmax 30vmax
+    }
+
+    75% {
+        background-size: 80vmax 80vmax,70vmax 70vmax,80vmax 80vmax,70vmax 70vmax,50vmax 50vmax;
+        background-position: -60vmax -60vmax,60vmax -30vmax,10vmax 10vmax,-40vmax -40vmax,50vmax 50vmax
+    }
+}
+.page-bg {
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-color: #e493d0;
+  background-image: radial-gradient(
+      closest-side,
+      rgb(235, 105, 78),
+      rgba(235, 105, 78, 0)
+    ),
+    radial-gradient(closest-side, rgb(243, 11, 164), rgba(243, 11, 164, 0)),
+    radial-gradient(closest-side, rgb(254, 234, 131), rgba(254, 234, 131, 0)),
+    radial-gradient(closest-side, rgb(170, 142, 245), rgba(170, 142, 245, 0)),
+    radial-gradient(closest-side, rgb(248, 192, 147), rgba(248, 192, 147, 0));
+  background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
+    110vmax 110vmax, 90vmax 90vmax;
+  background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
+    -30vmax -10vmax, 50vmax 50vmax;
+  background-repeat: no-repeat;
+  animation: 6s move linear infinite;
+  // backdrop-filter: saturate(150%) blur(12px);
+  z-index: 1;
+}
+.page-bg::after {
+  content: "";
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+[data-theme=dark] .page-bg:after {
+    background-color: #1d2025b3;
+}
+[data-theme=light] .page-bg:after {
+    background-color: #ffffff1a;
+}
+</style>

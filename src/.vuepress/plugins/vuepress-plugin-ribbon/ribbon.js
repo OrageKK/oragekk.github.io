@@ -1,11 +1,10 @@
 /*jshint -W030 */
-function ribbon(type = "home", zIndex = -1, alpha = 0.6, size = 90) {
+function ribbon(zIndex, alpha, size) {
   var config = {
-    z: zIndex, // z-index
-    a: alpha, // alpha
-    s: size, // size
+    z: zIndex != undefined ? zIndex : -1, // z-index
+    a: alpha != undefined ? alpha : 0.6, // alpha
+    s: size != undefined ? size : 90, // size
   };
-
   var canvas = deWeight(),
     g2d = canvas.getContext('2d'),
     pr = window.devicePixelRatio || 1,
@@ -26,16 +25,7 @@ function ribbon(type = "home", zIndex = -1, alpha = 0.6, size = 90) {
   canvas.id = "ribbon";
   canvas.style.cssText = 'position:fixed;top:0;left:0;z-index: ' + config.z + ';width:100%;height:100%;pointer-events:none;';
   // create canvas
-  // document.getElementsByTagName('body')[0].appendChild(canvas);
-  // document.getElementsByClassName('page')[0].appendChild(canvas)
-  function select() {
-    if (type == "home") {
-      document.getElementsByClassName('page')[0].appendChild(canvas)
-    } else {
-      document.getElementsByClassName('theme-container')[0].appendChild(canvas)
-    }
-  }
-  select()
+  document.body.appendChild(canvas)
   function redraw() {
     g2d.clearRect(0, 0, width, height);
     q = [{ x: 0, y: height * 0.7 + f }, { x: 0, y: height * 0.7 - f }];
@@ -58,24 +48,28 @@ function ribbon(type = "home", zIndex = -1, alpha = 0.6, size = 90) {
     t = p + (random() * 2 - 1.1) * f;
     return (t > height || t < 0) ? line(p) : t;
   }
+  function deWeight() {
+    if (document.getElementById("ribbon") != null) {
+      return document.getElementById("ribbon")
+    } else {
+      return document.createElement('canvas')
+    }
+  }
 
   document.onclick = redraw;
   // document.ontouchstart = redraw;
   redraw();
 };
-function deWeight() {
-  if (document.getElementById("ribbon") != null) {
-    return document.getElementById("ribbon")
-  } else {
-    return document.createElement('canvas')
-  }
-}
-function remove() {
-  var el = document.querySelector("#ribbon")
-  el && (el.remove())
+
+
+function figure() {
+  const div = document.createElement('div')
+  div.className = "figure-bg"
+  div.style.cssText = "position:fixed;top:0;left:0;z-index:1;width:100%;height:100%;pointer-events:none;background: url(/assets/bg.svg) center/cover no-repeat;"
+  document.body.appendChild(div)
 }
 var script = {
   ribbon,
-  remove
+  figure
 };
 export default script

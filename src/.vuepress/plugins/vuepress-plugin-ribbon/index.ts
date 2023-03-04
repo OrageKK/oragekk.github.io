@@ -9,16 +9,37 @@ interface RibbonOptions {
   size?: number;
 }
 
-const ribbonPlugin = (options?: RibbonOptions): PluginFunction => {
+enum VuepressPluginBgType {
+  /**
+   * 几何图形
+   */
+  Figure,
+  /**
+   * 彩虹飘带
+   */
+  Ribbon,
+}
+
+interface BackgroundOptions {
+  type: VuepressPluginBgType;
+  ribbonOption?: RibbonOptions;
+}
+
+const backgroundPlugin = (options?: BackgroundOptions): PluginFunction => {
   return (app) => {
     return {
-      name: "vuepress-plugin-ribbon",
+      name: "vuepress-plugin-bg",
       define: {
-        ribbonOptions: options,
+        backgroundOptions: options,
       },
       multiple: false,
       clientConfigFile: path.resolve(__dirname, "./ribbon-client-config.ts"),
     };
   };
 };
-export { ribbonPlugin, RibbonOptions };
+export {
+  backgroundPlugin,
+  BackgroundOptions,
+  VuepressPluginBgType,
+  RibbonOptions,
+};

@@ -105,7 +105,7 @@ export default localTheme({
       },
     },
   },
-
+  // navbarAutoHide: "always",
   // 加密
   encrypt: {
     config: {

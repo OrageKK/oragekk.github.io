@@ -33,10 +33,15 @@ export default defineClientConfig({
 });
 
 function switchOml(show: boolean) {
-  let oml = document.getElementById("oml-stage");
+  // oml-levitated-btn
+  
   if (show) {
-    oml && (oml.style.display = "block");
+    // oml && (oml.style.display = "block");
+    // oml && (oml.remove())
+    var oml = document.createElement("div")
   } else {
-    oml && (oml.style.display = "none");
+    // oml && (oml.style.display = "none");
+    let oml = document.getElementById("oml-stage");
+    oml && (oml.remove())
   }
 }

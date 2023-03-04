@@ -2,9 +2,13 @@ import { getDirname, path } from "@vuepress/utils";
 import { defineUserConfig } from "vuepress";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
-import { ribbonPlugin } from "./plugins/vuepress-plugin-ribbon";
+import {
+  backgroundPlugin,
+  VuepressPluginBgType,
+} from "./plugins/vuepress-plugin-ribbon";
 import theme from "./theme.js";
 import { live2DAssistPlugin } from "./plugins/vuepress-plugin-live2DAssist";
+import { gradientCoverPlugin } from "./plugins/vuepress-plugin-gradient-cover";
 
 const __dirname = getDirname(import.meta.url);
 
@@ -30,20 +34,25 @@ export default defineUserConfig({
       description: "vuepress-theme-hope 的博客演示",
     },
   },
-  
+
   theme,
 
   plugins: [
     // 看板娘辅助插件
     live2DAssistPlugin({
-      a: "123",
+      subPageHidden: true,
     }),
-    // 彩带插件
-    ribbonPlugin({
-      zIndex: 1,
-      alpha: 0.8,
-      size: 150,
+    // 背景插件
+    backgroundPlugin({
+      type: VuepressPluginBgType.Figure,
+      ribbonOption: {
+        zIndex: 1,
+        alpha: 0.8,
+        size: 90,
+      },
     }),
+    // 背景插件
+    gradientCoverPlugin({}),
     searchProPlugin({
       // 索引全部内容
       indexContent: true,

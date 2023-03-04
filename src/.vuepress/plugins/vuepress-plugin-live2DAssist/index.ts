@@ -3,7 +3,7 @@ import { getDirname, path } from '@vuepress/utils'
 
 const __dirname = getDirname(import.meta.url)
 export interface Live2DAssistOptions {
-  a: string;
+  subPageHidden: boolean;
 }
 const live2DAssistPlugin = (options?: Live2DAssistOptions): PluginFunction => {
   return (app) => {
