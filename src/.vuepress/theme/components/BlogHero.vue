@@ -52,13 +52,11 @@ export default defineComponent({
     );
 
     const leftClick = (url) => {
-      console.log("左点击:" + url);
       let m = document.querySelector(".mask");
       m.style.background = `url(${url}) center/cover no-repeat`;
       console.log(m);
     };
     const rightClick = (url) => {
-      console.log("右点击" + url);
       let m = document.querySelector(".mask");
       m.style.background = `url(${url}) center/cover no-repeat`;
     };

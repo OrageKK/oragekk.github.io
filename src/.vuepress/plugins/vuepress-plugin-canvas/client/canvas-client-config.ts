@@ -1,8 +1,8 @@
 import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
-import { BackgroundOptions, RibbonOptions, VuepressPluginBgType } from ".";
 import { onMounted } from "vue";
-import script from "./ribbon";
-
+import ribbon from "../components/ribbon";
+import figure from "../components/figure";
+import { BackgroundOptions } from "../type";
 declare const backgroundOptions: BackgroundOptions;
 // declare const ribbonOptions: RibbonOptions;
 
@@ -16,11 +16,11 @@ export default defineClientConfig({
   setup() {
     onMounted(() => {
       switch (backgroundOptions.type) {
-        case 0:
-          script.figure();
+        case "figure":
+          figure();
           break;
-        case 1:
-          script.ribbon(
+        case "ribbon":
+          ribbon(
             backgroundOptions.ribbonOption?.zIndex,
             backgroundOptions.ribbonOption?.alpha,
             backgroundOptions.ribbonOption?.size

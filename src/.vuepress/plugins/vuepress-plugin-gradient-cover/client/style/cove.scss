@@ -1,15 +1,3 @@
-<template>
-  <div class="page-bg"></div>
-</template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "BlogBg",
-});
-</script>
-<style lang="scss">
 @keyframes move {
     0%,to {
         background-size: 130vmax 130vmax,80vmax 80vmax,90vmax 90vmax,110vmax 110vmax,90vmax 90vmax;
@@ -77,4 +65,3 @@ export default defineComponent({
 [data-theme=light] .page-bg:after {
     background-color: #ffffff1a;
 }
-</style>

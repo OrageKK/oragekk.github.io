@@ -17,7 +17,7 @@ const gradientCoverPlugin = (options?: GradientCoverOptions): PluginFunction => 
         coverOptions: options,
       },
       multiple: false,
-      clientConfigFile: path.resolve(__dirname, "./cover-client-config.ts"),
+      clientConfigFile: path.resolve(__dirname, "./client/cover-client-config.ts"),
     };
   };
 };

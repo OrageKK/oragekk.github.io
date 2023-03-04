@@ -3,12 +3,14 @@ import { defineUserConfig } from "vuepress";
 import { searchProPlugin } from "vuepress-plugin-search-pro";
 import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
 import {
-  backgroundPlugin,
-  VuepressPluginBgType,
-} from "./plugins/vuepress-plugin-ribbon";
-import theme from "./theme.js";
+  canvasPlugin,
+  CanvasPluginType,
+} from "./plugins/vuepress-plugin-canvas";
 import { live2DAssistPlugin } from "./plugins/vuepress-plugin-live2DAssist";
 import { gradientCoverPlugin } from "./plugins/vuepress-plugin-gradient-cover";
+import theme from "./theme.js";
+import { popperPlugin } from "./plugins/vuepress-plugin-popper";
+import { PopperShape } from "@moefy-canvas/theme-popper";
 
 const __dirname = getDirname(import.meta.url);
 
@@ -38,21 +40,30 @@ export default defineUserConfig({
   theme,
 
   plugins: [
+    // 鼠标特效插件
+    popperPlugin({
+      config: {
+        shape: PopperShape.Star,
+        size: 1.95,
+        numParticles: 10,
+      },
+    }),
     // 看板娘辅助插件
     live2DAssistPlugin({
       subPageHidden: true,
     }),
     // 背景插件
-    backgroundPlugin({
-      type: VuepressPluginBgType.Figure,
+    canvasPlugin({
+      type: CanvasPluginType.Figure,
       ribbonOption: {
         zIndex: 1,
         alpha: 0.8,
         size: 90,
       },
     }),
-    // 背景插件
+    // 遮罩插件
     gradientCoverPlugin({}),
+    // 搜索插件
     searchProPlugin({
       // 索引全部内容
       indexContent: true,
