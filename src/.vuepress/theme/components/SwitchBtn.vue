@@ -1,6 +1,6 @@
 <template lang="">
   <div id="BingSwitchWrapper">
-    <a :href="currentData.CopyrightLink" target="_Blank" id="bingLink">
+    <a :href="bingData.CopyrightLink" target="_Blank" id="bingLink">
       <div class="bingLink-icon">
         <svg
           class="mapPin"
@@ -16,7 +16,7 @@
           ></path>
         </svg>
       </div>
-      <div id="bingLink-text">{{ currentData.Title }}</div>
+      <div id="bingLink-text">{{ bingData.Title }}</div>
     </a>
     <div id="left" @click="leftClick" :class="{ disabled: lDisabled }"></div>
     <div id="right" @click="rightClick" :class="{ disabled: rDisabled }"></div>
@@ -28,73 +28,30 @@ import { BingApi, BingResponse, Datum } from "../api/bing";
 export default defineComponent({
   name: "SwitchBtn",
   props: {
-    // data: {
-    //   type: Object as PropType<BingResponse>,
-    //   required: true,
-    // },
-    a: String,
+    bingData:{
+       // 提供相对 `Object` 更确定的类型
+       type: Object as PropType<Datum>,
+      required: true
+    },
+    lDisabled:Boolean,
+    rDisabled:Boolean
   },
   data() {
     return {
-      index: 0,
-      bingData: [
-        {
-          Ssd: "",
-          Path: "",
-          Url: "",
-          Copyright: "",
-          CopyrightLink: "",
-          Title: "",
-          EN: {
-            Ssd: "",
-            Path: "",
-            Url: "",
-            Copyright: "",
-            CopyrightLink: "",
-            Title: "",
-          },
-        },
-      ],
     };
   },
   computed: {
-    currentData() {
-      return this.bingData[this.index];
-    },
-    lDisabled() {
-      return this.index == 0 ? true : false;
-    },
-    rDisabled() {
-      return this.index == this.bingData.length - 1 ? true : false;
-    },
   },
   methods: {
     leftClick() {
-      if (this.index == 0) {
-        return;
-      }
-      this.index--;
-      this.$emit("leftClick",this.bingData[this.index].Url);
+      this.$emit("leftClick");
     },
     rightClick() {
-      if (this.index == this.bingData.length - 1) {
-        return;
-      }
-      this.index++;
-      this.$emit("rightClick",this.bingData[this.index].Url);
+      this.$emit("rightClick");
     },
   },
   mounted() {
-    BingApi.request().then((res) => {
-      if (res.status == 200) {
-        this.bingData = res.data.Data;
-        // this.currentData = this.bingData[this.index];
-        for (const infos of res.data.Data) {
-          var n = new Image()
-          n.src = infos.Url;
-        }
-      }
-    });
+
   },
 });
 </script>
@@ -128,18 +85,20 @@ export default defineComponent({
     .mapPin {
       fill: #fff;
       transform: translate3d(-50%, -50%, 0);
-      top: 46%;
+      top: 50%;
       left: 50%;
       position: absolute;
     }
   }
   #bingLink-text {
+    font-family: "Segoe UI", Segoe, Tahoma, Arial, Verdana, sans-serif;
     text-align: left;
     box-sizing: border-box;
     min-height: 2.5rem;
     max-width: 14rem;
     color: #fff;
     padding: 0.625rem 0.625rem 0.625rem 0rem;
+    font-size: 0.9rem;
   }
   #left {
     width: 2.5rem;

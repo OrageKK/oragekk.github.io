@@ -5,9 +5,10 @@ icon: home
 title: 主页
 heroImage: /logo.svg
 heroText: Oragekk's Blog
+# heroText: 上冬十二
 heroFullScreen: true
 tagline: Goals determine what you are going to be. —— Julius Erving
-bgImage: https://file.mo7.cc/api/public/bz
+# bgImage: https://file.mo7.cc/api/public/bz
 projects:
   - icon: project
     name: 项目名称

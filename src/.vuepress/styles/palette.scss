@@ -1,22 +1,16 @@
 // you can change colors here
 $theme-color: #eb507e;
-// 颜色
-$accentColor : #3eaf7c;
-$textColor : #2c3e50;
-$borderColor : #eaecef;
-$codeBgColor : #282c34;
-$arrowBgColor : #ccc;
-$badgeTipColor : #42b983;
-$badgeWarningColor : darken(#ffe564, 35%);
-$badgeErrorColor : #DA5961;
+$theme-color-live2d: #94c7d1;
+$textColor: #2c3e50;
+$border-color: (
+  // light: #eaecef,
+  // dark: #30363d,
+  light: #e4e6e9,
+  dark: #534045
+);
 
 // 布局
-$navbarHeight : 3.6rem;
-$sidebarWidth : 20rem;
-$contentWidth : 740px;
-$homePageWidth : 960px;
-
-// 响应式变化点
-$MQNarrow : 959px;
-$MQMobile : 719px;
-$MQMobileNarrow : 419px;
+$navbar-height: 3.75rem;
+$sidebar-width: 18rem;
+$content-width: 780px;
+$home-page-width: 1160px;

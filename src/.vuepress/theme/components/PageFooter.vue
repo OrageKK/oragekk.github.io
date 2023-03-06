@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-colum" v-show="enable">
+  <footer class="footer-wrapper" v-show="enable">
     <div class="busuanzi">
       <span id="busuanzi_container_site_pv" style="display: none">
         本站总访问量
@@ -11,7 +11,7 @@
         <span id="busuanzi_value_site_uv"></span>位访问者
       </span>
     </div>
-    <div class="footer-wrap">
+    <div class="footer-content">
       <div class="footer" v-html="content"></div>
       <div class="copyright">{{ copyright }}</div>
     </div>
@@ -67,7 +67,7 @@ const copyright = computed(() =>
 </script>
 
 <style lang="scss">
-.footer-colum:before {
+.footer-wrapper:before {
   content: "";
   position: absolute;
   left: 0;
@@ -76,21 +76,20 @@ const copyright = computed(() =>
   height: 100%;
   z-index: 1;
 }
-[data-theme="light"] .footer-colum:before {
+[data-theme="light"] .footer-wrapper:before {
   background: #000;
   opacity: 0.3;
 }
-[data-theme="dark"] .footer-colum:before {
+[data-theme="dark"] .footer-wrapper:before {
   background: #000;
   opacity: 0.7;
 }
-.footer-colum {
+.footer-wrapper {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  z-index: 2;
   margin: 0rem;
 
   padding-top: 0.75rem;
@@ -100,7 +99,7 @@ const copyright = computed(() =>
   // border-top: 1px solid var(--border-color);
 
   // background: var(--bg-color);
-  background-image: url("https://file.mo7.cc/api/public/bz?idx=1");
+  // background-image: url("https://file.mo7.cc/api/public/bz?idx=1");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: bottom;
@@ -128,12 +127,12 @@ const copyright = computed(() =>
   @media (max-width: hope-config.$mobile) {
     display: block;
   }
-  .footer-wrap {
+  .footer-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
-    z-index: 5;
+    z-index: 1;
     .footer {
       margin: 0.5rem 1rem;
       font-size: 14px;
@@ -154,15 +153,15 @@ const copyright = computed(() =>
 
   .busuanzi {
     font-size: 14px;
-    z-index: 5;
+    z-index: 1;
   }
 
   #runtime_span {
     font-size: 14px;
-    z-index: 5;
+    z-index: 1;
   }
 }
-.page:not(.not-found) + .footer-colum {
+.page:not(.not-found) + .footer-wrapper {
   margin-top: -2rem;
 }
 </style>

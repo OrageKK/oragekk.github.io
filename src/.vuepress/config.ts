@@ -11,6 +11,7 @@ import { gradientCoverPlugin } from "./plugins/vuepress-plugin-gradient-cover";
 import theme from "./theme.js";
 import { popperPlugin } from "./plugins/vuepress-plugin-popper";
 import { PopperShape } from "@moefy-canvas/theme-popper";
+import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 
 const __dirname = getDirname(import.meta.url);
 
@@ -40,6 +41,8 @@ export default defineUserConfig({
   theme,
 
   plugins: [
+    // 一言插件
+    hitokotoPlugin({}),
     // 鼠标特效插件
     popperPlugin({
       config: {

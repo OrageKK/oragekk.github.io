@@ -13,31 +13,16 @@ import {
   defineComponent,
   h,
   ref,
-  toRefs,
-  reactive,
 } from "vue";
 import DropTransition from "vuepress-theme-hope/components/transitions/DropTransition";
 import { SlideDownIcon } from "vuepress-theme-hope/modules/blog/components/icons/icons.js";
 import defaultHeroBgImagePath from "vuepress-theme-hope/modules/blog/assets/hero.jpg";
 import "vuepress-theme-hope/modules/blog/styles/blog-hero.scss";
 import SwitchBtn from "./SwitchBtn.vue";
-
 import { BingApi } from "../api/bing";
 export default defineComponent({
   name: "BlogHero",
   setup() {
-    //这里定义一个结构体，用来保存项目信息
-    // var Data = reactive({
-    //   bingData: {},
-    // });
-    // onMounted(() => {
-    //   BingApi.request().then((res) => {
-    //     if (res.status == 200) {
-    //       Data.bingData = res.data;
-    //       // a = res.data.Data[0].Title
-    //     }
-    //   });
-    // });
     const title = usePageHeadTitle();
     const frontmatter = usePageFrontmatter();
     const hero = ref();
@@ -47,19 +32,59 @@ export default defineComponent({
     );
     const bgImage = computed(() =>
       frontmatter.value.bgImage
-        ? withBase(frontmatter.value.bgImage + "?idx=1")
+        ? withBase(frontmatter.value.bgImage)
         : frontmatter.value.bgImage ?? defaultHeroBgImagePath
     );
+    // 背景相关
+    const bingDatasRef = ref();
+    const bingIndex = ref(0);
+    const bingData = computed(() =>
+      bingDatasRef.value ? bingDatasRef.value[bingIndex.value] : {}
+    );
+    const lDisabled = computed(() => (bingIndex.value == 0 ? true : false));
+    const rDisabled = computed(() =>
+      bingDatasRef.value && bingIndex.value == bingDatasRef.value.length - 1
+        ? true
+        : false
+    );
 
-    const leftClick = (url) => {
-      let m = document.querySelector(".mask");
-      m.style.background = `url(${url}) center/cover no-repeat`;
-      console.log(m);
+    const leftClick = () => {
+      if (lDisabled.value) {
+        return;
+      }
+      bingIndex.value--;
+      frontmatter.value.bgImage = withBase(bingData.value.Url);
+      let f = document.querySelector(".footer-wrapper");
+      f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
     };
-    const rightClick = (url) => {
-      let m = document.querySelector(".mask");
-      m.style.background = `url(${url}) center/cover no-repeat`;
+    const rightClick = () => {
+      if (rDisabled.value) {
+        return;
+      }
+      bingIndex.value++;
+      frontmatter.value.bgImage = withBase(bingData.value.Url);
+      let f = document.querySelector(".footer-wrapper");
+      f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
     };
+    onMounted(() => {
+      BingApi.request().then((res) => {
+        if (res.status == 200) {
+          if (res.status == 200) {
+            bingDatasRef.value = res.data.Data;
+            for (const [index, infos] of res.data.Data.entries()) {
+              var n = new Image();
+              n.src = infos.Url;
+              n.onload = ()=>{}
+              if (index == 0) {
+                let f = document.querySelector(".footer-wrapper");
+                f && (f.style.backgroundImage = `url(${infos.Url})`);
+                frontmatter.value.bgImage = withBase(infos.Url);
+              }
+            }
+          }
+        }
+      });
+    });
 
     return () =>
       frontmatter.value.hero === false
@@ -103,15 +128,55 @@ export default defineComponent({
               ),
               h(DropTransition, { appear: true, delay: 0.12 }, () =>
                 frontmatter.value.tagline
-                  ? h("p", {
-                      class: "description",
-                      innerHTML: frontmatter.value.tagline,
-                    })
+                  ? h(
+                      "p",
+                      {
+                        class: "description",
+                        id: "hitokoto",
+                      },
+                      [
+                        h(
+                          "div",
+                          {
+                            class: "word",
+                          },
+                          [
+                            h(
+                              "div",
+                              {
+                                class: "left",
+                              },
+                              "『"
+                            ),
+                            h("span", {
+                              id: "hitokoto_text",
+                              // innerHTML:frontmatter.value.tagline,
+                            }),
+                            h(
+                              "div",
+                              {
+                                class: "right",
+                              },
+                              "』"
+                            ),
+                          ]
+                        ),
+                        h("div", {
+                          class: "author",
+                          id: "hitokoto_author",
+                          style: { opacity: 0 },
+                          innerHTML: "123333",
+                        }),
+                      ]
+                    )
                   : null
               ),
               h(SwitchBtn, {
                 onLeftClick: leftClick,
                 onRightClick: rightClick,
+                bingData: bingData.value,
+                lDisabled: lDisabled.value,
+                rDisabled: rDisabled.value,
               }),
               isFullScreen.value
                 ? h(
