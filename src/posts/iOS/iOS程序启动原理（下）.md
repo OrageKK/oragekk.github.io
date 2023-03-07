@@ -9,10 +9,11 @@ tag:
 
 > 接上篇
 
-[iOS 程序启动原理（上）](http://www.jianshu.com/p/6e583c4392f3)
+[iOS 程序启动原理（上）](/posts/iOS/iOS程序启动原理（上）.html)
 
 下图是一个 iOS 程序启动的完整过程
-![](http://upload-images.jianshu.io/upload_images/2076247-1f1b30ddcfcd7ef3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![图](https://upload-images.jianshu.io/upload_images/2076247-1f1b30ddcfcd7ef3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 main 函数中执行了一个 UIApplicationMain 这个函数.
 

@@ -20,7 +20,6 @@ export default defineUserConfig({
   lang: "zh-CN",
   head: [
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
-    // ["script", { src: "/special/love.js" }],
     ["script", { src: "/special/time.js" }],
   ],
   // 开发模式html模版

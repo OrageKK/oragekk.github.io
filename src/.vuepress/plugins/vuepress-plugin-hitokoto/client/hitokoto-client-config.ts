@@ -15,10 +15,10 @@ export default defineClientConfig({
       const crouter = useRoute();
       var content = "";
       var author = "";
-      var span: HTMLSpanElement = document.getElementById(
+      var span: HTMLSpanElement | null = document.getElementById(
         "hitokoto_text"
       ) as HTMLSpanElement;
-      var div: HTMLDivElement = document.getElementById(
+      var div: HTMLDivElement | null = document.getElementById(
         "hitokoto_author"
       ) as HTMLDivElement;
 
@@ -36,7 +36,7 @@ export default defineClientConfig({
             texts = content.split("");
             index = 0;
             show();
-            // console.table(res.data);
+            // console.table("请求了");
           }
         }, delay);
       }
@@ -56,33 +56,40 @@ export default defineClientConfig({
             return;
           }
           // console.log("在重复显示");
-          div.style.opacity = "1";
-          div.style.transform = "translateY(0px)";
-          div.innerText = author;
-          span.innerText = span.innerText + texts[index];
+          div && (div.style.opacity = "1");
+          div && (div.style.transform = "translateY(0px)");
+          div && (div.innerText = author);
+          span && (span.innerText = span.innerText + texts[index]);
           index++;
         }, 200);
       }
       // 删除函数
       function clean() {
         timer = setInterval(() => {
-          if (span.innerText.length == 0) {
-            div.style.opacity = "0";
-            div.style.transform = "translateY(-20px)";
+          if (span && span.innerText.length == 0) {
+            div && (div.style.opacity = "0");
+            div && (div.style.transform = "translateY(-20px)");
             clearInterval(timer);
             request(4500);
             return;
           }
           texts.pop();
-          span.innerText = texts.join("");
+          span && (span.innerText = texts.join(""));
           // console.log("在重复清除");
         }, 200);
       }
-      router.beforeEach((to) => {
+      router.beforeEach((to,from) => {
+        if (to.path == "/" && to.path == from.path) {
+          return;
+        } 
         clearInterval(timer);
       });
-      router.afterEach((to) => {
+      router.afterEach((to, from) => {
         if (to.path == "/") {
+          if (to.path == from.path) {
+            // console.log("主页翻页");
+            return;
+          }
           // console.log("主页");
           getElement();
           request(1000);

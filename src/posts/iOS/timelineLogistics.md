@@ -23,7 +23,7 @@ tag:
   - 使用了 YYkit 中的 YYLable 进行富文本电话号码点击拨打电话
 - 初始化数组
 
-````objc
+  ````objc
 	NSArray *titleArr = [NSArray arrayWithObjects:
                  @"[北京通州区杨庄公司锦园服务部]快件已被27号楼e站代签收",
                  @"[北京通州区杨庄公司]到达目的地网店，快件将很快进行派送" ,
@@ -38,33 +38,33 @@ tag:
                 @"2017-07-03 03:34:22",
                 @"2017-07-02 12:59:00",
                 @"2017-07-02 08:10:00",nil];
-   ```
+  ```
 
 * 转为模型
 
 	``` objc
-for (NSInteger i = titleArr.count-1;i>=0 ; i--)
-{
-	OKLogisticModel * model = [[OKLogisticModel alloc]init];
-	model.dsc = [titleArr objectAtIndex:i];
-	model.date = [timeArr objectAtIndex:i];
-	[self.dataArry addObject:model];
-	}
-   ```
+  for (NSInteger i = titleArr.count-1;i>=0 ; i--)
+  {
+      OKLogisticModel * model = [[OKLogisticModel alloc]init];
+      model.dsc = [titleArr objectAtIndex:i];
+      model.date = [timeArr objectAtIndex:i];
+      [self.dataArry addObject:model];
+    }
+    ```
 
 * 初始化控制器
 
 	``` objc
-OKLogisticsView * logis = [[OKLogisticsView alloc]initWithDatas:self.dataArry];
-   // 给headView赋值
-   logis.wltype=@"已签收";
-   logis.number = @"3908723967437";
-   logis.company = @"韵达快运";
-   logis.phone = @"400-821-6789";
-   logis.imageUrl = @"http://pic40.nipic.com/20140420/12064170_201114370112_2.jpg";
-   logis.frame = CGRectMake(0, 64, OKScreenWidth, OKScreenHeight-64);
-   [self.view addSubview:logis];
+    OKLogisticsView * logis = [[OKLogisticsView alloc]initWithDatas:self.dataArry];
+      // 给headView赋值
+      logis.wltype=@"已签收";
+      logis.number = @"3908723967437";
+      logis.company = @"韵达快运";
+      logis.phone = @"400-821-6789";
+      logis.imageUrl = @"http://pic40.nipic.com/20140420/12064170_201114370112_2.jpg";
+      logis.frame = CGRectMake(0, 64, OKScreenWidth, OKScreenHeight-64);
+      [self.view addSubview:logis];
    ```
 
 > [Demo下载](https://github.com/OrageKK/timelineLogistics),如果对你有帮助麻烦点个Star
-````
+
