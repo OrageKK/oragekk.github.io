@@ -6,7 +6,7 @@ export const zhNavbar = navbar([
   {
     text: "博文",
     icon: "edit",
-    prefix: "/posts/",
+    prefix: "/iOS/",
     children: [
       {
         text: "苹果",

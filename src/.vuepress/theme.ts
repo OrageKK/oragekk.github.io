@@ -4,7 +4,13 @@ import { zhSidebar } from "./sidebar/index.js";
 
 export default localTheme({
   hostname: "https://oragekk.github.io",
-
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
+  fullscreen: true,
   author: {
     name: "Oragekk",
     url: "https://orgaekk.me",
@@ -95,7 +101,7 @@ export default localTheme({
       displayFooter: false,
 
       blog: {
-        description: "一个前端开发者",
+        description: "一生短暂，过程很美",
         intro: "/about.html",
       },
 
@@ -116,7 +122,7 @@ export default localTheme({
 
   plugins: {
     blog: true,
-    // git: true,
+    git: true,
     comment: {
       provider: "Waline",
       serverURL: "waline-5swxos1th-oragekk.vercel.app", // your server url

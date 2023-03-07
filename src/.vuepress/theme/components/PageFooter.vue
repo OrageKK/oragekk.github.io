@@ -26,15 +26,16 @@ import {
   usePageAuthor,
   useThemeLocaleData,
 } from "@theme-hope/composables/index";
-import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import script from "../utils/busuanzi.pure";
 
 // 或取 当前vue-router 实例
-const router = useRoute();
+const router = useRouter();
 // 可以直接侦听一个 ref
-watch(router, async (to, from) => {
+watch(router.currentRoute, async (to, from) => {
   if (to.path != from.path) {
     script.fetch();
+    // console.log("to.path：" + to.path + "\n" + "from.path：" + from.path)
   }
 });
 const frontmatter = usePageFrontmatter();
@@ -104,7 +105,7 @@ const copyright = computed(() =>
   background-repeat: no-repeat;
   background-position-y: bottom;
   color: #fff;
-
+  z-index: 2;
   text-align: center;
 
   transition: border-top-color var(--color-transition),
