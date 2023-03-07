@@ -1,5 +1,5 @@
 ---
-icon: edit
+icon: info
 date: 2023-02-27
 category:
   - About

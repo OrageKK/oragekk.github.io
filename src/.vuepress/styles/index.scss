@@ -18,7 +18,7 @@
   font-display: swap;
 }
 .blog .fullscreen h1 {
-//  font-family: Slidexiaxing;
+  //  font-family: Slidexiaxing;
   // font-family: PRshouxie;
   font-size: 2.8rem;
 }
@@ -155,8 +155,11 @@
     opacity: 0;
   }
 }
-
-#oml-tips {
+[data-theme="light"] #oml-tips {
   background-color: var(--theme-color-live2d) !important;
+  border: 1px solid #fff !important;
+}
+[data-theme="dark"] #oml-tips {
+  background-color: var(--theme-color-live2d-dark) !important;
   border: 1px solid #fff !important;
 }

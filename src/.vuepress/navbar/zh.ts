@@ -45,6 +45,11 @@ export const zhNavbar = navbar([
     ],
   },
   {
+    text: "留言板",
+    icon: "mark",
+    link: "/visitorsbook",
+  },
+  {
     text: "关于",
     icon: "info",
     link: "/about",
