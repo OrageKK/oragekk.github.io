@@ -9,10 +9,6 @@ const MAX_Z_INDEX = 2147483647;
 export const DenaroMoefyCanvas = defineComponent({
   name: "DenaroMoefyCanvas",
   setup() {
-    if (window.screen.availWidth < 719) {
-      //移动端
-      return;
-    }
     let moefyCanvas: Popper | null = null;
     const id = "moefy-canvas";
     const getCanvas = (): HTMLCanvasElement => {
