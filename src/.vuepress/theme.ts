@@ -3,6 +3,7 @@ import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
 
 export default localTheme({
+  hotReload: false,
   hostname: "https://oragekk.github.io",
   themeColor: {
     blue: "#2196f3",
@@ -11,7 +12,6 @@ export default localTheme({
     orange: "#fb9b5f",
   },
   fullscreen: true,
-  hotReload:true,
   author: {
     name: "Oragekk",
     url: "https://orgaekk.me",
@@ -21,7 +21,7 @@ export default localTheme({
     // 默认：
     "//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css",
     // 自己的
-    "//at.alicdn.com/t/c/font_3941380_mxk08oxagge.css"
+    "//at.alicdn.com/t/c/font_3941380_mxk08oxagge.css",
   ],
 
   logo: "/logo.svg",
@@ -71,7 +71,6 @@ export default localTheme({
     name: "上冬十二",
   },
   locales: {
-
     /**
      * Chinese locale config
      */
@@ -114,11 +113,11 @@ export default localTheme({
       serverURL: "waline-5swxos1th-oragekk.vercel.app", // your server url
       reaction: true,
     },
-    prismjs:false,
-    copyright:{
-      author:"Oragekk",
-      license:"MIT",
-      global:true,
+    prismjs: false,
+    copyright: {
+      author: "Oragekk",
+      license: "MIT",
+      global: true,
     },
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {
