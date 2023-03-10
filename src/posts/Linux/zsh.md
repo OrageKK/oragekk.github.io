@@ -3,6 +3,7 @@ title: "更优雅强大的终端ZSH"
 icon: "hk-zsh"
 subtitle: "Linux，杂货铺"
 date: 2019-07-24
+star: true
 category:
   - Linux
 tag:

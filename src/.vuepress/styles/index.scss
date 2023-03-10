@@ -17,8 +17,6 @@
   font-display: swap;
 }
 .blog .fullscreen h1 {
-  //  font-family: Slidexiaxing;
-  // font-family: PRshouxie;
   font-size: 2.8rem;
 }
 // Powered by Waline v2.14.7
@@ -90,7 +88,6 @@
   opacity: 0.7 !important;
 }
 // 一言
-
 #hitokoto {
   margin: 1.2rem auto 0;
   font-weight: 600;
@@ -154,6 +151,7 @@
     opacity: 0;
   }
 }
+// 看板娘
 [data-theme="light"] #oml-tips {
   background-color: var(--theme-color-live2d) !important;
   border: 1px solid #fff !important;

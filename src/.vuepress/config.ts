@@ -20,17 +20,17 @@ export default defineUserConfig({
   lang: "zh-CN",
   head: [
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
-    // ["meta", { name: "referrer", content: "no-referrer" }],
-    ["script", { src: "/special/time.js" }],
+    ["script", { src: "/script/time.js" }],
   ],
-  // 开发模式html模版
-  templateDev: "src/.vuepress/templates/dev.html",
   locales: {
     "/": {
       lang: "zh-CN",
       title: "Oragekk's Blog",
       description: "vuepress-theme-hope 的博客演示",
     },
+  },
+  alias: {
+    "@MyLink": path.resolve(__dirname, "components/MyLink.vue"),
   },
 
   theme,
