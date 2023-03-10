@@ -11,12 +11,18 @@ export default localTheme({
     orange: "#fb9b5f",
   },
   fullscreen: true,
+  hotReload:true,
   author: {
     name: "Oragekk",
     url: "https://orgaekk.me",
   },
 
-  iconAssets: "iconfont",
+  iconAssets: [
+    // 默认：
+    "//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css",
+    // 自己的
+    "//at.alicdn.com/t/c/font_3941380_mxk08oxagge.css"
+  ],
 
   logo: "/logo.svg",
 
@@ -65,26 +71,6 @@ export default localTheme({
     name: "上冬十二",
   },
   locales: {
-    // "/": {
-    //   // navbar
-    //   navbar: enNavbar,
-
-    //   // sidebar
-    //   sidebar: enSidebar,
-
-    //   footer: "Default footer",
-
-    //   displayFooter: false,
-
-    //   blog: {
-    //     description: "A FrontEnd programmer",
-    //     intro: "/intro.html",
-    //   },
-
-    //   metaLocales: {
-    //     editLink: "Edit this page on GitHub",
-    //   },
-    // },
 
     /**
      * Chinese locale config
@@ -127,6 +113,12 @@ export default localTheme({
       provider: "Waline",
       serverURL: "waline-5swxos1th-oragekk.vercel.app", // your server url
       reaction: true,
+    },
+    prismjs:false,
+    copyright:{
+      author:"Oragekk",
+      license:"MIT",
+      global:true,
     },
     // all features are enabled for demo, only preserve features you need here
     mdEnhance: {

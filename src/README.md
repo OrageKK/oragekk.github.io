@@ -10,15 +10,15 @@ heroFullScreen: true
 tagline: Goals determine what you are going to be. —— Julius Erving
 # bgImage: https://file.mo7.cc/api/public/bz
 projects:
-  - icon: project
-    name: 项目名称
-    desc: 项目详细描述
-    link: https://你的项目链接
+  - icon: network
+    name: 关于本站
+    desc: 这里有关于站点的详细介绍
+    link: /intro
 
   - icon: link
-    name: 链接名称
-    desc: 链接详细描述
-    link: https://链接地址
+    name: 友情链接
+    desc: (●´∀｀●)ﾉ
+    link: /friend
 
   - icon: book
     name: 书籍名称

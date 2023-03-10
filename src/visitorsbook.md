@@ -8,35 +8,17 @@ sidebar: false
 ---
 
 # 留言板 ✨
-::: info ✨📒
+:::: info ✨📒
 
-信息容器，包含 `代码` 与 [链接](#自定义容器)。
-实际的文章内容。
+<p>如有问题可邮件联系我<a href="mailto:oragekk@163.com">Mail to Oragekk</a></p>
 
-段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字。
-
-段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字。
-
-::: code-tabs
-
-@tab pnpm
-
-```bash
-pnpm add -D vuepress-theme-hope
-```
-
-@tab yarn
-
-```bash
-yarn add -D vuepress-theme-hope
-```
-
-@tab:active npm
-
-```bash
-npm i -D vuepress-theme-hope
-```
-
+**💡人生天地之间，若白驹过隙，忽然而已**
+::: center
+_-- 《庄子·外篇·知北游》_
 :::
-:::
+**🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起**
+
+🏷 有什么想说的，可以写在下面🌤
+
+::::
 

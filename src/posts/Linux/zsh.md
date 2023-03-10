@@ -1,5 +1,6 @@
 ---
 title: "更优雅强大的终端ZSH"
+icon: "hk-zsh"
 subtitle: "Linux，杂货铺"
 date: 2019-07-24
 category:
@@ -32,7 +33,7 @@ zsh 和 shell 有什么关系呢?
 
 `cat /etc/shells`
 
-```shell
+```bash
 /bin/bash
 /bin/csh
 /bin/ksh
@@ -96,7 +97,7 @@ p.p.s. Get stickers and t-shirts at http://shop.planetargon.com.
 
 进入`~/.oh-my-zsh`目录后，看看该目录的结构
 
-```
+```sh
 ~ ls ~/.oh-my-zsh
 CONTRIBUTING.md cache           log             templates
 LICENSE.txt     custom          oh-my-zsh.sh    themes

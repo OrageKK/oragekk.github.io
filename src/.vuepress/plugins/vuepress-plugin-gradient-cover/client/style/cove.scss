@@ -44,7 +44,7 @@
   background-repeat: no-repeat;
   animation: 6s move linear infinite;
   // backdrop-filter: saturate(150%) blur(12px);
-  z-index: 1;
+  // z-index: 1;
 }
 .page-bg::after {
   content: "";

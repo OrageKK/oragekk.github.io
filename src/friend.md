@@ -1,14 +1,13 @@
 ---
-icon: info
+icon: link
 ---
 
-# 关于本站
+# 友情链接
 ::: tip 🧩
 
 这里会记录一些和站点相关的文章
 
 :::
-
 ## 目录
 
 - [📌 Jekyll的旧站回忆](blog/jekyll.md)

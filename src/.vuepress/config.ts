@@ -12,24 +12,20 @@ import theme from "./theme.js";
 import { popperPlugin } from "./plugins/vuepress-plugin-popper";
 import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
+import { shikiPlugin } from "@vuepress/plugin-shiki";
 
 const __dirname = getDirname(import.meta.url);
-
 export default defineUserConfig({
   base: "/",
   lang: "zh-CN",
   head: [
     ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
+    // ["meta", { name: "referrer", content: "no-referrer" }],
     ["script", { src: "/special/time.js" }],
   ],
   // 开发模式html模版
   templateDev: "src/.vuepress/templates/dev.html",
   locales: {
-    // "/": {
-    //   lang: "en-US",
-    //   title: "Oragekk's Blog",
-    //   description: "A blog demo for vuepress-theme-hope",
-    // },
     "/": {
       lang: "zh-CN",
       title: "Oragekk's Blog",
@@ -40,6 +36,10 @@ export default defineUserConfig({
   theme,
 
   plugins: [
+    // 代码高亮
+    shikiPlugin({
+      theme:"one-dark-pro"
+    }),
     // 一言插件
     hitokotoPlugin({}),
     // 鼠标特效插件
