@@ -7,13 +7,7 @@ import {
   usePageHeadTitle,
   withBase,
 } from "@vuepress/client";
-import {
-  computed,
-  onMounted,
-  defineComponent,
-  h,
-  ref,
-} from "vue";
+import { computed, onMounted, defineComponent, h, ref } from "vue";
 import DropTransition from "vuepress-theme-hope/components/transitions/DropTransition";
 import { SlideDownIcon } from "vuepress-theme-hope/modules/blog/components/icons/icons.js";
 import defaultHeroBgImagePath from "vuepress-theme-hope/modules/blog/assets/hero.jpg";
@@ -74,7 +68,7 @@ export default defineComponent({
             for (const [index, infos] of res.data.Data.entries()) {
               var n = new Image();
               n.src = infos.Url;
-              n.onload = ()=>{}
+              n.onload = () => {};
               if (index == 0) {
                 let f = document.querySelector(".footer-wrapper");
                 f && (f.style.backgroundImage = `url(${infos.Url})`);
@@ -199,4 +193,73 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+// 一言
+#hitokoto {
+  margin: 1.2rem auto 0;
+  font-weight: 600;
+  color: #fffffff2;
+  opacity: 1;
+  font-size: 1.5rem;
+  display: block;
+  .word {
+    position: relative;
+    padding: 1rem 2.5rem;
+    text-align: center;
+    .left {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .right {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+    #hitokoto_text {
+      max-width: 80vw;
+      position: relative;
+      display: inline-block;
+      font-family: PRshouxie, Georgia, "Times New Roman", Times, serif,
+        sans-serif;
+      font-size: 2.8rem;
+      font-weight: 550;
+      @media (max-width: hope-config.$tablet) {
+        font-size: 2rem;
+        font-weight: 550;
+      }
+    }
+    #hitokoto_text:after {
+      content: "|";
+      font-size: 2rem;
+      font-family: var(--font-family-fancy);
+      animation: san 0.8s infinite;
+    }
+  }
+  .author {
+    font-weight: 500;
+    margin-top: 1rem;
+    float: right;
+  }
+}
+#hitokoto_author {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-in-out 0.25s, opacity 1.2s ease-in-out 0.25s;
+  font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  @media (max-width: hope-config.$mobile) {
+    font-size: 1rem;
+  }
+}
+
+@keyframes san {
+  0%,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
 </style>

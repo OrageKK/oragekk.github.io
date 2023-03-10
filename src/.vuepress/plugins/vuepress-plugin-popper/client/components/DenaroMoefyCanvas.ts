@@ -8,8 +8,11 @@ declare const popperOptions: PopperOption;
 const MAX_Z_INDEX = 2147483647;
 export const DenaroMoefyCanvas = defineComponent({
   name: "DenaroMoefyCanvas",
-
   setup() {
+    if (window.screen.availWidth < 719) {
+      //移动端
+      return;
+    }
     let moefyCanvas: Popper | null = null;
     const id = "moefy-canvas";
     const getCanvas = (): HTMLCanvasElement => {
@@ -19,7 +22,7 @@ export const DenaroMoefyCanvas = defineComponent({
 
       return canvas;
     };
-    const themeConfig:PopperConfig = {
+    const themeConfig: PopperConfig = {
       shape: popperOptions.config.shape
         ? popperOptions.config.shape
         : PopperShape.Star,
@@ -28,11 +31,15 @@ export const DenaroMoefyCanvas = defineComponent({
         ? popperOptions.config.numParticles
         : 10,
     };
-    const canvasOptions:CanvasOptions = {
+    const canvasOptions: CanvasOptions = {
       opacity: 1,
       zIndex: MAX_Z_INDEX,
     };
     onMounted(() => {
+      if (window.screen.availWidth < 719) {
+        //移动端
+        return;
+      }
       moefyCanvas = new Popper(themeConfig, canvasOptions);
       moefyCanvas && moefyCanvas.mount(getCanvas());
     });

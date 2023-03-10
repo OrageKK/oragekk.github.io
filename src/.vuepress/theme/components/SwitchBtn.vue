@@ -28,20 +28,18 @@ import { BingApi, BingResponse, Datum } from "../api/bing";
 export default defineComponent({
   name: "SwitchBtn",
   props: {
-    bingData:{
-       // 提供相对 `Object` 更确定的类型
-       type: Object as PropType<Datum>,
-      required: true
+    bingData: {
+      // 提供相对 `Object` 更确定的类型
+      type: Object as PropType<Datum>,
+      required: true,
     },
-    lDisabled:Boolean,
-    rDisabled:Boolean
+    lDisabled: Boolean,
+    rDisabled: Boolean,
   },
   data() {
-    return {
-    };
+    return {};
   },
-  computed: {
-  },
+  computed: {},
   methods: {
     leftClick() {
       this.$emit("leftClick");
@@ -50,9 +48,7 @@ export default defineComponent({
       this.$emit("rightClick");
     },
   },
-  mounted() {
-
-  },
+  mounted() {},
 });
 </script>
 <style lang="scss">
@@ -89,6 +85,10 @@ export default defineComponent({
       left: 50%;
       position: absolute;
     }
+    @media (max-width: hope-config.$mobile) {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
   #bingLink-text {
     font-family: "Segoe UI", Segoe, Tahoma, Arial, Verdana, sans-serif;
@@ -99,6 +99,10 @@ export default defineComponent({
     color: #fff;
     padding: 0.625rem 0.625rem 0.625rem 0rem;
     font-size: 0.9rem;
+    @media (max-width: hope-config.$mobile) {
+      font-size: 0.75rem;
+      min-height: 2rem;
+    }
   }
   #left {
     width: 2.5rem;
@@ -108,6 +112,10 @@ export default defineComponent({
     border-radius: 0.375rem;
     position: relative;
     margin-left: 0.25rem;
+    @media (max-width: hope-config.$mobile) {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
   }
   #left::after {
     transform: scale(0.25) translate(25%) rotate(45deg);
@@ -134,6 +142,10 @@ export default defineComponent({
     border-radius: 0.375rem;
     position: relative;
     margin-left: 0.25rem;
+    @media (max-width: hope-config.$mobile) {
+      width: 2.2rem;
+      height: 2.2rem;
+    }
   }
   #right::after {
     transform: scale(0.25) translate(-25%) rotate(225deg);

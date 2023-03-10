@@ -4,10 +4,8 @@ import { onMounted } from "vue";
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
-    router.beforeEach((to) => {
-    });
-    router.afterEach((to) => {
-    });
+    router.beforeEach((to) => {});
+    router.afterEach((to) => {});
   },
   setup() {
     onMounted(() => {
@@ -35,7 +33,12 @@ export default defineClientConfig({
 });
 
 function switchOml(show: boolean) {
-  // oml-levitated-btn
+  if (window.screen.availWidth < 719) {
+    //移动端
+    let omlb = document.getElementById("oml-levitated-btn");
+    omlb && (omlb.style.display = "none");
+    return;
+  }
   let oml = document.getElementById("oml-stage");
   let omlt = document.getElementById("oml-tips");
   if (show) {

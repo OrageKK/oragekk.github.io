@@ -97,25 +97,21 @@ const copyright = computed(() =>
   padding-bottom: 0.75rem;
   padding-inline-start: calc(var(--sidebar-space) + 2rem);
   padding-inline-end: 2rem;
-  // border-top: 1px solid var(--border-color);
-
-  // background: var(--bg-color);
-  // background-image: url("https://file.mo7.cc/api/public/bz?idx=1");
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: bottom;
   color: #fff;
-  z-index: 2;
   text-align: center;
 
   transition: border-top-color var(--color-transition),
     background var(--color-transition), padding var(--transform-transition);
 
   @media (max-width: hope-config.$tablet) {
+    z-index: 2;
     padding-inline-start: 2rem;
   }
 
-  @media (min-width: hope-config.$pc) {
+  @media (min-width: hope-config.$pad) {
     z-index: 50;
     padding-inline-start: 2rem;
   }
@@ -126,7 +122,7 @@ const copyright = computed(() =>
   }
 
   @media (max-width: hope-config.$mobile) {
-    display: block;
+    // display: block;
   }
   .footer-content {
     display: flex;
