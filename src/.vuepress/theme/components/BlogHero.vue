@@ -71,7 +71,7 @@ export default defineComponent({
             if (index == 0) {
               let f = document.querySelector(".footer-wrapper");
               f && (f.style.backgroundImage = `url(${infos.Url})`);
-              frontmatter.value.bgImage = withBase(infos.Url);
+              // frontmatter.value.bgImage = withBase(infos.Url);
             }
           }
         }
