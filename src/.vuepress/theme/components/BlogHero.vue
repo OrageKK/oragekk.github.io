@@ -1,6 +1,3 @@
-<template>
-  <div></div>
-</template>
 <script>
 import {
   usePageFrontmatter,

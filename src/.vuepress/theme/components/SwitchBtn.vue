@@ -24,7 +24,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { BingApi, BingResponse, Datum } from "../api/bing";
+import { Datum } from "../api/bing";
 export default defineComponent({
   name: "SwitchBtn",
   props: {
