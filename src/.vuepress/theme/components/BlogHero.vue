@@ -78,9 +78,9 @@ export default defineComponent({
       });
     };
     onMounted(() => {
-      // nextTick(() => {
-      //   getImage()
-      // });
+      nextTick(() => {
+        getImage()
+      });
     });
 
     return () =>

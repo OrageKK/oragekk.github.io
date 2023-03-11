@@ -19,10 +19,10 @@ export const localTheme = (options: ThemeOptions): Theme => {
         __dirname,
         "./components/PageFooter.vue"
       ),
-      "@theme-hope/modules/blog/components/BlogHero":path.resolve(
-        __dirname,
-        "./components/BlogHero.vue"
-      ),
+      // "@theme-hope/modules/blog/components/BlogHero":path.resolve(
+      //   __dirname,
+      //   "./components/BlogHero.vue"
+      // ),
     },
   };
 };
