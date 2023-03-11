@@ -27,58 +27,58 @@ export default defineComponent({
         : frontmatter.value.bgImage ?? defaultHeroBgImagePath
     );
     // 背景相关
-    // const bingDatasRef = ref();
-    // const bingIndex = ref(0);
-    // const bingData = computed(() =>
-    //   bingDatasRef.value ? bingDatasRef.value[bingIndex.value] : {}
-    // );
-    // const lDisabled = computed(() => (bingIndex.value == 0 ? true : false));
-    // const rDisabled = computed(() =>
-    //   bingDatasRef.value && bingIndex.value == bingDatasRef.value.length - 1
-    //     ? true
-    //     : false
-    // );
+    const bingDatasRef = ref();
+    const bingIndex = ref(0);
+    const bingData = computed(() =>
+      bingDatasRef.value ? bingDatasRef.value[bingIndex.value] : {}
+    );
+    const lDisabled = computed(() => (bingIndex.value == 0 ? true : false));
+    const rDisabled = computed(() =>
+      bingDatasRef.value && bingIndex.value == bingDatasRef.value.length - 1
+        ? true
+        : false
+    );
 
-    // const leftClick = () => {
-    //   if (lDisabled.value) {
-    //     return;
-    //   }
-    //   bingIndex.value--;
-    //   frontmatter.value.bgImage = withBase(bingData.value.Url);
-    //   let f = document.querySelector(".footer-wrapper");
-    //   f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
-    // };
-    // const rightClick = () => {
-    //   if (rDisabled.value) {
-    //     return;
-    //   }
-    //   bingIndex.value++;
-    //   frontmatter.value.bgImage = withBase(bingData.value.Url);
-    //   let f = document.querySelector(".footer-wrapper");
-    //   f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
-    // };
-    // const getImage = () => {
-    //   BingApi.request().then((res) => {
-    //     if (res.status == 200) {
-    //       bingDatasRef.value = res.data.Data;
-    //       for (const [index, infos] of res.data.Data.entries()) {
-    //         var n = new Image();
-    //         n.src = infos.Url;
-    //         n.onload = () => {};
-    //         if (index == 0) {
-    //           let f = document.querySelector(".footer-wrapper");
-    //           f && (f.style.backgroundImage = `url(${infos.Url})`);
-    //           frontmatter.value.bgImage = withBase(infos.Url);
-    //         }
-    //       }
-    //     }
-    //   });
-    // };
-    // onMounted(() => {
-    //   nextTick(() => {
-    //     getImage()
-    //   });
-    // });
+    const leftClick = () => {
+      if (lDisabled.value) {
+        return;
+      }
+      bingIndex.value--;
+      frontmatter.value.bgImage = withBase(bingData.value.Url);
+      let f = document.querySelector(".footer-wrapper");
+      f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
+    };
+    const rightClick = () => {
+      if (rDisabled.value) {
+        return;
+      }
+      bingIndex.value++;
+      frontmatter.value.bgImage = withBase(bingData.value.Url);
+      let f = document.querySelector(".footer-wrapper");
+      f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
+    };
+    const getImage = () => {
+      BingApi.request().then((res) => {
+        if (res.status == 200) {
+          bingDatasRef.value = res.data.Data;
+          for (const [index, infos] of res.data.Data.entries()) {
+            var n = new Image();
+            n.src = infos.Url;
+            n.onload = () => {};
+            if (index == 0) {
+              let f = document.querySelector(".footer-wrapper");
+              f && (f.style.backgroundImage = `url(${infos.Url})`);
+              frontmatter.value.bgImage = withBase(infos.Url);
+            }
+          }
+        }
+      });
+    };
+    onMounted(() => {
+      nextTick(() => {
+        getImage()
+      });
+    });
 
     return () =>
       frontmatter.value.hero === false
