@@ -60,23 +60,26 @@ export default defineComponent({
       let f = document.querySelector(".footer-wrapper");
       f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
     };
-    onMounted(() => {
+    const getImage = () => {
       BingApi.request().then((res) => {
         if (res.status == 200) {
-          if (res.status == 200) {
-            bingDatasRef.value = res.data.Data;
-            for (const [index, infos] of res.data.Data.entries()) {
-              var n = new Image();
-              n.src = infos.Url;
-              n.onload = () => {};
-              if (index == 0) {
-                let f = document.querySelector(".footer-wrapper");
-                f && (f.style.backgroundImage = `url(${infos.Url})`);
-                frontmatter.value.bgImage = withBase(infos.Url);
-              }
+          bingDatasRef.value = res.data.Data;
+          for (const [index, infos] of res.data.Data.entries()) {
+            var n = new Image();
+            n.src = infos.Url;
+            n.onload = () => {};
+            if (index == 0) {
+              let f = document.querySelector(".footer-wrapper");
+              f && (f.style.backgroundImage = `url(${infos.Url})`);
+              frontmatter.value.bgImage = withBase(infos.Url);
             }
           }
         }
+      });
+    };
+    onMounted(() => {
+      nextTick(() => {
+        getImage()
       });
     });
 
