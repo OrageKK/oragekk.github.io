@@ -4,7 +4,7 @@ import {
   usePageHeadTitle,
   withBase,
 } from "@vuepress/client";
-import { computed, onMounted, defineComponent, h, ref ,nextTick} from "vue";
+import { computed, onMounted, defineComponent, h, ref, nextTick } from "vue";
 import DropTransition from "vuepress-theme-hope/components/transitions/DropTransition";
 import { SlideDownIcon } from "vuepress-theme-hope/modules/blog/components/icons/icons.js";
 import defaultHeroBgImagePath from "vuepress-theme-hope/modules/blog/assets/hero.jpg";
@@ -76,7 +76,7 @@ export default defineComponent({
     };
     onMounted(() => {
       nextTick(() => {
-        getImage()
+        getImage();
       });
     });
 
@@ -165,13 +165,20 @@ export default defineComponent({
                     )
                   : null
               ),
-              h(SwitchBtn, {
-                // onLeftClick: leftClick,
-                // onRightClick: rightClick,
-                bingData: bingData.value,
-                // lDisabled: lDisabled.value,
-                // rDisabled: rDisabled.value,
-              }),
+              h(
+                DropTransition,
+                { appear: true, delay: 0.06 },
+                () => (
+                  SwitchBtn,
+                  {
+                    onLeftClick: leftClick,
+                    onRightClick: rightClick,
+                    bingData: bingData.value,
+                    lDisabled: lDisabled.value,
+                    rDisabled: rDisabled.value,
+                  }
+                )
+              ),
               isFullScreen.value
                 ? h(
                     "button",
