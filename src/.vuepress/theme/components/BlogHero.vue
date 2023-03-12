@@ -166,11 +166,11 @@ export default defineComponent({
                   : null
               ),
               h(SwitchBtn, {
-                onLeftClick: leftClick,
-                onRightClick: rightClick,
+                // onLeftClick: leftClick,
+                // onRightClick: rightClick,
                 bingData: bingData.value,
-                lDisabled: lDisabled.value,
-                rDisabled: rDisabled.value,
+                // lDisabled: lDisabled.value,
+                // rDisabled: rDisabled.value,
               }),
               isFullScreen.value
                 ? h(
