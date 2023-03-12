@@ -167,7 +167,7 @@ export default defineComponent({
               ),
               h(
                 DropTransition,
-                { appear: true, delay: 0.06 },
+                { appear: true, delay: 0.12 },
                 () => h(
                   SwitchBtn,
                   {
