@@ -126,53 +126,52 @@ export default defineComponent({
                       "p",
                       {
                         class: "description",
-                        innerHTML: frontmatter.value.tagline,
-                        // id: "hitokoto",
+                        id: "hitokoto",
                       },
-                      // [
-                      //   h(
-                      //     "div",
-                      //     {
-                      //       class: "word",
-                      //     },
-                      //     [
-                      //       h(
-                      //         "div",
-                      //         {
-                      //           class: "left",
-                      //         },
-                      //         "『"
-                      //       ),
-                      //       h("span", {
-                      //         id: "hitokoto_text",
-                      //         // innerHTML:frontmatter.value.tagline,
-                      //       }),
-                      //       h(
-                      //         "div",
-                      //         {
-                      //           class: "right",
-                      //         },
-                      //         "』"
-                      //       ),
-                      //     ]
-                      //   ),
-                      //   h("div", {
-                      //     class: "author",
-                      //     id: "hitokoto_author",
-                      //     style: { opacity: 0 },
-                      //     innerHTML: "123333",
-                      //   }),
-                      // ]
+                      [
+                        h(
+                          "div",
+                          {
+                            class: "word",
+                          },
+                          [
+                            h(
+                              "div",
+                              {
+                                class: "left",
+                              },
+                              "『"
+                            ),
+                            h("span", {
+                              id: "hitokoto_text",
+                              // innerHTML:frontmatter.value.tagline,
+                            }),
+                            h(
+                              "div",
+                              {
+                                class: "right",
+                              },
+                              "』"
+                            ),
+                          ]
+                        ),
+                        h("div", {
+                          class: "author",
+                          id: "hitokoto_author",
+                          style: { opacity: 0 },
+                          innerHTML: "123333",
+                        }),
+                      ]
                     )
                   : null
               ),
-              // h(SwitchBtn, {
-              //   onLeftClick: leftClick,
-              //   onRightClick: rightClick,
-              //   bingData: bingData.value,
-              //   lDisabled: lDisabled.value,
-              //   rDisabled: rDisabled.value,
-              // }),
+              h(SwitchBtn, {
+                onLeftClick: leftClick,
+                onRightClick: rightClick,
+                bingData: bingData.value,
+                lDisabled: lDisabled.value,
+                rDisabled: rDisabled.value,
+              }),
               isFullScreen.value
                 ? h(
                     "button",
