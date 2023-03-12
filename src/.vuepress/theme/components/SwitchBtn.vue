@@ -1,6 +1,6 @@
 <template>
   <div id="BingSwitchWrapper">
-    <a :href="bingData.CopyrightLink" target="_Blank" id="bingLink">
+    <a :href="bingData.CopyrightLink" target="_Blank" id="bingLink" v-if="bingData">
       <div class="bingLink-icon">
         <svg
           class="mapPin"

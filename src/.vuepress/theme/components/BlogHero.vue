@@ -135,50 +135,37 @@ export default defineComponent({
                             class: "word",
                           },
                           [
-                            h(
-                              "div",
-                              {
-                                class: "left",
-                              },
-                              "『"
-                            ),
+                            h("div", {
+                              class: "left",
+                              innerHTML: "『",
+                            }),
                             h("span", {
                               id: "hitokoto_text",
                               // innerHTML:frontmatter.value.tagline,
                             }),
-                            h(
-                              "div",
-                              {
-                                class: "right",
-                              },
-                              "』"
-                            ),
+                            h("div", {
+                              class: "right",
+                              innerHTML: "』",
+                            }),
                           ]
                         ),
                         h("div", {
                           class: "author",
                           id: "hitokoto_author",
                           style: { opacity: 0 },
-                          innerHTML: "123333",
+                          innerHTML: "",
                         }),
                       ]
                     )
                   : null
               ),
-              h(
-                DropTransition,
-                { appear: true, delay: 0.12 },
-                () => h(
-                  SwitchBtn,
-                  {
-                    onLeftClick: leftClick,
-                    onRightClick: rightClick,
-                    bingData: bingData.value,
-                    lDisabled: lDisabled.value,
-                    rDisabled: rDisabled.value,
-                  }
-                )
-              ),
+              h(SwitchBtn, {
+                onLeftClick: leftClick,
+                onRightClick: rightClick,
+                bingData: bingData.value,
+                lDisabled: lDisabled.value,
+                rDisabled: rDisabled.value,
+              }),
               isFullScreen.value
                 ? h(
                     "button",
