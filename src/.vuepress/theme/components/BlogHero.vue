@@ -168,7 +168,7 @@ export default defineComponent({
               h(
                 DropTransition,
                 { appear: true, delay: 0.06 },
-                () => (
+                () => h(
                   SwitchBtn,
                   {
                     onLeftClick: leftClick,
