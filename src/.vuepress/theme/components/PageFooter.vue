@@ -123,6 +123,7 @@ const copyright = computed(() =>
 
   @media (max-width: hope-config.$mobile) {
     // display: block;
+    min-height: 136px;
   }
   .footer-content {
     display: flex;

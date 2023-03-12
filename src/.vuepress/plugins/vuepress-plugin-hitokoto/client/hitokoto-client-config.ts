@@ -1,5 +1,5 @@
 import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
-import { onMounted, onBeforeUnmount } from "vue";
+import { onMounted, onBeforeUnmount, nextTick } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { HitokotoOption } from "..";
 import { HitokotoApi } from "./hitokoto-api";
@@ -8,23 +8,16 @@ declare const backgroundOptions: HitokotoOption;
 export default defineClientConfig({
   enhance({ app, router, siteData }) {},
   setup() {
-    var timer;
+    let timer;
     onMounted(() => {
       // 或者 vue-router 实例
       const router = useRouter();
-      const crouter = useRoute();
-      var content = "";
-      var author = "";
-      var span: HTMLSpanElement | null = document.getElementById(
-        "hitokoto_text"
-      ) as HTMLSpanElement;
-      var div: HTMLDivElement | null = document.getElementById(
-        "hitokoto_author"
-      ) as HTMLDivElement;
+      let content = "";
+      let author = "";
+      let texts = content.split("");
 
-      var index = 0;
-      var texts = content.split("");
-      function request(delay) {
+      // 请求
+      const request = (delay) => {
         var delayT = setTimeout(async () => {
           clearTimeout(delayT);
           const res = await HitokotoApi.request();
@@ -34,75 +27,79 @@ export default defineClientConfig({
               ? `——   「 ${res.data.from} • ${res.data.from_who} 」`
               : `——   「 ${res.data.from} 」`;
             texts = content.split("");
-            index = 0;
-            show();
-            // console.table("请求了");
+            loopShow();
+            // console.log("请求了");
           }
         }, delay);
-      }
-      if (crouter.path == "/") {
-        // 主页方可请求
-        request(2000);
-      }
+      };
+
       // 显示函数
-      function show() {
-        timer = setInterval(() => {
-          if (index == texts.length - 1) {
-            clearInterval(timer);
-            var delayT = setTimeout(() => {
-              clean();
-              clearTimeout(delayT);
-            }, 5000);
-            return;
-          }
-          // console.log("在重复显示");
-          div && (div.style.opacity = "1");
-          div && (div.style.transform = "translateY(0px)");
-          div && (div.innerText = author);
-          span && (span.innerText = span.innerText + texts[index]);
-          index++;
-        }, 200);
-      }
-      // 删除函数
-      function clean() {
-        timer = setInterval(() => {
-          if (span && span.innerText.length == 0) {
-            div && (div.style.opacity = "0");
-            div && (div.style.transform = "translateY(-20px)");
-            clearInterval(timer);
-            request(4500);
-            return;
-          }
-          texts.pop();
-          span && (span.innerText = texts.join(""));
-          // console.log("在重复清除");
-        }, 200);
-      }
-      router.beforeEach((to,from) => {
-        if (to.path == "/" && to.path == from.path) {
-          return;
-        } 
+      const loopShow = () => {
         clearInterval(timer);
-      });
-      router.afterEach((to, from) => {
-        if (to.path == "/") {
-          if (to.path == from.path) {
-            // console.log("主页翻页");
+
+        let span: HTMLSpanElement | null = document.getElementById(
+          "hitokoto_text"
+        ) as HTMLSpanElement;
+        let div: HTMLDivElement | null = document.getElementById(
+          "hitokoto_author"
+        ) as HTMLDivElement;
+
+        let index = 0;
+        let del = false;
+        let pauseNum = 0;
+        let pauseMax = 20;
+
+        timer = setInterval(() => {
+          const txt = texts[index];
+          if (pauseNum == 0) {
+          } else {
+            pauseNum--;
+
+            if (span && span.innerText.length == 0 && pauseNum == 0) {
+              clearInterval(timer);
+              request(0);
+            }
             return;
           }
-          // console.log("主页");
-          getElement();
-          request(1000);
-        } else {
-          // console.log("子页");
-          clearInterval(timer);
+          if (del) {
+            span && (span.innerText = span.innerText.slice(0, index));
+            if (index < 4) {
+              div && (div.style.opacity = "0");
+              div && (div.style.transform = "translateY(-20px)");
+            }
+          } else {
+            span && (span.innerText += txt);
+            div && (div.style.opacity = "1");
+            div && (div.style.transform = "translateY(0px)");
+            div && (div.innerText = author);
+          }
+          if (del) {
+            index--;
+          } else {
+            index++;
+          }
+          if (index >= texts.length) {
+            del = true;
+            index == texts.length;
+            pauseNum = pauseMax;
+          }
+          if (index < 0) {
+            del = false;
+            index = 0;
+            pauseNum = pauseMax;
+          }
+        }, 200);
+      };
+
+      request(2000);
+
+      router.beforeEach((to, from) => {
+        if (to.path == "/") {
+          nextTick(() => {
+            request(2000);
+          });
         }
       });
-      // 切换页面后重新获取html元素
-      function getElement() {
-        span = document.getElementById("hitokoto_text") as HTMLSpanElement;
-        div = document.getElementById("hitokoto_author") as HTMLDivElement;
-      }
     });
 
     onBeforeUnmount(() => {

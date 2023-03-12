@@ -32,10 +32,6 @@ export const DenaroMoefyCanvas = defineComponent({
       zIndex: MAX_Z_INDEX,
     };
     onMounted(() => {
-      if (window.screen.availWidth < 719) {
-        //移动端
-        return;
-      }
       moefyCanvas = new Popper(themeConfig, canvasOptions);
       moefyCanvas && moefyCanvas.mount(getCanvas());
     });
