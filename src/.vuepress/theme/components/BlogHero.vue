@@ -139,31 +139,29 @@ export default defineComponent({
                         id: "hitokoto",
                       },
                       [
-                        h(
-                          "div",
-                          {
-                            class: "word",
-                          },
-                          [
-                            h("div", {
-                              class: "left",
-                              innerHTML: "『",
-                            }),
-                            h("span", {
-                              id: "hitokoto_text",
-                              // innerHTML:frontmatter.value.tagline,
-                            }),
-                            h("div", {
-                              class: "right",
-                              innerHTML: "』",
-                            }),
-                          ]
-                        ),
+                        // h(
+                        //   "div",
+                        //   {
+                        //     class: "word",
+                        //   },
+                        //   [
+                        //     h("div", {
+                        //       class: "left",
+                        //       innerHTML: "『",
+                        //     }),
+                        //     h("span", {
+                        //       id: "hitokoto_text",
+                        //     }),
+                        //     h("div", {
+                        //       class: "right",
+                        //       innerHTML: "』",
+                        //     }),
+                        //   ]
+                        // ),
                         h("div", {
                           class: "author",
                           id: "hitokoto_author",
                           style: { opacity: 0 },
-                          innerHTML: "",
                         }),
                       ]
                     )
