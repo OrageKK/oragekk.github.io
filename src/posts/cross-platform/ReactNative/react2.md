@@ -10,7 +10,7 @@ tag:
   - React Native
 ---
 
-> 接上篇 [ReactNative 认知（一）](/posts/ReactNative/react1.html)
+> 接上篇 [ReactNative介绍](/posts/ReactNative/react1.html)
 
 ## 创建 ReactNative 项目
 

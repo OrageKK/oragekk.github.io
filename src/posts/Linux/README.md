@@ -1,7 +1,8 @@
 ---
 title: "Linux"
 icon: linux
-date: 2023-01-09
+date: 1978-01-09
+timeline: false
 index: false
 ---
 

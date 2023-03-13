@@ -1,7 +1,8 @@
 ---
 title: "Vue"
 icon: "vue"
-date: 2023-03-02
+date: 1978-01-09
+timeline: false
 index: false
 ---
 

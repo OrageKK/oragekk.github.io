@@ -10,7 +10,7 @@ tag:
   - React Native
 ---
 
-> 接上篇 [ReactNative 认知（二）](/posts/ReactNative/react2.html)
+> 接上篇 [ReactNative开发环境配置，ES6语法介绍](/posts/ReactNative/react2.html)
 
 ## ReactNative State(状态)
 
