@@ -4,7 +4,7 @@ import {
   usePageHeadTitle,
   withBase,
 } from "@vuepress/client";
-import { computed, onMounted, defineComponent, h, ref, nextTick } from "vue";
+import { computed, onMounted, defineComponent, h, ref, nextTick,createApp } from "vue";
 import DropTransition from "vuepress-theme-hope/components/transitions/DropTransition";
 import { SlideDownIcon } from "vuepress-theme-hope/modules/blog/components/icons/icons.js";
 import defaultHeroBgImagePath from "vuepress-theme-hope/modules/blog/assets/hero.jpg";
@@ -14,6 +14,8 @@ import { BingApi } from "../api/bing";
 export default defineComponent({
   name: "BlogHero",
   setup() {
+    const app = createApp()
+    app.component('SwitchBtn', SwitchBtn)
     const title = usePageHeadTitle();
     const frontmatter = usePageFrontmatter();
     const hero = ref();
