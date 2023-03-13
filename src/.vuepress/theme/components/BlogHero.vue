@@ -130,43 +130,6 @@ export default defineComponent({
                   ? null
                   : h("h1", frontmatter.value.heroText || title.value)
               ),
-              h(DropTransition, { appear: true, delay: 0.12 }, () =>
-                frontmatter.value.tagline
-                  ? h(
-                      "p",
-                      {
-                        class: "description",
-                        id: "hitokoto",
-                      },
-                      [
-                        // h(
-                        //   "div",
-                        //   {
-                        //     class: "word",
-                        //   },
-                        //   [
-                        //     h("div", {
-                        //       class: "left",
-                        //       innerHTML: "『",
-                        //     }),
-                        //     h("span", {
-                        //       id: "hitokoto_text",
-                        //     }),
-                        //     h("div", {
-                        //       class: "right",
-                        //       innerHTML: "』",
-                        //     }),
-                        //   ]
-                        // ),
-                        h("div", {
-                          class: "author",
-                          id: "hitokoto_author",
-                          style: { opacity: 0 },
-                        }),
-                      ]
-                    )
-                  : null
-              ),
               bingData.value
                 ? h(SwitchBtn, {
                     onLeftClick: leftClick,
@@ -176,6 +139,44 @@ export default defineComponent({
                     rDisabled: rDisabled.value,
                   })
                 : null,
+              h(DropTransition, { appear: true, delay: 0.12 }, () =>
+                frontmatter.value.tagline
+                  ? h(
+                      "p",
+                      {
+                        class: "description",
+                        id: "hitokoto",
+                      },
+                      [
+                        h(
+                          "div",
+                          {
+                            class: "word",
+                          },
+                          [
+                            h("div", {
+                              class: "left",
+                              innerHTML: "『",
+                            }),
+                            h("span", {
+                              id: "hitokoto_text",
+                            }),
+                            h("div", {
+                              class: "right",
+                              innerHTML: "』",
+                            }),
+                          ]
+                        ),
+                        h("div", {
+                          class: "author",
+                          id: "hitokoto_author",
+                          style: { opacity: 0 },
+                        }),
+                      ]
+                    )
+                  : null
+              ),
+              
               // h(
               //   "div",
               //   {
