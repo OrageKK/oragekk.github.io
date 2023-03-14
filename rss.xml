@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 14 Mar 2023 14:00:07 GMT</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2023 14:00:07 GMT</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2023 14:53:33 GMT</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2023 14:53:33 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>Copyright by Oragekk</copyright>
@@ -30,23 +30,22 @@
       <link>https://oragekk.me/blog/about.html</link>
       <guid>https://oragekk.me/blog/about.html</guid>
       <source url="https://oragekk.me/rss.xml">建站过程</source>
-      <description>建站过程 ✨📒 如有问题可邮件联系我Mail to Oragekk 💡人生天地之间，若白驹过隙，忽然而已 -- 《庄子·外篇·知北游》 🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起 🏷 有什么想说的，可以写在下面🌤</description>
+      <description>建站过程 ✨📒 详细记录一下此次建站过程 开始 之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，对于我这个非专业前端人员来说，有写麻烦，所以一直有想更换引擎的想法 直到偶然间发现vuepress，首先是被vue3+typescript+vite吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了 vuepress-theme-hope，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</description>
       <category>Blog</category>
       <pubDate>Tue, 14 Mar 2023 21:45:45 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 建站过程</h1>
 <div class="hint-container info">
 <p class="hint-container-title">✨📒</p>
-<p>如有问题可邮件联系我<a href="mailto:oragekk@163.com">Mail to Oragekk</a></p>
-<p><strong>💡人生天地之间，若白驹过隙，忽然而已</strong></p>
-<div style="text-align:center">
-<p><em>-- 《庄子·外篇·知北游》</em></p>
+<p>详细记录一下此次建站过程</p>
 </div>
-<p><strong>🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起</strong></p>
-<p>🏷 有什么想说的，可以写在下面🌤</p>
-</div>
-<p>地址：<a href="https://oragekk.me" target="_blank" rel="noopener noreferrer">https://oragekk.me</a></p>
-<p>基于<code>vuepress2.x</code>和<code>theme-hope</code>开发，最大限度利用vite的打包速度，基于TypeScript使用vue3编写组件</p>
-<h2> 框架支持</h2>
+<h2> 开始</h2>
+<p>之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，对于我这个非专业前端人员来说，有写麻烦，所以一直有想更换引擎的想法
+直到偶然间发现vuepress，首先是被<code>vue3</code>+<code>typescript</code>+<code>vite</code>吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了
+<a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a>，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</p>
+<h2> Markdown增强</h2>
+<p>hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞<a href="/blog/demo/markdown.html" target="blank">Markdown展示</a></p>
+<h2> 目录结构</h2>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 框架支持</h2>
 <p><a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">vuepress2.x</a></p>
 <h2> 主题支持</h2>
 <p><a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a></p>
@@ -70,8 +69,8 @@
 <li>vuepress-plugin-canvas（支持彩虹背景和动态几何图形两种）</li>
 <li>vuepress-plugin-gradient-cover （遮罩背景）</li>
 <li>vuepress-plugin-hitokoto （一言插件）</li>
-<li>vuepress-plugin-live2DAssist （看板娘辅助）</li>
-<li>vuepress-plugin-popper （鼠标特效）</li>
+<li>vuepress-plugin-live2DAssist （看板娘辅助，由于子页有sidebar，看板娘会挡住，所以写了一个子页隐藏的小东西）</li>
+<li>vuepress-plugin-popper （鼠标特效，基于<a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>）</li>
 </ul>
 </li>
 <li>
@@ -86,9 +85,33 @@
 <li>
 <p><a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>原有插件只支持vuepress1.x，自己基于moefy-canvas进行了支持vuepress2.x的本地化插件开发</p>
 </li>
+<li>
+<p><a href="https://v2.vuepress.vuejs.org/zh/reference/plugin/google-analytics.html" target="_blank" rel="noopener noreferrer">@vuepress/plugin-google-analytics</a> 支持Google Analytics 4 正好看到通知原来的UA也要被强制转换了，所以更换了G4</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>配置内容</strong></p>
+<ul>
+<li>navbar</li>
+<li>sidebar</li>
+<li>评论基于 Waline</li>
+<li>启用 copyright 版权信息插件</li>
+<li>feed rss插件</li>
+</ul>
+</li>
+<li>
+<p><strong>零碎</strong></p>
+<ul>
+<li>运行时间统计，因涉及闰年，只统计 天-时-分-秒</li>
+<li>CSS 样式美化</li>
+<li>引入字体，品如手写体，夏行楷体</li>
 </ul>
 </li>
 </ol>
+<h2> 总结</h2>
+<p>过程中，碰到很多bug和问题，也学习了很多前端方面的知识，还学到了Vue3的setup语法和h函数的写法，磕磕绊绊，目前总算是上线了，后续有空再写吧 ┏(＾0＾)┛
+本地插件，喜欢自取，源码公开，点击右上角，github图标即可，当然不要忘记点个✨哦</p>
 <h2> 特别鸣谢</h2>
 <p><a href="https://blog.mo7.cc/" target="_blank" rel="noopener noreferrer">墨七</a></p>
 <p>遮罩背景css样式和bing每日图片内容，借鉴自墨七，感谢提供API接口</p>
@@ -3249,7 +3272,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <link>https://oragekk.me/intro.html</link>
       <guid>https://oragekk.me/intro.html</guid>
       <source url="https://oragekk.me/rss.xml">关于本站</source>
-      <description>关于本站 🧩 这里会记录一些和站点相关的文章 目录 📌 Jekyll的旧站回忆 📌 评论系统从多说迁移到disqus</description>
+      <description>关于本站 🧩 这里会记录一些和站点相关的文章 目录 📌 新站建站过程 📌 Jekyll的旧站回忆 📌 评论系统从多说迁移到disqus</description>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 关于本站</h1>
 <div class="hint-container tip">
@@ -3258,6 +3281,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 </div>
 <h2> 目录</h2>
 <ul>
+<li>
+<p><a href="/blog/about.html" target="blank">📌 新站建站过程</a></p>
+</li>
 <li>
 <p><a href="/blog/jekyll.html" target="blank">📌 Jekyll的旧站回忆</a></p>
 </li>
