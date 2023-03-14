@@ -4,10 +4,10 @@
     <atom:link href="https://oragekk.github.io/rss.xml" rel="self" type="application/rss+xml"/>
     <title>Oragekk&amp;apos;s Blog</title>
     <link>https://oragekk.github.io/</link>
-    <description>vuepress-theme-hope 的博客演示</description>
+    <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 14 Mar 2023 13:24:57 GMT</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2023 13:24:57 GMT</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2023 13:33:17 GMT</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2023 13:33:17 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>Copyright by Oragekk</copyright>
