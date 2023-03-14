@@ -27,7 +27,7 @@ export default defineUserConfig({
     "/": {
       lang: "zh-CN",
       title: "Oragekk's Blog",
-      description: "vuepress-theme-hope 的博客演示",
+      description: "上冬十二的博客",
     },
   },
   alias: {
@@ -69,7 +69,7 @@ export default defineUserConfig({
     // 谷歌统计
     googleAnalyticsPlugin({
       // 配置项
-      id: 'G-358224798',
+      id: 'G-R1WPVQFH8L',
       debug: true,
     }),
     // 搜索插件
