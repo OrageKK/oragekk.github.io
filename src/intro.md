@@ -11,6 +11,8 @@ icon: info
 
 ## 目录
 
+- [📌 新站建站过程](blog/about.md)
+
 - [📌 Jekyll的旧站回忆](blog/jekyll.md)
 
 - [📌 评论系统从多说迁移到disqus](blog/disqus.md)
