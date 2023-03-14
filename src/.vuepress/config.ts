@@ -13,6 +13,7 @@ import { popperPlugin } from "./plugins/vuepress-plugin-popper";
 import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
@@ -65,6 +66,12 @@ export default defineUserConfig({
     }),
     // 遮罩插件
     gradientCoverPlugin({}),
+    // 谷歌统计
+    googleAnalyticsPlugin({
+      // 配置项
+      id: 'G-358224798',
+      debug: true,
+    }),
     // 搜索插件
     searchProPlugin({
       // 索引全部内容
