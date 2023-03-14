@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://oragekk.github.io/rss.xsl"?>
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="https://oragekk.me/rss.xsl"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <atom:link href="https://oragekk.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://oragekk.me/rss.xml" rel="self" type="application/rss+xml"/>
     <title>Oragekk&amp;apos;s Blog</title>
-    <link>https://oragekk.github.io/</link>
+    <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 14 Mar 2023 13:33:17 GMT</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2023 13:33:17 GMT</lastBuildDate>
+    <pubDate>Tue, 14 Mar 2023 14:00:07 GMT</pubDate>
+    <lastBuildDate>Tue, 14 Mar 2023 14:00:07 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>Copyright by Oragekk</copyright>
     <image>
       <title>Oragekk&amp;apos;s Blog</title>
-      <url>https://oragekk.github.io/logo.svg</url>
-      <link>https://oragekk.github.io/</link>
+      <url>https://oragekk.me/logo.svg</url>
+      <link>https://oragekk.me/</link>
     </image>
     <category>Blog</category>
     <category>Linux</category>
@@ -26,10 +26,79 @@
     <category>使用指南</category>
     <category>About</category>
     <item>
+      <title>建站过程</title>
+      <link>https://oragekk.me/blog/about.html</link>
+      <guid>https://oragekk.me/blog/about.html</guid>
+      <source url="https://oragekk.me/rss.xml">建站过程</source>
+      <description>建站过程 ✨📒 如有问题可邮件联系我Mail to Oragekk 💡人生天地之间，若白驹过隙，忽然而已 -- 《庄子·外篇·知北游》 🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起 🏷 有什么想说的，可以写在下面🌤</description>
+      <category>Blog</category>
+      <pubDate>Tue, 14 Mar 2023 21:45:45 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 建站过程</h1>
+<div class="hint-container info">
+<p class="hint-container-title">✨📒</p>
+<p>如有问题可邮件联系我<a href="mailto:oragekk@163.com">Mail to Oragekk</a></p>
+<p><strong>💡人生天地之间，若白驹过隙，忽然而已</strong></p>
+<div style="text-align:center">
+<p><em>-- 《庄子·外篇·知北游》</em></p>
+</div>
+<p><strong>🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起</strong></p>
+<p>🏷 有什么想说的，可以写在下面🌤</p>
+</div>
+<p>地址：<a href="https://oragekk.me" target="_blank" rel="noopener noreferrer">https://oragekk.me</a></p>
+<p>基于<code>vuepress2.x</code>和<code>theme-hope</code>开发，最大限度利用vite的打包速度，基于TypeScript使用vue3编写组件</p>
+<h2> 框架支持</h2>
+<p><a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">vuepress2.x</a></p>
+<h2> 主题支持</h2>
+<p><a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a></p>
+<h2> 自定义内容</h2>
+<p>基于原主题进行了继承，个性化内容如下，主要自定义内容分为</p>
+<ol>
+<li>
+<p><strong>替换主题组件</strong></p>
+<ul>
+<li>
+<p>BlogHero.vue</p>
+</li>
+<li>
+<p>PageFooter.vue</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>本地插件开发</strong></p>
+<ul>
+<li>vuepress-plugin-canvas（支持彩虹背景和动态几何图形两种）</li>
+<li>vuepress-plugin-gradient-cover （遮罩背景）</li>
+<li>vuepress-plugin-hitokoto （一言插件）</li>
+<li>vuepress-plugin-live2DAssist （看板娘辅助）</li>
+<li>vuepress-plugin-popper （鼠标特效）</li>
+</ul>
+</li>
+<li>
+<p><strong>引用外部内容</strong></p>
+<ul>
+<li>
+<p><a href="https://github.com/oh-my-live2d/vuepress-plugin-oh-my-live2d" target="_blank" rel="noopener noreferrer">vuepress-plugin-oh-my-live2d</a> 看板娘插件</p>
+</li>
+<li>
+<p>不蒜子统计</p>
+</li>
+<li>
+<p><a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>原有插件只支持vuepress1.x，自己基于moefy-canvas进行了支持vuepress2.x的本地化插件开发</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2> 特别鸣谢</h2>
+<p><a href="https://blog.mo7.cc/" target="_blank" rel="noopener noreferrer">墨七</a></p>
+<p>遮罩背景css样式和bing每日图片内容，借鉴自墨七，感谢提供API接口</p>
+]]></content:encoded>
+    </item>
+    <item>
       <title>友情链接</title>
-      <link>https://oragekk.github.io/friend.html</link>
-      <guid>https://oragekk.github.io/friend.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">友情链接</source>
+      <link>https://oragekk.me/friend.html</link>
+      <guid>https://oragekk.me/friend.html</guid>
+      <source url="https://oragekk.me/rss.xml">友情链接</source>
       <description>友情链接 🧩 欢迎交换友情链接： 把本站添加到你的站点中 在评论区按照以下格式留言 名称： 链接 简介 头像 友链</description>
       <pubDate>Fri, 10 Mar 2023 06:30:41 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 友情链接</h1>
@@ -56,9 +125,9 @@
     </item>
     <item>
       <title>评论系统从多说迁移到disqus指南</title>
-      <link>https://oragekk.github.io/blog/disqus.html</link>
-      <guid>https://oragekk.github.io/blog/disqus.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">评论系统从多说迁移到disqus指南</source>
+      <link>https://oragekk.me/blog/disqus.html</link>
+      <guid>https://oragekk.me/blog/disqus.html</guid>
+      <source url="https://oragekk.me/rss.xml">评论系统从多说迁移到disqus指南</source>
       <description>由于多说评论系统将于 6 月 1 日下线，所以准备迁移至disqus，相比较的话对于国内环境还是多说好用一点，毕竟加载快，支持各大媒体的分享，也不用小伙伴们翻墙；而 disqus 分享也只支持 Facebook 和 twitter。。PS:貌似现在又被墙了，以后有时间再换吧，目前就先这样，国内据说畅言还不错</description>
       <category>Blog</category>
       <pubDate>Fri, 14 Apr 2017 00:00:00 GMT</pubDate>
@@ -87,9 +156,9 @@
     </item>
     <item>
       <title>Jekyll旧站回忆</title>
-      <link>https://oragekk.github.io/blog/jekyll.html</link>
-      <guid>https://oragekk.github.io/blog/jekyll.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Jekyll旧站回忆</source>
+      <link>https://oragekk.me/blog/jekyll.html</link>
+      <guid>https://oragekk.me/blog/jekyll.html</guid>
+      <source url="https://oragekk.me/rss.xml">Jekyll旧站回忆</source>
       <description>“Yeah It&amp;apos;s on. ” 前言 Oragekk 的 Blog 就这么开通了。 跳过废话，直接看技术实现 2016 年，11 月 总算有个地方可以好好写点东西了。 作为一个程序员， 看多了别人的 Blog 这种轮子都是酷炫的不要不要的，自己其实一种想搞一个，前两天发现了 GitHub Pages +Jekyll 的技术方案，一下子就上瘾了。 终于可以有自己的自留地了，之前一直在简书上写一些技术类的文章，这次可以有个自己的地盘，想怎么写就怎么写。😝 哈哈。不过这些前端的东西对我也是一种挑战，似懂非懂的看着模板，和一堆 js+css+html 的代码。。一顿头大。。对照着效果，一步步自己改。改好了之后也是蛮有成就感的嘛</description>
       <category>Blog</category>
       <pubDate>Thu, 03 Nov 2016 12:00:00 GMT</pubDate>
@@ -143,20 +212,20 @@
     </item>
     <item>
       <title>幻灯片页</title>
-      <link>https://oragekk.github.io/demo/slides.html</link>
-      <guid>https://oragekk.github.io/demo/slides.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">幻灯片页</source>
+      <link>https://oragekk.me/demo/slides.html</link>
+      <guid>https://oragekk.me/demo/slides.html</guid>
+      <source url="https://oragekk.me/rss.xml">幻灯片页</source>
       <description>slidestart 幻灯片演示 一个简单的幻灯片演示与各种小贴士。 作者 Mr.Hope. 请滚动鼠标滚轮进入下一页 标注幻灯片 👇 (#/1/1) -- 标注幻灯片 使用 --- 标注水平幻灯片 在水平幻灯片中使用 -- 分割垂直幻灯片 使用 在幻灯片上添加属性 使用 在前一个 HTML 元素上添加属性 Markdown 你可以在幻灯片中使用 M...</description>
       <pubDate>Wed, 01 Jan 2020 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<!-- markdownlint-disable MD024 MD033 MD051 -->
 ]]></content:encoded>
-      <enclosure url="https://oragekk.github.io/logo.svg" type="image/svg+xml"/>
+      <enclosure url="https://oragekk.me/logo.svg" type="image/svg+xml"/>
     </item>
     <item>
       <title>一人一句宋词，最美的都在这里</title>
-      <link>https://oragekk.github.io/private/%E4%B8%80%E4%BA%BA%E4%B8%80%E5%8F%A5%E5%AE%8B%E8%AF%8D.html</link>
-      <guid>https://oragekk.github.io/private/%E4%B8%80%E4%BA%BA%E4%B8%80%E5%8F%A5%E5%AE%8B%E8%AF%8D.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">一人一句宋词，最美的都在这里</source>
+      <link>https://oragekk.me/private/%E4%B8%80%E4%BA%BA%E4%B8%80%E5%8F%A5%E5%AE%8B%E8%AF%8D.html</link>
+      <guid>https://oragekk.me/private/%E4%B8%80%E4%BA%BA%E4%B8%80%E5%8F%A5%E5%AE%8B%E8%AF%8D.html</guid>
+      <source url="https://oragekk.me/rss.xml">一人一句宋词，最美的都在这里</source>
       <description>Bing 每日壁纸 写来留待日后慢慢欣赏 😜 苏轼 十年生死两茫茫， 不思量，自难忘。 陆游 红酥手，黄藤酒， 满城春色宫墙柳。 李清照 此情无计可消除， 才下眉头，却上心头。</description>
       <pubDate>Mon, 16 Jan 2017 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<figure><img src="https://file.mo7.cc/api/public/bz?idx=1" alt="Bing 每日壁纸" tabindex="0" loading="lazy"><figcaption>Bing 每日壁纸</figcaption></figure>
@@ -253,9 +322,9 @@
     </item>
     <item>
       <title>Linux</title>
-      <link>https://oragekk.github.io/posts/Linux/</link>
-      <guid>https://oragekk.github.io/posts/Linux/</guid>
-      <source url="https://oragekk.github.io/rss.xml">Linux</source>
+      <link>https://oragekk.me/posts/Linux/</link>
+      <guid>https://oragekk.me/posts/Linux/</guid>
+      <source url="https://oragekk.me/rss.xml">Linux</source>
       <description>相关信息 这里放置 Linux 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -266,9 +335,9 @@
     </item>
     <item>
       <title>Example Post</title>
-      <link>https://oragekk.github.io/posts/Linux/unix-linux-note.html</link>
-      <guid>https://oragekk.github.io/posts/Linux/unix-linux-note.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Example Post</source>
+      <link>https://oragekk.me/posts/Linux/unix-linux-note.html</link>
+      <guid>https://oragekk.me/posts/Linux/unix-linux-note.html</guid>
+      <source url="https://oragekk.me/rss.xml">Example Post</source>
       <description>This document is not completed and will be updated anytime. Catagory Unix Bell Labs Xenix BSD FreeBSD &amp;amp; Apple NeXTStep Darwin POSIX Unix-like Single Unix Specification Apple iOS XNU Kernel Linux Linux Kernel GNU Project Android Android Kernel Android ROM Chrome OS Chromium OS</description>
       <category>Linux</category>
       <pubDate>Tue, 14 Apr 2015 00:00:00 GMT</pubDate>
@@ -451,9 +520,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>前端开发</title>
-      <link>https://oragekk.github.io/posts/Web/</link>
-      <guid>https://oragekk.github.io/posts/Web/</guid>
-      <source url="https://oragekk.github.io/rss.xml">前端开发</source>
+      <link>https://oragekk.me/posts/Web/</link>
+      <guid>https://oragekk.me/posts/Web/</guid>
+      <source url="https://oragekk.me/rss.xml">前端开发</source>
       <description>相关信息 这里放置前端相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -465,9 +534,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>跨平台开发</title>
-      <link>https://oragekk.github.io/posts/cross-platform/</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/</guid>
-      <source url="https://oragekk.github.io/rss.xml">跨平台开发</source>
+      <link>https://oragekk.me/posts/cross-platform/</link>
+      <guid>https://oragekk.me/posts/cross-platform/</guid>
+      <source url="https://oragekk.me/rss.xml">跨平台开发</source>
       <description>相关信息 这里放置 跨平台开发 内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -478,9 +547,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>iOS</title>
-      <link>https://oragekk.github.io/posts/iOS/</link>
-      <guid>https://oragekk.github.io/posts/iOS/</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS</source>
+      <link>https://oragekk.me/posts/iOS/</link>
+      <guid>https://oragekk.me/posts/iOS/</guid>
+      <source url="https://oragekk.me/rss.xml">iOS</source>
       <description>相关信息 这里放置 iOS 相关的内容</description>
       <pubDate>Thu, 09 Mar 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -491,9 +560,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>Mobile and PC loading different code</title>
-      <link>https://oragekk.github.io/posts/Web/JavaScript/Mobile%20and-PC-loading-different-code.html</link>
-      <guid>https://oragekk.github.io/posts/Web/JavaScript/Mobile%20and-PC-loading-different-code.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Mobile and PC loading different code</source>
+      <link>https://oragekk.me/posts/Web/JavaScript/Mobile%20and-PC-loading-different-code.html</link>
+      <guid>https://oragekk.me/posts/Web/JavaScript/Mobile%20and-PC-loading-different-code.html</guid>
+      <source url="https://oragekk.me/rss.xml">Mobile and PC loading different code</source>
       <description>通过 js 判断 moblie 端和 pc 端进而加载不同的 css 或者 js 废话不多说，上代码 &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; function browserRedirect() { var sUserAgent = navigator.userAgent.toLowerCase(); var bIsIpad = sUserAgent.match(/ipad/i) == &amp;quot;ipad&amp;quot;; var bIsIphoneOs = sUserAgent.match(/iphone os/i) == &amp;quot;iphone os&amp;quot;; var bIsMidp = sUserAgent.match(/midp/i) == &amp;quot;midp&amp;quot;; var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == &amp;quot;rv:1.2.3.4&amp;quot;; var bIsUc = sUserAgent.match(/ucweb/i) == &amp;quot;ucweb&amp;quot;; var bIsAndroid = sUserAgent.match(/android/i) == &amp;quot;android&amp;quot;; var bIsCE = sUserAgent.match(/windows ce/i) == &amp;quot;windows ce&amp;quot;; var bIsWM = sUserAgent.match(/windows mobile/i) == &amp;quot;windows mobile&amp;quot;; // document.writeln(&amp;quot;您的浏览设备为：&amp;quot;); if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) { // alert(&amp;quot;手机浏览！&amp;quot;); } else { // alert(&amp;quot;PC浏览！&amp;quot;); document.write(&amp;quot;&amp;lt;script type=&amp;apos;text/javascript&amp;apos; size=&amp;apos;150&amp;apos; alpha=&amp;apos;0.8&amp;apos; zIndex=&amp;apos;-10&amp;apos; src=&amp;apos;../js/dist/ribbon.js&amp;apos;&amp;gt;&amp;lt;\/script&amp;gt;&amp;quot;); document.write(&amp;quot;&amp;lt;script type=&amp;apos;text/javascript&amp;apos; color=&amp;apos;0,188,212&amp;apos; opacity=&amp;apos;0.7&amp;apos; zIndex=&amp;apos;-2&amp;apos; count=&amp;apos;99&amp;apos; src=&amp;apos;http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&amp;apos;&amp;gt;&amp;lt;\/script&amp;gt;&amp;quot;); 	} } browserRedirect(); &amp;lt;/script&amp;gt;</description>
       <category>JavaScript</category>
       <pubDate>Tue, 07 Feb 2017 00:00:00 GMT</pubDate>
@@ -506,9 +575,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>JavaScript</title>
-      <link>https://oragekk.github.io/posts/Web/JavaScript/</link>
-      <guid>https://oragekk.github.io/posts/Web/JavaScript/</guid>
-      <source url="https://oragekk.github.io/rss.xml">JavaScript</source>
+      <link>https://oragekk.me/posts/Web/JavaScript/</link>
+      <guid>https://oragekk.me/posts/Web/JavaScript/</guid>
+      <source url="https://oragekk.me/rss.xml">JavaScript</source>
       <description>相关信息 这里放置javascript相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -520,9 +589,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>Example Post using Keynote Layout</title>
-      <link>https://oragekk.github.io/posts/Web/JavaScript/js-module-7day.html</link>
-      <guid>https://oragekk.github.io/posts/Web/JavaScript/js-module-7day.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Example Post using Keynote Layout</source>
+      <link>https://oragekk.me/posts/Web/JavaScript/js-module-7day.html</link>
+      <guid>https://oragekk.me/posts/Web/JavaScript/js-module-7day.html</guid>
+      <source url="https://oragekk.me/rss.xml">Example Post using Keynote Layout</source>
       <description>下滑这里查看更多内容 7 月 9 日，我在公司内部进行了名为「JavaScript 模块化七日谈」分享，并将该 Slides 分享到了微博上。出乎意料地，这篇微博先后被 @JS 小组 @尤小右 @寸志 等近 200 人转发，阅读达到 10w，获得了还不错的评价。 于是，我决定将它重新发到我的博客上，并为它专门制作了适用于 Keynote 展示文稿的新布局。它能自动根据屏幕大小/旋转以一定比例填充屏幕，你也可以直接点击下方链接在新页面打开，来获得更好的、沉浸式的全屏体验 Watch Slides →</description>
       <category>JavaScript</category>
       <pubDate>Thu, 09 Jul 2015 00:00:00 GMT</pubDate>
@@ -551,9 +620,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>CommonJS，RequireJS，SeaJS 归纳笔记</title>
-      <link>https://oragekk.github.io/posts/Web/JavaScript/js-module-loader.html</link>
-      <guid>https://oragekk.github.io/posts/Web/JavaScript/js-module-loader.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">CommonJS，RequireJS，SeaJS 归纳笔记</source>
+      <link>https://oragekk.me/posts/Web/JavaScript/js-module-loader.html</link>
+      <guid>https://oragekk.me/posts/Web/JavaScript/js-module-loader.html</guid>
+      <source url="https://oragekk.me/rss.xml">CommonJS，RequireJS，SeaJS 归纳笔记</source>
       <description>Foreword Here comes Module! 随着网站逐渐变成「互联网应用程序」，嵌入网页的 JavaScript 代码越来越庞大，越来越复杂。网页越来越像桌面程序，需要一个团队分工协作、进度管理、单元测试……我们不得不使用软件工程的方法，来管理网页的业务逻辑。 于是，JavaScript 的模块化成为迫切需求。在 ES6 Module 来临之前，JavaScript 社区提供了强大支持，尝试在现有的运行环境下，实现模块的效果。 Catalog</description>
       <category>JavaScript</category>
       <pubDate>Mon, 25 May 2015 00:00:00 GMT</pubDate>
@@ -670,9 +739,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>Example Post</title>
-      <link>https://oragekk.github.io/posts/Web/JavaScript/js-version.html</link>
-      <guid>https://oragekk.github.io/posts/Web/JavaScript/js-version.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Example Post</source>
+      <link>https://oragekk.me/posts/Web/JavaScript/js-version.html</link>
+      <guid>https://oragekk.me/posts/Web/JavaScript/js-version.html</guid>
+      <source url="https://oragekk.me/rss.xml">Example Post</source>
       <description>JavaScript 有着很奇怪的命名史。 1995 年，它作为网景浏览器（Netscape Navigator）的一部分首次发布，网景给这个新语言命名为 LiveScript。一年后，为了搭上当时媒体热炒 Java 的顺风车，临时改名为了 JavaScript （当然，Java 和 JavaScript 的关系，就和雷锋和雷锋塔一样 —— 并没有什么关系） 歪果仁的笑话怎么一点都不好笑 译者注：wikipedia 的 JavaScript 词条 更详细的叙述了这段历史</description>
       <category>JavaScript</category>
       <pubDate>Tue, 22 Sep 2015 00:00:00 GMT</pubDate>
@@ -720,9 +789,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>Vue</title>
-      <link>https://oragekk.github.io/posts/Web/Vue/</link>
-      <guid>https://oragekk.github.io/posts/Web/Vue/</guid>
-      <source url="https://oragekk.github.io/rss.xml">Vue</source>
+      <link>https://oragekk.me/posts/Web/Vue/</link>
+      <guid>https://oragekk.me/posts/Web/Vue/</guid>
+      <source url="https://oragekk.me/rss.xml">Vue</source>
       <description>相关信息 这里放置Vue相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -734,9 +803,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>nodeJS</title>
-      <link>https://oragekk.github.io/posts/Web/node/</link>
-      <guid>https://oragekk.github.io/posts/Web/node/</guid>
-      <source url="https://oragekk.github.io/rss.xml">nodeJS</source>
+      <link>https://oragekk.me/posts/Web/node/</link>
+      <guid>https://oragekk.me/posts/Web/node/</guid>
+      <source url="https://oragekk.me/rss.xml">nodeJS</source>
       <description>相关信息 这里放置nodeJS相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -748,9 +817,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>使用n命令管理node版本</title>
-      <link>https://oragekk.github.io/posts/Web/node/node-version.html</link>
-      <guid>https://oragekk.github.io/posts/Web/node/node-version.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">使用n命令管理node版本</source>
+      <link>https://oragekk.me/posts/Web/node/node-version.html</link>
+      <guid>https://oragekk.me/posts/Web/node/node-version.html</guid>
+      <source url="https://oragekk.me/rss.xml">使用n命令管理node版本</source>
       <description>鉴于使用 ReactNative 时，会需要不同的 node 版本，提供一种版本切换方式 使用 n command 来进行 node 版本管理 概念 n Node version manager 提供了一个更简单的 CLI，用于在 Node 版本之间进行安装和切换。它仅在 Linux 或 Mac 操作系统上受到支持。 安装 如果你已经安装某个版本的 Node 和 npm ，则可以用 npm install -g n 来安装 n，就像安装其他 NPM 包一样。</description>
       <category>Linux</category>
       <pubDate>Fri, 03 Apr 2020 00:00:00 GMT</pubDate>
@@ -833,9 +902,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>Flutter</title>
-      <link>https://oragekk.github.io/posts/cross-platform/Flutter/</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/Flutter/</guid>
-      <source url="https://oragekk.github.io/rss.xml">Flutter</source>
+      <link>https://oragekk.me/posts/cross-platform/Flutter/</link>
+      <guid>https://oragekk.me/posts/cross-platform/Flutter/</guid>
+      <source url="https://oragekk.me/rss.xml">Flutter</source>
       <description>相关信息 这里放置 Flutter 内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -846,9 +915,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>Flutter子页面</title>
-      <link>https://oragekk.github.io/posts/cross-platform/Flutter/flutt.html</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/Flutter/flutt.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Flutter子页面</source>
+      <link>https://oragekk.me/posts/cross-platform/Flutter/flutt.html</link>
+      <guid>https://oragekk.me/posts/cross-platform/Flutter/flutt.html</guid>
+      <source url="https://oragekk.me/rss.xml">Flutter子页面</source>
       <description>这是一个flutter子页面</description>
       <category>Flutter</category>
       <category>前端跨平台</category>
@@ -858,9 +927,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>ReactNative</title>
-      <link>https://oragekk.github.io/posts/cross-platform/ReactNative/</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/ReactNative/</guid>
-      <source url="https://oragekk.github.io/rss.xml">ReactNative</source>
+      <link>https://oragekk.me/posts/cross-platform/ReactNative/</link>
+      <guid>https://oragekk.me/posts/cross-platform/ReactNative/</guid>
+      <source url="https://oragekk.me/rss.xml">ReactNative</source>
       <description>相关信息 这里放置 ReactNative 内容</description>
       <pubDate>Thu, 09 Mar 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -871,9 +940,9 @@ Android's source code is released by Google under open source licenses, although
     </item>
     <item>
       <title>ReactNative介绍</title>
-      <link>https://oragekk.github.io/posts/cross-platform/ReactNative/react1.html</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/ReactNative/react1.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">ReactNative介绍</source>
+      <link>https://oragekk.me/posts/cross-platform/ReactNative/react1.html</link>
+      <guid>https://oragekk.me/posts/cross-platform/ReactNative/react1.html</guid>
+      <source url="https://oragekk.me/rss.xml">ReactNative介绍</source>
       <description>前置知识点介绍</description>
       <category>前端跨平台</category>
       <pubDate>Sat, 24 Aug 2019 09:38:39 GMT</pubDate>
@@ -939,9 +1008,9 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
     </item>
     <item>
       <title>ReactNative开发环境配置，ES6语法介绍</title>
-      <link>https://oragekk.github.io/posts/cross-platform/ReactNative/react2.html</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/ReactNative/react2.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">ReactNative开发环境配置，ES6语法介绍</source>
+      <link>https://oragekk.me/posts/cross-platform/ReactNative/react2.html</link>
+      <guid>https://oragekk.me/posts/cross-platform/ReactNative/react2.html</guid>
+      <source url="https://oragekk.me/rss.xml">ReactNative开发环境配置，ES6语法介绍</source>
       <description>ReactNative开发环境配置，ES6语法介绍</description>
       <category>前端跨平台</category>
       <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
@@ -1004,9 +1073,9 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
     </item>
     <item>
       <title>ReactNative State(状态)</title>
-      <link>https://oragekk.github.io/posts/cross-platform/ReactNative/react3.html</link>
-      <guid>https://oragekk.github.io/posts/cross-platform/ReactNative/react3.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">ReactNative State(状态)</source>
+      <link>https://oragekk.me/posts/cross-platform/ReactNative/react3.html</link>
+      <guid>https://oragekk.me/posts/cross-platform/ReactNative/react3.html</guid>
+      <source url="https://oragekk.me/rss.xml">ReactNative State(状态)</source>
       <description>ReactNative State(状态)</description>
       <category>前端跨平台</category>
       <pubDate>Tue, 12 Nov 2019 00:00:00 GMT</pubDate>
@@ -1052,9 +1121,9 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
     </item>
     <item>
       <title>WebViewJavascriptBridge</title>
-      <link>https://oragekk.github.io/posts/iOS/other/JavaScriptBridge.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/other/JavaScriptBridge.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">WebViewJavascriptBridge</source>
+      <link>https://oragekk.me/posts/iOS/other/JavaScriptBridge.html</link>
+      <guid>https://oragekk.me/posts/iOS/other/JavaScriptBridge.html</guid>
+      <source url="https://oragekk.me/rss.xml">WebViewJavascriptBridge</source>
       <description>最近一直在忙，今天抽空写一下 H5 和 Native 的交互 一、选择 项目本身 webview 使用的是 WKWebview，其实 WKWebview 自带的 messageHandle 也可以满足此需求 JSContext,源自于 JavaScriptCore 框架中的东西，最后不使用此方案源于一下几点 但是其中繁杂的字符串使用，让我觉的可能会由于粗心出现不可预知的错误 加载时机的问题，当你重新 loadrequest 的时候，会导致 js 注入失败 回调方法略复杂 JavaScriptBridge，最后选择此库源于以下几点 使用简单，注册完毕之后设置完代理，只需要负责注册方法和调用方法 回调简单，两端回调 responsecallback 包含在注册的方法中。使用 block 三端通用，JavaScript 和 iOS、Android 都可以（Android 版本库） Ps :关于 Android 版本库，其中很多是按照 iOS 版的 JavaScriptBridge 改写的。但是其中有很多问题，尤其是各种调用时机问题，上面的链接是经过我旁边的 Android 小哥试了四五个版本之后发现的，修复了各种改写版的问题</description>
       <category>iOS</category>
       <pubDate>Sun, 05 Aug 2018 00:00:00 GMT</pubDate>
@@ -1122,9 +1191,9 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
     </item>
     <item>
       <title>其他</title>
-      <link>https://oragekk.github.io/posts/iOS/other/</link>
-      <guid>https://oragekk.github.io/posts/iOS/other/</guid>
-      <source url="https://oragekk.github.io/rss.xml">其他</source>
+      <link>https://oragekk.me/posts/iOS/other/</link>
+      <guid>https://oragekk.me/posts/iOS/other/</guid>
+      <source url="https://oragekk.me/rss.xml">其他</source>
       <description>相关信息 这里放置 others 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -1135,9 +1204,9 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
     </item>
     <item>
       <title>初探机器学习框架CoreML</title>
-      <link>https://oragekk.github.io/posts/iOS/other/coreML.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/other/coreML.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">初探机器学习框架CoreML</source>
+      <link>https://oragekk.me/posts/iOS/other/coreML.html</link>
+      <guid>https://oragekk.me/posts/iOS/other/coreML.html</guid>
+      <source url="https://oragekk.me/rss.xml">初探机器学习框架CoreML</source>
       <description>CoreML 是 iOS 11 新推出的机器学习框架，是人工智能的核心内容，他可以在训练好的机器学习模型应用到 APP 中</description>
       <category>iOS</category>
       <pubDate>Tue, 21 Nov 2017 00:00:00 GMT</pubDate>
@@ -1187,9 +1256,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>Test Three ways to call</title>
-      <link>https://oragekk.github.io/posts/iOS/other/test-Three-ways-to-%20call.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/other/test-Three-ways-to-%20call.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Test Three ways to call</source>
+      <link>https://oragekk.me/posts/iOS/other/test-Three-ways-to-%20call.html</link>
+      <guid>https://oragekk.me/posts/iOS/other/test-Three-ways-to-%20call.html</guid>
+      <source url="https://oragekk.me/rss.xml">Test Three ways to call</source>
       <description>LabelPhoneNum 使用 YYtext 实现 label 中的某些文字点击拨打电话---Github 真机测试结果 设备型号：iphone6s 系统:10.1.1 Xcode 版本：8.1 三种打电话的方法 方法一:网上说使用此方法，电话结束后进入联系人列表，测试结果为：正常，电话结束后返回程序</description>
       <category>iOS</category>
       <pubDate>Sat, 12 Nov 2016 12:31:17 GMT</pubDate>
@@ -1224,9 +1293,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>神经网络模型训练</title>
-      <link>https://oragekk.github.io/posts/iOS/other/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/other/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">神经网络模型训练</source>
+      <link>https://oragekk.me/posts/iOS/other/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.html</link>
+      <guid>https://oragekk.me/posts/iOS/other/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83.html</guid>
+      <source url="https://oragekk.me/rss.xml">神经网络模型训练</source>
       <description>神经网络模型训练 经过之前 coreML 的介绍，自己训练一个模型 使用 xcodeplayground 训练简单神经网络模型 详细： 去年，苹果(Apple)推出了 Core ML:这是一种快速的方法，可以让你用尽可能少的代码将预先培训好的机器学习模型导入应用程序中!今年，有了 Create ML，苹果给了我们开发人员创建我们自己的机器学习模型直接进入 Xcode 的平台的能力!我们只需要一些数据就行了!目前，Create ML 允许文本、图像和表作为数据。然而，由于这是大多数 ML 应用程序的组成部分，这应该很好地服务于您的目的!我将向您展示如何使用这三种类型的数据创建一个 ML 模型.</description>
       <category>iOS</category>
       <pubDate>Tue, 23 Jul 2019 16:08:25 GMT</pubDate>
@@ -1289,9 +1358,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>AFNetworking A memory leak</title>
-      <link>https://oragekk.github.io/posts/iOS/source/AFNETworking-A-memory-leak.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/source/AFNETworking-A-memory-leak.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">AFNetworking A memory leak</source>
+      <link>https://oragekk.me/posts/iOS/source/AFNETworking-A-memory-leak.html</link>
+      <guid>https://oragekk.me/posts/iOS/source/AFNETworking-A-memory-leak.html</guid>
+      <source url="https://oragekk.me/rss.xml">AFNetworking A memory leak</source>
       <description>细心的你是否也发现了 AFN 的内存泄漏的问题了呢. 解决方法 + (AFHTTPSessionManager *)sharedHTTPSession{ static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, ^{ manager = [AFHTTPSessionManager manager]; manager.requestSerializer.timeoutInterval = 30; [manager.requestSerializer setValue:@&amp;quot;XMLHttpRequest&amp;quot; forHTTPHeaderField:@&amp;quot;X-Requested-With&amp;quot;]; }); return manager; } + (AFURLSessionManager *)sharedURLSession{ static dispatch_once_t onceToken2; dispatch_once(&amp;amp;onceToken2, ^{ urlsession = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]]; }); return urlsession; }</description>
       <category>iOS</category>
       <pubDate>Thu, 19 Jan 2017 00:00:00 GMT</pubDate>
@@ -1306,9 +1375,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>源码解读</title>
-      <link>https://oragekk.github.io/posts/iOS/source/</link>
-      <guid>https://oragekk.github.io/posts/iOS/source/</guid>
-      <source url="https://oragekk.github.io/rss.xml">源码解读</source>
+      <link>https://oragekk.me/posts/iOS/source/</link>
+      <guid>https://oragekk.me/posts/iOS/source/</guid>
+      <source url="https://oragekk.me/rss.xml">源码解读</source>
       <description>相关信息 这里放置 源码解读 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -1319,9 +1388,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>WCDB漫谈</title>
-      <link>https://oragekk.github.io/posts/iOS/source/WCDB.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/source/WCDB.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">WCDB漫谈</source>
+      <link>https://oragekk.me/posts/iOS/source/WCDB.html</link>
+      <guid>https://oragekk.me/posts/iOS/source/WCDB.html</guid>
+      <source url="https://oragekk.me/rss.xml">WCDB漫谈</source>
       <description>前言 移动端的数据库选型一直是一个难题，直到前段时间看到了 WeMobileDev(微信前端团队)放出了第三个开源组件-WCDB WCDB(WeChat DataBase)是微信官方的移动端数据库组件，致力于提供一个高效、易用、完整的移动端存储方案 微信团队怎么说 基于 SQLCipher WCDB-iOS/Mac WCDB-Android 数据库损坏修复工具 WDBRepair</description>
       <category>iOS</category>
       <pubDate>Thu, 18 Jan 2018 00:00:00 GMT</pubDate>
@@ -1644,9 +1713,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>YYMemoryCache 源码分析</title>
-      <link>https://oragekk.github.io/posts/iOS/source/YYMemoryCache.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/source/YYMemoryCache.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">YYMemoryCache 源码分析</source>
+      <link>https://oragekk.me/posts/iOS/source/YYMemoryCache.html</link>
+      <guid>https://oragekk.me/posts/iOS/source/YYMemoryCache.html</guid>
+      <source url="https://oragekk.me/rss.xml">YYMemoryCache 源码分析</source>
       <description>YYMemoryCache 源码分析 提示 YYMemoryCache 是内存缓存，所以存取速度非常快，主要用到两种数据结构的 LRU 淘汰算法 LRU 淘汰算法 LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。 最常见的实现是使用一个链表保存缓存数据 【命中率】 当存在热点数据时，LRU 的效率很好，但偶发性的、周期性的批量操作会导致 LRU 命中率急剧下降，缓存污染情况比较严重。 Cache 的容量是有限的，当 Cache 的空间都被占满后，如果再次发生缓存失效，就必须选择一个缓存块来替换掉。LRU 法是依据各块使用的情况， 总是选择那个最长时间未被使用的块替换。这种方法比较好地反映了程序局部性规律</description>
       <category>iOS</category>
       <pubDate>Fri, 26 Apr 2019 16:08:25 GMT</pubDate>
@@ -1736,9 +1805,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>Swift</title>
-      <link>https://oragekk.github.io/posts/iOS/swift/</link>
-      <guid>https://oragekk.github.io/posts/iOS/swift/</guid>
-      <source url="https://oragekk.github.io/rss.xml">Swift</source>
+      <link>https://oragekk.me/posts/iOS/swift/</link>
+      <guid>https://oragekk.me/posts/iOS/swift/</guid>
+      <source url="https://oragekk.me/rss.xml">Swift</source>
       <description>相关信息 这里放置 Swift 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -1749,9 +1818,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>深入理解swift中闭包的捕捉语义</title>
-      <link>https://oragekk.github.io/posts/iOS/swift/swift%E6%8D%95%E8%8E%B7%E8%AF%AD%E4%B9%89.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/swift/swift%E6%8D%95%E8%8E%B7%E8%AF%AD%E4%B9%89.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">深入理解swift中闭包的捕捉语义</source>
+      <link>https://oragekk.me/posts/iOS/swift/swift%E6%8D%95%E8%8E%B7%E8%AF%AD%E4%B9%89.html</link>
+      <guid>https://oragekk.me/posts/iOS/swift/swift%E6%8D%95%E8%8E%B7%E8%AF%AD%E4%B9%89.html</guid>
+      <source url="https://oragekk.me/rss.xml">深入理解swift中闭包的捕捉语义</source>
       <description>参考链接：losures Capture Semantics, Part 1: Catch them all! 概述 原文中先定义一个 Pokemon 类 class Pokemon: CustomDebugStringConvertible { let name: String init(name: String) { self.name = name } var debugDescription: String { return &amp;quot;\(name)&amp;gt;&amp;quot; } deinit { print(&amp;quot;\(self) escaped!&amp;quot;) } }</description>
       <category>Swift</category>
       <pubDate>Thu, 19 Oct 2017 00:00:00 GMT</pubDate>
@@ -1798,9 +1867,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>NSError</title>
-      <link>https://oragekk.github.io/posts/iOS/system/NSError.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/NSError.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">NSError</source>
+      <link>https://oragekk.me/posts/iOS/system/NSError.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/NSError.html</guid>
+      <source url="https://oragekk.me/rss.xml">NSError</source>
       <description>前言 整理一下在iOS开发中NSError的错误代码 NSError NSError是系统错误信息类 初始化方法两个 // domain 不能为空 dict可以为空 - (instancetype)initWithDomain:(NSErrorDomain)domain code:(NSInteger)code userInfo:(nullable NSDictionary *)dict; + (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code userInfo:(nullable NSDictionary *)dict;</description>
       <category>iOS</category>
       <pubDate>Thu, 31 May 2018 00:00:00 GMT</pubDate>
@@ -1844,9 +1913,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>NSOperatioin</title>
-      <link>https://oragekk.github.io/posts/iOS/system/NSOperation%E5%92%8CNSOPerationQueue.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/NSOperation%E5%92%8CNSOPerationQueue.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">NSOperatioin</source>
+      <link>https://oragekk.me/posts/iOS/system/NSOperation%E5%92%8CNSOPerationQueue.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/NSOperation%E5%92%8CNSOPerationQueue.html</guid>
+      <source url="https://oragekk.me/rss.xml">NSOperatioin</source>
       <description>一. NSOperatioin 1.目的 开启线程 提供一些 GCD 不具备的功能 OC 框架,内部封装的是 GCD 2.区别 GCD 执行效率高于 NSOperation NSOperation 提供了一些 GCD 中不具备的功能(暂停/恢复/取消)---管理操作-NSOperation 的高级用法 3.NSOperation 本身是一个抽象类不可以直接使用,实际开发中使用其子类</description>
       <category>iOS</category>
       <pubDate>Mon, 26 Dec 2016 13:39:59 GMT</pubDate>
@@ -1919,9 +1988,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>系统</title>
-      <link>https://oragekk.github.io/posts/iOS/system/</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/</guid>
-      <source url="https://oragekk.github.io/rss.xml">系统</source>
+      <link>https://oragekk.me/posts/iOS/system/</link>
+      <guid>https://oragekk.me/posts/iOS/system/</guid>
+      <source url="https://oragekk.me/rss.xml">系统</source>
       <description>相关信息 这里放置 系统 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -1932,9 +2001,9 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
     </item>
     <item>
       <title>减小iOS-App或者静态库体积</title>
-      <link>https://oragekk.github.io/posts/iOS/system/Reduced-App-%20volume.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/Reduced-App-%20volume.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">减小iOS-App或者静态库体积</source>
+      <link>https://oragekk.me/posts/iOS/system/Reduced-App-%20volume.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/Reduced-App-%20volume.html</guid>
+      <source url="https://oragekk.me/rss.xml">减小iOS-App或者静态库体积</source>
       <description>把打包好的.ipa 文件的后缀改为.zip 并解压。右键.appbundle 选择显示包内容。有些情况下，大一点的文件压缩后反而比小一点的文件压缩后的体积小，而我们真正关心的时候解压后的真实体积，所以一定要解压里面的资源文件，看解压后的 size。从 APP Store 下载的.ipa 文件要比自己本地打包的要大，因为 APP Store 对 ipa 包又做了加密处理。Xcode 的 Organizer window 的 Estimate Size 功能能估计本地打包文件从 APP Store 下载时的大小。根据优化的 28 定律和常识，首先当然是多媒体资源的体积啦。</description>
       <category>iOS</category>
       <pubDate>Fri, 04 Nov 2016 18:11:56 GMT</pubDate>
@@ -2059,9 +2128,9 @@ ARC 对可执行文件大小的影响几乎都是在代码段
     </item>
     <item>
       <title>WKWebView拦截URL</title>
-      <link>https://oragekk.github.io/posts/iOS/system/WKWebView-URL.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/WKWebView-URL.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">WKWebView拦截URL</source>
+      <link>https://oragekk.me/posts/iOS/system/WKWebView-URL.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/WKWebView-URL.html</guid>
+      <source url="https://oragekk.me/rss.xml">WKWebView拦截URL</source>
       <description>本文介绍使用 WKWebView 拦截 url 进行原生界面跳转 3.gif 使用代理方法 decidePolicyForNavigationAction - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler { // 获取完整url并进行UTF-8转码 NSString *strRequest = [navigationAction.request.URL.absoluteString stringByRemovingPercentEncoding]; if ([strRequest hasPrefix:@&amp;quot;app://&amp;quot;]) { // 拦截点击链接 [self handleCustomAction:strRequest]; // 不允许跳转 	decisionHandler(WKNavigationActionPolicyCancel); }else { 	// 允许跳转 decisionHandler(WKNavigationActionPolicyAllow); } }</description>
       <category>iOS</category>
       <pubDate>Sat, 27 May 2017 00:00:00 GMT</pubDate>
@@ -2080,9 +2149,9 @@ ARC 对可执行文件大小的影响几乎都是在代码段
     </item>
     <item>
       <title>WKWebView使用及自适应高度</title>
-      <link>https://oragekk.github.io/posts/iOS/system/WKWebView.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/WKWebView.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">WKWebView使用及自适应高度</source>
+      <link>https://oragekk.me/posts/iOS/system/WKWebView.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/WKWebView.html</guid>
+      <source url="https://oragekk.me/rss.xml">WKWebView使用及自适应高度</source>
       <description>记录一下 iOS8 之后的新控件 WKWebView，用以替代之前的 UIWebView，因为需求是在 TableView 的 Cell 中放一个 WebView。就产生了滑动手势冲突，为了解决这个问题就需要让 webView 高度自适应 一、新特性 在性能、稳定性、功能方面有很大的提升，最明显的就是内存占用降低了很多。 允许 JavaScript 的 Nitro 库加载并使用（UIWebView 中限制） 支持了更多的 HTML5 特性； 高达 60fps 的滚动刷新率以及内置手势（支持右滑返回）； 将 UIWebViewDelegate 与 UIWebView 重构成了 14 类与 3 个协议（查看苹果官方文档）；</description>
       <category>iOS</category>
       <pubDate>Fri, 26 May 2017 15:47:40 GMT</pubDate>
@@ -2136,9 +2205,9 @@ ARC 对可执行文件大小的影响几乎都是在代码段
     </item>
     <item>
       <title>Runloop</title>
-      <link>https://oragekk.github.io/posts/iOS/system/iOS%E4%B8%AD%E7%9A%84Runloop.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/iOS%E4%B8%AD%E7%9A%84Runloop.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Runloop</source>
+      <link>https://oragekk.me/posts/iOS/system/iOS%E4%B8%AD%E7%9A%84Runloop.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/iOS%E4%B8%AD%E7%9A%84Runloop.html</guid>
+      <source url="https://oragekk.me/rss.xml">Runloop</source>
       <description>Runloop Runloop 是什么 Runloop 是事件接收和分发机制的一个实现。 Runloop 提供了一种异步执行代码的机制，不能并行执行任务。 在主队列中，Main RunLoop 直接配合任务的执行，负责处理 UI 事件、定时器以及其他内核相关事件。 ###Runloop 的主要目的 保证执行程序的线程不会被终止 ###什么时候使用 Runloop 当需要和该线程进行交互的时候才会使用 Runloop 每一个线程都有其对应的 RunLoop，但是默认非主线程的 RunLoop 是没有运行的，需要为 RunLoop 添加至少一个事件源，然后去 run 它。 一般情况下我们是没有必要去启用线程的 RunLoop 的，除非你在一个单独的线程中需要长久的检测某个事件。 主线程 默认有 Runloop。当自己启动一个线程，如果只是用于处理单一的事件，则该线程在执行完之后就退出了。所以当我们需要让该线程监听某项事务时，就得让线程一直不退出，runloop 就是这么一个循环，没有事件的时候，一直卡着，有事件来临了，执行其对应的函数。</description>
       <category>iOS</category>
       <pubDate>Mon, 26 Dec 2016 13:39:59 GMT</pubDate>
@@ -2256,9 +2325,9 @@ NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     </item>
     <item>
       <title>OC 中的枚举类型</title>
-      <link>https://oragekk.github.io/posts/iOS/system/iOS%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8Benum%EF%BC%8CNS_ENUM%EF%BC%8CNS_OPTIONS.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/iOS%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8Benum%EF%BC%8CNS_ENUM%EF%BC%8CNS_OPTIONS.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">OC 中的枚举类型</source>
+      <link>https://oragekk.me/posts/iOS/system/iOS%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8Benum%EF%BC%8CNS_ENUM%EF%BC%8CNS_OPTIONS.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/iOS%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8Benum%EF%BC%8CNS_ENUM%EF%BC%8CNS_OPTIONS.html</guid>
+      <source url="https://oragekk.me/rss.xml">OC 中的枚举类型</source>
       <description>进入正题，今天介绍一下objective-c中的枚举 提要 首先要知道的是,枚举值 它是一个整形(int) 并且,它不参加内存的占用和释放 枚举定义变量即可直接使用,不用初始化 三种类型的枚举 enum 在iOS6之前一般我们采用C风格的enum关键字可以定义枚举类型 在iOS6之后引入两个宏来定义枚举实际上是将enum定义和typedef合二为一，并且采用不同的宏来从代码角度来区分。 NS_ENUM 普通枚举定义可参见UIKit.Framework中 NS_OPTIONS 位运算及特殊枚举的定义。什么时候要用到这种方式呢? 那就是一个枚举变量可能要代表多个枚举值的时候. 其实给一个枚举变量赋予多个枚举值的时候,原理只是把各个枚举值加起来罢了. 当加起来以后,就获取了一个新的值,那么为了保证这个值的唯一性,这个时候就体现了位运算的重要作用. 位运算可以确保枚举值组合的唯一性. 因为位运算的计算方式是将二进制转换成十进制,也就是说,枚举值里面存取的是 计算后的十进制值. 打个比方: 通过上面的位运算方式设定好枚举以后,打印出来的枚举值分别是: 1 2 4 8 16 这5个数字,无论你如何组合在一起,也不会产生两个同样的数字. 这两个宏的定义在Foundation.framework的NSObjCRuntime.h中：</description>
       <category>iOS</category>
       <pubDate>Fri, 06 Jan 2017 11:19:16 GMT</pubDate>
@@ -2295,9 +2364,9 @@ NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     </item>
     <item>
       <title>iOS Cookie的配置及使用</title>
-      <link>https://oragekk.github.io/posts/iOS/system/iOS%E7%9A%84Cookie%E4%BD%BF%E7%94%A8.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/iOS%E7%9A%84Cookie%E4%BD%BF%E7%94%A8.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS Cookie的配置及使用</source>
+      <link>https://oragekk.me/posts/iOS/system/iOS%E7%9A%84Cookie%E4%BD%BF%E7%94%A8.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/iOS%E7%9A%84Cookie%E4%BD%BF%E7%94%A8.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS Cookie的配置及使用</source>
       <description>本文介绍 iOS 中 cookie 的使用包含 AFNetWorking 3.0 中的使用，常用于登录状态信息保存 什么是 Cookies？ Cookie 是由服务器保存在用户浏览器（客户端）上的一块数据，它可以包含有关用户的信息,比如果登陆的状态，用户标识等。 Cookie 有什么作用？ 主要用在以下三个方面: 会话状态管理（如用户登录状态、购物车） 个性化设置（如用户自定义设置） 浏览器行为跟踪（如跟踪分析用户行为）</description>
       <category>iOS</category>
       <pubDate>Wed, 05 Jul 2017 00:00:00 GMT</pubDate>
@@ -2415,9 +2484,9 @@ Cookie 有什么作用？</p>
     </item>
     <item>
       <title>iOS程序启动原理（上）</title>
-      <link>https://oragekk.github.io/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8A%EF%BC%89.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8A%EF%BC%89.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS程序启动原理（上）</source>
+      <link>https://oragekk.me/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8A%EF%BC%89.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8A%EF%BC%89.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS程序启动原理（上）</source>
       <description>本文介绍 iOS 程序中的 Info.plist,pch 文件,UIApplication,openURL 以及 UIWindow 的常用属性及方法; info.plist 常见设置 建立一个工程后,会在 Supporting files 文件夹下看到一个&amp;quot;工程名-Info.plist&amp;quot;的文件,该文件对工程做一些运行期的配置,非常重要,不能删除. 在旧版 Xcode 创建的工程中,这个配置文件的名字叫做&amp;quot;Info.plist&amp;quot;. 项目中的其他 plist 文件不能带有&amp;quot;Info&amp;quot;这个字眼,不然会被错认为是传说中非常重要的&amp;quot;Info.plist&amp;quot;. 项目中还有一个&amp;quot;InfoPlist.strings&amp;quot;的文件(Xcode6 之后需手动添加),跟 Info.plist 文件的本地化相关.</description>
       <category>iOS</category>
       <pubDate>Fri, 30 Dec 2016 15:59:12 GMT</pubDate>
@@ -2516,9 +2585,9 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
     </item>
     <item>
       <title>iOS程序启动原理（下）</title>
-      <link>https://oragekk.github.io/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8B%EF%BC%89.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8B%EF%BC%89.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS程序启动原理（下）</source>
+      <link>https://oragekk.me/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8B%EF%BC%89.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/iOS%E7%A8%8B%E5%BA%8F%E5%90%AF%E5%8A%A8%E5%8E%9F%E7%90%86%EF%BC%88%E4%B8%8B%EF%BC%89.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS程序启动原理（下）</source>
       <description>接上篇 iOS 程序启动原理（上） 下图是一个 iOS 程序启动的完整过程</description>
       <category>iOS</category>
       <pubDate>Fri, 30 Dec 2016 16:02:25 GMT</pubDate>
@@ -2542,9 +2611,9 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
     </item>
     <item>
       <title>iOS 10.3 keychain 重大更新</title>
-      <link>https://oragekk.github.io/posts/iOS/system/keychain%E6%9B%B4%E6%96%B0.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/keychain%E6%9B%B4%E6%96%B0.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS 10.3 keychain 重大更新</source>
+      <link>https://oragekk.me/posts/iOS/system/keychain%E6%9B%B4%E6%96%B0.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/keychain%E6%9B%B4%E6%96%B0.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS 10.3 keychain 重大更新</source>
       <description>转载自微信公众号《Mrpeak 杂货铺》 Paste_Image.png iOS 10.3 还未正式发布，beta 版中一个关于 keychain 特性的小修改，就已经引起了广泛的关注。</description>
       <category>iOS</category>
       <pubDate>Tue, 14 Mar 2017 00:00:00 GMT</pubDate>
@@ -2588,9 +2657,9 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
     </item>
     <item>
       <title>利用Runtime进行快速归档</title>
-      <link>https://oragekk.github.io/posts/iOS/system/runtime%E5%BF%AB%E9%80%9F%E5%BD%92%E6%A1%A3.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/system/runtime%E5%BF%AB%E9%80%9F%E5%BD%92%E6%A1%A3.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">利用Runtime进行快速归档</source>
+      <link>https://oragekk.me/posts/iOS/system/runtime%E5%BF%AB%E9%80%9F%E5%BD%92%E6%A1%A3.html</link>
+      <guid>https://oragekk.me/posts/iOS/system/runtime%E5%BF%AB%E9%80%9F%E5%BD%92%E6%A1%A3.html</guid>
+      <source url="https://oragekk.me/rss.xml">利用Runtime进行快速归档</source>
       <description>使用 runtime 进行归档，对我们的最大遍历就是高效，快速。尤其适用于 model 中属性非常多的时候 Person.h person.m</description>
       <category>iOS</category>
       <pubDate>Thu, 13 Apr 2017 00:00:00 GMT</pubDate>
@@ -2610,9 +2679,9 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
     </item>
     <item>
       <title>tools</title>
-      <link>https://oragekk.github.io/posts/iOS/tool/</link>
-      <guid>https://oragekk.github.io/posts/iOS/tool/</guid>
-      <source url="https://oragekk.github.io/rss.xml">tools</source>
+      <link>https://oragekk.me/posts/iOS/tool/</link>
+      <guid>https://oragekk.me/posts/iOS/tool/</guid>
+      <source url="https://oragekk.me/rss.xml">tools</source>
       <description>相关信息 这里放置 tool 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -2623,9 +2692,9 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
     </item>
     <item>
       <title>Update Cocoapods 1.1.1</title>
-      <link>https://oragekk.github.io/posts/iOS/tool/Update-Cocoapods.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/tool/Update-Cocoapods.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Update Cocoapods 1.1.1</source>
+      <link>https://oragekk.me/posts/iOS/tool/Update-Cocoapods.html</link>
+      <guid>https://oragekk.me/posts/iOS/tool/Update-Cocoapods.html</guid>
+      <source url="https://oragekk.me/rss.xml">Update Cocoapods 1.1.1</source>
       <description>之前采用正常的 sudo gem install cocoapods更新 cocoapods 版本一直不成功，下面为和我遇到同样问题的兄弟们提供一个解决办法 先切换 gem 源 gem sources --remove https://rubygems.org/ gem source -a https://gems.ruby-china.org 查看是否切换成功 gem source -l 如果出现下图这样的就说明切换成功了, 如果还是官方的源, 请手动重启电脑尝试</description>
       <category>iOS</category>
       <pubDate>Wed, 09 Nov 2016 11:34:47 GMT</pubDate>
@@ -2658,9 +2727,9 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
     </item>
     <item>
       <title>ijkPlayer 集成</title>
-      <link>https://oragekk.github.io/posts/iOS/tool/ijkplayer.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/tool/ijkplayer.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">ijkPlayer 集成</source>
+      <link>https://oragekk.me/posts/iOS/tool/ijkplayer.html</link>
+      <guid>https://oragekk.me/posts/iOS/tool/ijkplayer.html</guid>
+      <source url="https://oragekk.me/rss.xml">ijkPlayer 集成</source>
       <description>参考地址 ijkplayer 是一款做视频直播的框架，基于 FFmpeg，支持 Android 和 iOS。这里介绍一下 iOS 中集成 ijkplayer 一、FFmpeg FFmpeg 是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。它包括了领先的音/视频编码库 libavcodec 等。</description>
       <category>iOS</category>
       <pubDate>Wed, 30 Aug 2017 00:00:00 GMT</pubDate>
@@ -2749,9 +2818,9 @@ lipo -create 真机版本路径 模拟器版本路径 -output 合并后的文件
     </item>
     <item>
       <title>iOS - Image compression algorithm</title>
-      <link>https://oragekk.github.io/posts/iOS/tool/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/tool/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS - Image compression algorithm</source>
+      <link>https://oragekk.me/posts/iOS/tool/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.html</link>
+      <guid>https://oragekk.me/posts/iOS/tool/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS - Image compression algorithm</source>
       <description>由于最近公司在做图片相册选择上传的功能，对于图片的压缩算法这里我借鉴了 ochina 的 ios 端 App。其中有涉及到图片压缩的算法，这里贴出来留待后用; GACompressionPicHandle.h</description>
       <category>iOS</category>
       <pubDate>Fri, 30 Dec 2016 16:09:45 GMT</pubDate>
@@ -2769,9 +2838,9 @@ lipo -create 真机版本路径 模拟器版本路径 -output 合并后的文件
     </item>
     <item>
       <title>iOS 配置https</title>
-      <link>https://oragekk.github.io/posts/iOS/tool/%E9%85%8D%E7%BD%AEhttps.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/tool/%E9%85%8D%E7%BD%AEhttps.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS 配置https</source>
+      <link>https://oragekk.me/posts/iOS/tool/%E9%85%8D%E7%BD%AEhttps.html</link>
+      <guid>https://oragekk.me/posts/iOS/tool/%E9%85%8D%E7%BD%AEhttps.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS 配置https</source>
       <description>昨天试验了 iOS 11 beta6 发现原有的 https 自建证书不能使用，可能是新版本要对 ATS 加强验证，之前一直说的要全面 https 估计在不久的将来就要来临，未接入的可能要像 Apple 说的不允许上架。所以把配置过程记录在此 要求 启用 ATS 必须符合以下标准，不满足条件的 HTTPS 证书，ATS 都会拒绝链接： 服务器所有的链接使用 TLS1.2 以上版本 HTTPS 证书必须使用 SHA 256 以上哈希算法签名 HTTPS 证书必须使用 RAS 2048 位或 ECC 356 位以上公钥算法 使用前向加密技术</description>
       <category>iOS</category>
       <pubDate>Wed, 16 Aug 2017 00:00:00 GMT</pubDate>
@@ -2822,9 +2891,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>UI相关</title>
-      <link>https://oragekk.github.io/posts/iOS/ui/</link>
-      <guid>https://oragekk.github.io/posts/iOS/ui/</guid>
-      <source url="https://oragekk.github.io/rss.xml">UI相关</source>
+      <link>https://oragekk.me/posts/iOS/ui/</link>
+      <guid>https://oragekk.me/posts/iOS/ui/</guid>
+      <source url="https://oragekk.me/rss.xml">UI相关</source>
       <description>相关信息 这里放置 UI 相关的内容</description>
       <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
@@ -2835,9 +2904,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>Cell的accessoryType属性标记单元格之后，出现的重用问题</title>
-      <link>https://oragekk.github.io/posts/iOS/ui/cell%E5%A4%8D%E7%94%A8-accessoryType%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/ui/cell%E5%A4%8D%E7%94%A8-accessoryType%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Cell的accessoryType属性标记单元格之后，出现的重用问题</source>
+      <link>https://oragekk.me/posts/iOS/ui/cell%E5%A4%8D%E7%94%A8-accessoryType%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</link>
+      <guid>https://oragekk.me/posts/iOS/ui/cell%E5%A4%8D%E7%94%A8-accessoryType%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95.html</guid>
+      <source url="https://oragekk.me/rss.xml">Cell的accessoryType属性标记单元格之后，出现的重用问题</source>
       <description>今天项目里出现一个问题，就是做一个列表选择，然后点击导航栏的确定按钮返回上级界面，并把选择的 cell 数据传递到上级界面。再使用 accessoryType 属性标记单元格之后会出现重用问题。 解决办法 把 tableView 的 allowsMultipleSelection 属性设为了 YES； _tableView.allowsMultipleSelection = YES; 在 didSelectRowAtIndexPath 和 didDeselectRowAtIndexPath 方法里面使用了如下方法实现了点击单元格然后用 check mark 标记的方式。</description>
       <category>iOS</category>
       <pubDate>Mon, 13 Feb 2017 00:00:00 GMT</pubDate>
@@ -2870,9 +2939,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>TableView性能优化</title>
-      <link>https://oragekk.github.io/posts/iOS/ui/tableview-radius.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/ui/tableview-radius.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">TableView性能优化</source>
+      <link>https://oragekk.me/posts/iOS/ui/tableview-radius.html</link>
+      <guid>https://oragekk.me/posts/iOS/ui/tableview-radius.html</guid>
+      <source url="https://oragekk.me/rss.xml">TableView性能优化</source>
       <description>本文介绍内容主要是 tableView 的性能优化之不使用 cornerRadius 设置图片圆角 有人问我为什么 tableView 滑动不流畅，甚至闪退，其实和 cell 中的圆角头像使用了 cornerRadius 有关</description>
       <category>iOS</category>
       <pubDate>Mon, 26 Dec 2016 13:39:59 GMT</pubDate>
@@ -2944,9 +3013,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>textfield限制输入字符</title>
-      <link>https://oragekk.github.io/posts/iOS/ui/textfiled%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/ui/textfiled%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">textfield限制输入字符</source>
+      <link>https://oragekk.me/posts/iOS/ui/textfiled%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6.html</link>
+      <guid>https://oragekk.me/posts/iOS/ui/textfiled%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6.html</guid>
+      <source url="https://oragekk.me/rss.xml">textfield限制输入字符</source>
       <description>记录一下限制输入字符的判断。不仅局限于中文或英文 首先在 ViewDidLoad 中注册通知 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldEditChanged:) 	name:@&amp;quot;UITextFieldTextDidChangeNotification&amp;quot; object:self.userTF];</description>
       <category>iOS</category>
       <pubDate>Sun, 21 May 2017 00:00:00 GMT</pubDate>
@@ -2963,9 +3032,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>iOS timelineLogistics</title>
-      <link>https://oragekk.github.io/posts/iOS/ui/timelineLogistics.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/ui/timelineLogistics.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">iOS timelineLogistics</source>
+      <link>https://oragekk.me/posts/iOS/ui/timelineLogistics.html</link>
+      <guid>https://oragekk.me/posts/iOS/ui/timelineLogistics.html</guid>
+      <source url="https://oragekk.me/rss.xml">iOS timelineLogistics</source>
       <description>timelineLogistics 是模仿淘宝物流信息时间轴界面的自定义 View 效果 Markdown 使用正则表达式判断字符是否为电话号码，用 YYLable 进行富文本电话拨打</description>
       <category>iOS</category>
       <pubDate>Wed, 12 Jul 2017 00:00:00 GMT</pubDate>
@@ -3006,9 +3075,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>优雅的实现TableViewCell单选</title>
-      <link>https://oragekk.github.io/posts/iOS/ui/%E4%BC%98%E9%9B%85%E7%9A%84cell%E5%8D%95%E9%80%89.html</link>
-      <guid>https://oragekk.github.io/posts/iOS/ui/%E4%BC%98%E9%9B%85%E7%9A%84cell%E5%8D%95%E9%80%89.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">优雅的实现TableViewCell单选</source>
+      <link>https://oragekk.me/posts/iOS/ui/%E4%BC%98%E9%9B%85%E7%9A%84cell%E5%8D%95%E9%80%89.html</link>
+      <guid>https://oragekk.me/posts/iOS/ui/%E4%BC%98%E9%9B%85%E7%9A%84cell%E5%8D%95%E9%80%89.html</guid>
+      <source url="https://oragekk.me/rss.xml">优雅的实现TableViewCell单选</source>
       <description>最近有些忙，好久没有写博客了。 分享一个 cell 做单选的思路 可行的思路 在 tableview 的控制器中设立一个变量记录选择的 indexPath，点击 cell 之后刷新表格来和现有 indexPath 对比 和第一种大同小异，做一个和 dataArr 同样的数组，记录 indexPath，循环确定当前 cell 是否为选中 cell 利用 cell 的- (void)setSelected:(BOOL)selected animated:(BOOL)animated方法</description>
       <category>iOS</category>
       <pubDate>Fri, 12 Jan 2018 00:00:00 GMT</pubDate>
@@ -3048,9 +3117,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>更优雅强大的终端ZSH</title>
-      <link>https://oragekk.github.io/posts/Linux/zsh.html</link>
-      <guid>https://oragekk.github.io/posts/Linux/zsh.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">更优雅强大的终端ZSH</source>
+      <link>https://oragekk.me/posts/Linux/zsh.html</link>
+      <guid>https://oragekk.me/posts/Linux/zsh.html</guid>
+      <source url="https://oragekk.me/rss.xml">更优雅强大的终端ZSH</source>
       <description>MacOS 自带的 bash 作为几乎所有 Linux 发行版的默认终端，正常使用时没什么问题的 这里介绍一个更强大的终端神器 背景介绍 在 unix 内核的操作系统中,当然现在衍生出好多分支,linux ,OS X 都算. shell 就算和上面这些系统内核指令打交道的一座桥梁,我们通过键盘输入一种自己容易记忆识别的符号标识(shell 命令) 然后 shell 解析这种命令再反馈给内核去执行一系列操作. zsh 和 shell 有什么关系呢?</description>
       <category>Linux</category>
       <pubDate>Wed, 24 Jul 2019 00:00:00 GMT</pubDate>
@@ -3123,30 +3192,30 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
     </item>
     <item>
       <title>留言板 ✨</title>
-      <link>https://oragekk.github.io/visitorsbook.html</link>
-      <guid>https://oragekk.github.io/visitorsbook.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">留言板 ✨</source>
-      <description>留言板 ✨ ✨📒 如有问题可邮件联系我Mail to Oragekk **💡人生天地之间，若白驹过隙，忽然而已** ::: center _-- 《庄子·外篇·知北游》_ ::: **🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起** 🏷 有什么想说的，可以写在下面🌤</description>
+      <link>https://oragekk.me/visitorsbook.html</link>
+      <guid>https://oragekk.me/visitorsbook.html</guid>
+      <source url="https://oragekk.me/rss.xml">留言板 ✨</source>
+      <description>留言板 ✨ ✨📒 如有问题可邮件联系我Mail to Oragekk 💡人生天地之间，若白驹过隙，忽然而已 -- 《庄子·外篇·知北游》 🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起 🏷 有什么想说的，可以写在下面🌤</description>
       <category>使用指南</category>
       <pubDate>Tue, 07 Mar 2023 02:38:53 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 留言板 ✨</h1>
 <div class="hint-container info">
 <p class="hint-container-title">✨📒</p>
 <p>如有问题可邮件联系我<a href="mailto:oragekk@163.com">Mail to Oragekk</a></p>
-**💡人生天地之间，若白驹过隙，忽然而已**
-::: center
-_-- 《庄子·外篇·知北游》_
-:::
-**🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起**
+<p><strong>💡人生天地之间，若白驹过隙，忽然而已</strong></p>
+<div style="text-align:center">
+<p><em>-- 《庄子·外篇·知北游》</em></p>
+</div>
+<p><strong>🏷 我们有很多的声音而没有真理，我们来自一个良心却各自藏起</strong></p>
 <p>🏷 有什么想说的，可以写在下面🌤</p>
 </div>
 ]]></content:encoded>
     </item>
     <item>
       <title>关于我</title>
-      <link>https://oragekk.github.io/about.html</link>
-      <guid>https://oragekk.github.io/about.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">关于我</source>
+      <link>https://oragekk.me/about.html</link>
+      <guid>https://oragekk.me/about.html</guid>
+      <source url="https://oragekk.me/rss.xml">关于我</source>
       <description>关于我 Profile A big front-end engineer, currently mainly focused on cross-platform development,iOS, ReactNative, Flutter, Vue is the main direction Skills Languages</description>
       <category>About</category>
       <pubDate>Sun, 12 Mar 2023 00:00:00 GMT</pubDate>
@@ -3177,9 +3246,9 @@ _-- 《庄子·外篇·知北游》_
     </item>
     <item>
       <title>关于本站</title>
-      <link>https://oragekk.github.io/intro.html</link>
-      <guid>https://oragekk.github.io/intro.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">关于本站</source>
+      <link>https://oragekk.me/intro.html</link>
+      <guid>https://oragekk.me/intro.html</guid>
+      <source url="https://oragekk.me/rss.xml">关于本站</source>
       <description>关于本站 🧩 这里会记录一些和站点相关的文章 目录 📌 Jekyll的旧站回忆 📌 评论系统从多说迁移到disqus</description>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 关于本站</h1>
@@ -3200,9 +3269,9 @@ _-- 《庄子·外篇·知北游》_
     </item>
     <item>
       <title>主要功能与配置演示</title>
-      <link>https://oragekk.github.io/demo/</link>
-      <guid>https://oragekk.github.io/demo/</guid>
-      <source url="https://oragekk.github.io/rss.xml">主要功能与配置演示</source>
+      <link>https://oragekk.me/demo/</link>
+      <guid>https://oragekk.me/demo/</guid>
+      <source url="https://oragekk.me/rss.xml">主要功能与配置演示</source>
       <description>目录 Markdown 展示 页面展示 禁用展示 加密展示</description>
       <category>使用指南</category>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
@@ -3225,9 +3294,9 @@ _-- 《庄子·外篇·知北游》_
     </item>
     <item>
       <title>布局与功能禁用</title>
-      <link>https://oragekk.github.io/demo/disable.html</link>
-      <guid>https://oragekk.github.io/demo/disable.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">布局与功能禁用</source>
+      <link>https://oragekk.me/demo/disable.html</link>
+      <guid>https://oragekk.me/demo/disable.html</guid>
+      <source url="https://oragekk.me/rss.xml">布局与功能禁用</source>
       <description>你可以通过设置页面的 Frontmatter，在页面禁用功能与布局。</description>
       <category>使用指南</category>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
@@ -3251,9 +3320,9 @@ _-- 《庄子·外篇·知北游》_
     </item>
     <item>
       <title>密码加密的文章</title>
-      <link>https://oragekk.github.io/demo/encrypt.html</link>
-      <guid>https://oragekk.github.io/demo/encrypt.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">密码加密的文章</source>
+      <link>https://oragekk.me/demo/encrypt.html</link>
+      <guid>https://oragekk.me/demo/encrypt.html</guid>
+      <source url="https://oragekk.me/rss.xml">密码加密的文章</source>
       <description>实际的文章内容。 段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字段落 1 文字。 段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 文字段落 2 ...</description>
       <category>使用指南</category>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
@@ -3265,9 +3334,9 @@ _-- 《庄子·外篇·知北游》_
     </item>
     <item>
       <title>Markdown 展示</title>
-      <link>https://oragekk.github.io/demo/markdown.html</link>
-      <guid>https://oragekk.github.io/demo/markdown.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">Markdown 展示</source>
+      <link>https://oragekk.me/demo/markdown.html</link>
+      <guid>https://oragekk.me/demo/markdown.html</guid>
+      <source url="https://oragekk.me/rss.xml">Markdown 展示</source>
       <description>VuePress 主要从 Markdown 文件生成页面。因此，你可以使用它轻松生成文档或博客站点。 你应该创建和编写 Markdown 文件，以便 VuePress 可以根据文件结构将它们转换为不同的页面。</description>
       <category>使用指南</category>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
@@ -3441,9 +3510,9 @@ _-- 《庄子·外篇·知北游》_
     </item>
     <item>
       <title>页面配置</title>
-      <link>https://oragekk.github.io/demo/page.html</link>
-      <guid>https://oragekk.github.io/demo/page.html</guid>
-      <source url="https://oragekk.github.io/rss.xml">页面配置</source>
+      <link>https://oragekk.me/demo/page.html</link>
+      <guid>https://oragekk.me/demo/page.html</guid>
+      <source url="https://oragekk.me/rss.xml">页面配置</source>
       <description>more 注释之前的内容被视为文章摘要。</description>
       <category>使用指南</category>
       <pubDate>Wed, 01 Jan 2020 00:00:00 GMT</pubDate>
