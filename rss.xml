@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 14 Mar 2023 14:53:33 GMT</pubDate>
-    <lastBuildDate>Tue, 14 Mar 2023 14:53:33 GMT</lastBuildDate>
+    <pubDate>Wed, 15 Mar 2023 08:07:11 GMT</pubDate>
+    <lastBuildDate>Wed, 15 Mar 2023 08:07:11 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>Copyright by Oragekk</copyright>
@@ -43,7 +43,7 @@
 直到偶然间发现vuepress，首先是被<code>vue3</code>+<code>typescript</code>+<code>vite</code>吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了
 <a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a>，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</p>
 <h2> Markdown增强</h2>
-<p>hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞<a href="/blog/demo/markdown.html" target="blank">Markdown展示</a></p>
+<p>hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞<a href="/demo/markdown.html" target="blank">Markdown展示</a></p>
 <h2> 目录结构</h2>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 框架支持</h2>
 <p><a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">vuepress2.x</a></p>
