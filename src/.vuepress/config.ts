@@ -13,7 +13,7 @@ import { popperPlugin } from "./plugins/vuepress-plugin-popper";
 import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
-import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
@@ -39,7 +39,7 @@ export default defineUserConfig({
   plugins: [
     // 代码高亮
     shikiPlugin({
-      theme:"one-dark-pro"
+      theme: "one-dark-pro",
     }),
     // 一言插件
     hitokotoPlugin({}),
@@ -69,7 +69,7 @@ export default defineUserConfig({
     // 谷歌统计
     googleAnalyticsPlugin({
       // 配置项
-      id: 'G-R1WPVQFH8L',
+      id: "G-R1WPVQFH8L",
       debug: true,
     }),
     // 搜索插件
@@ -123,5 +123,5 @@ export default defineUserConfig({
     }),
   ],
   // Enable it with pwa
-  // shouldPrefetch: false,
+  shouldPrefetch: false,
 });
