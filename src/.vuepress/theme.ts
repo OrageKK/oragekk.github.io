@@ -86,7 +86,7 @@ export default localTheme({
       displayFooter: false,
 
       blog: {
-        description: "一生短暂，过程很美",
+        description: "到最后，竟庆幸于夕阳仍留在身上",
         intro: "/about.html",
       },
 

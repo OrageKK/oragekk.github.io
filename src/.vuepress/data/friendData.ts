@@ -8,7 +8,7 @@ export interface LinkData {
 export const friends: LinkData[] = [
   {
     title: "上冬十二",
-    desc: "一生短暂，过程很美",
+    desc: "到最后，竟庆幸于夕阳仍留在身上",
     img: "/logo.svg",
     href: "https://oragekk.me/"
   },
