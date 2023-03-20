@@ -23,11 +23,15 @@ demo是照着B站的视频敲的，现在可能用不上了，但是还是觉得
 
 
 ## 预览
-![home](https://s3.bmp.ovh/imgs/2023/03/20/b4d8d0a22fcdfd1a.png)
-![side](https://s3.bmp.ovh/imgs/2023/03/20/a4e70357270289d9.png)
-![animation](https://s3.bmp.ovh/imgs/2023/03/20/88359eef4b2eee2f.png)
-![search](https://s3.bmp.ovh/imgs/2023/03/20/a1e88c9565dd0831.png)
-![alert](https://s3.bmp.ovh/imgs/2023/03/20/5e6fe8f921ad4079.png)
+![home](https://s3.bmp.ovh/imgs/2023/03/20/b4d8d0a22fcdfd1a.png =500x)
+
+![side](https://s3.bmp.ovh/imgs/2023/03/20/a4e70357270289d9.png =500x)
+
+![animation](https://s3.bmp.ovh/imgs/2023/03/20/88359eef4b2eee2f.png =500x)
+
+![search](https://s3.bmp.ovh/imgs/2023/03/20/a1e88c9565dd0831.png =500x)
+
+![alert](https://s3.bmp.ovh/imgs/2023/03/20/5e6fe8f921ad4079.png =500x)
 
 
 
