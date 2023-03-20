@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 20 Mar 2023 08:53:20 GMT</pubDate>
-    <lastBuildDate>Mon, 20 Mar 2023 08:53:20 GMT</lastBuildDate>
+    <pubDate>Mon, 20 Mar 2023 09:16:18 GMT</pubDate>
+    <lastBuildDate>Mon, 20 Mar 2023 09:16:18 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>Copyright by Oragekk</copyright>
@@ -43,11 +43,11 @@
 <p>demo是照着B站的视频敲的，现在可能用不上了，但是还是觉得当时写的demo对于想学习flutter的新手来说作用还是有的，因为视频课程很零散，所以我边看边写了一个app，里边基本介绍了大部分基础的用法，当然进阶的东西，这部分demo是没有的，最近也在忙，有空了再补一部分进阶的东西吧</p>
 <p>现在在做的内容是native+flutter混编，其中坑也不少，有时间会慢慢记录一下</p>
 <h2> 预览</h2>
-<p><a href="https://imgse.com/i/ppNkXTA" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkXTA.md.png" alt="ppNkXTA.md.png" loading="lazy"></a>
-<a href="https://imgse.com/i/ppNkbOe" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkbOe.md.png" alt="ppNkbOe.md.png" loading="lazy"></a>
-<a href="https://imgse.com/i/ppNkHyD" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkHyD.md.png" alt="ppNkHyD.md.png" loading="lazy"></a>
-<a href="https://imgse.com/i/ppNkLeH" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkLeH.md.png" alt="ppNkLeH.md.png" loading="lazy"></a>
-<a href="https://imgse.com/i/ppNkOwd" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkOwd.md.png" alt="ppNkOwd.md.png" loading="lazy"></a></p>
+<p><img src="https://s3.bmp.ovh/imgs/2023/03/20/b4d8d0a22fcdfd1a.png" alt="home" loading="lazy">
+<img src="https://s3.bmp.ovh/imgs/2023/03/20/a4e70357270289d9.png" alt="side" loading="lazy">
+<img src="https://s3.bmp.ovh/imgs/2023/03/20/88359eef4b2eee2f.png" alt="animation" loading="lazy">
+<img src="https://s3.bmp.ovh/imgs/2023/03/20/a1e88c9565dd0831.png" alt="search" loading="lazy">
+<img src="https://s3.bmp.ovh/imgs/2023/03/20/5e6fe8f921ad4079.png" alt="alert" loading="lazy"></p>
 <h2> Getting Started</h2>
 <p>This project is a starting point for a Flutter application.</p>
 <p>A few resources to get you started if this is your first Flutter project:</p>
@@ -107,7 +107,7 @@ samples, guidance on mobile development, and a full API reference.</p>
 <li>cached_network_image: ^3.2.2</li>
 </ul>
 ]]></content:encoded>
-      <enclosure url="https://s1.ax1x.com/2023/03/20/ppNkXTA.md.png" type="image/png"/>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/20/b4d8d0a22fcdfd1a.png" type="image/png"/>
     </item>
     <item>
       <title>建站过程</title>
