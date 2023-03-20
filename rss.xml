@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 16 Mar 2023 08:32:06 GMT</pubDate>
-    <lastBuildDate>Thu, 16 Mar 2023 08:32:06 GMT</lastBuildDate>
+    <pubDate>Mon, 20 Mar 2023 08:53:20 GMT</pubDate>
+    <lastBuildDate>Mon, 20 Mar 2023 08:53:20 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <copyright>Copyright by Oragekk</copyright>
@@ -16,15 +16,99 @@
       <url>https://oragekk.me/logo.svg</url>
       <link>https://oragekk.me/</link>
     </image>
+    <category>Flutter</category>
+    <category>前端跨平台</category>
     <category>Blog</category>
     <category>Linux</category>
     <category>JavaScript</category>
-    <category>Flutter</category>
-    <category>前端跨平台</category>
     <category>iOS</category>
     <category>Swift</category>
     <category>使用指南</category>
     <category>About</category>
+    <item>
+      <title>给Flutter初学者的demo</title>
+      <link>https://oragekk.me/posts/cross-platform/Flutter/newbie.html</link>
+      <guid>https://oragekk.me/posts/cross-platform/Flutter/newbie.html</guid>
+      <source url="https://oragekk.me/rss.xml">给Flutter初学者的demo</source>
+      <description>Flutter初学，demo</description>
+      <category>Flutter</category>
+      <category>前端跨平台</category>
+      <pubDate>Mon, 20 Mar 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>把之前学习时候写的demo拿出来记录一下
+地址：
+<a href="https://github.com/OrageKK/flutter_my_app" target="_blank" rel="noopener noreferrer">flutter_my_app</a></p>
+</div>
+<p>demo是照着B站的视频敲的，现在可能用不上了，但是还是觉得当时写的demo对于想学习flutter的新手来说作用还是有的，因为视频课程很零散，所以我边看边写了一个app，里边基本介绍了大部分基础的用法，当然进阶的东西，这部分demo是没有的，最近也在忙，有空了再补一部分进阶的东西吧</p>
+<p>现在在做的内容是native+flutter混编，其中坑也不少，有时间会慢慢记录一下</p>
+<h2> 预览</h2>
+<p><a href="https://imgse.com/i/ppNkXTA" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkXTA.md.png" alt="ppNkXTA.md.png" loading="lazy"></a>
+<a href="https://imgse.com/i/ppNkbOe" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkbOe.md.png" alt="ppNkbOe.md.png" loading="lazy"></a>
+<a href="https://imgse.com/i/ppNkHyD" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkHyD.md.png" alt="ppNkHyD.md.png" loading="lazy"></a>
+<a href="https://imgse.com/i/ppNkLeH" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkLeH.md.png" alt="ppNkLeH.md.png" loading="lazy"></a>
+<a href="https://imgse.com/i/ppNkOwd" target="_blank" rel="noopener noreferrer"><img src="https://s1.ax1x.com/2023/03/20/ppNkOwd.md.png" alt="ppNkOwd.md.png" loading="lazy"></a></p>
+<h2> Getting Started</h2>
+<p>This project is a starting point for a Flutter application.</p>
+<p>A few resources to get you started if this is your first Flutter project:</p>
+<ul>
+<li><a href="https://docs.flutter.dev/get-started/codelab" target="_blank" rel="noopener noreferrer">Lab: Write your first Flutter app</a></li>
+<li><a href="https://docs.flutter.dev/cookbook" target="_blank" rel="noopener noreferrer">Cookbook: Useful Flutter samples</a></li>
+</ul>
+<p>For help getting started with Flutter development, view the
+<a href="https://docs.flutter.dev/" target="_blank" rel="noopener noreferrer">online documentation</a>, which offers tutorials,
+samples, guidance on mobile development, and a full API reference.</p>
+<h2> 包含</h2>
+<ul>
+<li>路由管理</li>
+<li>基础组件（Text、Image、Icon）</li>
+<li>布局组件
+<ul>
+<li>容器组件Container</li>
+<li>线性布局Row、Column</li>
+<li>弹性布局Flex</li>
+<li>流式布局Wrap</li>
+<li>层叠布局Stack、Positioned</li>
+<li>对齐与相对定位Align</li>
+</ul>
+</li>
+<li>容器类组件
+<ul>
+<li>填充Padding</li>
+<li>装饰容器DecoratedBox</li>
+<li>变换Transform</li>
+<li>剪裁Clip</li>
+<li>页面骨架Scaffold、AppBar</li>
+<li>抽屉菜单Drawer</li>
+<li>底部Tab导航</li>
+<li>页面body</li>
+</ul>
+</li>
+<li>可滚动组件
+<ul>
+<li>GridView</li>
+<li>ListView</li>
+<li>TabBarView</li>
+<li>CustomScrollView 和 Slivers</li>
+</ul>
+</li>
+<li>动画
+<ul>
+<li>隐式动画</li>
+<li>显式动画</li>
+<li>交错动画</li>
+<li>动画切换组件（AnimatedSwitcher）</li>
+</ul>
+</li>
+</ul>
+<h2> 使用库</h2>
+<ul>
+<li>fluttertoast: ^8.0.9</li>
+<li>cached_network_image: ^3.2.2</li>
+</ul>
+]]></content:encoded>
+      <enclosure url="https://s1.ax1x.com/2023/03/20/ppNkXTA.md.png" type="image/png"/>
+    </item>
     <item>
       <title>建站过程</title>
       <link>https://oragekk.me/blog/about.html</link>
@@ -934,18 +1018,6 @@ Android's source code is released by Google under open source licenses, although
 <p class="hint-container-title">相关信息</p>
 <p>这里放置 Flutter 内容</p>
 </div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Flutter子页面</title>
-      <link>https://oragekk.me/posts/cross-platform/Flutter/flutt.html</link>
-      <guid>https://oragekk.me/posts/cross-platform/Flutter/flutt.html</guid>
-      <source url="https://oragekk.me/rss.xml">Flutter子页面</source>
-      <description>这是一个flutter子页面</description>
-      <category>Flutter</category>
-      <category>前端跨平台</category>
-      <pubDate>Thu, 09 Mar 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<p>这是一个flutter子页面</p>
 ]]></content:encoded>
     </item>
     <item>

@@ -1,1 +1,0 @@
-import{_ as t,K as e,L as _,M as c}from"./framework-be1fa0ea.js";const o={},s=c("p",null,"这是一个flutter子页面",-1),l=[s];function n(r,a){return e(),_("div",null,l)}const u=t(o,[["render",n],["__file","flutt.html.vue"]]);export{u as default};
