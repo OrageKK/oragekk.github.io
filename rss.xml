@@ -6,16 +6,10 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 20 Mar 2023 09:30:40 GMT</pubDate>
-    <lastBuildDate>Mon, 20 Mar 2023 09:30:40 GMT</lastBuildDate>
+    <pubDate>Thu, 23 Mar 2023 03:26:05 GMT</pubDate>
+    <lastBuildDate>Thu, 23 Mar 2023 03:26:05 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-    <copyright>Copyright by Oragekk</copyright>
-    <image>
-      <title>Oragekk&amp;apos;s Blog</title>
-      <url>https://oragekk.me/logo.svg</url>
-      <link>https://oragekk.me/</link>
-    </image>
     <category>Flutter</category>
     <category>前端跨平台</category>
     <category>Blog</category>
@@ -3310,12 +3304,18 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <link>https://oragekk.me/about.html</link>
       <guid>https://oragekk.me/about.html</guid>
       <source url="https://oragekk.me/rss.xml">关于我</source>
-      <description>关于我 Profile A big front-end engineer, currently mainly focused on cross-platform development,iOS, ReactNative, Flutter, Vue is the main direction Skills Languages</description>
+      <description>关于我 Profile Exploration &amp;amp; geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you. 提示 探索 &amp;amp; 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界</description>
       <category>About</category>
       <pubDate>Sun, 12 Mar 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 关于我</h1>
 <h2> Profile</h2>
-<p>A big front-end engineer, currently mainly focused on cross-platform development,iOS, ReactNative, Flutter, Vue is the main direction</p>
+<p><em>Exploration &amp; geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you.</em></p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<blockquote>
+<p>探索 &amp; 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界</p>
+</blockquote>
+</div>
 <h2> Skills</h2>
 <h3> Languages</h3>
 <img src="https://skillicons.dev/icons?i=c,cs,swift,javascript,ts,dart,python,html,css,java,regex,md,sass,bash&amp;theme=dark&amp;&amp;perline=10" alt="Skills">
