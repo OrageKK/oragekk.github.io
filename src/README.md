@@ -7,6 +7,11 @@ heroImage: /logo.svg
 heroText: Oragekk's Blog
 heroFullScreen: true
 tagline: Goals determine what you are going to be. —— Julius Erving
+description: 「一生短暂，过程很美」 致力于分享自己涉及和了解的内容，包括但不限于编程语言、AI体验、世界探索者、极客知识| Exploration & geek enthusiast，Full-stack Front-end Engineer，UX Designer | 与你一起发现更大的世界。
+head:
+  - - meta
+    - name: keywords
+      content: Oragekk, sd12, Oragekk Blog, 博客, 个人博客, 极客, geek, 大前端, 设计, iOS, Flutter, Vue
 projects:
   - icon: /logo.svg
     name: 关于本站

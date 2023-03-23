@@ -9,8 +9,11 @@ sidebar: false
 ---
 # 关于我
 ## Profile
-A big front-end engineer, currently mainly focused on cross-platform development,iOS, ReactNative, Flutter, Vue is the main direction
+_Exploration & geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you._
 
+:::tip
+> 探索 & 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界
+:::
 ## Skills
 ### Languages
 <img src="https://skillicons.dev/icons?i=c,cs,swift,javascript,ts,dart,python,html,css,java,regex,md,sass,bash&theme=dark&&perline=10" alt="Skills"/>
