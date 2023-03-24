@@ -44,6 +44,13 @@ export const zhSidebar = sidebar({
           link: "Linux/",
           children: ["zsh"],
         },
+        {
+          text: "Python",
+          icon: "python",
+          prefix: "Python/",
+          link: "Python/",
+          children: ["submit-bing"],
+        },
       ],
     },
     {
@@ -66,6 +73,19 @@ export const zhSidebar = sidebar({
       text: "Linux",
       icon: "linux",
       link: "/posts/Linux/",
+      children: "structure",
+    },
+  ],
+  "/posts/Python/": [
+    {
+      text: "返回目录",
+      icon: "return",
+      link: "/demo/",
+    },
+    {
+      text: "Python",
+      icon: "python",
+      link: "/posts/Python/",
       children: "structure",
     },
   ],

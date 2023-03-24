@@ -5,7 +5,6 @@ category:
   - iOS
 tag:
   - iOS
-  - 杂货铺
 ---
 
 > [参考地址](http://www.jianshu.com/p/b7a646a6c80e)

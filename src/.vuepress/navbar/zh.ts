@@ -11,6 +11,7 @@ export const zhNavbar = navbar([
       { text: "iOS笔记", icon: "hk-apple", link: "iOS/" },
       { text: "前端笔记", icon: "code", link: "Web/" },
       { text: "Linux", icon: "linux", link: "Linux/" },
+      { text: "Python", icon: "python", link: "Python/" },
       { text: "React", icon: "react", link: "cross-platform/ReactNative/" },
       { text: "Flutter", icon: "hk-flutter", link: "cross-platform/Flutter/" },
     ],
