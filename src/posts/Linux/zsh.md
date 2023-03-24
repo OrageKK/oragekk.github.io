@@ -7,13 +7,17 @@ star: true
 category:
   - Linux
 tag:
-  - OS
+  - terminal
   - Linux
 ---
 
 > MacOS 自带的 bash 作为几乎所有 Linux 发行版的默认终端，正常使用时没什么问题的
 >
 > 这里介绍一个更强大的终端神器
+
+## 目录
+
+[[toc]]
 
 ## 背景介绍
 
@@ -43,19 +47,21 @@ zsh 和 shell 有什么关系呢?
 /bin/zsh
 ```
 
-## 安装**“oh my zsh”**
-
+## 安装 **oh my zsh**
+::: code-tabs
+@tab crul
 使用 `crul` 安装：
 
 ```shell
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
-
+@tab wget
 使用 `wget` 安装：
 
 ```shell
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 ```
+:::
 
 安装成功：
 
@@ -112,7 +118,7 @@ README.md       lib             plugins         tools
 - themes 自带主题文件的存在放位置
 - custom 个性化配置目录，自安装的插件和主题可放这里
 
-### 3.配置
+### 配置
 
 `zsh` 的配置主要集中在`~/.zshrc`里，用 `vim` 或你喜欢的其他编辑器打开`.zshrc`。
 

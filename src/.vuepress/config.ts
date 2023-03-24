@@ -36,6 +36,8 @@ export default defineUserConfig({
 
   theme,
 
+  port: 9527,
+
   plugins: [
     // 代码高亮
     shikiPlugin({

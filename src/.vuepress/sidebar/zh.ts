@@ -42,7 +42,7 @@ export const zhSidebar = sidebar({
           icon: "linux",
           prefix: "Linux/",
           link: "Linux/",
-          children: ["zsh"],
+          children: ["zsh","iterm2-pure"],
         },
         {
           text: "Python",
