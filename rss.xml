@@ -6,20 +6,93 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 24 Mar 2023 03:20:40 GMT</pubDate>
-    <lastBuildDate>Fri, 24 Mar 2023 03:20:40 GMT</lastBuildDate>
+    <pubDate>Fri, 24 Mar 2023 12:07:14 GMT</pubDate>
+    <lastBuildDate>Fri, 24 Mar 2023 12:07:14 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Linux</category>
     <category>python</category>
     <category>Flutter</category>
     <category>前端跨平台</category>
     <category>Blog</category>
-    <category>Linux</category>
     <category>JavaScript</category>
     <category>iOS</category>
     <category>Swift</category>
     <category>使用指南</category>
     <category>About</category>
+    <item>
+      <title>终端究极美化iTerm2+Pure</title>
+      <link>https://oragekk.me/posts/Linux/iterm2-pure.html</link>
+      <guid>https://oragekk.me/posts/Linux/iterm2-pure.html</guid>
+      <source url="https://oragekk.me/rss.xml">终端究极美化iTerm2+Pure</source>
+      <description>提示 之前介绍了ZSH的安装和使用，这次把最终成果介绍一下，就是ZSH + iTerm2 + Pure 前置工作：安装ZSH，请参照之前的文章👉zsh安装 目录 先看效果图 界面</description>
+      <category>Linux</category>
+      <pubDate>Fri, 24 Mar 2023 16:40:37 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>之前介绍了ZSH的安装和使用，这次把最终成果介绍一下，就是ZSH + iTerm2 + Pure</p>
+<p>前置工作：安装ZSH，请参照之前的文章👉<a href="/posts/Linux/zsh.html" target="blank">zsh安装</a></p>
+</div>
+<h2> 目录</h2>
+
+<h2> 先看效果图</h2>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/140a5562a8b9e334.png" alt="界面" tabindex="0" loading="lazy"><figcaption>界面</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/810d0c1d2a4d7069.png" alt="命令提示" tabindex="0" loading="lazy"><figcaption>命令提示</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/052c26b51ecde528.png" alt="流输出" tabindex="0" loading="lazy"><figcaption>流输出</figcaption></figure>
+<h2> 安装pure</h2>
+<p>👉<a href="https://github.com/sindresorhus/pure" target="_blank" rel="noopener noreferrer">官方文档</a></p>
+<p>可以使用 npm 或手动安装。需要 Git 2.15.2+ 和 ZSH 5.2+。已知旧版本的 ZSH 可以工作，但不推荐使用。</p>
+
+<p>如果是手动安装的，将克隆的 repo 的路径添加到 $HOME/.zshrc 中的 $fpath 。</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>将以下内容复制到 <code>.zshrc</code>文件中</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>在 .zshrc 中设置 ZSH_THEME="" 以禁用 oh-my-zsh 主题。</p>
+<p>到这里就基本完成了，如果要基于pure做详细定制，请参考文档</p>
+<h2> iTerm2</h2>
+<p>👉戳这里下载 <a href="https://iterm2.com/downloads.html" target="_blank" rel="noopener noreferrer">官方下载地址</a></p>
+<p>效果图我自用的置文件在这里 👉 <a href="https://pan.baidu.com/s/1cG-gSwoPouYXeZ-P2pjmAg" target="_blank" rel="noopener noreferrer">链接</a>  密码:74aq</p>
+<h3> 1.主题配置</h3>
+<p>访问iTerm2主题网站👉<a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="noopener noreferrer">iTerm2-Color-Schemes</a></p>
+<p>可以下载zip包并解压到本地，进入解压缩的文件目录，找到schemes文件夹，里边全是主题配置，可以对照github上的效果图来选择</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/2eee92812c17fc48.png" alt="导入" tabindex="0" loading="lazy"><figcaption>导入</figcaption></figure>
+<h3> 2. 标签页配色</h3>
+<p>标签配色默认为黑色，不能与操作页面保持统一</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/9995b0382a76bba8.png" alt="默认" tabindex="0" loading="lazy"><figcaption>默认</figcaption></figure>
+<p>打开iTerm2，打开Preferences配置界面，Appearence -&gt; General，将 Theme 改为 Minimal</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/411e917c7fb3d2b9.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 3. 设置 Status bar</h3>
+<p>iTerm2 提供了不少的 Status bar，开启后我们可以在终端的最上方非常方便的实时查看本机的一些信息。</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/d93a133dcd5fe00c.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>打开iTerm2，打开Preferences配置界面，Profiles -&gt; session-&gt; 勾选 Status bar enable-&gt; configure Status bar，选择自己想要的展示内容即可。向下托动放入Active Components 中即可,我这里只选了CPU、内存、网络</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/918522902136668f.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h3> 4. 光标选择</h3>
+<p>iterm提供了三种光标可供选择：_、|、[]。</p>
+<p>打开iTerm2，打开Preferences配置界面，Profiles -&gt; text-&gt; cursor，选择自己想要的光标即可。</p>
+<h3> 5.配置SSH快速连接</h3>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果出现没有权限，就命令前面加上sudo</p>
+<p>键盘输入i编辑文件，插入以下内容：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>myserver.sh文件中变量解释：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>插入完成后键盘esc 然后输入:wq退出，接下来给文件赋权</p>
+<p>chmod 777 <a href="http://myserver.sh" target="_blank" rel="noopener noreferrer">myserver.sh</a>
+打开iTerm2，打开Preferences配置界面，Profiles -&gt; general，左下角点击+号，新建profile，参考下面图片在对应位置输入内容即可。</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/349fdd06e7bc428d.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<p>Name:根据需求输入，通常选择标识性较强的内容便于区分，例如服务器的IP地址</p>
+<p>Command：这里选择login Shell</p>
+<p>Send text at start ：填写格式形如A B C D E这样，每一个部分之间用空格隔开，根据自己实际情况填写,下面是对每一部分内容的解释</p>
+<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>A 代表咱们上面写的本机保存sh脚本的路径：/Users/iterm/myserver.sh</p>
+<p>B 代表服务器端口号一般远程连接端口为：22</p>
+<p>C 代表服务器用户名一般为：root</p>
+<p>D 代表服务器IP：公网IP填写</p>
+<p>E 代表服务器密码：根据自己实际的服务器密码填写
+设置好之后打开iTerm2，点击profiles，点击前面自己新增的连接远程服务器的profile的名字</p>
+<p>首次连接需要输入一次服务器密码，之后再连接就免密码登陆了</p>
+</div>
+<h2> 结语</h2>
+<p>当然这里只介绍一部分，还有很多高级玩法，需要用到的时候自己去研究一下了</p>
+]]></content:encoded>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/24/140a5562a8b9e334.png" type="image/png"/>
+    </item>
     <item>
       <title>Python</title>
       <link>https://oragekk.me/posts/Python/</link>
@@ -3253,13 +3326,15 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <link>https://oragekk.me/posts/Linux/zsh.html</link>
       <guid>https://oragekk.me/posts/Linux/zsh.html</guid>
       <source url="https://oragekk.me/rss.xml">更优雅强大的终端ZSH</source>
-      <description>MacOS 自带的 bash 作为几乎所有 Linux 发行版的默认终端，正常使用时没什么问题的 这里介绍一个更强大的终端神器 背景介绍 在 unix 内核的操作系统中,当然现在衍生出好多分支,linux ,OS X 都算. shell 就算和上面这些系统内核指令打交道的一座桥梁,我们通过键盘输入一种自己容易记忆识别的符号标识(shell 命令) 然后 shell 解析这种命令再反馈给内核去执行一系列操作. zsh 和 shell 有什么关系呢?</description>
+      <description>MacOS 自带的 bash 作为几乎所有 Linux 发行版的默认终端，正常使用时没什么问题的 这里介绍一个更强大的终端神器 目录 背景介绍 在 unix 内核的操作系统中,当然现在衍生出好多分支,linux ,OS X 都算. shell 就算和上面这些系统内核指令打交道的一座桥梁,我们通过键盘输入一种自己容易记忆识别的符号标识(shell 命令) 然后 shell 解析这种命令再反馈给内核去执行一系列操作. zsh 和 shell 有什么关系呢?</description>
       <category>Linux</category>
       <pubDate>Wed, 24 Jul 2019 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<blockquote>
 <p>MacOS 自带的 bash 作为几乎所有 Linux 发行版的默认终端，正常使用时没什么问题的</p>
 <p>这里介绍一个更强大的终端神器</p>
 </blockquote>
+<h2> 目录</h2>
+
 <h2> 背景介绍</h2>
 <p>在 unix 内核的操作系统中,当然现在衍生出好多分支,linux ,OS X 都算.</p>
 <p>shell 就算和上面这些系统内核指令打交道的一座桥梁,我们通过键盘输入一种自己容易记忆识别的符号标识(shell 命令)</p>
@@ -3270,10 +3345,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 查看 Mac 上已有的 shell,一共有 6 种</p>
 <hr>
 <p><code>cat /etc/shells</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 安装**“oh my zsh”**</h2>
-<p>使用 <code>crul</code> 安装：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>使用 <code>wget</code> 安装：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>安装成功：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 安装 <strong>oh my zsh</strong></h2>
+
+<p>安装成功：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>安装完成以后，默认<code>Shell</code>的<code>~/.bashrc</code>文件默认不再加载了，替代的是<code>~/.zlogin</code>和<code>~/.zshrc</code>。所以如果你在<code>~/.bashrc</code>里配置了某些设置，需要把她们复制到<code>~/.zshrc</code>中。</p>
 <p>在<code>~/.zshrc</code> 中添加以下行</p>
 <p><code>source ~/.bash_profile</code></p>
@@ -3289,7 +3363,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <li>themes 自带主题文件的存在放位置</li>
 <li>custom 个性化配置目录，自安装的插件和主题可放这里</li>
 </ul>
-<h3> 3.配置</h3>
+<h3> 配置</h3>
 <p><code>zsh</code> 的配置主要集中在<code>~/.zshrc</code>里，用 <code>vim</code> 或你喜欢的其他编辑器打开<code>.zshrc</code>。</p>
 <p>可以在此处定义自己的环境变量和别名，当然，<code>oh my zsh</code> 在安装时已经自动读取当前的环境变量并进行了设置，你可以继续追加其他环境变量。</p>
 <h4> 别名设置：</h4>
