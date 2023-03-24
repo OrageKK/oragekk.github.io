@@ -6,10 +6,11 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 23 Mar 2023 03:26:05 GMT</pubDate>
-    <lastBuildDate>Thu, 23 Mar 2023 03:26:05 GMT</lastBuildDate>
+    <pubDate>Fri, 24 Mar 2023 03:20:40 GMT</pubDate>
+    <lastBuildDate>Fri, 24 Mar 2023 03:20:40 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>python</category>
     <category>Flutter</category>
     <category>前端跨平台</category>
     <category>Blog</category>
@@ -19,6 +20,50 @@
     <category>Swift</category>
     <category>使用指南</category>
     <category>About</category>
+    <item>
+      <title>Python</title>
+      <link>https://oragekk.me/posts/Python/</link>
+      <guid>https://oragekk.me/posts/Python/</guid>
+      <source url="https://oragekk.me/rss.xml">Python</source>
+      <description>相关信息 这里放置 python相关 内容</description>
+      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>这里放置 python相关 内容</p>
+</div>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>使用Bing API提交网站URL</title>
+      <link>https://oragekk.me/posts/Python/submit-bing.html</link>
+      <guid>https://oragekk.me/posts/Python/submit-bing.html</guid>
+      <source url="https://oragekk.me/rss.xml">使用Bing API提交网站URL</source>
+      <description>提示 最近在做SEO，因为链接没有做同步，需要清除之前旧站的链接，重新提交，让搜索引擎尽快索引，google search console的已经基本做差不多了 bing最近因为 New Bing 的原因也用的比较多，所以做了一些工作，很方便的是，它可以直接同步GSC的站点数据，不过就只是域数据，URL还是要自己提交 为了尽快索引，只提交sitemap是不够的，还需要调用API手动提交URL</description>
+      <category>python</category>
+      <pubDate>Fri, 24 Mar 2023 10:52:27 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>最近在做SEO，因为链接没有做同步，需要清除之前旧站的链接，重新提交，让搜索引擎尽快索引，google search console的已经基本做差不多了</p>
+<p>bing最近因为 <em>New Bing</em> 的原因也用的比较多，所以做了一些工作，很方便的是，它可以直接同步GSC的站点数据，不过就只是域数据，URL还是要自己提交</p>
+<p>为了尽快索引，只提交sitemap是不够的，还需要调用API手动提交URL</p>
+</div>
+<h3> 官方示例</h3>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/25889c6c306381f8.png" alt="bing example" tabindex="0" loading="lazy"><figcaption>bing example</figcaption></figure>
+<h3> python代码</h3>
+
+<h3> 解读</h3>
+<p>在上面的脚本中，我们首先指定了Sitemap的URL。然后，我们使用Python中的requests库获取Sitemap的内容，并使用Python中的xml.etree.ElementTree库解析Sitemap中的URL。</p>
+<p>接下来，我们使用Bing API提交URL。我们首先指定Bing API的密钥和API URL，并设置请求头。然后，我们将Sitemap中提取的URL列表作为数据，将其作为JSON格式发送到Bing API。最后，我们检查响应的状态码，以确保URL已成功提交。</p>
+<p>注意：在使用Bing API提交URL之前，需要先注册Bing Webmaster工具，并获取Bing API密钥。还需要将"<a href="https://example.com" target="_blank" rel="noopener noreferrer">https://example.com</a>"替换为自己的站点URL。</p>
+<p>API密钥生成↘️</p>
+<ol>
+<li>访问<a href="https://www.bing.com/webmasters/" target="_blank" rel="noopener noreferrer">Bing Webmaster Tools</a></li>
+<li>右上角设置</li>
+</ol>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/6fb703876007f6b6.png" alt="API密钥生成" width="500" tabindex="0" loading="lazy"><figcaption>API密钥生成</figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/24/25889c6c306381f8.png" type="image/png"/>
+    </item>
     <item>
       <title>给Flutter初学者的demo</title>
       <link>https://oragekk.me/posts/cross-platform/Flutter/newbie.html</link>
