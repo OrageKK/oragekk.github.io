@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 24 Mar 2023 12:07:14 GMT</pubDate>
-    <lastBuildDate>Fri, 24 Mar 2023 12:07:14 GMT</lastBuildDate>
+    <pubDate>Mon, 27 Mar 2023 03:55:42 GMT</pubDate>
+    <lastBuildDate>Mon, 27 Mar 2023 03:55:42 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Linux</category>
@@ -25,7 +25,7 @@
       <link>https://oragekk.me/posts/Linux/iterm2-pure.html</link>
       <guid>https://oragekk.me/posts/Linux/iterm2-pure.html</guid>
       <source url="https://oragekk.me/rss.xml">终端究极美化iTerm2+Pure</source>
-      <description>提示 之前介绍了ZSH的安装和使用，这次把最终成果介绍一下，就是ZSH + iTerm2 + Pure 前置工作：安装ZSH，请参照之前的文章👉zsh安装 目录 先看效果图 界面</description>
+      <description>提示 之前介绍了ZSH的安装和使用，这次把最终成果介绍一下，就是ZSH + iTerm2 + Pure 前置工作：安装ZSH，请参照之前的文章👉zsh安装</description>
       <category>Linux</category>
       <pubDate>Fri, 24 Mar 2023 16:40:37 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container tip">
@@ -33,6 +33,7 @@
 <p>之前介绍了ZSH的安装和使用，这次把最终成果介绍一下，就是ZSH + iTerm2 + Pure</p>
 <p>前置工作：安装ZSH，请参照之前的文章👉<a href="/posts/Linux/zsh.html" target="blank">zsh安装</a></p>
 </div>
+<!-- more -->
 <h2> 目录</h2>
 
 <h2> 先看效果图</h2>
@@ -49,7 +50,7 @@
 <p>到这里就基本完成了，如果要基于pure做详细定制，请参考文档</p>
 <h2> iTerm2</h2>
 <p>👉戳这里下载 <a href="https://iterm2.com/downloads.html" target="_blank" rel="noopener noreferrer">官方下载地址</a></p>
-<p>效果图我自用的置文件在这里 👉 <a href="https://pan.baidu.com/s/1cG-gSwoPouYXeZ-P2pjmAg" target="_blank" rel="noopener noreferrer">链接</a>  密码:74aq</p>
+<p>效果图我自用的配置文件在这里 👉 <a href="https://pan.baidu.com/s/1cG-gSwoPouYXeZ-P2pjmAg" target="_blank" rel="noopener noreferrer">链接</a>  密码:74aq</p>
 <h3> 1.主题配置</h3>
 <p>访问iTerm2主题网站👉<a href="https://github.com/mbadolato/iTerm2-Color-Schemes" target="_blank" rel="noopener noreferrer">iTerm2-Color-Schemes</a></p>
 <p>可以下载zip包并解压到本地，进入解压缩的文件目录，找到schemes文件夹，里边全是主题配置，可以对照github上的效果图来选择</p>
@@ -317,27 +318,28 @@ samples, guidance on mobile development, and a full API reference.</p>
       <link>https://oragekk.me/friend.html</link>
       <guid>https://oragekk.me/friend.html</guid>
       <source url="https://oragekk.me/rss.xml">友情链接</source>
-      <description>友情链接 🧩 欢迎交换友情链接： 把本站添加到你的站点中 在评论区按照以下格式留言 名称： 链接 简介 头像 友链</description>
+      <description>友情链接 🧩 欢迎交换友情链接 本站信息如下 title: &amp;quot;上冬十二&amp;quot;, desc: &amp;quot;到最后，竟庆幸于夕阳仍留在身上&amp;quot;, img: &amp;quot;https://oragekk.me/logo.svg&amp;quot;, href: &amp;quot;https://oragekk.me/&amp;quot;</description>
       <pubDate>Fri, 10 Mar 2023 06:30:41 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 友情链接</h1>
 <div class="hint-container tip">
 <p class="hint-container-title">🧩</p>
-<p>欢迎交换友情链接：</p>
+<p>欢迎交换友情链接</p>
+<p>本站信息如下</p>
+<div class="language-json line-numbers-mode" data-ext="json"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></div>
 <ol>
 <li>
 <p>把本站添加到你的站点中</p>
 </li>
 <li>
-<p>在评论区按照以下格式留言</p>
+<p>在评论区按照以下格式留言 或提交PR</p>
 </li>
 </ol>
 <ul>
 <li>名称：</li>
-<li>链接</li>
-<li>简介</li>
-<li>头像</li>
+<li>简介：</li>
+<li>头像：</li>
+<li>链接：</li>
 </ul>
-</div>
 <h2> 友链</h2>
 ]]></content:encoded>
     </item>
@@ -552,10 +554,10 @@ samples, guidance on mobile development, and a full API reference.</p>
 ]]></content:encoded>
     </item>
     <item>
-      <title>Example Post</title>
+      <title>Past Post</title>
       <link>https://oragekk.me/posts/Linux/unix-linux-note.html</link>
       <guid>https://oragekk.me/posts/Linux/unix-linux-note.html</guid>
-      <source url="https://oragekk.me/rss.xml">Example Post</source>
+      <source url="https://oragekk.me/rss.xml">Past Post</source>
       <description>This document is not completed and will be updated anytime. Catagory Unix Bell Labs Xenix BSD FreeBSD &amp;amp; Apple NeXTStep Darwin POSIX Unix-like Single Unix Specification Apple iOS XNU Kernel Linux Linux Kernel GNU Project Android Android Kernel Android ROM Chrome OS Chromium OS</description>
       <category>Linux</category>
       <pubDate>Tue, 14 Apr 2015 00:00:00 GMT</pubDate>
@@ -3035,11 +3037,8 @@ lipo -create 真机版本路径 模拟器版本路径 -output 合并后的文件
 <p>由于最近公司在做图片相册选择上传的功能，对于图片的压缩算法这里我借鉴了 ochina 的 ios 端 App。其中有涉及到图片压缩的算法，这里贴出来留待后用;</p>
 </blockquote>
 <h3> GACompressionPicHandle.h</h3>
-
-<h3> GACompressionPicHandle.m</h3>
-
-<p>}</p>
-]]></content:encoded>
+<div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> GACompressionPicHandle.m</h3>
+<div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
       <enclosure url="https://zero-space.s3.amazonaws.com/photos/bf30834c-a9de-41f4-9f39-4f44c2f2ff13x840.jpg" type="image/jpeg"/>
     </item>
     <item>
@@ -3372,7 +3371,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <li><code>alias -s html=vi</code>，意思就是你在命令行输入 <code>hello.html</code>，<code>zsh</code>会为你自动打开<code>vim</code>并读取<code>hello.html</code>；</li>
 <li><code>alias -s gz='tar -xzvf'</code>，表示自动解压后缀为<code>gz</code>的压缩包。</li>
 </ul>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>【其他】</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>【其他】</p>
 <ul>
 <li><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/themes" target="_blank" rel="noopener noreferrer">github zsh 主题参考</a></li>
 <li><a href="http://blog.sina.com.cn/s/blog_71539d240101fh8s.html" target="_blank" rel="noopener noreferrer">自定义 zsh 提示符</a></li>
@@ -3383,12 +3382,12 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p><code>ZSH_THEME="random"</code>，主题设置为随机，这样我们每打开一个窗口，都会随机在默认主题中选择一个。</p>
 <h4> 插件设置：</h4>
 <p><code>oh my zsh</code>项目提供了完善的插件体系，相关的文件在<code>~/.oh-my-zsh/plugins</code>目录下，默认提供了 100 多种，大家可以根据自己的实际学习和工作环境采用，想了解每个插件的功能，只要打开相关目录下的 <code>zsh</code> 文件看一下就知道了。插件也是在<code>.zshrc</code>里配置，找到<code>plugins</code>关键字，你就可以加载自己的插件了，系统默认加载<code>git</code>，你可以在后面追加内容，如下：</p>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h5> 安装 <code>zsh-autosuggestions</code></h5>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h5> 安装 <code>zsh-autosuggestions</code></h5>
 <p>autosuggestions 它是 Oh-myszh 的一个插件，作用基本上是根据历史输入指令的记录即时的提示，能够很大的提高效率</p>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>添加至 <code>plugins</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>添加至 <code>plugins</code></p>
 <h5> 安装 <code>zsh-syntax-highlighting</code></h5>
 <p>代码高亮插件可以让终端颜色更加绚丽</p>
-<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>添加至 <code>plugins</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>添加至 <code>plugins</code></p>
 <p><code>plugins=(zsh-autosuggestions git zsh-syntax-highlighting)</code></p>
 <h2> 效果图</h2>
 <figure><a href="https://imgchr.com/i/MarNhq" target="_blank" rel="noopener noreferrer"><img src="https://s2.ax1x.com/2019/11/15/MarNhq.md.png" alt="MarNhq.md.png" tabindex="0" loading="lazy"></a><figcaption>MarNhq.md.png</figcaption></figure>
