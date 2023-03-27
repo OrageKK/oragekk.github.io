@@ -131,7 +131,7 @@ README.md       lib             plugins         tools
 - `alias -s html=vi`，意思就是你在命令行输入 `hello.html`，`zsh`会为你自动打开`vim`并读取`hello.html`；
 - `alias -s gz='tar -xzvf'`，表示自动解压后缀为`gz`的压缩包。
 
-```
+``` sh
 alias cls='clear'
 alias ll='ls -l'
 alias la='ls -a'
@@ -168,7 +168,7 @@ alias -s bz2='tar -xjvf'
 
 `oh my zsh`项目提供了完善的插件体系，相关的文件在`~/.oh-my-zsh/plugins`目录下，默认提供了 100 多种，大家可以根据自己的实际学习和工作环境采用，想了解每个插件的功能，只要打开相关目录下的 `zsh` 文件看一下就知道了。插件也是在`.zshrc`里配置，找到`plugins`关键字，你就可以加载自己的插件了，系统默认加载`git`，你可以在后面追加内容，如下：
 
-```
+```sh
 plugins=(git zsh-autosuggestions autojump zsh-syntax-highlighting)
 ```
 
@@ -176,7 +176,7 @@ plugins=(git zsh-autosuggestions autojump zsh-syntax-highlighting)
 
 autosuggestions 它是 Oh-myszh 的一个插件，作用基本上是根据历史输入指令的记录即时的提示，能够很大的提高效率
 
-```
+```sh
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 ```
 
@@ -186,7 +186,7 @@ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh
 
 代码高亮插件可以让终端颜色更加绚丽
 
-```
+```sh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 

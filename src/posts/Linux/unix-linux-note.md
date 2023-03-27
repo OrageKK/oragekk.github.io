@@ -1,5 +1,5 @@
 ---
-title: "Example Post"
+title: "Past Post"
 icon: "linux"
 date: 2015-04-14
 category:

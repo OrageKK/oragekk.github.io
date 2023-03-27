@@ -18,6 +18,7 @@ tag:
 前置工作：安装ZSH，请参照之前的文章👉[zsh安装](./zsh.html)
 :::
 
+<!-- more -->
 ## 目录
 
 [[toc]]
@@ -73,7 +74,7 @@ prompt pure
 ## iTerm2
 👉戳这里下载 [官方下载地址](https://iterm2.com/downloads.html)
 
-效果图我自用的置文件在这里 👉 [链接](https://pan.baidu.com/s/1cG-gSwoPouYXeZ-P2pjmAg)  密码:74aq
+效果图我自用的配置文件在这里 👉 [链接](https://pan.baidu.com/s/1cG-gSwoPouYXeZ-P2pjmAg)  密码:74aq
 
 ### 1.主题配置
 访问iTerm2主题网站👉[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
