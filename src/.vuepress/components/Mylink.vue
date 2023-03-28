@@ -8,17 +8,18 @@
       <a
         class="item project"
         :class="GetColorClassName(index)"
-        :href="item.href"
+        :href="item.link"
         target="_blank"
       >
-        <img class="image" :src="item.img" alt="" />
-        <div class="name">{{ item.title }}</div>
+        <img class="image" :src="item.ico" alt="" />
+        <div class="name">{{ item.name }}</div>
         <div class="desc">{{ item.desc }}</div>
       </a>
     </template>
   </div>
 </template>
 <script setup lang="ts">
+import { api } from "../data/api";
 import { friends, LinkData } from "../data/friendData";
 const props = defineProps({
   type: String,
@@ -27,6 +28,9 @@ let linkDatas: LinkData[];
 switch (props.type) {
   case "friend":
     linkDatas = friends;
+    break;
+  case "api":
+    linkDatas = api;
     break;
   default:
     linkDatas = [];

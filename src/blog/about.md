@@ -106,7 +106,8 @@ hope主题的markdown效果是出乎意料的好，而且支持了很多普通ma
 4. **配置内容**
    - navbar
    - sidebar
-   - 评论基于 Waline
+   - 评论基于 [Waline](https://waline.js.org/)
+   - 搜索基于[algolia](https://www.algolia.com/developers/?utm_content=powered_by&utm_source=localhost&utm_medium=referral&utm_campaign=docsearch)
    - 启用 copyright 版权信息插件
    - feed rss插件
 

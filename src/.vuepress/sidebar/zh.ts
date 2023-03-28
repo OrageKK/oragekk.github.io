@@ -21,7 +21,7 @@ export const zhSidebar = sidebar({
           icon: "hk-apple",
           link: "iOS/",
           prefix: "iOS/",
-          children: ["swift/","source/", "other/"],
+          children: ["swift/", "source/", "other/"],
         },
         {
           text: "跨平台开发",
@@ -35,14 +35,14 @@ export const zhSidebar = sidebar({
           icon: "code",
           link: "Web/",
           prefix: "Web/",
-          children: ["Vue/", "JavaScript/","node/"],
+          children: ["Vue/", "JavaScript/", "node/"],
         },
         {
           text: "Linux",
           icon: "linux",
           prefix: "Linux/",
           link: "Linux/",
-          children: ["zsh","iterm2-pure"],
+          children: ["iterm2-pure"],
         },
         {
           text: "Python",
@@ -52,6 +52,12 @@ export const zhSidebar = sidebar({
           children: ["submit-bing"],
         },
       ],
+    },
+    {
+      text: "收藏",
+      icon: "hk-shoucang1",
+      prefix: "mark/",
+      children: "structure",
     },
     {
       text: "生活",
@@ -138,6 +144,13 @@ export const zhSidebar = sidebar({
       text: "前端开发",
       icon: "code",
       link: "/posts/Web/",
+      children: "structure",
+    },
+  ],
+  "/mark/": [
+    {
+      text: "收藏",
+      icon: "hk-shoucang1",
       children: "structure",
     },
   ],

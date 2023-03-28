@@ -17,6 +17,11 @@ export const zhNavbar = navbar([
     ],
   },
   {
+    text: "收藏",
+    icon: "hk-shoucang1",
+    link: "/mark",
+  },
+  {
     text: "留言板",
     icon: "mark",
     link: "/visitorsbook",

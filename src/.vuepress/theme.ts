@@ -21,7 +21,7 @@ export default localTheme({
     // 默认：
     "//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css",
     // 自己的
-    "//at.alicdn.com/t/c/font_3941380_mxk08oxagge.css",
+    "//at.alicdn.com/t/c/font_3941380_fpvodt87x3.css",
   ],
 
   logo: "/logo.svg",

@@ -18,20 +18,20 @@ projects:
     desc: 这里有关于站点的详细介绍
     link: /intro
 
-  - icon: link
+  - icon: /assets/link.svg
     name: 友情链接
     desc: (●´∀｀●)ﾉ
     link: /friend
 
-  - icon: mark
+  - icon: /assets/lyb.svg
     name: 留言板
     desc: 欢迎来留言哦~
     link: /visitorsbook
 
-  # - icon: article
-  #   name: 文章名称
-  #   desc: 文章详细描述
-  #   link: https://你的文章链接
+  - icon: /assets/shoucang.svg
+    name: 收藏
+    desc: 有趣的内容
+    link: /mark
 
   # - icon: friend
   #   name: 伙伴名称

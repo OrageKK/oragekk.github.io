@@ -11,15 +11,15 @@ sidebar: false
 
 本站信息如下
 ```json
-title: "上冬十二",
+name: "上冬十二",
 desc: "到最后，竟庆幸于夕阳仍留在身上",
-img: "https://oragekk.me/logo.svg",
-href: "https://oragekk.me/"
+ico: "https://oragekk.me/logo.svg",
+link: "https://oragekk.me/"
 ```
 :::
 1. 把本站添加到你的站点中
 
-2. 在评论区按照以下格式留言 或提交PR
+2. 在评论区按照以下格式留言或提交PR 修改`src/.vuepress/data/friendData.ts`
 
 - 名称：
 - 简介：
