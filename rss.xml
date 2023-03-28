@@ -6,10 +6,11 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 28 Mar 2023 03:17:15 GMT</pubDate>
-    <lastBuildDate>Tue, 28 Mar 2023 03:17:15 GMT</lastBuildDate>
+    <pubDate>Tue, 28 Mar 2023 11:48:56 GMT</pubDate>
+    <lastBuildDate>Tue, 28 Mar 2023 11:48:56 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>收藏</category>
     <category>Linux</category>
     <category>python</category>
     <category>Flutter</category>
@@ -20,6 +21,20 @@
     <category>Swift</category>
     <category>使用指南</category>
     <category>About</category>
+    <item>
+      <title>公开API</title>
+      <link>https://oragekk.me/mark/public-api.html</link>
+      <guid>https://oragekk.me/mark/public-api.html</guid>
+      <source url="https://oragekk.me/rss.xml">公开API</source>
+      <description>相关信息 免费公开的API网站，提供多种公共接口服务</description>
+      <category>收藏</category>
+      <pubDate>Tue, 28 Mar 2023 17:39:48 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>免费公开的API网站，提供多种公共接口服务</p>
+</div>
+]]></content:encoded>
+    </item>
     <item>
       <title>终端究极美化iTerm2+Pure</title>
       <link>https://oragekk.me/posts/Linux/iterm2-pure.html</link>
@@ -291,7 +306,8 @@ samples, guidance on mobile development, and a full API reference.</p>
 <ul>
 <li>navbar</li>
 <li>sidebar</li>
-<li>评论基于 Waline</li>
+<li>评论基于 <a href="https://waline.js.org/" target="_blank" rel="noopener noreferrer">Waline</a></li>
+<li>搜索基于<a href="https://www.algolia.com/developers/?utm_content=powered_by&amp;utm_source=localhost&amp;utm_medium=referral&amp;utm_campaign=docsearch" target="_blank" rel="noopener noreferrer">algolia</a></li>
 <li>启用 copyright 版权信息插件</li>
 <li>feed rss插件</li>
 </ul>
@@ -318,7 +334,7 @@ samples, guidance on mobile development, and a full API reference.</p>
       <link>https://oragekk.me/friend.html</link>
       <guid>https://oragekk.me/friend.html</guid>
       <source url="https://oragekk.me/rss.xml">友情链接</source>
-      <description>友情链接 🧩 欢迎交换友情链接 本站信息如下 title: &amp;quot;上冬十二&amp;quot;, desc: &amp;quot;到最后，竟庆幸于夕阳仍留在身上&amp;quot;, img: &amp;quot;https://oragekk.me/logo.svg&amp;quot;, href: &amp;quot;https://oragekk.me/&amp;quot;</description>
+      <description>友情链接 🧩 欢迎交换友情链接 本站信息如下 name: &amp;quot;上冬十二&amp;quot;, desc: &amp;quot;到最后，竟庆幸于夕阳仍留在身上&amp;quot;, ico: &amp;quot;https://oragekk.me/logo.svg&amp;quot;, link: &amp;quot;https://oragekk.me/&amp;quot;</description>
       <pubDate>Fri, 10 Mar 2023 06:30:41 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 友情链接</h1>
 <div class="hint-container tip">
@@ -331,7 +347,7 @@ samples, guidance on mobile development, and a full API reference.</p>
 <p>把本站添加到你的站点中</p>
 </li>
 <li>
-<p>在评论区按照以下格式留言 或提交PR</p>
+<p>在评论区按照以下格式留言或提交PR 修改<code>src/.vuepress/data/friendData.ts</code></p>
 </li>
 </ol>
 <ul>
