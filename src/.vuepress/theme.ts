@@ -113,13 +113,20 @@ export default localTheme({
     },
     comment: {
       provider: "Waline",
-      serverURL: "waline-5swxos1th-oragekk.vercel.app", // your server url
+      serverURL: "https://waline-oragekk.vercel.app/", // your server url
       reaction: true,
+      requiredMeta:['nick'],
+      wordLimit:300,
+      locales:{
+        "/":{
+          placeholder:"欢迎留言~ _(≧∇≦」∠)_ (填写常用邮箱即可快速收到回复通知~)"
+        }
+      }
     },
     prismjs: false,
     copyright: {
       author: "Oragekk",
-      license: "MIT",
+      license: "CC BY-NC-SA 4.0",
       global: true,
     },
     // all features are enabled for demo, only preserve features you need here
