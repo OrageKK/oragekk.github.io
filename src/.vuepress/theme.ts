@@ -113,7 +113,7 @@ export default localTheme({
     },
     comment: {
       provider: "Waline",
-      serverURL: "https://waline-oragekk.vercel.app/", // your server url
+      serverURL: "https://talk.oragekk.me/", // your server url
       reaction: true,
       requiredMeta:['nick'],
       wordLimit:300,
