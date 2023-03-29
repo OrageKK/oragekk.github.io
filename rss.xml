@@ -6,21 +6,153 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 28 Mar 2023 11:48:56 GMT</pubDate>
-    <lastBuildDate>Tue, 28 Mar 2023 11:48:56 GMT</lastBuildDate>
+    <pubDate>Wed, 29 Mar 2023 10:05:47 GMT</pubDate>
+    <lastBuildDate>Wed, 29 Mar 2023 10:05:47 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Blog</category>
     <category>收藏</category>
     <category>Linux</category>
     <category>python</category>
     <category>Flutter</category>
     <category>前端跨平台</category>
-    <category>Blog</category>
     <category>JavaScript</category>
     <category>iOS</category>
     <category>Swift</category>
     <category>使用指南</category>
     <category>About</category>
+    <item>
+      <title>评论插件 Waline 之邮件通知配置</title>
+      <link>https://oragekk.me/blog/waline-mail.html</link>
+      <guid>https://oragekk.me/blog/waline-mail.html</guid>
+      <source url="https://oragekk.me/rss.xml">评论插件 Waline 之邮件通知配置</source>
+      <description>评论插件 Waline 之邮件通知配置 ✨ 陆续优化中……这次到了评论的邮件通知，由于 waline 带后端，可以开启评论通知，我是部署在 Vercel 上的，配置一下就可以了，模版要感谢小波同学 前置注意点 1.邮件要注意每日发信限制，短时密集评论会导致直接被封，禁止发信 2.最好不要使用自己平常使用的邮箱，使用一个单独的邮箱来操作 3.有服务器的同学，自己部署SMTP服务可以不受限制</description>
+      <category>Blog</category>
+      <pubDate>Wed, 29 Mar 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 评论插件 Waline 之邮件通知配置</h1>
+<div class="hint-container info">
+<p class="hint-container-title">✨</p>
+<p>陆续优化中……这次到了评论的邮件通知，由于 waline 带后端，可以开启评论通知，我是部署在 Vercel 上的，配置一下就可以了，模版要感谢<a href="https://blog.ganxb2.com/" target="_blank" rel="noopener noreferrer">小波同学</a></p>
+<p>前置注意点</p>
+<p>1.邮件要注意每日发信限制，短时密集评论会导致直接被封，禁止发信</p>
+<p>2.最好不要使用自己平常使用的邮箱，使用一个单独的邮箱来操作</p>
+<p>3.有服务器的同学，自己部署SMTP服务可以不受限制</p>
+</div>
+<p>老规矩先放效果图:</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/29/8958076dc393c8df.png" alt="show" tabindex="0" loading="lazy"><figcaption>show</figcaption></figure>
+<h2> 1. waline 官方邮件通知环境变量说明<sup class="footnote-ref"><a href="#footnote1">[1]</a><a class="footnote-anchor" id="footnote-ref1"></a></sup></h2><a class="footnote-anchor" id="footnote-ref1">
+</a><h3><a class="footnote-anchor" id="footnote-ref1"></a> 1.1 waline 邮件通知必填环境变量</h3>
+<p><code>SMTP_SERVICE: SMTP</code> 邮件发送服务提供商。例如 163 在受支持的运营商列表可以直接填写 163</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>你可以在 <a href="https://github.com/nodemailer/nodemailer/blob/master/lib/well-known/services.json" target="_blank" rel="noopener noreferrer">这里</a> 查看所有支持的运营商。</p>
+<p>如果你的运营商不受支持，你必须填写 <code>SMTP_HOST 和 SMTP_PORT</code>。</p>
+<ul>
+<li>
+<p><code>SMTP_HOST</code>: SMTP 服务器地址，一般可以在邮箱的设置中找到。</p>
+</li>
+<li>
+<p><code>SMTP_PORT</code>: SMTP 服务器端口，一般可以在邮箱的设置中找到。</p>
+</li>
+</ul>
+</div>
+<p><code>SMTP_USER</code>: SMTP 邮件发送服务的用户名，一般为登录邮箱【切记要完整填写xxx@xxx.xx】。</p>
+<p><code>SMTP_PASS</code>: SMTP 邮件发送服务的密码，一般为邮箱登录密码，部分邮箱(例如 163)是单独的 SMTP 密码。 <sup class="footnote-ref"><a href="#footnote2">[2]</a><a class="footnote-anchor" id="footnote-ref2"></a></sup></p><a class="footnote-anchor" id="footnote-ref2">
+<p><code>SMTP_SECURE</code>: 是否使用 SSL 连接 SMTP。</p>
+<p><code>SITE_NAME</code>: 网站名称，用于在消息中显示。</p>
+<p><code>SITE_URL</code>: 网站地址，用于在消息中显示。</p>
+<p><code>AUTHOR_EMAIL</code>: 博主邮箱，用来接收新评论通知。如果是博主发布的评论则不进行提醒通知。</p>
+<div class="hint-container tip">
+<p class="hint-container-title">注意</p>
+<p>其中<code>SITE_NAME</code>如果有类似 <code>xxxx's Blog</code> 这种的网站名称，在 Vercel 中配置的时候，可以使用<code>xxxx Blog</code> 格式
+因为<code>'</code>单引号会在模版中被转义为<code>&amp;#39;s</code></p>
+</div>
+</a><h3><a class="footnote-anchor" id="footnote-ref2"></a> 1.2 waline 邮件通知选填环境变量</h3>
+<p><code>SENDER_NAME</code>: 自定义发送邮件的发件人</p>
+<p><code>SENDER_EMAIL</code>: 自定义发送邮件的发件地址</p>
+<div class="hint-container tip">
+<p class="hint-container-title">注意</p>
+<p>其中<code>SENDER_NAME</code>和<code>SENDER_EMAIL</code> 要成对出现</p>
+</div>
+<h3> 1.3 waline 邮件通知模版环境变量</h3>
+<p><code>MAIL_SUBJECT</code>: 自定义评论回复邮件标题</p>
+<p><code>MAIL_TEMPLATE</code>: 自定义评论回复邮件内容</p>
+<p><code>MAIL_SUBJECT_ADMIN</code>: 自定义新评论通知邮件标题</p>
+<p><code>MAIL_TEMPLATE_ADMIN</code>: 自定义新评论通知邮件内容</p>
+<h3> 1.4 waline邮件通知模版index.js服务端配置参数</h3>
+<ul>
+<li>
+<p><code>mailSubject</code> 类型: string</p>
+<p>评论回复邮件标题自定义，等同于环境变量 <code>MAIL_SUBJECT</code>。</p>
+</li>
+<li>
+<p><code>mailTemplate</code> 类型: string</p>
+<p>评论回复邮件内容自定义，等同于环境变量 <code>MAIL_TEMPLATE</code>。</p>
+</li>
+<li>
+<p><code>mailSubjectAdmin</code> 类型: string</p>
+<p>新评论通知邮件标题自定义，等同于环境变量 <code>MAIL_SUBJECT_ADMIN</code>。</p>
+</li>
+<li>
+<p><code>mailTemplateAdmin</code> 类型: string</p>
+<p>新评论通知邮件内容自定义，等同于环境变量 <code>MAIL_TEMPLATE_ADMIN</code>。</p>
+</li>
+</ul>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>自此以下配置都是关于邮件模版的，1.3和1.4二选一配置即可，1.1是必填配置，自行填写即可。</p>
+</div>
+<h2> 2.根据部署方式选择合适的邮件模版修改方法</h2>
+<h3> 2.1 vercel</h3>
+<ul>
+<li>环境变量<sup class="footnote-ref"><a href="#footnote3">[3]</a><a class="footnote-anchor" id="footnote-ref3"></a></sup></li><a class="footnote-anchor" id="footnote-ref3">
+<li>私有walie仓库index.js文件【推荐】</li>
+</a></ul><a class="footnote-anchor" id="footnote-ref3">
+</a><h3><a class="footnote-anchor" id="footnote-ref3"></a> 2.2 独立部署</h3>
+<ul>
+<li>修改服务端入口文件index.js</li>
+</ul>
+<div class="hint-container warning">
+<p class="hint-container-title">注意</p>
+<p>如果你使用模板，请额外注意你需要自行保存这些配置，因为它们会在拉取官方最新模板时被覆盖。</p>
+<p>建议将官方最新模板上传到自己的仓库，并进行修改。</p>
+</div>
+<h2> 3.开始配置</h2>
+<h3> 3.1 设置完毕1.1中Vercel配置必须的环境变量</h3>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/29/ab416544129053c3.png" alt="1.1" tabindex="0" loading="lazy"><figcaption>1.1</figcaption></figure>
+<h3> 3.2 继续使用环境变量设置模版</h3>
+<p><code>MAIL_SUBJECT_ADMIN</code></p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><code>MAIL_TEMPLATE_ADMIN</code></p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>MAIL_SUBJECT</code></p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><code>MAIL_TEMPLATE</code></p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 3.3 使用服务端入口文件index.js变量设置模版</h3>
+<p>文件初始内容为:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container danger">
+<p class="hint-container-title">注意!!!</p>
+<p>在我查阅资料的过程中，发现很多教程中填写index.js的方式都是错误的，如下:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这就是导致很多人index.js配置不成功的原因，把模版配置写在了postSave这个钩子函数里边,在Vercel部署的过程中就会直接报错，语法不正确</p>
+</div>
+<p>正确使用姿势:</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 4. 结语</h3>
+<p>至此，大功告成，所有的注意点我都写在上边了</p>
+<p>此模版来自SaraKale<sup class="footnote-ref"><a href="#footnote4">[4]</a><a class="footnote-anchor" id="footnote-ref4"></a></sup><a class="footnote-anchor" id="footnote-ref4">，经</a><a href="https://blog.ganxb2.com/" target="_blank" rel="noopener noreferrer">小波同学</a>修改美化
+其他模版同理，可以去SaraKale这里看看</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="footnote1" class="footnote-item"><p><a href="https://waline.js.org/guide/features/notification.html" target="_blank" rel="noopener noreferrer">https://waline.js.org/guide/features/notification.html</a> <a href="#footnote-ref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="footnote2" class="footnote-item"><p>如 163 的 SMTP 授权码只生成一次，要复制存下来，如果丢失，后续不会再显示，只能重新生成 <a href="#footnote-ref2" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="footnote3" class="footnote-item"><p>Vercel 的环境变量大小限制为 4KB ，所以如果您的模板很长，请使用代码配置， <a href="#footnote-ref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="footnote4" class="footnote-item"><p><a href="https://www.sarakale.top/blog/posts/537344b2.html" target="_blank" rel="noopener noreferrer">waline 邮件通知模板样式一览</a> <a href="#footnote-ref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/29/8958076dc393c8df.png" type="image/png"/>
+    </item>
     <item>
       <title>公开API</title>
       <link>https://oragekk.me/mark/public-api.html</link>
@@ -28,7 +160,7 @@
       <source url="https://oragekk.me/rss.xml">公开API</source>
       <description>相关信息 免费公开的API网站，提供多种公共接口服务</description>
       <category>收藏</category>
-      <pubDate>Tue, 28 Mar 2023 17:39:48 GMT</pubDate>
+      <pubDate>Tue, 28 Mar 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
 <p>免费公开的API网站，提供多种公共接口服务</p>
@@ -3477,7 +3609,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <link>https://oragekk.me/intro.html</link>
       <guid>https://oragekk.me/intro.html</guid>
       <source url="https://oragekk.me/rss.xml">关于本站</source>
-      <description>关于本站 🧩 这里会记录一些和站点相关的文章 目录 📌 新站建站过程 📌 Jekyll的旧站回忆 📌 评论系统从多说迁移到disqus</description>
+      <description>关于本站 🧩 这里会记录一些和站点相关的文章 目录 📌 评论插件 Waline 之邮件通知配置 📌 新站建站过程 📌 Jekyll的旧站回忆 📌 评论系统从多说迁移到disqus</description>
       <pubDate>Tue, 28 Feb 2023 11:14:50 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 关于本站</h1>
 <div class="hint-container tip">
@@ -3486,6 +3618,9 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 </div>
 <h2> 目录</h2>
 <ul>
+<li>
+<p><a href="/blog/waline-mail.html" target="blank">📌 评论插件 Waline 之邮件通知配置</a></p>
+</li>
 <li>
 <p><a href="/blog/about.html" target="blank">📌 新站建站过程</a></p>
 </li>
