@@ -36,4 +36,10 @@ export const friends: LinkData[] = [
     ico: "https://liubing.me/logo.png",
     link: "https://liubing.me",
   },
+  {
+    name: "廿壴(GANXB2)博客",
+    desc: "探讨WEB技术.交流日常生活.感悟短暂人生.分享简单快乐",
+    ico:  "https://blog.ganxb2.com/img/avatar.png",
+    link: "https://blog.ganxb2.com/",
+  },
 ];
