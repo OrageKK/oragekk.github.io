@@ -32,6 +32,7 @@ export default defineUserConfig({
   },
   alias: {
     "@MyLink": path.resolve(__dirname, "./components/Mylink.vue"),
+    "@MyCoverLink": path.resolve(__dirname, "./components/MyCoverLink.vue"),
   },
 
   theme,

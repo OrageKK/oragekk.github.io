@@ -13,6 +13,12 @@ export const friends: LinkData[] = [
     link: "https://oragekk.me/",
   },
   {
+    name: "廿壴(GANXB2)博客",
+    desc: "探讨WEB技术.交流日常生活.感悟短暂人生.分享简单快乐",
+    ico:  "https://blog.ganxb2.com/img/avatar.png",
+    link: "https://blog.ganxb2.com/",
+  },
+  {
     name: "Mr.Hope",
     desc: "VuePress Theme Hope 主题作者。",
     ico: "https://mrhope.site/logo.svg",
@@ -34,12 +40,6 @@ export const friends: LinkData[] = [
     name: "Bing🐣",
     desc: "基于VuePress的个人博客，记录日常开发问题",
     ico: "https://liubing.me/logo.png",
-    link: "https://liubing.me",
-  },
-  {
-    name: "廿壴(GANXB2)博客",
-    desc: "探讨WEB技术.交流日常生活.感悟短暂人生.分享简单快乐",
-    ico:  "https://blog.ganxb2.com/img/avatar.png",
-    link: "https://blog.ganxb2.com/",
+    link: "https://liubing.me/",
   },
 ];

@@ -11,7 +11,7 @@
         :href="item.link"
         target="_blank"
       >
-        <img class="image" :src="item.ico" alt="" />
+        <img class="image" :src="item.ico" alt="" onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'/>
         <div class="name">{{ item.name }}</div>
         <div class="desc">{{ item.desc }}</div>
       </a>

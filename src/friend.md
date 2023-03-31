@@ -29,9 +29,7 @@ link: "https://oragekk.me/"
 
 
 ## 友链
-
-<MyLink type="friend"/>
-
+<MyCoverLink type="friend"/>
 <script setup lang="ts">
-import MyLink from "@MyLink";
+import MyCoverLink from "@MyCoverLink";
 </script>
