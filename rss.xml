@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 31 Mar 2023 08:56:54 GMT</pubDate>
-    <lastBuildDate>Fri, 31 Mar 2023 08:56:54 GMT</lastBuildDate>
+    <pubDate>Fri, 31 Mar 2023 09:20:54 GMT</pubDate>
+    <lastBuildDate>Fri, 31 Mar 2023 09:20:54 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>收藏</category>
@@ -42,8 +42,8 @@
 <h2> 2. 步骤</h2>
 <p>如图所示，打开setting-Git-Ignored Build Step</p>
 <p>启用“忽略构建步骤”字段。如果命令返回“0”，则将跳过构建。但是，如果返回代码“1”或更大，则将生成新的部署。</p>
-<p>我是使用系统环境变量来做的，方式有很多，看自己方便吧，在Command处复制脚本<a href="#_4-%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">点这里👉</a></p>
-<p>系统环境变量默认是曝光的，如果不生效，在Environment Variables 中勾选</p>
+<p>我是使用系统环境变量来做的，方式有很多，看自己方便吧，在Command处输入以下脚本表示只构建main分支</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>系统环境变量默认是曝光的，如果不生效，在Environment Variables 中勾选</p>
 <ul class="task-list-container">
 <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" id="task-item-0" checked="checked" disabled="disabled"><label class="task-list-item-label" for="task-item-0"> Automatically expose System Environment Variables</label></li>
 </ul>
