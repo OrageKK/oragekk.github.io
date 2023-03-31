@@ -2,7 +2,7 @@
 
 地址：[https://oragekk.me](https://oragekk.me)
 
-基于`vuepress2.x`和`theme-hope`开发，最大限度利用vite的打包速度，基于TypeScript使用vue3编写组件
+基于`vuepress2.x`和`vuepress-theme-hope`开发，最大限度利用vite的打包速度，基于TypeScript使用vue3编写组件
 
 ## 框架支持
 
