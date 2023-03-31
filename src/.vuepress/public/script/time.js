@@ -16,3 +16,16 @@ function show_runtime() {
         "本小站已苟延残喘: " + A + "天" + B + "小时" + C + "分" + D + "秒")
 }
 show_runtime();
+
+(function log() {
+    console.log(
+        `%c ✨上冬十二的博客 v2.1.0✨ %c https://oragekk.me %c\n
+    你，对，你，就是你\n
+                - ( ゜- ゜)つロ 乾杯~\n
+                        ---- 最是春风留不住，徒留我孤直。\n
+                                欲寄彩笺兼尺素，山长水阔知何处？\n`,
+        `color: #f9f4dc; background: #ee3f4d; padding:5px; font-size:12px;`,
+        `background: #00ffc0; padding:5px; font-size:12px; color:#34a3ff;`,
+        `color: #51c4d3; font-size:12px;`
+    );
+})();
