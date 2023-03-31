@@ -1,6 +1,7 @@
 ---
 icon: lock
 index: false
+article: false
 category:
   - 使用指南
 tag:

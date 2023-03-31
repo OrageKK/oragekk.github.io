@@ -1,6 +1,7 @@
 ---
 icon: link
 sidebar: false
+article: false
 ---
 
 # 友情链接

@@ -5,7 +5,7 @@ category:
 tag:
   - 留言板
 sidebar: false
-# article: false
+article: false
 ---
 
 # 留言板 ✨
