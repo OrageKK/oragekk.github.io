@@ -102,3 +102,9 @@
   background-color: var(--theme-color-live2d-dark) !important;
   border: 1px solid #fff !important;
 }
+
+body {
+  @media (min-width: 1440px) {
+    font-size: 17px;
+  }
+}

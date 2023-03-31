@@ -96,7 +96,7 @@ a.card-body {
     width: 100%;
     .link-avatar {
       flex: none;
-      transition: transform 0.6s ease-in-out, opacity 0.65s ease-in-out; /* 添加过渡效果 */
+      transition: transform 0.6s ease-in-out, opacity 0.5s ease-in-out; /* 添加过渡效果 */
       width: 3.5rem;
       height: 3.5rem;
       @media (max-width: hope-config.$tablet) {
