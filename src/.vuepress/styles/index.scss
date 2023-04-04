@@ -32,22 +32,19 @@
 }
 
 [data-theme="light"] .theme-container .sidebar {
-  @media (min-width: hope-config.$pad) {
-    z-index: 4;
-    background-color: transparent;
-  }
-
   @media (max-width: hope-config.$tablet) {
     background-color: rgba(255, 255, 255, 0.6); 
     backdrop-filter: saturate(150%) blur(0.75rem);
   }
 }
-
-[data-theme="dark"] .theme-container .sidebar {
+.theme-container .sidebar {
   @media (min-width: hope-config.$pad) {
     z-index: 4;
     background-color: transparent;
   }
+}
+
+[data-theme="dark"] .theme-container .sidebar {
   @media (max-width: hope-config.$tablet) {
     background-color: rgba(29, 32, 37, 0.8); 
     backdrop-filter: saturate(150%) blur(0.75rem);
@@ -138,4 +135,9 @@ table {
 .wl-emoji-popup .wl-emoji {
   max-width: 2em;
   max-height: 2em;
+}
+.wl-emoji-popup .wl-tabs {
+  @media (max-width: hope-config.$tablet) {
+    white-space: pre-wrap;
+  }
 }
