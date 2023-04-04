@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 04 Apr 2023 07:27:52 GMT</pubDate>
-    <lastBuildDate>Tue, 04 Apr 2023 07:27:52 GMT</lastBuildDate>
+    <pubDate>Tue, 04 Apr 2023 10:54:02 GMT</pubDate>
+    <lastBuildDate>Tue, 04 Apr 2023 10:54:02 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>收藏</category>
@@ -576,9 +576,11 @@ samples, guidance on mobile development, and a full API reference.</p>
 <li>
 <p><strong>零碎</strong></p>
 <ul>
-<li>运行时间统计，因涉及闰年，只统计 天-时-分-秒</li>
+<li>运行时间统计</li>
 <li>CSS 样式美化</li>
 <li>引入字体，品如手写体，夏行楷体</li>
+<li>wanlie 增加自定义emoji，并修改展示样式</li>
+<li>个性log</li>
 </ul>
 </li>
 </ol>
