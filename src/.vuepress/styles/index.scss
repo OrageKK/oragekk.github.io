@@ -114,3 +114,11 @@ table {
   width:100%;
   display: table;
 }
+// waline emoji
+.wl-content .vemoji, .wl-content .wl-emoji {
+  height: 2.5em;
+}
+.wl-emoji-popup .wl-emoji {
+  max-width: 2em;
+  max-height: 2em;
+}
