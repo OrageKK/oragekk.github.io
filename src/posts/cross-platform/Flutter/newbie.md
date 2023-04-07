@@ -1,8 +1,9 @@
 ---
-title: "给Flutter初学者的demo"
+title: "Flutter 基础大集合"
 description: Flutter初学，demo
 icon: "hk-flutter"
 date: 2023-03-20
+star: true
 category:
   - Flutter
   - 前端跨平台

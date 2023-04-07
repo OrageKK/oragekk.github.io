@@ -1,5 +1,6 @@
 ---
-title: "Mobile and PC loading different code"
+title: "通过UserAgent判断设备"
+icon: mobile
 date: 2017-02-07
 category:
   - JavaScript

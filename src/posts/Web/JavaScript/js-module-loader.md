@@ -1,5 +1,6 @@
 ---
 title: "CommonJS，RequireJS，SeaJS 归纳笔记"
+icon: module
 date: 2015-05-25
 category:
   - JavaScript
@@ -20,12 +21,16 @@ tag:
 
 ## Catalog
 
-1.  [CommonJS & Node](#commonjs--node)
-2.  [History](#history)
-3.  [RequireJS & AMD](#requirejs--amd)
-4.  [SeaJS & CMD](#seajs--cmd)
-5.  [AMD vs CMD](#amd-vs-cmd)
-6.  [WebPack](#webpack)
+- [Foreword](#foreword)
+- [Catalog](#catalog)
+- [CommonJS \& Node](#commonjs--node)
+- [History](#history)
+- [RequireJS \& AMD](#requirejs--amd)
+  - [1. **执行时机**](#1-执行时机)
+  - [2. **书写风格**](#2-书写风格)
+- [SeaJS \& CMD](#seajs--cmd)
+- [AMD vs CMD](#amd-vs-cmd)
+- [WebPack](#webpack)
 
 ## CommonJS & Node
 

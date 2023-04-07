@@ -115,9 +115,9 @@ export default localTheme({
       provider: "Waline",
       serverURL: "https://talk.oragekk.me/", // your server url
       reaction: true,
-      requiredMeta:['nick'],
-      wordLimit:300,
-      emoji:[
+      requiredMeta: ["nick"],
+      wordLimit: 300,
+      emoji: [
         "https://unpkg.com/@waline/emojis@1.1.0/tieba",
         "https://unpkg.com/@waline/emojis@1.1.0/weibo",
         "https://emoji.shojo.cn/bili/src/tv_小电视_动图",
@@ -127,11 +127,12 @@ export default localTheme({
         "https://emoji.shojo.cn/bili/src/装扮小姐姐·秋日午后",
         "https://emoji.shojo.cn/bili/src/天涯明月刀真武",
       ],
-      locales:{
-        "/":{
-          placeholder:"欢迎留言~ _(≧∇≦」∠)_ (填写常用邮箱即可快速收到回复通知~)"
-        }
-      }
+      locales: {
+        "/": {
+          placeholder:
+            "欢迎留言~ _(≧∇≦」∠)_ (填写常用邮箱即可快速收到回复通知~)",
+        },
+      },
     },
     prismjs: false,
     copyright: {

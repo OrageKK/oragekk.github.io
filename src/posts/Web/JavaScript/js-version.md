@@ -1,5 +1,6 @@
 ---
-title: "Example Post"
+title: "JavaScript ES6"
+icon: es6
 date: 2015-09-22
 category:
   - JavaScript

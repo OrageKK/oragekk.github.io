@@ -4,6 +4,7 @@ icon: style
 date: 1978-01-09
 index: false
 timeline: false
+article: false
 dir:
   order: 1
 ---

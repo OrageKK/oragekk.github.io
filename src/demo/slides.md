@@ -3,6 +3,7 @@ title: 幻灯片页
 icon: slides
 date: 2020-01-01
 layout: Slide
+index: false
 ---
 
 <!-- markdownlint-disable MD024 MD033 MD051 -->
