@@ -6,32 +6,611 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 04 Apr 2023 14:18:56 GMT</pubDate>
-    <lastBuildDate>Tue, 04 Apr 2023 14:18:56 GMT</lastBuildDate>
+    <pubDate>Fri, 07 Apr 2023 13:20:22 GMT</pubDate>
+    <lastBuildDate>Fri, 07 Apr 2023 13:20:22 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>浏览器</category>
+    <category>CSS</category>
+    <category>CSS$$</category>
+    <category>JavaScript</category>
     <category>收藏</category>
     <category>Blog</category>
     <category>Linux</category>
     <category>python</category>
     <category>Flutter</category>
     <category>前端跨平台</category>
-    <category>JavaScript</category>
     <category>iOS</category>
     <category>Swift</category>
     <category>About</category>
     <category>使用指南</category>
     <item>
+      <title>前端-Q&amp;A</title>
+      <link>https://oragekk.me/posts/Web/Q_A.html</link>
+      <guid>https://oragekk.me/posts/Web/Q_A.html</guid>
+      <source url="https://oragekk.me/rss.xml">前端-Q&amp;A</source>
+      <description>前端-Q&amp;amp;A 浏览器是如何渲染页面的？ 当浏览器的网络线程收到 HTML 文档后，会产生一个渲染任务，并将其传递给渲染主线程的消息队列。 在事件循环机制的作用下，渲染主线程取出消息队列中的渲染任务，开启渲染流程。</description>
+      <category>浏览器</category>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 前端-Q&amp;A</h1>
+<h2> 浏览器是如何渲染页面的？</h2>
+<p>当浏览器的网络线程收到 HTML 文档后，会产生一个渲染任务，并将其传递给渲染主线程的消息队列。</p>
+<p>在事件循环机制的作用下，渲染主线程取出消息队列中的渲染任务，开启渲染流程。</p>
+<!-- more -->
+<hr>
+<p>整个渲染流程分为多个阶段，分别是： HTML 解析、样式计算、布局、分层、绘制、分块、光栅化、画</p>
+<p>每个阶段都有明确的输入输出，上一个阶段的输出会成为下一个阶段的输入。</p>
+<p>这样，整个渲染流程就形成了一套组织严密的生产流水线。</p>
+<hr>
+<p>渲染的第一步是<strong>解析 HTML</strong>。</p>
+<p>解析过程中遇到 CSS 解析 CSS，遇到 JS 执行 JS。为了提高解析效率，浏览器在开始解析前，会启动一个预解析的线程，率先下载 HTML 中的外部 CSS 文件和 外部的 JS 文件。</p>
+<p>如果主线程解析到<code>link</code>位置，此时外部的 CSS 文件还没有下载解析好，主线程不会等待，继续解析后续的 HTML。这是因为下载和解析 CSS 的工作是在预解析线程中进行的。这就是 CSS 不会阻塞 HTML 解析的根本原因。</p>
+<p>如果主线程解析到<code>script</code>位置，会停止解析 HTML，转而等待 JS 文件下载好，并将全局代码解析执行完成后，才能继续解析 HTML。这是因为 JS 代码的执行过程可能会修改当前的 DOM 树，所以 DOM 树的生成必须暂停。这就是 JS 会阻塞 HTML 解析的根本原因。</p>
+<p>第一步完成后，会得到 DOM 树和 CSSOM 树，浏览器的默认样式、内部样式、外部样式、行内样式均会包含在 CSSOM 树中。</p>
+<hr>
+<p>渲染的下一步是<strong>样式计算</strong>。</p>
+<p>主线程会遍历得到的 DOM 树，依次为树中的每个节点计算出它最终的样式，称之为 Computed Style。</p>
+<p>在这一过程中，很多预设值会变成绝对值，比如<code>red</code>会变成<code>rgb(255,0,0)</code>；相对单位会变成绝对单位，比如<code>em</code>会变成<code>px</code></p>
+<p>这一步完成后，会得到一棵带有样式的 DOM 树。</p>
+<hr>
+<p>接下来是<strong>布局</strong>，布局完成后会得到布局树。</p>
+<p>布局阶段会依次遍历 DOM 树的每一个节点，计算每个节点的几何信息。例如节点的宽高、相对包含块的位置。</p>
+<p>大部分时候，DOM 树和布局树并非一一对应。</p>
+<p>比如<code>display:none</code>的节点没有几何信息，因此不会生成到布局树；又比如使用了伪元素选择器，虽然 DOM 树中不存在这些伪元素节点，但它们拥有几何信息，所以会生成到布局树中。还有匿名行盒、匿名块盒等等都会导致 DOM 树和布局树无法一一对应。</p>
+<hr>
+<p>下一步是<strong>分层</strong></p>
+<p>主线程会使用一套复杂的策略对整个布局树中进行分层。</p>
+<p>分层的好处在于，将来某一个层改变后，仅会对该层进行后续处理，从而提升效率。</p>
+<p>滚动条、堆叠上下文、transform、opacity 等样式都会或多或少的影响分层结果，也可以通过<code>will-change</code>属性更大程度的影响分层结果。</p>
+<hr>
+<p>再下一步是<strong>绘制</strong></p>
+<p>主线程会为每个层单独产生绘制指令集，用于描述这一层的内容该如何画出来。</p>
+<hr>
+<p>完成绘制后，主线程将每个图层的绘制信息提交给合成线程，剩余工作将由合成线程完成。</p>
+<p>合成线程首先对每个图层进行分块，将其划分为更多的小区域。</p>
+<p>它会从线程池中拿取多个线程来完成分块工作。</p>
+<hr>
+<p>分块完成后，进入<strong>光栅化</strong>阶段。</p>
+<p>合成线程会将块信息交给 GPU 进程，以极高的速度完成光栅化。</p>
+<p>GPU 进程会开启多个线程来完成光栅化，并且优先处理靠近视口区域的块。</p>
+<p>光栅化的结果，就是一块一块的位图</p>
+<hr>
+<p>最后一个阶段就是<strong>画</strong>了</p>
+<p>合成线程拿到每个层、每个块的位图后，生成一个个「指引（quad）」信息。</p>
+<p>指引会标识出每个位图应该画到屏幕的哪个位置，以及会考虑到旋转、缩放等变形。</p>
+<p>变形发生在合成线程，与渲染主线程无关，这就是<code>transform</code>效率高的本质原因。</p>
+<p>合成线程会把 quad 提交给 GPU 进程，由 GPU 进程产生系统调用，提交给 GPU 硬件，完成最终的屏幕成像。</p>
+<h2> 什么是 reflow？</h2>
+<p>reflow 的本质就是重新计算 layout 树。</p>
+<p>当进行了会影响布局树的操作后，需要重新计算布局树，会引发 layout。</p>
+<p>为了避免连续的多次操作导致布局树反复计算，浏览器会合并这些操作，当 JS 代码全部完成后再进行统一计算。所以，改动属性造成的 reflow 是异步完成的。</p>
+<p>也同样因为如此，当 JS 获取布局属性时，就可能造成无法获取到最新的布局信息。</p>
+<p>浏览器在反复权衡下，最终决定获取属性立即 reflow。</p>
+<h2> 什么是 repaint？</h2>
+<p>repaint 的本质就是重新根据分层信息计算了绘制指令。</p>
+<p>当改动了可见样式后，就需要重新计算，会引发 repaint。</p>
+<p>由于元素的布局信息也属于可见样式，所以 reflow 一定会引起 repaint。</p>
+<h2> 为什么 transform 的效率高？</h2>
+<p>因为 transform 既不会影响布局也不会影响绘制指令，它影响的只是渲染流程的最后一个「draw」阶段</p>
+<p>由于 draw 阶段在合成线程中，所以 transform 的变化几乎不会影响渲染主线程。反之，渲染主线程无论如何忙碌，也不会影响 transform 的变化。</p>
+<h2> 阐述一下 JS 的事件循环</h2>
+<p>事件循环又叫做消息循环，是浏览器渲染主线程的工作方式。</p>
+<p>在 Chrome 的源码中，它开启一个不会结束的 for 循环，每次循环从消息队列中取出第一个任务执行，而其他线程只需要在合适的时候将任务加入到队列末尾即可。</p>
+<p>过去把消息队列简单分为宏队列和微队列，这种说法目前已无法满足复杂的浏览器环境，取而代之的是一种更加灵活多变的处理方式。</p>
+<p>根据 W3C 官方的解释，每个任务有不同的类型，同类型的任务必须在同一个队列，不同的任务可以属于不同的队列。不同任务队列有不同的优先级，在一次事件循环中，由浏览器自行决定取哪一个队列的任务。但浏览器必须有一个微队列，<mark>微队列的任务一定具有最高的优先级，必须优先调度执行</mark>。</p>
+<h2> JS 中的计时器能做到精确计时吗？为什么？</h2>
+<p>不行，因为：</p>
+<ol>
+<li>计算机硬件没有原子钟，无法做到精确计时</li>
+<li>操作系统的计时函数本身就有少量偏差，由于 JS 的计时器最终调用的是操作系统的函数，也就携带了这些偏差</li>
+<li>按照 W3C 的标准，浏览器实现计时器时，如果嵌套层级超过 5 层，则会带有 4 毫秒的最少时间，这样在计时时间少于 4 毫秒时又带来了偏差</li>
+<li>受事件循环的影响，计时器的回调函数只能在主线程空闲时运行，因此又带来了偏差</li>
+</ol>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>浏览器的事件循环</title>
+      <link>https://oragekk.me/posts/Web/Browser/event-loop.html</link>
+      <guid>https://oragekk.me/posts/Web/Browser/event-loop.html</guid>
+      <source url="https://oragekk.me/rss.xml">浏览器的事件循环</source>
+      <description>浏览器的进程模型 何为进程？ 程序运行需要有它自己专属的内存空间，可以把这块内存空间简单的理解为进程</description>
+      <category>浏览器</category>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 浏览器的进程模型</h2>
+<h3> 何为进程？</h3>
+<p>程序运行需要有它自己专属的内存空间，可以把这块内存空间简单的理解为进程</p>
+<!-- more -->
+<img src="http://mdrs.yuanjin.tech/img/202208092057573.png" alt="image-20220809205743532" style="zoom:50%;">
+<p>每个应用至少有一个进程，进程之间相互独立，即使要通信，也需要双方同意。</p>
+<h3> 何为线程？</h3>
+<p>有了进程后，就可以运行程序的代码了。</p>
+<p>运行代码的「人」称之为「线程」。</p>
+<p>一个进程至少有一个线程，所以在进程开启后会自动创建一个线程来运行代码，该线程称之为主线程。</p>
+<p>如果程序需要同时执行多块代码，主线程就会启动更多的线程来执行代码，所以一个进程中可以包含多个线程。</p>
+<figure><img src="http://mdrs.yuanjin.tech/img/202208092108499.png" alt="image-20220809210859457" tabindex="0" loading="lazy"><figcaption>image-20220809210859457</figcaption></figure>
+<h3> 浏览器有哪些进程和线程？</h3>
+<p><strong>浏览器是一个多进程多线程的应用程序</strong></p>
+<p>浏览器内部工作极其复杂。</p>
+<p>为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。</p>
+<figure><img src="http://mdrs.yuanjin.tech/img/202208092131410.png" alt="image-20220809213152371" tabindex="0" loading="lazy"><figcaption>image-20220809213152371</figcaption></figure>
+<blockquote>
+<p>可以在浏览器的任务管理器中查看当前的所有进程</p>
+</blockquote>
+<p>其中，最主要的进程有：</p>
+<ol>
+<li>
+<p>浏览器进程</p>
+<p>主要负责界面显示、用户交互、子进程管理等。浏览器进程内部会启动多个线程处理不同的任务。</p>
+</li>
+<li>
+<p>网络进程</p>
+<p>负责加载网络资源。网络进程内部会启动多个线程来处理不同的网络任务。</p>
+</li>
+<li>
+<p><strong>渲染进程</strong>（本节课重点讲解的进程）</p>
+<p>渲染进程启动后，会开启一个<strong>渲染主线程</strong>，主线程负责执行 HTML、CSS、JS 代码。</p>
+<p>默认情况下，浏览器会为每个标签页开启一个新的渲染进程，以保证不同的标签页之间不相互影响。</p>
+<blockquote>
+<p>将来该默认模式可能会有所改变，有兴趣的同学可参见<a href="https://chromium.googlesource.com/chromium/src/+/main/docs/process_model_and_site_isolation.md#Modes-and-Availability" target="_blank" rel="noopener noreferrer">chrome官方说明文档</a></p>
+</blockquote>
+</li>
+</ol>
+<h2> 渲染主线程是如何工作的？</h2>
+<p>渲染主线程是浏览器中最繁忙的线程，需要它处理的任务包括但不限于：</p>
+<ul>
+<li>解析 HTML</li>
+<li>解析 CSS</li>
+<li>计算样式</li>
+<li>布局</li>
+<li>处理图层</li>
+<li>每秒把页面画 60 次</li>
+<li>执行全局 JS 代码</li>
+<li>执行事件处理函数</li>
+<li>执行计时器的回调函数</li>
+<li>......</li>
+</ul>
+<blockquote>
+<p>思考题：为什么渲染进程不适用多个线程来处理这些事情？</p>
+</blockquote>
+<p>要处理这么多的任务，主线程遇到了一个前所未有的难题：如何调度任务？</p>
+<p>比如：</p>
+<ul>
+<li>我正在执行一个 JS 函数，执行到一半的时候用户点击了按钮，我该立即去执行点击事件的处理函数吗？</li>
+<li>我正在执行一个 JS 函数，执行到一半的时候某个计时器到达了时间，我该立即去执行它的回调吗？</li>
+<li>浏览器进程通知我“用户点击了按钮”，与此同时，某个计时器也到达了时间，我应该处理哪一个呢？</li>
+<li>......</li>
+</ul>
+<p>渲染主线程想出了一个绝妙的主意来处理这个问题：排队</p>
+<figure><img src="http://mdrs.yuanjin.tech/img/202208092230847.png" alt="image-20220809223027806" tabindex="0" loading="lazy"><figcaption>image-20220809223027806</figcaption></figure>
+<ol>
+<li>在最开始的时候，渲染主线程会进入一个无限循环</li>
+<li>每一次循环会检查消息队列中是否有任务存在。如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。</li>
+<li>其他所有线程（包括其他进程的线程）可以随时向消息队列添加任务。新任务会加到消息队列的末尾。在添加新任务时，如果主线程是休眠状态，则会将其唤醒以继续循环拿取任务</li>
+</ol>
+<p>这样一来，就可以让每个任务有条不紊的、持续的进行下去了。</p>
+<p><strong>整个过程，被称之为事件循环（消息循环）</strong></p>
+<h2> 若干解释</h2>
+<h3> 何为异步？</h3>
+<p>代码在执行过程中，会遇到一些无法立即处理的任务，比如：</p>
+<ul>
+<li>计时完成后需要执行的任务 —— <code>setTimeout</code>、<code>setInterval</code></li>
+<li>网络通信完成后需要执行的任务 -- <code>XHR</code>、<code>Fetch</code></li>
+<li>用户操作后需要执行的任务 -- <code>addEventListener</code></li>
+</ul>
+<p>如果让渲染主线程等待这些任务的时机达到，就会导致主线程长期处于「阻塞」的状态，从而导致浏览器「卡死」</p>
+<figure><img src="http://mdrs.yuanjin.tech/img/202208101043348.png" alt="image-20220810104344296" tabindex="0" loading="lazy"><figcaption>image-20220810104344296</figcaption></figure>
+<p><strong>渲染主线程承担着极其重要的工作，无论如何都不能阻塞！</strong></p>
+<p>因此，浏览器选择<strong>异步</strong>来解决这个问题</p>
+<figure><img src="http://mdrs.yuanjin.tech/img/202208101048899.png" alt="image-20220810104858857" tabindex="0" loading="lazy"><figcaption>image-20220810104858857</figcaption></figure>
+<p>使用异步的方式，<strong>渲染主线程永不阻塞</strong></p>
+<blockquote>
+<p>面试题：如何理解 JS 的异步？</p>
+<p>参考答案：</p>
+<p>JS是一门单线程的语言，这是因为它运行在浏览器的渲染主线程中，而渲染主线程只有一个。</p>
+<p>而渲染主线程承担着诸多的工作，渲染页面、执行 JS 都在其中运行。</p>
+<p>如果使用同步的方式，就极有可能导致主线程产生阻塞，从而导致消息队列中的很多其他任务无法得到执行。这样一来，一方面会导致繁忙的主线程白白的消耗时间，另一方面导致页面无法及时更新，给用户造成卡死现象。</p>
+<p>所以浏览器采用异步的方式来避免。具体做法是当某些任务发生时，比如计时器、网络、事件监听，主线程将任务交给其他线程去处理，自身立即结束任务的执行，转而执行后续代码。当其他线程完成时，将事先传递的回调函数包装成任务，加入到消息队列的末尾排队，等待主线程调度执行。</p>
+<p>在这种异步模式下，浏览器永不阻塞，从而最大限度的保证了单线程的流畅运行。</p>
+</blockquote>
+<h3> JS为何会阻碍渲染？</h3>
+<p>先看代码</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>点击按钮后，会发生什么呢？</p>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>三秒之后h1文字变更，主线程被阻塞</p>
+</div>
+<h3> 任务有优先级吗？</h3>
+<p>任务没有优先级，在消息队列中先进先出</p>
+<p>但<strong>消息队列是有优先级的</strong></p>
+<p>根据 W3C 的最新解释:</p>
+<ul>
+<li>每个任务都有一个任务类型，同一个类型的任务必须在一个队列，不同类型的任务可以分属于不同的队列。
+在一次事件循环中，浏览器可以根据实际情况从不同的队列中取出任务执行。</li>
+<li>浏览器必须准备好一个微队列，微队列中的任务优先所有其他任务执行
+<a href="https://html.spec.whatwg.org/multipage/webappapis.html#perform-a-microtask-checkpoint" target="_blank" rel="noopener noreferrer">https://html.spec.whatwg.org/multipage/webappapis.html#perform-a-microtask-checkpoint</a></li>
+</ul>
+<blockquote>
+<p>随着浏览器的复杂度急剧提升，W3C 不再使用宏队列的说法</p>
+</blockquote>
+<p>在目前 chrome 的实现中，至少包含了下面的队列：</p>
+<ul>
+<li>延时队列：用于存放计时器到达后的回调任务，优先级「中」</li>
+<li>交互队列：用于存放用户操作后产生的事件处理任务，优先级「高」</li>
+<li>微队列：用户存放需要最快执行的任务，优先级「最高」</li>
+</ul>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>添加任务到微队列的主要方式主要是使用 Promise、MutationObserver</p>
+<p>例如：</p>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div></div>
+<blockquote>
+<p>浏览器还有很多其他的队列，由于和我们开发关系不大，不作考虑</p>
+</blockquote>
+<blockquote>
+<p>面试题：阐述一下 JS 的事件循环</p>
+<p>参考答案：</p>
+<p>事件循环又叫做消息循环，是浏览器渲染主线程的工作方式。</p>
+<p>在 Chrome 的源码中，它开启一个不会结束的 for 循环，每次循环从消息队列中取出第一个任务执行，而其他线程只需要在合适的时候将任务加入到队列末尾即可。</p>
+<p>过去把消息队列简单分为宏队列和微队列，这种说法目前已无法满足复杂的浏览器环境，取而代之的是一种更加灵活多变的处理方式。</p>
+<p>根据 W3C 官方的解释，每个任务有不同的类型，同类型的任务必须在同一个队列，不同的任务可以属于不同的队列。不同任务队列有不同的优先级，在一次事件循环中，由浏览器自行决定取哪一个队列的任务。但浏览器必须有一个微队列，<mark>微队列的任务一定具有最高的优先级，必须优先调度执行</mark>。</p>
+</blockquote>
+<blockquote>
+<p>面试题：JS 中的计时器能做到精确计时吗？为什么？</p>
+<p>参考答案：</p>
+<p>不行，因为：</p>
+<ol>
+<li>计算机硬件没有原子钟，无法做到精确计时</li>
+<li>操作系统的计时函数本身就有少量偏差，由于 JS 的计时器最终调用的是操作系统的函数，也就携带了这些偏差</li>
+<li>按照 W3C 的标准，浏览器实现计时器时，如果嵌套层级超过 5 层，则会带有 4 毫秒的最少时间，这样在计时时间少于 4 毫秒时又带来了偏差</li>
+<li>受事件循环的影响，计时器的回调函数只能在主线程空闲时运行，因此又带来了偏差</li>
+</ol>
+</blockquote>
+]]></content:encoded>
+      <enclosure url="http://mdrs.yuanjin.tech/img/202208092108499.png" type="image/png"/>
+    </item>
+    <item>
+      <title>CSS 属性计算过程</title>
+      <link>https://oragekk.me/posts/Web/CSS/calculation.html</link>
+      <guid>https://oragekk.me/posts/Web/CSS/calculation.html</guid>
+      <source url="https://oragekk.me/rss.xml">CSS 属性计算过程</source>
+      <description>CSS 属性计算过程 你是否了解 CSS 的属性计算过程呢？ 有的同学可能会讲，CSS属性我倒是知道，例如： p{ color : red; }</description>
+      <category>CSS</category>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> CSS 属性计算过程</h1>
+<p>你是否了解 CSS 的属性计算过程呢？</p>
+<p>有的同学可能会讲，CSS属性我倒是知道，例如：</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的 CSS 代码中，p 是元素选择器，color 就是其中的一个 CSS 属性。</p>
+<p>但是要说 CSS 属性的计算过程，还真的不是很清楚。</p>
+<p>没关系，通过此篇文章，能够让你彻底明白什么是 CSS 属性的计算流程。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-060434.png" alt="image-20220813140434032" style="zoom:50%;">
+<p>首先，不知道你有没有考虑过这样的一个问题，假设在 HTML 中有这么一段代码：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码也非常简单，就是在 body 中有一个 h1 标题而已，该 h1 标题呈现出来的外观是如下：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-060724.png" alt="image-20220813140724136" style="zoom:50%;">
+<p>目前我们没有设置该 h1 的任何样式，但是却能看到该 h1 有一定的默认样式，例如有默认的字体大小、默认的颜色。</p>
+<p>那么问题来了，我们这个 h1 元素上面除了有默认字体大小、默认颜色等属性以外，究竟还有哪些属性呢？</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-15-014216.png" alt="image-20220815094215982" style="zoom:30%;">
+<p>答案是**该元素上面会有 CSS 所有的属性。**你可以打开浏览器的开发者面板，选择【元素】，切换到【计算样式】，之后勾选【全部显示】，此时你就能看到在此 h1 上面所有 CSS 属性对应的值。</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-061516.png" alt="image-20220813141516153" tabindex="0" loading="lazy"><figcaption>image-20220813141516153</figcaption></figure>
+<p>换句话说，<strong>我们所书写的任何一个 HTML 元素，实际上都有完整的一整套 CSS 样式</strong>。这一点往往是让初学者比较意外的，因为我们平时在书写 CSS 样式时，往往只会书写必要的部分，例如前面的：</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这往往会给我们造成一种错觉，认为该 p 元素上面就只有 color 属性。而真实的情况确是，任何一个 HTML 元素，都有一套完整的 CSS 样式，只不过你没有书写的样式，<strong>大概率可能</strong>会使用其默认值。例如上图中 h1 一个样式都没有设置，全部都用的默认值。</p>
+<p>但是注意，我这里强调的是“大概率可能”，难道还有我们“没有设置值，但是不使用默认值”的情况么？</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-15-014459.png" alt="image-20220815094458940" style="zoom:25%;">
+<p>嗯，确实有的，所以我才强调你要了解“CSS 属性的计算过程”。</p>
+<p>总的来讲，属性值的计算过程，分为如下这么 <em>4</em> 个步骤：</p>
+<ul>
+<li>确定声明值</li>
+<li>层叠冲突</li>
+<li>使用继承</li>
+<li>使用默认值</li>
+</ul>
+<h2> 确定声明值</h2>
+<p>首先第一步，是确定声明值。所谓声明值就是作者自己所书写的 CSS 样式，例如前面的：</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里我们声明了 p 元素为红色，那么就会应用此属性设置。</p>
+<p>当然，除了作者样式表，一般浏览器还会存在“用户代理样式表”，简单来讲就是浏览器内置了一套样式表。</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-063500.png" alt="image-20220813143500066" tabindex="0" loading="lazy"><figcaption>image-20220813143500066</figcaption></figure>
+<p>在上面的示例中，作者样式表中设置了 color 属性，而用户代理样式表（浏览器提供的样式表）中设置了诸如 display、margin-block-start、margin-block-end、margin-inline-start、margin-inline-end 等属性对应的值。</p>
+<p>这些值目前来讲也没有什么冲突，因此最终就会应用这些属性值。</p>
+<h2> 层叠冲突</h2>
+<p>在确定声明值时，可能出现一种情况，那就是声明的样式规则发生了冲突。</p>
+<p>此时会进入解决层叠冲突的流程。而这一步又可以细分为下面这三个步骤：</p>
+<ul>
+<li>比较源的重要性</li>
+<li>比较优先级</li>
+<li>比较次序</li>
+</ul>
+<p>来来来，我们一步一步来看。</p>
+<h3> 比较源的重要性</h3>
+<p>当不同的 CSS 样式来源拥有相同的声明时，此时就会根据样式表来源的重要性来确定应用哪一条样式规则。</p>
+<p>那么问题来了，咱们的样式表的源究竟有几种呢？</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-23-100047.png" alt="image-20220823180047075" style="zoom:40%;">
+<p>整体来讲有三种来源：</p>
+<ul>
+<li>浏览器会有一个基本的样式表来给任何网页设置默认样式。这些样式统称<strong>用户代理样式</strong>。</li>
+<li>网页的作者可以定义文档的样式，这是最常见的样式表，称之为<strong>页面作者样式</strong>。</li>
+<li>浏览器的用户，可以使用自定义样式表定制使用体验，称之为<strong>用户样式</strong>。</li>
+</ul>
+<p>对应的重要性顺序依次为：页面作者样式 &gt; 用户样式 &gt; 用户代理样式</p>
+<p>更详细的来源重要性比较，可以参阅 <em>MDN</em>：<em><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Cascade" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Cascade</a></em></p>
+<p>我们来看一个示例。</p>
+<p>例如现在有<strong>页面作者样式表</strong>和<strong>用户代理样式表</strong>中存在属性的冲突，那么会以作者样式表优先。</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-064222.png" alt="image-20220813144222152" tabindex="0" loading="lazy"><figcaption>image-20220813144222152</figcaption></figure>
+<p>可以明显的看到，作者样式表和用户代理样式表中同时存在的 display 属性的设置，最终作者样式表干掉了用户代理样式表中冲突的属性。这就是第一步，根据不同源的重要性来决定应用哪一个源的样式。</p>
+<h3> 比较优先级</h3>
+<p>那么接下来，如果是在在同一个源中有样式声明冲突怎么办呢？此时就会进行样式声明的优先级比较。</p>
+<p>例如：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面的代码中，同属于<strong>页面作者样式</strong>，源的重要性是相同的，此时会以选择器的权重来比较重要性。</p>
+<p>很明显，上面的选择器的权重要大于下面的选择器，因此最终标题呈现为 <em>50px</em>。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-16-071546.png" alt="image-20210916151546500" style="zoom: 40%;">
+<p>可以看到，落败的作者样式在 <em>Elements&gt;Styles</em> 中会被划掉。</p>
+<p>有关选择器权重的计算方式，不清楚的同学，可以进入此传送门：<em><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a></em></p>
+<h3> 比较次序</h3>
+<p>经历了上面两个步骤，大多数的样式声明能够被确定下来。但是还剩下最后一种情况，那就是样式声明既是同源，权重也相同。</p>
+<p>此时就会进入第三个步骤，比较样式声明的次序。</p>
+<p>举个例子：</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面的代码中，同样都是<strong>页面作者样式</strong>，<strong>选择器的权重也相同</strong>，此时位于下面的样式声明会层叠掉上面的那一条样式声明，最终会应用 <em>20px</em> 这一条属性值。</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-23-103928.png" alt="image-20220823183928330" tabindex="0" loading="lazy"><figcaption>image-20220823183928330</figcaption></figure>
+<p>至此，样式声明中存在冲突的所有情况，就全部被解决了。</p>
+<h2> 使用继承</h2>
+<p>层叠冲突这一步完成后，解决了相同元素被声明了多条样式规则究竟应用哪一条样式规则的问题。</p>
+<p>那么如果没有声明的属性呢？此时就使用默认值么？</p>
+<p><em>No、No、No</em>，别急，此时还有第三个步骤，那就是使用继承而来的值。</p>
+<p>例如：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在上面的代码中，我们针对 div 设置了 color 属性值为红色，而针对 p 元素我们没有声明任何的属性，但是由于 color 是可以继承的，因此 p 元素从最近的 div 身上继承到了 color 属性的值。</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-065102.png" alt="image-20220813145102293" tabindex="0" loading="lazy"><figcaption>image-20220813145102293</figcaption></figure>
+<p>这里有两个点需要同学们注意一下。</p>
+<p>首先第一个是我强调了是<strong>最近的</strong> div 元素，看下面的例子：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-065653.png" alt="image-20220813145652726" tabindex="0" loading="lazy"><figcaption>image-20220813145652726</figcaption></figure>
+<p>因为这里并不涉及到选中 p 元素声明 color 值，而是从父元素上面继承到 color 对应的值，因此这里是<strong>谁近就听谁</strong>的，初学者往往会产生混淆，又去比较权重，但是这里根本不会涉及到权重比较，因为压根儿就没有选中到 p 元素。</p>
+<p>第二个就是哪些属性能够继承？</p>
+<p>关于这一点的话，大家可以在 MDN 上面很轻松的查阅到。例如我们以 text-align 为例，如下图所示：</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-070148.png" alt="image-20220813150147885" tabindex="0" loading="lazy"><figcaption>image-20220813150147885</figcaption></figure>
+<h2> 使用默认值</h2>
+<p>好了，目前走到这一步，如果属性值都还不能确定下来，那么就只能是使用默认值了。</p>
+<p>如下图所示：</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-070825.png" alt="image-20220813150824752" tabindex="0" loading="lazy"><figcaption>image-20220813150824752</figcaption></figure>
+<p>前面我们也说过，一个 HTML 元素要在浏览器中渲染出来，必须具备所有的 CSS 属性值，但是绝大部分我们是不会去设置的，用户代理样式表里面也不会去设置，也无法从继承拿到，因此最终都是用默认值。</p>
+<p>好了，这就是关于 CSS 属性计算过程的所有知识了。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-154655.png" alt="image-20220814234654914" style="zoom:33%;">
+<h2> 一道面试题</h2>
+<p>好了，学习了今天的内容，让我来用一道面试题测试测试大家的理解程度。</p>
+<p>下面的代码，最终渲染出来的效果，a 元素是什么颜色？p 元素又是什么颜色？</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>大家能说出为什么会呈现这样的结果么？</p>
+<p>解答如下：</p>
+<figure><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-071941.png" alt="image-20220813151941113" tabindex="0" loading="lazy"><figcaption>image-20220813151941113</figcaption></figure>
+<p>实际上原因很简单，因为 a 元素在用户代理样式表中已经设置了 color 属性对应的值，因此会应用此声明值。而在 p 元素中无论是作者样式表还是用户代理样式表，都没有对此属性进行声明，然而由于 color 属性是可以继承的，因此最终 p 元素的 color 属性值通过继承来自于父元素。</p>
+<p>你答对了么？-）</p>
+<hr>
+<p>-<em>EOF</em>-</p>
+]]></content:encoded>
+      <enclosure url="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-061516.png" type="image/png"/>
+    </item>
+    <item>
+      <title>你不知道的 CSS 之包含块</title>
+      <link>https://oragekk.me/posts/Web/CSS/containing-block.html</link>
+      <guid>https://oragekk.me/posts/Web/CSS/containing-block.html</guid>
+      <source url="https://oragekk.me/rss.xml">你不知道的 CSS 之包含块</source>
+      <description>你不知道的 CSS 之包含块 一说到 CSS 盒模型，这是很多小伙伴耳熟能详的知识，甚至有的小伙伴还能说出 border-box 和 content-box 这两种盒模型的区别。 但是一说到 CSS 包含块，有的小伙伴就懵圈了，什么是包含块？好像从来没有听说过这玩意儿。 好吧，如果你对包含块的知识一无所知，那么系好安全带，咱们准备出发了。</description>
+      <category>CSS$$</category>
+      <pubDate>Thu, 06 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 你不知道的 CSS 之包含块</h1>
+<p>一说到 CSS 盒模型，这是很多小伙伴耳熟能详的知识，甚至有的小伙伴还能说出 border-box 和 content-box 这两种盒模型的区别。</p>
+<p>但是一说到 CSS 包含块，有的小伙伴就懵圈了，什么是包含块？好像从来没有听说过这玩意儿。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-142005.png" alt="image-20220814222004395" style="zoom: 20%;">
+<p>好吧，如果你对包含块的知识一无所知，那么系好安全带，咱们准备出发了。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-13-060434.png" alt="image-20220813140434032" style="zoom:50%;">
+<p>包含块英语全称为<strong>containing block</strong>，实际上平时你在书写 CSS 时，大多数情况下你是感受不到它的存在，因此你不知道这个知识点也是一件很正常的事情。但是这玩意儿是确确实实存在的，在 CSS 规范中也是明确书写了的：</p>
+<p><em><a href="https://drafts.csswg.org/css2/#containing-block-details" target="_blank" rel="noopener noreferrer">https://drafts.csswg.org/css2/#containing-block-details</a></em></p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-142459.png" alt="image-20220814222458695" style="zoom:50%;">
+<p>并且，如果你不了解它的运作机制，有时就会出现一些你认为的莫名其妙的现象。</p>
+<p>那么，这个包含块究竟说了什么内容呢？</p>
+<p>说起来也简单，<strong>就是元素的尺寸和位置，会受它的包含块所影响。对于一些属性，例如 width, height, padding, margin，绝对定位元素的偏移值（比如 position 被设置为 absolute 或 fixed），当我们对其赋予百分比值时，这些值的计算值，就是通过元素的包含块计算得来。</strong></p>
+<p>来吧，少年，让我们从最简单的 case 开始看。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-143153.png" alt="image-20220814223152726" style="zoom: 50%;">
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>请仔细阅读上面的代码，然后你认为 div.item 这个盒子的宽高是多少？</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-143451.png" alt="image-20220814223451349" style="zoom: 33%;">
+<p>相信你能够很自信的回答这个简单的问题，div.item 盒子的 width 为 250px，height 为 150px。</p>
+<p>这个答案确实是没有问题的，但是如果我追问你是怎么得到这个答案的，我猜不了解包含块的你大概率会说，因为它的父元素 div.container 的 width 为 500px，50% 就是 250px，height 为 300px，因此 50% 就是 150px。</p>
+<p>这个答案实际上是不准确的。正确的答案应该是，<strong>div.item 的宽高是根据它的包含块来计算的</strong>，而这里包含块的大小，正是这个元素最近的祖先块元素的内容区。</p>
+<p>因此正如我前面所说，<strong>很多时候你都感受不到包含块的存在。</strong></p>
+<p>包含块分为两种，一种是根元素（HTML 元素）所在的包含块，被称之为初始包含块（<strong>initial containing block</strong>）。对于浏览器而言，初始包含块的的大小等于视口 viewport 的大小，基点在画布的原点（视口左上角）。它是作为元素绝对定位和固定定位的参照物。</p>
+<p>另外一种是对于非根元素，对于非根元素的包含块判定就有几种不同的情况了。大致可以分为如下几种：</p>
+<ul>
+<li>如果元素的 positiion 是 relative 或 static ，那么包含块由离它最近的块容器（block container）的内容区域（content area）的边缘建立。</li>
+<li>如果 position 属性是 fixed，那么包含块由视口建立。</li>
+<li>如果元素使用了 absolute 定位，则包含块由它的最近的 position 的值不是 static （也就是值为fixed、absolute、relative 或 sticky）的祖先元素的内边距区的边缘组成。</li>
+</ul>
+<p>前面两条实际上都还比较好理解，第三条往往是初学者容易比较忽视的，我们来看一个示例：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>首先阅读上面的代码，然后你能在脑海里面想出其大致的样子么？或者用笔和纸画一下也行。</p>
+<p>公布正确答案：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-153548.png" alt="image-20220814233548188" style="zoom: 33%;">
+<p>怎么样？有没有和你所想象的对上？</p>
+<p>其实原因也非常简单，根据上面的第三条规则，对于 div.item2 来讲，它的包含块应该是 div.container，而非 div.item。</p>
+<p>如果你能把上面非根元素的包含块判定规则掌握，那么关于包含块的知识你就已经掌握 80% 了。</p>
+<p>实际上对于非根元素来讲，包含块还有一种可能，那就是如果 position 属性是 absolute 或 fixed，包含块也可能是由满足以下条件的最近父级元素的内边距区的边缘组成的：</p>
+<ul>
+<li>transform 或 perspective 的值不是 none</li>
+<li>will-change 的值是 transform 或 perspective</li>
+<li>filter 的值不是 none 或 will-change 的值是 filter(只在 Firefox 下生效).</li>
+<li>contain 的值是 paint (例如: contain: paint;)</li>
+</ul>
+<p>我们还是来看一个示例：</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>我们对于上面的代码只新增了一条声明，那就是 transform: rotate(0deg)，此时的渲染效果却发生了改变，如下图所示：</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-154347.png" alt="image-20220814234347149" style="zoom:33%;">
+<p>可以看到，此时对于 div.item2 来讲，包含块就变成了 div.item。</p>
+<p>好了，到这里，关于包含块的知识就基本讲完了。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-14-154655.png" alt="image-20220814234654914" style="zoom:33%;">
+<p>我们再把 CSS 规范中所举的例子来看一下。</p>
+<div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面是一段简单的 HTML 代码，在没有添加任何 CSS 代码的情况下，你能说出各自的包含块么？</p>
+<p>对应的结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>包含块</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td>initial C.B. (UA-dependent)</td>
+</tr>
+<tr>
+<td>body</td>
+<td>html</td>
+</tr>
+<tr>
+<td>div1</td>
+<td>body</td>
+</tr>
+<tr>
+<td>p1</td>
+<td>div1</td>
+</tr>
+<tr>
+<td>p2</td>
+<td>div1</td>
+</tr>
+<tr>
+<td>em1</td>
+<td>p2</td>
+</tr>
+<tr>
+<td>strong1</td>
+<td>p2</td>
+</tr>
+</tbody>
+</table>
+<p>首先 HTML 作为根元素，对应的包含块就是前面我们所说的初始包含块，而对于 body 而言，这是一个 static 定位的元素，因此该元素的包含块参照第一条为 html，以此类推 div1、p1、p2 以及 em1 的包含块也都是它们的父元素。</p>
+<p>不过 strong1 比较例外，它的包含块确实 p2，而非 em1。为什么会这样？建议你再把非根元素的第一条规则读一下：</p>
+<ul>
+<li>如果元素的 positiion 是 relative 或 static ，那么包含块由离它最近的**块容器（block container）**的内容区域（content area）的边缘建立。</li>
+</ul>
+<p>没错，因为 em1 不是块容器，而包含块是<strong>离它最近的块容器</strong>的内容区域，所以是 p2。</p>
+<p>接下来添加如下的 CSS：</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面的代码我们对 div1 进行了定位，那么此时的包含块会发生变化么？你可以先在自己思考一下。</p>
+<p>答案如下：</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>包含块</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td>initial C.B. (UA-dependent)</td>
+</tr>
+<tr>
+<td>body</td>
+<td>html</td>
+</tr>
+<tr>
+<td>div1</td>
+<td>initial C.B. (UA-dependent)</td>
+</tr>
+<tr>
+<td>p1</td>
+<td>div1</td>
+</tr>
+<tr>
+<td>p2</td>
+<td>div1</td>
+</tr>
+<tr>
+<td>em1</td>
+<td>p2</td>
+</tr>
+<tr>
+<td>strong1</td>
+<td>p2</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，这里 div1 的包含块就发生了变化，变为了初始包含块。这里你可以参考前文中的这两句话：</p>
+<ul>
+<li>初始包含块（<strong>initial containing block</strong>）。对于浏览器而言，初始包含块的的大小等于视口 viewport 的大小，基点在画布的原点（视口左上角）。它是作为元素绝对定位和固定定位的参照物。</li>
+<li>如果元素使用了 absolute 定位，则包含块由它的最近的 position 的值不是 static （也就是值为fixed、absolute、relative 或 sticky）的祖先元素的内边距区的边缘组成。</li>
+</ul>
+<p>是不是一下子就理解了。没错，因为我们对 div1 进行了定位，因此它会应用非根元素包含块计算规则的第三条规则，寻找离它最近的  position 的值不是 static 的祖先元素，不过显然 body 的定位方式为 static，因此 div1 的包含块最终就变成了初始包含块。</p>
+<p>接下来我们继续修改我们的 CSS：</p>
+<div class="language-css line-numbers-mode" data-ext="css"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里我们对 em1 同样进行了 absolute 绝对定位，你想一想会有什么样的变化？</p>
+<p>没错，聪明的你大概应该知道，em1 的包含块不再是 p2，而变成了 div1，而 strong1 的包含块也不再是 p2 了，而是变成了 em1。</p>
+<p>如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>包含块</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>html</td>
+<td>initial C.B. (UA-dependent)</td>
+</tr>
+<tr>
+<td>body</td>
+<td>html</td>
+</tr>
+<tr>
+<td>div1</td>
+<td>initial C.B. (UA-dependent)</td>
+</tr>
+<tr>
+<td>p1</td>
+<td>div1</td>
+</tr>
+<tr>
+<td>p2</td>
+<td>div1</td>
+</tr>
+<tr>
+<td>em1</td>
+<td>div1（因为定位了，参阅非根元素包含块确定规则的第三条）</td>
+</tr>
+<tr>
+<td>strong1</td>
+<td>em1（因为 em1 变为了块容器，参阅非根元素包含块确定规则的第一条）</td>
+</tr>
+</tbody>
+</table>
+<p>好了，这就是 CSS 规范中所举的例子。如果你全都能看明白，以后你还能跟别人说你是看过这一块知识对应的 CSS 规范的人。</p>
+<img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2022-08-15-013519.png" alt="image-20220815093518833" style="zoom:33%;">
+<p>另外，关于包含块的知识，在 MDN 上除了解说了什么是包含块以外，也举出了很多简单易懂的示例。</p>
+<p>具体你可以移步到：<em><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Containing_block" target="_blank" rel="noopener noreferrer">https://developer.mozilla.org/zh-CN/docs/Web/CSS/Containing_block</a></em></p>
+<p>好了，这就是有关包含块的所有内容了，你学会了么？-）</p>
+<hr>
+<p>-<em>EOF</em>-</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>通过UserAgent判断设备</title>
+      <link>https://oragekk.me/posts/Web/JavaScript/judgment.html</link>
+      <guid>https://oragekk.me/posts/Web/JavaScript/judgment.html</guid>
+      <source url="https://oragekk.me/rss.xml">通过UserAgent判断设备</source>
+      <description>通过 js 判断 moblie 端和 pc 端进而加载不同的 css 或者 js 废话不多说，上代码 &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; function browserRedirect() { var sUserAgent = navigator.userAgent.toLowerCase(); var bIsIpad = sUserAgent.match(/ipad/i) == &amp;quot;ipad&amp;quot;; var bIsIphoneOs = sUserAgent.match(/iphone os/i) == &amp;quot;iphone os&amp;quot;; var bIsMidp = sUserAgent.match(/midp/i) == &amp;quot;midp&amp;quot;; var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == &amp;quot;rv:1.2.3.4&amp;quot;; var bIsUc = sUserAgent.match(/ucweb/i) == &amp;quot;ucweb&amp;quot;; var bIsAndroid = sUserAgent.match(/android/i) == &amp;quot;android&amp;quot;; var bIsCE = sUserAgent.match(/windows ce/i) == &amp;quot;windows ce&amp;quot;; var bIsWM = sUserAgent.match(/windows mobile/i) == &amp;quot;windows mobile&amp;quot;; // document.writeln(&amp;quot;您的浏览设备为：&amp;quot;); if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) { // alert(&amp;quot;手机浏览！&amp;quot;); } else { // alert(&amp;quot;PC浏览！&amp;quot;); document.write(&amp;quot;&amp;lt;script type=&amp;apos;text/javascript&amp;apos; size=&amp;apos;150&amp;apos; alpha=&amp;apos;0.8&amp;apos; zIndex=&amp;apos;-10&amp;apos; src=&amp;apos;../js/dist/ribbon.js&amp;apos;&amp;gt;&amp;lt;\/script&amp;gt;&amp;quot;); document.write(&amp;quot;&amp;lt;script type=&amp;apos;text/javascript&amp;apos; color=&amp;apos;0,188,212&amp;apos; opacity=&amp;apos;0.7&amp;apos; zIndex=&amp;apos;-2&amp;apos; count=&amp;apos;99&amp;apos; src=&amp;apos;http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&amp;apos;&amp;gt;&amp;lt;\/script&amp;gt;&amp;quot;); 	} } browserRedirect(); &amp;lt;/script&amp;gt;</description>
+      <category>JavaScript</category>
+      <pubDate>Tue, 07 Feb 2017 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<blockquote>
+<p>通过 js 判断 moblie 端和 pc 端进而加载不同的 css 或者 js</p>
+</blockquote>
+<h2> 废话不多说，上代码</h2>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 需要注意的是字符转义和引号嵌套的问题</h3>
+]]></content:encoded>
+    </item>
+    <item>
       <title>Vercel deploy忽略指定分支</title>
       <link>https://oragekk.me/mark/vercel-deploy.html</link>
       <guid>https://oragekk.me/mark/vercel-deploy.html</guid>
       <source url="https://oragekk.me/rss.xml">Vercel deploy忽略指定分支</source>
-      <description>1. 前言 一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy 提示 这不是刚把博客部署从GitHub Pages转移到了Vercel上，稍微加快了一点国内的访问速度，然后发现了一个新问题~ 原先是推送到main分之，通过Github Action 工作流进行部署到gh-page 分支上 转移到Vercel之后，工作流我并没有删掉，所以流程还是一样，就导致main提交了---&amp;gt;Action----&amp;gt;gh-page提交 会触发两次Vercel的部署，当然gh-page是存放静态页面的分支，buid肯定是失败的。下边来解决这个问题吧</description>
+      <description>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</description>
       <category>收藏</category>
       <pubDate>Fri, 31 Mar 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[
-<h2> 1. 前言</h2>
 <p>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</p>
+<!-- more -->
+<h2> 1. 前言</h2>
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
 <p>这不是刚把博客部署从GitHub Pages转移到了Vercel上，稍微加快了一点国内的访问速度，然后发现了一个新问题~</p>
@@ -371,19 +950,6 @@
       <enclosure url="https://s3.bmp.ovh/imgs/2023/03/24/140a5562a8b9e334.png" type="image/png"/>
     </item>
     <item>
-      <title>Python</title>
-      <link>https://oragekk.me/posts/Python/</link>
-      <guid>https://oragekk.me/posts/Python/</guid>
-      <source url="https://oragekk.me/rss.xml">Python</source>
-      <description>相关信息 这里放置 python相关 内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 python相关 内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
       <title>使用Bing API提交网站URL</title>
       <link>https://oragekk.me/posts/Python/submit-bing.html</link>
       <guid>https://oragekk.me/posts/Python/submit-bing.html</guid>
@@ -415,10 +981,10 @@
       <enclosure url="https://s3.bmp.ovh/imgs/2023/03/24/25889c6c306381f8.png" type="image/png"/>
     </item>
     <item>
-      <title>给Flutter初学者的demo</title>
+      <title>Flutter 基础大集合</title>
       <link>https://oragekk.me/posts/cross-platform/Flutter/newbie.html</link>
       <guid>https://oragekk.me/posts/cross-platform/Flutter/newbie.html</guid>
-      <source url="https://oragekk.me/rss.xml">给Flutter初学者的demo</source>
+      <source url="https://oragekk.me/rss.xml">Flutter 基础大集合</source>
       <description>Flutter初学，demo</description>
       <category>Flutter</category>
       <category>前端跨平台</category>
@@ -691,10 +1257,10 @@ samples, guidance on mobile development, and a full API reference.</p>
       <enclosure url="https://oragekk.me/logo.svg" type="image/svg+xml"/>
     </item>
     <item>
-      <title>一人一句宋词，最美的都在这里</title>
+      <title>一人一句宋词</title>
       <link>https://oragekk.me/private/%E4%B8%80%E4%BA%BA%E4%B8%80%E5%8F%A5%E5%AE%8B%E8%AF%8D.html</link>
       <guid>https://oragekk.me/private/%E4%B8%80%E4%BA%BA%E4%B8%80%E5%8F%A5%E5%AE%8B%E8%AF%8D.html</guid>
-      <source url="https://oragekk.me/rss.xml">一人一句宋词，最美的都在这里</source>
+      <source url="https://oragekk.me/rss.xml">一人一句宋词</source>
       <description>Bing 每日壁纸 写来留待日后慢慢欣赏 😜 苏轼 十年生死两茫茫， 不思量，自难忘。 陆游 红酥手，黄藤酒， 满城春色宫墙柳。 李清照 此情无计可消除， 才下眉头，却上心头。</description>
       <pubDate>Mon, 16 Jan 2017 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<figure><img src="https://file.mo7.cc/api/public/bz?idx=1" alt="Bing 每日壁纸" tabindex="0" loading="lazy"><figcaption>Bing 每日壁纸</figcaption></figure>
@@ -790,51 +1356,29 @@ samples, guidance on mobile development, and a full API reference.</p>
       <enclosure url="https://file.mo7.cc/api/public/bz?idx=1" type="image/"/>
     </item>
     <item>
-      <title>Linux</title>
-      <link>https://oragekk.me/posts/Linux/</link>
-      <guid>https://oragekk.me/posts/Linux/</guid>
-      <source url="https://oragekk.me/rss.xml">Linux</source>
-      <description>相关信息 这里放置 Linux 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 Linux 相关的内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Past Post</title>
+      <title>Unix/Linux 扫盲笔记</title>
       <link>https://oragekk.me/posts/Linux/unix-linux-note.html</link>
       <guid>https://oragekk.me/posts/Linux/unix-linux-note.html</guid>
-      <source url="https://oragekk.me/rss.xml">Past Post</source>
-      <description>This document is not completed and will be updated anytime. Catagory Unix Bell Labs Xenix BSD FreeBSD &amp;amp; Apple NeXTStep Darwin POSIX Unix-like Single Unix Specification Apple iOS XNU Kernel Linux Linux Kernel GNU Project Android Android Kernel Android ROM Chrome OS Chromium OS</description>
+      <source url="https://oragekk.me/rss.xml">Unix/Linux 扫盲笔记</source>
+      <description>This document is not completed and will be updated anytime. Catagory Catagory Unix Unix-like Single UNIX Specification Apple iOS XNU Kernel Linux Linux Kernel GNU Project Android Android Kernel Android ROM Chrome OS Chromium OS</description>
       <category>Linux</category>
       <pubDate>Tue, 14 Apr 2015 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<blockquote>
 <p>This document is not completed and will be updated anytime.</p>
 </blockquote>
 <h2> Catagory</h2>
-<ol>
-<li><a href="#unix">Unix</a>
-<ol>
-<li><a href="#bell-labs">Bell Labs</a></li>
-<li><a href="#xenix">Xenix</a></li>
-<li><a href="#bsd">BSD</a></li>
-<li><a href="#freebsd--apple">FreeBSD &amp; Apple</a></li>
-<li><a href="#nextstep">NeXTStep</a></li>
-<li><a href="#darwin">Darwin</a></li>
-<li><a href="#posix">POSIX</a></li>
-</ol>
-</li>
+<ul>
+<li><a href="#catagory">Catagory</a></li>
+<li><a href="#unix">Unix</a></li>
 <li><a href="#unix-like">Unix-like</a>
-<ol>
-<li><a href="#single-unix-specification">Single Unix Specification</a></li>
+<ul>
+<li><a href="#single-unix-specification">Single UNIX Specification</a></li>
 <li><a href="#apple-ios">Apple iOS</a></li>
 <li><a href="#xnu-kernel">XNU Kernel</a></li>
-</ol>
+</ul>
 </li>
 <li><a href="#linux">Linux</a>
-<ol>
+<ul>
 <li><a href="#linux-kernel">Linux Kernel</a></li>
 <li><a href="#gnu-project">GNU Project</a></li>
 <li><a href="#android">Android</a></li>
@@ -842,9 +1386,9 @@ samples, guidance on mobile development, and a full API reference.</p>
 <li><a href="#android-rom">Android ROM</a></li>
 <li><a href="#chrome-os">Chrome OS</a></li>
 <li><a href="#chromium-os">Chromium OS</a></li>
-</ol>
+</ul>
 </li>
-</ol>
+</ul>
 <hr>
 <h2> Unix</h2>
 <blockquote>
@@ -988,106 +1532,6 @@ Android's source code is released by Google under open source licenses, although
       <enclosure url="http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Unix_timeline.en.svg/800px-Unix_timeline.en.svg.png" type="image/png"/>
     </item>
     <item>
-      <title>前端开发</title>
-      <link>https://oragekk.me/posts/Web/</link>
-      <guid>https://oragekk.me/posts/Web/</guid>
-      <source url="https://oragekk.me/rss.xml">前端开发</source>
-      <description>相关信息 这里放置前端相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置前端相关的内容</p>
-</div>
-<hr>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>跨平台开发</title>
-      <link>https://oragekk.me/posts/cross-platform/</link>
-      <guid>https://oragekk.me/posts/cross-platform/</guid>
-      <source url="https://oragekk.me/rss.xml">跨平台开发</source>
-      <description>相关信息 这里放置 跨平台开发 内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 跨平台开发 内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>iOS</title>
-      <link>https://oragekk.me/posts/iOS/</link>
-      <guid>https://oragekk.me/posts/iOS/</guid>
-      <source url="https://oragekk.me/rss.xml">iOS</source>
-      <description>相关信息 这里放置 iOS 相关的内容</description>
-      <pubDate>Thu, 09 Mar 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 iOS 相关的内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Mobile and PC loading different code</title>
-      <link>https://oragekk.me/posts/Web/JavaScript/Mobile%20and-PC-loading-different-code.html</link>
-      <guid>https://oragekk.me/posts/Web/JavaScript/Mobile%20and-PC-loading-different-code.html</guid>
-      <source url="https://oragekk.me/rss.xml">Mobile and PC loading different code</source>
-      <description>通过 js 判断 moblie 端和 pc 端进而加载不同的 css 或者 js 废话不多说，上代码 &amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt; function browserRedirect() { var sUserAgent = navigator.userAgent.toLowerCase(); var bIsIpad = sUserAgent.match(/ipad/i) == &amp;quot;ipad&amp;quot;; var bIsIphoneOs = sUserAgent.match(/iphone os/i) == &amp;quot;iphone os&amp;quot;; var bIsMidp = sUserAgent.match(/midp/i) == &amp;quot;midp&amp;quot;; var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == &amp;quot;rv:1.2.3.4&amp;quot;; var bIsUc = sUserAgent.match(/ucweb/i) == &amp;quot;ucweb&amp;quot;; var bIsAndroid = sUserAgent.match(/android/i) == &amp;quot;android&amp;quot;; var bIsCE = sUserAgent.match(/windows ce/i) == &amp;quot;windows ce&amp;quot;; var bIsWM = sUserAgent.match(/windows mobile/i) == &amp;quot;windows mobile&amp;quot;; // document.writeln(&amp;quot;您的浏览设备为：&amp;quot;); if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) { // alert(&amp;quot;手机浏览！&amp;quot;); } else { // alert(&amp;quot;PC浏览！&amp;quot;); document.write(&amp;quot;&amp;lt;script type=&amp;apos;text/javascript&amp;apos; size=&amp;apos;150&amp;apos; alpha=&amp;apos;0.8&amp;apos; zIndex=&amp;apos;-10&amp;apos; src=&amp;apos;../js/dist/ribbon.js&amp;apos;&amp;gt;&amp;lt;\/script&amp;gt;&amp;quot;); document.write(&amp;quot;&amp;lt;script type=&amp;apos;text/javascript&amp;apos; color=&amp;apos;0,188,212&amp;apos; opacity=&amp;apos;0.7&amp;apos; zIndex=&amp;apos;-2&amp;apos; count=&amp;apos;99&amp;apos; src=&amp;apos;http://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&amp;apos;&amp;gt;&amp;lt;\/script&amp;gt;&amp;quot;); 	} } browserRedirect(); &amp;lt;/script&amp;gt;</description>
-      <category>JavaScript</category>
-      <pubDate>Tue, 07 Feb 2017 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<blockquote>
-<p>通过 js 判断 moblie 端和 pc 端进而加载不同的 css 或者 js</p>
-</blockquote>
-<h2> 废话不多说，上代码</h2>
-<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 需要注意的是字符转义和引号嵌套的问题</h3>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>JavaScript</title>
-      <link>https://oragekk.me/posts/Web/JavaScript/</link>
-      <guid>https://oragekk.me/posts/Web/JavaScript/</guid>
-      <source url="https://oragekk.me/rss.xml">JavaScript</source>
-      <description>相关信息 这里放置javascript相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置javascript相关的内容</p>
-</div>
-<hr>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Example Post using Keynote Layout</title>
-      <link>https://oragekk.me/posts/Web/JavaScript/js-module-7day.html</link>
-      <guid>https://oragekk.me/posts/Web/JavaScript/js-module-7day.html</guid>
-      <source url="https://oragekk.me/rss.xml">Example Post using Keynote Layout</source>
-      <description>下滑这里查看更多内容 7 月 9 日，我在公司内部进行了名为「JavaScript 模块化七日谈」分享，并将该 Slides 分享到了微博上。出乎意料地，这篇微博先后被 @JS 小组 @尤小右 @寸志 等近 200 人转发，阅读达到 10w，获得了还不错的评价。 于是，我决定将它重新发到我的博客上，并为它专门制作了适用于 Keynote 展示文稿的新布局。它能自动根据屏幕大小/旋转以一定比例填充屏幕，你也可以直接点击下方链接在新页面打开，来获得更好的、沉浸式的全屏体验 Watch Slides →</description>
-      <category>JavaScript</category>
-      <pubDate>Thu, 09 Jul 2015 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<blockquote>
-<p>下滑这里查看更多内容</p>
-</blockquote>
-<p>7 月 9 日，我在公司内部进行了名为「JavaScript 模块化七日谈」分享，并将该 Slides 分享到了微博上。出乎意料地，这篇微博先后被 @JS 小组 @尤小右 @寸志 等近 200 人转发，阅读达到 10w，获得了还不错的评价。</p>
-<p>于是，我决定将它重新发到我的博客上，并为它专门制作了适用于 Keynote 展示文稿的新布局。它能自动根据屏幕大小/旋转以一定比例填充屏幕，你也可以直接点击下方链接在新页面打开，来获得更好的、沉浸式的全屏体验</p>
-<h3> <a href="http://huangxuan.me/js-module-7day" target="_blank" rel="noopener noreferrer">Watch Slides →</a></h3>
-<img src="http://huangxuan.me/js-module-7day/attach/qrcode.png" width="350" height="350">
-<p><small class="img-hint">你也可以通过扫描二维码在手机上观看</small></p>
-<p>这个 Web Slides 开源在<a href="https://github.com/Huxpro/js-module-7day" target="_blank" rel="noopener noreferrer">我的 Github 上</a>，欢迎你帮助我完善这个展示文稿，你可以给我提 issue，可以 fork &amp; pull request。如果它能帮助到你了，希望你还能不吝啬 star 一下这个项目</p>
-<h3> Catalog</h3>
-<ul>
-<li>第一日 上古时期 <strong><em>Module?</em></strong> 从设计模式说起</li>
-<li>第二日 石器时代 <strong><em>Script Loader</em></strong> 只有封装性可不够，我们还需要加载</li>
-<li>第三日 蒸汽朋克 <strong><em>Module Loader</em></strong> 模块化架构的工业革命</li>
-<li>第四日 号角吹响 <strong><em>CommonJS</em></strong> 征服世界的第一步是跳出浏览器</li>
-<li>第五日 双塔奇兵 <strong><em>AMD/CMD</em></strong> 浏览器环境模块化方案</li>
-<li>第六日 精灵宝钻 <strong><em>Browserify/Webpack</em></strong> 大势所趋，去掉这层包裹！</li>
-<li>第七日 王者归来 <strong><em>ES6 Module</em></strong> 最后的战役</li>
-</ul>
-<h3> Thanks</h3>
-<p><a href="http://lab.hakim.se/reveal-js" target="_blank" rel="noopener noreferrer">Reveal.js</a></p>
-]]></content:encoded>
-    </item>
-    <item>
       <title>CommonJS，RequireJS，SeaJS 归纳笔记</title>
       <link>https://oragekk.me/posts/Web/JavaScript/js-module-loader.html</link>
       <guid>https://oragekk.me/posts/Web/JavaScript/js-module-loader.html</guid>
@@ -1103,14 +1547,21 @@ Android's source code is released by Google under open source licenses, although
 <p>于是，JavaScript 的模块化成为迫切需求。在 ES6 Module 来临之前，JavaScript 社区提供了强大支持，尝试在现有的运行环境下，实现模块的效果。</p>
 <hr>
 <h2> Catalog</h2>
-<ol>
+<ul>
+<li><a href="#foreword">Foreword</a></li>
+<li><a href="#catalog">Catalog</a></li>
 <li><a href="#commonjs--node">CommonJS &amp; Node</a></li>
 <li><a href="#history">History</a></li>
-<li><a href="#requirejs--amd">RequireJS &amp; AMD</a></li>
+<li><a href="#requirejs--amd">RequireJS &amp; AMD</a>
+<ul>
+<li><a href="#1-%E6%89%A7%E8%A1%8C%E6%97%B6%E6%9C%BA">1. <strong>执行时机</strong></a></li>
+<li><a href="#2-%E4%B9%A6%E5%86%99%E9%A3%8E%E6%A0%BC">2. <strong>书写风格</strong></a></li>
+</ul>
+</li>
 <li><a href="#seajs--cmd">SeaJS &amp; CMD</a></li>
 <li><a href="#amd-vs-cmd">AMD vs CMD</a></li>
 <li><a href="#webpack">WebPack</a></li>
-</ol>
+</ul>
 <h2> CommonJS &amp; Node</h2>
 <blockquote>
 <p>Javascript: not just for browsers any more! —— CommonJS Slogen</p>
@@ -1207,10 +1658,10 @@ Android's source code is released by Google under open source licenses, although
 ]]></content:encoded>
     </item>
     <item>
-      <title>Example Post</title>
+      <title>JavaScript ES6</title>
       <link>https://oragekk.me/posts/Web/JavaScript/js-version.html</link>
       <guid>https://oragekk.me/posts/Web/JavaScript/js-version.html</guid>
-      <source url="https://oragekk.me/rss.xml">Example Post</source>
+      <source url="https://oragekk.me/rss.xml">JavaScript ES6</source>
       <description>JavaScript 有着很奇怪的命名史。 1995 年，它作为网景浏览器（Netscape Navigator）的一部分首次发布，网景给这个新语言命名为 LiveScript。一年后，为了搭上当时媒体热炒 Java 的顺风车，临时改名为了 JavaScript （当然，Java 和 JavaScript 的关系，就和雷锋和雷锋塔一样 —— 并没有什么关系） 歪果仁的笑话怎么一点都不好笑 译者注：wikipedia 的 JavaScript 词条 更详细的叙述了这段历史</description>
       <category>JavaScript</category>
       <pubDate>Tue, 22 Sep 2015 00:00:00 GMT</pubDate>
@@ -1254,34 +1705,6 @@ Android's source code is released by Google under open source licenses, although
 <h4> 著作权声明</h4>
 <p>本文译自 <a href="http://benmccormick.org/2015/09/14/es5-es6-es2016-es-next-whats-going-on-with-javascript-versioning/" target="_blank" rel="noopener noreferrer">ES5, ES6, ES2016, ES.Next: What's going on with JavaScript versioning?</a><br>
 译者 <a href="http://weibo.com/huxpro" target="_blank" rel="noopener noreferrer">黄玄</a>，首次发布于 <a href="http://huangxuan.me" target="_blank" rel="noopener noreferrer">Hux Blog</a>，转载请保留以上链接</p>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Vue</title>
-      <link>https://oragekk.me/posts/Web/Vue/</link>
-      <guid>https://oragekk.me/posts/Web/Vue/</guid>
-      <source url="https://oragekk.me/rss.xml">Vue</source>
-      <description>相关信息 这里放置Vue相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置Vue相关的内容</p>
-</div>
-<hr>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>nodeJS</title>
-      <link>https://oragekk.me/posts/Web/node/</link>
-      <guid>https://oragekk.me/posts/Web/node/</guid>
-      <source url="https://oragekk.me/rss.xml">nodeJS</source>
-      <description>相关信息 这里放置nodeJS相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置nodeJS相关的内容</p>
-</div>
-<hr>
 ]]></content:encoded>
     </item>
     <item>
@@ -1367,32 +1790,6 @@ Android's source code is released by Google under open source licenses, although
 <blockquote>
 <p>就是这么简单了</p>
 </blockquote>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>Flutter</title>
-      <link>https://oragekk.me/posts/cross-platform/Flutter/</link>
-      <guid>https://oragekk.me/posts/cross-platform/Flutter/</guid>
-      <source url="https://oragekk.me/rss.xml">Flutter</source>
-      <description>相关信息 这里放置 Flutter 内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 Flutter 内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>ReactNative</title>
-      <link>https://oragekk.me/posts/cross-platform/ReactNative/</link>
-      <guid>https://oragekk.me/posts/cross-platform/ReactNative/</guid>
-      <source url="https://oragekk.me/rss.xml">ReactNative</source>
-      <description>相关信息 这里放置 ReactNative 内容</description>
-      <pubDate>Thu, 09 Mar 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 ReactNative 内容</p>
-</div>
 ]]></content:encoded>
     </item>
     <item>
@@ -1647,19 +2044,6 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
 ]]></content:encoded>
     </item>
     <item>
-      <title>其他</title>
-      <link>https://oragekk.me/posts/iOS/other/</link>
-      <guid>https://oragekk.me/posts/iOS/other/</guid>
-      <source url="https://oragekk.me/rss.xml">其他</source>
-      <description>相关信息 这里放置 others 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 others 相关的内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
       <title>初探机器学习框架CoreML</title>
       <link>https://oragekk.me/posts/iOS/other/coreML.html</link>
       <guid>https://oragekk.me/posts/iOS/other/coreML.html</guid>
@@ -1828,19 +2212,6 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><blockquote>
 <p>将有问题的语句全部替换成单例后，再用 instruments 检查，再也没有出现泄漏的红叉了。O(∩_∩)O 哈哈~</p>
 </blockquote>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>源码解读</title>
-      <link>https://oragekk.me/posts/iOS/source/</link>
-      <guid>https://oragekk.me/posts/iOS/source/</guid>
-      <source url="https://oragekk.me/rss.xml">源码解读</source>
-      <description>相关信息 这里放置 源码解读 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 源码解读 相关的内容</p>
-</div>
 ]]></content:encoded>
     </item>
     <item>
@@ -2261,19 +2632,6 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
       <enclosure url="https://storage6.cuntuku.com/2019/04/27/bpM38.png" type="image/png"/>
     </item>
     <item>
-      <title>Swift</title>
-      <link>https://oragekk.me/posts/iOS/swift/</link>
-      <guid>https://oragekk.me/posts/iOS/swift/</guid>
-      <source url="https://oragekk.me/rss.xml">Swift</source>
-      <description>相关信息 这里放置 Swift 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 Swift 相关的内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
       <title>深入理解swift中闭包的捕捉语义</title>
       <link>https://oragekk.me/posts/iOS/swift/swift%E6%8D%95%E8%8E%B7%E8%AF%AD%E4%B9%89.html</link>
       <guid>https://oragekk.me/posts/iOS/swift/swift%E6%8D%95%E8%8E%B7%E8%AF%AD%E4%B9%89.html</guid>
@@ -2442,19 +2800,6 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 </li>
 </ul>
 <div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"></div></div>]]></content:encoded>
-    </item>
-    <item>
-      <title>系统</title>
-      <link>https://oragekk.me/posts/iOS/system/</link>
-      <guid>https://oragekk.me/posts/iOS/system/</guid>
-      <source url="https://oragekk.me/rss.xml">系统</source>
-      <description>相关信息 这里放置 系统 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 系统 相关的内容</p>
-</div>
-]]></content:encoded>
     </item>
     <item>
       <title>减小iOS-App或者静态库体积</title>
@@ -3135,19 +3480,6 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
       <enclosure url="http://i2.muimg.com/567571/e2afe593e10c0c78.png" type="image/png"/>
     </item>
     <item>
-      <title>tools</title>
-      <link>https://oragekk.me/posts/iOS/tool/</link>
-      <guid>https://oragekk.me/posts/iOS/tool/</guid>
-      <source url="https://oragekk.me/rss.xml">tools</source>
-      <description>相关信息 这里放置 tool 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 tool 相关的内容</p>
-</div>
-]]></content:encoded>
-    </item>
-    <item>
       <title>Update Cocoapods 1.1.1</title>
       <link>https://oragekk.me/posts/iOS/tool/Update-Cocoapods.html</link>
       <guid>https://oragekk.me/posts/iOS/tool/Update-Cocoapods.html</guid>
@@ -3342,19 +3674,6 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 </ul>
 <div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div>]]></content:encoded>
       <enclosure url="https://storage1.cuntuku.com/2017/08/16/daoru.md.png" type="image/png"/>
-    </item>
-    <item>
-      <title>UI相关</title>
-      <link>https://oragekk.me/posts/iOS/ui/</link>
-      <guid>https://oragekk.me/posts/iOS/ui/</guid>
-      <source url="https://oragekk.me/rss.xml">UI相关</source>
-      <description>相关信息 这里放置 UI 相关的内容</description>
-      <pubDate>Mon, 09 Jan 1978 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>这里放置 UI 相关的内容</p>
-</div>
-]]></content:encoded>
     </item>
     <item>
       <title>Cell的accessoryType属性标记单元格之后，出现的重用问题</title>
@@ -3650,17 +3969,16 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <link>https://oragekk.me/about.html</link>
       <guid>https://oragekk.me/about.html</guid>
       <source url="https://oragekk.me/rss.xml">关于我</source>
-      <description>关于我 Profile Exploration &amp;amp; geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you. 提示 探索 &amp;amp; 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界</description>
+      <description>关于我 Profile Exploration &amp;amp; geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you. Profile 探索 &amp;amp; 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界</description>
       <category>About</category>
       <pubDate>Sun, 12 Mar 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 关于我</h1>
+
 <h2> Profile</h2>
 <p><em>Exploration &amp; geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you.</em></p>
 <div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<blockquote>
+<p class="hint-container-title">Profile</p>
 <p>探索 &amp; 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界</p>
-</blockquote>
 </div>
 <h2> Skills</h2>
 <h3> Languages</h3>
@@ -3681,6 +3999,8 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <figure><img src="https://count.getloli.com/get/@:oragekk?theme=gelbooru-h" alt=":Augenestern-creator" tabindex="0" loading="lazy"><figcaption>:Augenestern-creator</figcaption></figure>
 <h2> Activity Graph</h2>
 <figure><a href="https://github.com/ashutosh00710/github-readme-activity-graph" target="_blank" rel="noopener noreferrer"><img src="https://github-readme-activity-graph.cyclic.app/graph?username=oragekk&amp;theme=dracula" alt="Ashutosh's github activity graph" tabindex="0" loading="lazy"></a><figcaption>Ashutosh's github activity graph</figcaption></figure>
+<h2> 关于本站</h2>
+<p><a href="/intro">传送门</a></p>
 ]]></content:encoded>
       <enclosure url="https://count.getloli.com/get/@:oragekk?theme=gelbooru-h" type="image/"/>
     </item>
