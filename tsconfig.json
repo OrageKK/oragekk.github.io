@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "module": "esnext",
+    "target": "ES2020",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@theme-hope/*": ["node_modules/vuepress-theme-hope/lib/client/*"],
+    }
+  },
+  "include": ["src/.vuepress/*.ts", "src/.vuepress/**/*.vue", "src/.vuepress/types"],
+  "exclude": ["node_modules", "dist", "draft"],
+}
