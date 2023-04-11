@@ -6,15 +6,15 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 10 Apr 2023 14:45:59 GMT</pubDate>
-    <lastBuildDate>Mon, 10 Apr 2023 14:45:59 GMT</lastBuildDate>
+    <pubDate>Tue, 11 Apr 2023 11:39:12 GMT</pubDate>
+    <lastBuildDate>Tue, 11 Apr 2023 11:39:12 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>收藏</category>
     <category>浏览器</category>
     <category>CSS</category>
     <category>CSS$$</category>
     <category>JavaScript</category>
-    <category>收藏</category>
     <category>Blog</category>
     <category>Linux</category>
     <category>python</category>
@@ -24,6 +24,35 @@
     <category>Swift</category>
     <category>About</category>
     <category>使用指南</category>
+    <item>
+      <title>素材设计</title>
+      <link>https://oragekk.me/mark/site/design.html</link>
+      <guid>https://oragekk.me/mark/site/design.html</guid>
+      <source url="https://oragekk.me/rss.xml">素材设计</source>
+      <description>相关信息 素材、设计相关好用的网站 工具类</description>
+      <category>收藏</category>
+      <pubDate>Tue, 11 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>素材、设计相关好用的网站</p>
+</div>
+<h2> 工具类</h2>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>公开API</title>
+      <link>https://oragekk.me/mark/site/public-api.html</link>
+      <guid>https://oragekk.me/mark/site/public-api.html</guid>
+      <source url="https://oragekk.me/rss.xml">公开API</source>
+      <description>相关信息 免费公开的API网站，提供多种公共接口服务</description>
+      <category>收藏</category>
+      <pubDate>Tue, 28 Mar 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>免费公开的API网站，提供多种公共接口服务</p>
+</div>
+]]></content:encoded>
+    </item>
     <item>
       <title>前端-Q&amp;A</title>
       <link>https://oragekk.me/posts/Web/Q_A.html</link>
@@ -120,19 +149,19 @@
 <h3> 何为进程？</h3>
 <p>程序运行需要有它自己专属的内存空间，可以把这块内存空间简单的理解为进程</p>
 <!-- more -->
-<img src="http://mdrs.yuanjin.tech/img/202208092057573.png" alt="image-20220809205743532" style="zoom:50%;">
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/11/9e81b88e42fe104f.png" alt="何为进程" tabindex="0" loading="lazy"><figcaption>何为进程</figcaption></figure>
 <p>每个应用至少有一个进程，进程之间相互独立，即使要通信，也需要双方同意。</p>
 <h3> 何为线程？</h3>
 <p>有了进程后，就可以运行程序的代码了。</p>
 <p>运行代码的「人」称之为「线程」。</p>
 <p>一个进程至少有一个线程，所以在进程开启后会自动创建一个线程来运行代码，该线程称之为主线程。</p>
 <p>如果程序需要同时执行多块代码，主线程就会启动更多的线程来执行代码，所以一个进程中可以包含多个线程。</p>
-<figure><img src="http://mdrs.yuanjin.tech/img/202208092108499.png" alt="image-20220809210859457" tabindex="0" loading="lazy"><figcaption>image-20220809210859457</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/11/5badc062636572ac.png" alt="何为线程" tabindex="0" loading="lazy"><figcaption>何为线程</figcaption></figure>
 <h3> 浏览器有哪些进程和线程？</h3>
 <p><strong>浏览器是一个多进程多线程的应用程序</strong></p>
 <p>浏览器内部工作极其复杂。</p>
 <p>为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。</p>
-<figure><img src="http://mdrs.yuanjin.tech/img/202208092131410.png" alt="image-20220809213152371" tabindex="0" loading="lazy"><figcaption>image-20220809213152371</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/11/8a913a1d57ab9ad1.png" alt="浏览器有哪些进程和线程" tabindex="0" loading="lazy"><figcaption>浏览器有哪些进程和线程</figcaption></figure>
 <blockquote>
 <p>可以在浏览器的任务管理器中查看当前的所有进程</p>
 </blockquote>
@@ -181,7 +210,7 @@
 <li>......</li>
 </ul>
 <p>渲染主线程想出了一个绝妙的主意来处理这个问题：排队</p>
-<figure><img src="http://mdrs.yuanjin.tech/img/202208092230847.png" alt="image-20220809223027806" tabindex="0" loading="lazy"><figcaption>image-20220809223027806</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/11/3be6637939475013.png" alt="排队" tabindex="0" loading="lazy"><figcaption>排队</figcaption></figure>
 <ol>
 <li>在最开始的时候，渲染主线程会进入一个无限循环</li>
 <li>每一次循环会检查消息队列中是否有任务存在。如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。</li>
@@ -198,10 +227,10 @@
 <li>用户操作后需要执行的任务 -- <code>addEventListener</code></li>
 </ul>
 <p>如果让渲染主线程等待这些任务的时机达到，就会导致主线程长期处于「阻塞」的状态，从而导致浏览器「卡死」</p>
-<figure><img src="http://mdrs.yuanjin.tech/img/202208101043348.png" alt="image-20220810104344296" tabindex="0" loading="lazy"><figcaption>image-20220810104344296</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/11/aa0ac442c15daaf3.png" alt="image-20220810104344296" tabindex="0" loading="lazy"><figcaption>image-20220810104344296</figcaption></figure>
 <p><strong>渲染主线程承担着极其重要的工作，无论如何都不能阻塞！</strong></p>
 <p>因此，浏览器选择<strong>异步</strong>来解决这个问题</p>
-<figure><img src="http://mdrs.yuanjin.tech/img/202208101048899.png" alt="image-20220810104858857" tabindex="0" loading="lazy"><figcaption>image-20220810104858857</figcaption></figure>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/11/4f53367a24118e95.png" alt="异步" tabindex="0" loading="lazy"><figcaption>异步</figcaption></figure>
 <p>使用异步的方式，<strong>渲染主线程永不阻塞</strong></p>
 <blockquote>
 <p>面试题：如何理解 JS 的异步？</p>
@@ -266,7 +295,7 @@
 </ol>
 </blockquote>
 ]]></content:encoded>
-      <enclosure url="http://mdrs.yuanjin.tech/img/202208092108499.png" type="image/png"/>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/04/11/9e81b88e42fe104f.png" type="image/png"/>
     </item>
     <item>
       <title>CSS 属性计算过程</title>
@@ -860,20 +889,6 @@
 </section>
 ]]></content:encoded>
       <enclosure url="https://s3.bmp.ovh/imgs/2023/03/29/8958076dc393c8df.png" type="image/png"/>
-    </item>
-    <item>
-      <title>公开API</title>
-      <link>https://oragekk.me/mark/public-api.html</link>
-      <guid>https://oragekk.me/mark/public-api.html</guid>
-      <source url="https://oragekk.me/rss.xml">公开API</source>
-      <description>相关信息 免费公开的API网站，提供多种公共接口服务</description>
-      <category>收藏</category>
-      <pubDate>Tue, 28 Mar 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<div class="hint-container info">
-<p class="hint-container-title">相关信息</p>
-<p>免费公开的API网站，提供多种公共接口服务</p>
-</div>
-]]></content:encoded>
     </item>
     <item>
       <title>终端究极美化iTerm2+Pure</title>
