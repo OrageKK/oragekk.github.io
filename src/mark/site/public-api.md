@@ -13,8 +13,9 @@ tag:
 免费公开的API网站，提供多种公共接口服务
 :::
 
-<MyLink type="api"/>
+<MyLink :links="api"/>
 
 <script setup lang="ts">
 import MyLink from "@MyLink";
+import { api } from "@Api";
 </script>

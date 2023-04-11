@@ -17,7 +17,6 @@
             <div class="link-avatar my-auto">
               <img
                 :src="item.ico"
-                :alt="item.name"
                 onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'
               />
             </div>
@@ -32,18 +31,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { api } from "../data/api";
 import { friends, LinkData } from "../data/friendData";
 const props = defineProps({
-  type: String,
+  type: {
+    type: String,
+    require: true,
+  },
 });
 let linkDatas: LinkData[];
 switch (props.type) {
   case "friend":
     linkDatas = friends;
-    break;
-  case "api":
-    linkDatas = api;
     break;
   default:
     linkDatas = [];
@@ -63,7 +61,9 @@ switch (props.type) {
   overflow: hidden;
   min-height: 10rem;
   color: inherit;
-  background-color: #1f1f23;
+  // background-image: linear-gradient(to right, #434343 0%, black 100%);
+  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+
   box-shadow: 1px 1px 8px var(--card-shadow);
   cursor: pointer;
   transition: box-shadow var(--transform-transition) transform
@@ -143,7 +143,8 @@ a.card-body {
           font-size: 0.75rem;
         }
         line-height: 1.2;
-        color: var(--light-grey);
+        // color: var(--light-grey);
+        color: #f8f9fa;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;

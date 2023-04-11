@@ -11,7 +11,12 @@
         :href="item.link"
         target="_blank"
       >
-        <img class="image" :src="item.ico" alt="" onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'/>
+        <img
+          class="image"
+          :src="item.ico"
+          alt=""
+          onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'
+        />
         <div class="name">{{ item.name }}</div>
         <div class="desc">{{ item.desc }}</div>
       </a>
@@ -19,23 +24,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { api } from "../data/api";
-import { friends, LinkData } from "../data/friendData";
+import { PropType } from "vue";
+import { LinkData } from "../data/friendData";
 const props = defineProps({
   type: String,
+  links:Object as PropType<LinkData[]>,
 });
 let linkDatas: LinkData[];
-switch (props.type) {
-  case "friend":
-    linkDatas = friends;
-    break;
-  case "api":
-    linkDatas = api;
-    break;
-  default:
-    linkDatas = [];
-    break;
-}
+console.log(props.links);
+
+linkDatas = props.links
+
 const GetColorClassName = (index) => {
   const Idx = index % 9;
   return `project${Idx}`;

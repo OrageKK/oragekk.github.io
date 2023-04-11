@@ -14,6 +14,7 @@ import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+import { containerPlugin } from '@vuepress/plugin-container'
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   base: "/",
@@ -32,6 +33,8 @@ export default defineUserConfig({
   alias: {
     "@MyLink": path.resolve(__dirname, "./components/Mylink.vue"),
     "@MyCoverLink": path.resolve(__dirname, "./components/MyCoverLink.vue"),
+    "@Design": path.resolve(__dirname, "./data/design.ts"),
+    "@Api": path.resolve(__dirname, "./data/api.ts"),
   },
 
   theme,

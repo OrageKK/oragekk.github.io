@@ -48,6 +48,7 @@ const background = computed(() => {
     backgroundImage: `url(/assets/${images.value[randomIndex]})`,
   };
 });
+
 </script>
 <style scoped lang="scss">
 .page.not-found {
