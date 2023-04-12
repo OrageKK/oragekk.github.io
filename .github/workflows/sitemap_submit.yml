@@ -15,7 +15,7 @@ jobs:
   push_bot:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout gh-pages branch"
+      - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
           ref: 'gh-pages'
