@@ -11,11 +11,6 @@ on:
 
 jobs:
   push_bot:
-    env:
-      #设置secrets的环境变量
-      BAIDU_KEY: ${{ secrets.BAIDU_KEY }}
-      BING_KEY: ${{ secrets.BING_KEY }}
-      
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout codes"
@@ -26,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: '3.10'
           cache: 'poetry' # 设置缓存
 
       - name: 安装依赖
@@ -34,6 +29,10 @@ jobs:
           pip install -r requests
 
       - name: 运行脚本
+        env:
+          #设置secrets的环境变量
+          BAIDU_KEY: ${{ secrets.BAIDU_KEY }}
+          BING_KEY: ${{ secrets.BING_KEY }}
         run: |
           python /script/submit.py
 
