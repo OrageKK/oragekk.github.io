@@ -4,8 +4,9 @@ name: 推送脚本
 on:
   push:
     branches:
-      # 确保这是你正在使用的分支名称
-      - main
+      - gh-pages
+    paths:
+      - 'sitemap.xml'
   schedule:
     - cron: "0 23 * * *" # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule
 
@@ -27,6 +28,12 @@ jobs:
       - name: 安装依赖
         run: |
           pip install -r requirements.txt
+
+      - name: Download sitemap.xml
+        uses: actions/download-artifact@v3
+        with:
+          name: sitemap
+          path: sitemap.xml
 
       - name: 运行脚本
         env:

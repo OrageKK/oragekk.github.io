@@ -34,6 +34,13 @@ jobs:
           npm run docs:build
           > src/.vuepress/dist/.nojekyll
 
+      - name: Upload sitemap.xml
+        uses: actions/upload-artifact@v3
+        with:
+          name: sitemap
+          path: src/.vuepress/dist/sitemap.xml
+          retention-days: 1
+
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         with:
