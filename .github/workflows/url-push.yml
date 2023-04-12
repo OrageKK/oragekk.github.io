@@ -34,5 +34,5 @@ jobs:
           BAIDU_KEY: ${{ secrets.BAIDU_KEY }}
           BING_KEY: ${{ secrets.BING_KEY }}
         run: |
-          python /script/submit.py
+          python script/submit.py
 

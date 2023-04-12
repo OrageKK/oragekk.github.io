@@ -18,12 +18,6 @@ jobs:
           # 如果你文档需要 Git 子模块，取消注释下一行
           submodules: true
 
-      - name: Check commit message
-        if: ${{ contains(github.event.head_commit.message, 'no-deploy') }}
-        run: |
-          echo "Commit message contains 'no-deploy', exit"
-          exit 0
-
       - name: 设置 Node.js
         uses: actions/setup-node@v3
         with:
