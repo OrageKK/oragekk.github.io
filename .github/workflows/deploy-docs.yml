@@ -33,19 +33,6 @@ jobs:
           npm run docs:build
           > src/.vuepress/dist/.nojekyll
 
-      - name: Upload sitemap.xml
-        uses: actions/upload-artifact@v3
-        with:
-          name: sitemap
-          path: src/.vuepress/dist/sitemap.xml
-          retention-days: 1
-
-      - name: 触发推送工作流
-        uses: peter-evans/repository-dispatch@v2
-        with:
-          event-type: submit_sitemap # 触发事件类型
-          client-payload: '{"branch": "main"}' # 客户端负载数据
-
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         with:

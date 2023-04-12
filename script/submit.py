@@ -3,10 +3,18 @@
 
 import os
 import requests
+import argparse
 import xml.etree.ElementTree as ET
 
 # 提取sitemap中的所有URL
 
+
+def getArgs():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--sitemap', help='Path to sitemap file', required=True)
+    args = parser.parse_args()
+    print(f"Sitemap path: {args}")
+    return args.sitemap
 
 def extract_urls_from_sitemap(sitemap_path):
     with open(sitemap_path, 'r') as f:
@@ -64,7 +72,7 @@ def push_urls_to_bing(urls):
 # 主程序
 if __name__ == '__main__':
     # sitemap_url = 'https://oragekk.me/sitemap.xml'
-    sitemap_path = os.path.join(os.getcwd(), 'sitemap.xml')
+    sitemap_path = getArgs()
     site_url = 'https://oragekk.me'
     urls = extract_urls_from_sitemap(sitemap_path)
     # push_urls_to_bing(urls)
