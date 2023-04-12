@@ -6,7 +6,7 @@ on:
     branches:
       - gh-pages
     paths:
-      - 'sitemap.xml'
+      - '**/sitemap.xml'
   schedule:
     - cron: "0 23 * * *" # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule
 
