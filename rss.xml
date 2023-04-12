@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 12 Apr 2023 05:12:17 GMT</pubDate>
-    <lastBuildDate>Wed, 12 Apr 2023 05:12:17 GMT</lastBuildDate>
+    <pubDate>Wed, 12 Apr 2023 08:21:19 GMT</pubDate>
+    <lastBuildDate>Wed, 12 Apr 2023 08:21:19 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>收藏</category>
@@ -24,6 +24,17 @@
     <category>Swift</category>
     <category>About</category>
     <category>使用指南</category>
+    <item>
+      <title>123</title>
+      <link>https://oragekk.me/private/test.html</link>
+      <guid>https://oragekk.me/private/test.html</guid>
+      <source url="https://oragekk.me/rss.xml">123</source>
+      <description>Bing 每日壁纸</description>
+      <pubDate>Mon, 16 Jan 2017 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<figure><img src="https://file.mo7.cc/api/public/bz?idx=1" alt="Bing 每日壁纸" tabindex="0" loading="lazy"><figcaption>Bing 每日壁纸</figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://file.mo7.cc/api/public/bz?idx=1" type="image/"/>
+    </item>
     <item>
       <title>素材设计</title>
       <link>https://oragekk.me/mark/site/design.html</link>
