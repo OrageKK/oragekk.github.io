@@ -2,9 +2,9 @@ name: 推送脚本
 
 # 两种触发方式：一、push代码，二、每天国际标准时间23点（北京时间+8即早上7点）运行
 on:
-  push:
-    paths:
-      - '**/sitemap.xml'
+  repository_dispatch:
+    types: [submit_sitemap]
+
   schedule:
     - cron: "0 23 * * *" # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule
 
@@ -20,8 +20,8 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-          cache: 'pip' # 设置缓存
+          python-version: "3.10"
+          cache: "pip" # 设置缓存
 
       - name: 安装依赖
         run: |
@@ -40,4 +40,3 @@ jobs:
           BING_KEY: ${{ secrets.BING_KEY }}
         run: |
           python script/submit.py
-
