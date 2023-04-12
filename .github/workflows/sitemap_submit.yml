@@ -22,10 +22,10 @@ jobs:
           path: gh-pages
 
       - name: Checkout main branch
-      uses: actions/checkout@v3
-      with:
-        ref: 'main'
-        path: main
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+          path: main
 
       - name: Set up Python
         uses: actions/setup-python@v4
