@@ -5,7 +5,7 @@ function show_runtime() {
     const longtime = calculateTimePassed(startTime)
     const el = document.getElementById("runtime_span")
     el && (el.innerHTML =
-        `本小站已苟延残喘2: ${longtime}`)
+        `本小站已苟延残喘: ${longtime}`)
 }
 
 function isLeapYear(year) {
