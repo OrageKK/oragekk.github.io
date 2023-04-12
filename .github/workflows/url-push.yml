@@ -23,10 +23,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.9.6
+          python-version: 3.10
+          cache: 'poetry' # 设置缓存
 
       - name: 安装依赖
         run: |
