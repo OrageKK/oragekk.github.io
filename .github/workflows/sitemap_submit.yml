@@ -25,8 +25,9 @@ jobs:
       - name: 获取上一次提交SHA
         id: last-commit
         run: |
-          echo "{SHA}={git log --format="%H" -n 2 | tail -n 1}" >> $GITHUB_OUTPUT
-          git log --format="%H" -n 2 | tail -n 1
+          cd gh-pages
+          PREV=$(git log --format="%H" -n 2 | tail -n 1)
+          echo "{SHA}={$PREV}" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: 拉取prev代码
