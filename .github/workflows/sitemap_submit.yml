@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - gh-pages
-    paths:
-      - 'sitemap.xml'
+    # paths:
+    #   - 'sitemap.xml'
 
   schedule:
     - cron: "0 23 * * *" # https://help.github.com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows#scheduled-events-schedule
@@ -24,7 +24,9 @@ jobs:
           
       - name: 获取上一次提交SHA
         id: last-commit
-        run: echo "{SHA}={git log --format="%H" -n 2 | tail -n 1}" >> $GITHUB_OUTPUT
+        run: |
+          echo "{SHA}={git log --format="%H" -n 2 | tail -n 1}" >> $GITHUB_OUTPUT
+          echo git log --format="%H" -n 2 | tail -n 1
         shell: bash
 
       - name: 拉取prev代码
