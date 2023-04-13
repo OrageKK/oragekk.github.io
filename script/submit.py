@@ -8,7 +8,6 @@ import argparse
 import xml.etree.ElementTree as ET
 from oauth2client.service_account import ServiceAccountCredentials
 from googleapiclient.discovery import build
-from googleapiclient.http import BatchHttpRequest
 
 # 从命令行参数提取sitemap
 
