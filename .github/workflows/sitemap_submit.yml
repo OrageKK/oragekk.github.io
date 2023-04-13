@@ -27,18 +27,17 @@ jobs:
         run: |
           cd gh-pages
           PREV=$(git log --format="%H" -n 2 | tail -n 1)
-          echo "{SHA_KEY}={$PREV}" >> $GITHUB_OUTPUT
+          echo "SHA_KEY=$PREV" >> $GITHUB_OUTPUT
           echo $PREV
       
       - name: 检验传递值
         run: |
           echo ${{ steps.last-commit.outputs.SHA_KEY }}
-          echo '${{ steps.last-commit.outputs.SHA_KEY }}'
         
       - name: 拉取prev代码
         uses: actions/checkout@v3
         with:
-          ref: 'b9ad090bf1566662351d570c92c11a35d62c1392'
+          ref: ${{ steps.last-commit.outputs.SHA_KEY }}
           path: prev
 
       - name: Checkout main branch
