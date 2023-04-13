@@ -12,6 +12,7 @@ import httplib2
 # 从命令行参数提取sitemap
 
 def get_sitemap_path(sitemap_type):
+    print(args)
     parser = argparse.ArgumentParser()
     parser.add_argument(f'--{sitemap_type}', help=f'Path to {sitemap_type} file', required=True)
     args = parser.parse_args()
