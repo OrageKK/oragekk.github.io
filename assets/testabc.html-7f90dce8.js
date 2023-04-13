@@ -1,0 +1,1 @@
+import{_ as t,O as c,P as n,Q as e}from"./framework-dab5a93a.js";const a={},i=e("figure",null,[e("img",{src:"https://file.mo7.cc/api/public/bz?idx=1",alt:"Bing 每日壁纸",tabindex:"0",loading:"lazy"}),e("figcaption",null,"Bing 每日壁纸")],-1),s=[i];function l(o,_){return c(),n("div",null,s)}const d=t(a,[["render",l],["__file","testabc.html.vue"]]);export{d as default};
