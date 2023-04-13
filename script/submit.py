@@ -128,7 +128,7 @@ if __name__ == '__main__':
     prev_urls = extract_urls_from_sitemap(prev_sitemap_path)
     final_urls = diff_urls(urls, prev_urls)
     print(f"需要更新的url:{final_urls}")
-    if final_urls.count > 0:
+    if len(final_urls) > 0:
         push_urls_to_bing(urls, site_url)
         push_urls_to_baidu(urls, site_url)
         push_urls_to_google(final_urls)
