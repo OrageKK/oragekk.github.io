@@ -28,6 +28,7 @@ jobs:
           cd gh-pages
           PREV=$(git log --format="%H" -n 2 | tail -n 1)
           echo "{SHA}={$PREV}" >> $GITHUB_OUTPUT
+          echo $PREV
         shell: bash
 
       - name: 拉取prev代码
