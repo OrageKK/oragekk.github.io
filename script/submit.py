@@ -7,7 +7,8 @@ import requests
 import argparse
 import xml.etree.ElementTree as ET
 from oauth2client.service_account import ServiceAccountCredentials
-import httplib2
+from googleapiclient.discovery import build
+from googleapiclient.http import BatchHttpRequest
 
 # 从命令行参数提取sitemap
 
@@ -38,7 +39,6 @@ def extract_urls_from_sitemap(sitemap_path):
             loc = url.find(
                 '{http://www.sitemaps.org/schemas/sitemap/0.9}loc').text
             urls.append(loc)
-        print(urls)
     return urls
 
 # 获取更新的url
@@ -71,7 +71,7 @@ def push_urls_to_baidu(urls, site_url):
 
 
 def push_urls_to_bing(urls, site_url):
-    bing_api_key = os.environ["BING_KEY"]  # 因为$前面是大写所以也是大写
+    bing_api_key = os.environ["BING_KEY"]
     bing_api_url = "https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey=" + bing_api_key
 
     headers = {"Content-Type": "application/json"}
@@ -92,29 +92,31 @@ def push_urls_to_bing(urls, site_url):
 
 def push_urls_to_google(urls):
     SCOPES = ["https://www.googleapis.com/auth/indexing"]
-    ENDPOINT = "https://indexing.googleapis.com/v3/urlNotifications:publish"
 
     # service_account_file.json is the private key that you created for your service account.
-    JSON_KEY_FILE = os.environ["GOOGLE_JSON"]
+    JSON_KEY_FILE = json.loads(os.environ["GOOGLE_JSON"])
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+    credentials = ServiceAccountCredentials.from_json_keyfile_dict(
         JSON_KEY_FILE, scopes=SCOPES)
 
-    http = credentials.authorize(httplib2.Http())
+    # Build service
+    service = build('indexing', 'v3', credentials=credentials)
+    batch = service.new_batch_http_request(callback=insert_event)
 
-    content = []
     for url in urls:
-        item = {
-            "url": url,
-            "type": "URL_UPDATED"
-        },
-        content.append(item)
-    body = json.dumps({"urlNotifications": content}).encode("utf-8")
-    response, content = http.request(ENDPOINT, method="POST", body=body)
-    if response.status_code == 200:
-        print(f"🎉Google推送成功!:\n{response.content}")
+
+        batch.add(service.urlNotifications().publish(
+            body={"url": url, "type": 'URL_UPDATED'}))
+    batch.execute()
+
+# goole批处理回调
+
+
+def insert_event(request_id, response, exception):
+    if exception is not None:
+        print(f"🛎Google Exception:\n{exception} ")
     else:
-        print(f"🛎Google Error:\n{response.content} ")
+        print(f"🎉Google推送成功!:\n{response}")
 
 
 # 主程序
@@ -126,7 +128,10 @@ if __name__ == '__main__':
     urls = extract_urls_from_sitemap(sitemap_path)
     prev_urls = extract_urls_from_sitemap(prev_sitemap_path)
     final_urls = diff_urls(urls, prev_urls)
-    print(f"最终url:{final_urls}")
-    push_urls_to_bing(urls, site_url)
-    push_urls_to_baidu(urls, site_url)
-    push_urls_to_google(urls)
+    print(f"需要更新的url:{final_urls}")
+    if final_urls.count > 0:
+        push_urls_to_bing(urls, site_url)
+        push_urls_to_baidu(urls, site_url)
+        push_urls_to_google(final_urls)
+    else:
+        print("✨未发现要更新的url")
