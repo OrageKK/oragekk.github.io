@@ -15,6 +15,18 @@ jobs:
   push_bot:
     runs-on: ubuntu-latest
     steps:
+
+      - name: 获取上一次提交SHA
+        id: last-commit
+        run: echo "::set-output name=sha::$(git log --format="%H" -n 2 | tail -n 1)"
+        shell: bash
+
+      - name: 拉取prev代码
+        uses: actions/checkout@v3
+        with:
+          ref: '${{ steps.last-commit.outputs.sha }}'
+          path: prev
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
@@ -43,4 +55,4 @@ jobs:
           BAIDU_KEY: ${{ secrets.BAIDU_KEY }}
           BING_KEY: ${{ secrets.BING_KEY }}
         run: |
-          python main/script/submit.py --sitemap gh-pages/sitemap.xml
+          python main/script/submit.py --sitemap gh-pages/sitemap.xml --prevsitemap prev/sitemap.xml
