@@ -54,5 +54,6 @@ jobs:
           #设置secrets的环境变量
           BAIDU_KEY: ${{ secrets.BAIDU_KEY }}
           BING_KEY: ${{ secrets.BING_KEY }}
+          GOOGLE_JSON: ${{ secrets.GOOGLE_JSON }}
         run: |
           python main/script/submit.py --sitemap gh-pages/sitemap.xml --prevsitemap prev/sitemap.xml
