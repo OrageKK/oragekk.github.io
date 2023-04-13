@@ -29,11 +29,11 @@ jobs:
           PREV=$(git log --format="%H" -n 2 | tail -n 1)
           echo "{SHA_KEY}={$PREV}" >> $GITHUB_OUTPUT
           echo $PREV
-        shell: bash
       
       - name: 检验传递值
         run: |
           echo ${{ steps.last-commit.outputs.SHA_KEY }}
+          echo '${{ steps.last-commit.outputs.SHA_KEY }}'
         
       - name: 拉取prev代码
         uses: actions/checkout@v3
