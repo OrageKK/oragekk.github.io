@@ -15,23 +15,23 @@ jobs:
   push_bot:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: 'gh-pages'
+          path: gh-pages
+          
       - name: 获取上一次提交SHA
         id: last-commit
-        run: echo "::set-output name=sha::$(git log --format="%H" -n 2 | tail -n 1)"
+        run: echo "{SHA}={git log --format="%H" -n 2 | tail -n 1}" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: 拉取prev代码
         uses: actions/checkout@v3
         with:
-          ref: '${{ steps.last-commit.outputs.sha }}'
+          ref: '${{ steps.last-commit.outputs.SHA }}'
           path: prev
-
-      - name: Checkout gh-pages branch
-        uses: actions/checkout@v3
-        with:
-          ref: 'gh-pages'
-          path: gh-pages
 
       - name: Checkout main branch
         uses: actions/checkout@v3
