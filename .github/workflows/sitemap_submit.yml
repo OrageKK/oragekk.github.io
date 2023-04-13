@@ -29,10 +29,6 @@ jobs:
           PREV=$(git log --format="%H" -n 2 | tail -n 1)
           echo "SHA_KEY=$PREV" >> $GITHUB_OUTPUT
           echo $PREV
-      
-      - name: 检验传递值
-        run: |
-          echo ${{ steps.last-commit.outputs.SHA_KEY }}
         
       - name: 拉取prev代码
         uses: actions/checkout@v3
@@ -63,8 +59,4 @@ jobs:
           BING_KEY: ${{ secrets.BING_KEY }}
           GOOGLE_JSON: ${{ secrets.GOOGLE_JSON }}
         run: |
-          ls
-          cd prev
-          ls
-          cd ..
           python main/script/submit.py --sitemap gh-pages/sitemap.xml --prevsitemap prev/sitemap.xml
