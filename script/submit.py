@@ -11,25 +11,13 @@ import httplib2
 
 # 从命令行参数提取sitemap
 
-
-def getSiteMap():
+def get_sitemap_path(sitemap_type):
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--sitemap', help='Path to sitemap file', required=True)
+    parser.add_argument(f'--{sitemap_type}', help=f'Path to {sitemap_type} file', required=True)
     args = parser.parse_args()
-    print(f"sitemap path: {args.sitemap}")
-    return args.sitemap
-
-# 提取上次提交的sitemap
-
-
-def getPrevSiteMap():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--prevsitemap', help='Path to prevsitemap file', required=True)
-    args = parser.parse_args()
-    print(f"prevsitemap path: {args.prevsitemap}")
-    return args.prevsitemap
+    sitemap_path = getattr(args, sitemap_type)
+    print(f"{sitemap_type} path: {sitemap_path}")
+    return sitemap_path
 
 # 从sitemap提取url
 
@@ -126,8 +114,8 @@ def push_urls_to_google(urls):
 # 主程序
 if __name__ == '__main__':
     site_url = 'https://oragekk.me'
-    sitemap_path = getSiteMap()
-    prev_sitemap_path = getPrevSiteMap()
+    sitemap_path = get_sitemap_path('sitemap')
+    prev_sitemap_path = get_sitemap_path('prevsitemap')
     urls = extract_urls_from_sitemap(sitemap_path)
     prev_urls = extract_urls_from_sitemap(prev_sitemap_path)
     final_urls = diff_urls(urls, prev_urls)
