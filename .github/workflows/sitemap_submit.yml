@@ -63,4 +63,8 @@ jobs:
           BING_KEY: ${{ secrets.BING_KEY }}
           GOOGLE_JSON: ${{ secrets.GOOGLE_JSON }}
         run: |
+          ls
+          cd prev
+          ls
+          cd ..
           python main/script/submit.py --sitemap gh-pages/sitemap.xml --prevsitemap prev/sitemap.xml
