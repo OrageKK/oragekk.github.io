@@ -17,7 +17,7 @@ def getSiteMap():
     parser.add_argument(
         '--sitemap', help='Path to sitemap file', required=True)
     args = parser.parse_args()
-    print(f"sitemap path: {args.prevsitemap}")
+    print(f"sitemap path: {args.sitemap}")
     return args.sitemap
 
 # 提取上次提交的sitemap
