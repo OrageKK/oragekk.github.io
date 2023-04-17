@@ -6,18 +6,20 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 13 Apr 2023 08:58:42 GMT</pubDate>
-    <lastBuildDate>Thu, 13 Apr 2023 08:58:42 GMT</lastBuildDate>
+    <pubDate>Mon, 17 Apr 2023 09:21:39 GMT</pubDate>
+    <lastBuildDate>Mon, 17 Apr 2023 09:21:39 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>Blog</category>
     <category>收藏</category>
+    <category>Vercel</category>
+    <category>python</category>
+    <category>GitHub</category>
     <category>浏览器</category>
     <category>CSS</category>
     <category>CSS$$</category>
     <category>JavaScript</category>
-    <category>Blog</category>
     <category>Linux</category>
-    <category>python</category>
     <category>Flutter</category>
     <category>前端跨平台</category>
     <category>iOS</category>
@@ -25,9 +27,79 @@
     <category>About</category>
     <category>使用指南</category>
     <item>
+      <title>如何利用GitHub Action提交URL到搜索引擎</title>
+      <link>https://oragekk.me/blog/auto-push.html</link>
+      <guid>https://oragekk.me/blog/auto-push.html</guid>
+      <source url="https://oragekk.me/rss.xml">如何利用GitHub Action提交URL到搜索引擎</source>
+      <description>相关信息 这是一个GitHub Actions的配置文件，整体思路是，获取本次更新的url （通过对比两次提交的sitemap.xml文件），所以触发条件是deploy分支有推送并修改了sitemap.xml文件，再利用python脚本进行url推送到百度、Bing、Google 脚本代码请看这里👉提交URL到搜索引擎（百度、Bing、Google）</description>
+      <category>Blog</category>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>这是一个<code>GitHub Actions</code>的配置文件，整体思路是，获取本次更新的url
+（通过对比两次提交的sitemap.xml文件），所以触发条件是deploy分支有推送并修改了<code>sitemap.xml</code>文件，再利用python脚本进行url推送到百度、Bing、Google</p>
+<p>脚本代码请看这里👉<a href="/posts/Python/submit-url">提交URL到搜索引擎（百度、Bing、Google）</a></p>
+</div>
+<!-- more -->
+<p>前些天不是写了Bing的提交脚本吗，但是每次都要自己手动跑脚本也很麻烦，但我又没有服务器，所以用上了GitHub Actions了嘛
+总的来说做了以下事情：</p>
+<ol>
+<li>提交代码并修改sitemap.xml 后触发工作流</li>
+<li>比对上一次提交和本次提交的新增URL</li>
+<li>将URL分别提交给百度站长、Bing、Google 供搜索引擎快速收录</li>
+<li></li>
+</ol>
+<h2> 流程解读</h2>
+<h2> 配置代码</h2>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 配置解读</h2>
+<h4> 触发</h4>
+<p>这个例子的触发机制如下：</p>
+<ol>
+<li>当有推送行为发生</li>
+<li>推送分支为<code>gh-pages</code></li>
+<li><code>sitemap.xml</code>文件被修改</li>
+</ol>
+<h4> 配置运行环境</h4>
+<p>这里指定<code>ubuntu-latest</code></p>
+<h4> 步骤</h4>
+<ol>
+<li>
+<p>拉取 gh-pages 分支代码到路径<code>gh-pages</code></p>
+</li>
+<li>
+<p>获取上一次提交SHA-1值使用如下命令，将获取到的倒数第二次git提交SHA-1值存储到环境变量<code>GITHUB_OUTPUT</code><sup class="footnote-ref"><a href="#footnote1">[1]</a><a class="footnote-anchor" id="footnote-ref1"></a></sup><a class="footnote-anchor" id="footnote-ref1">中，方便后续使用</a></p><a class="footnote-anchor" id="footnote-ref1">
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></a></li><a class="footnote-anchor" id="footnote-ref1">
+<li>
+<p>获取上一步存储到到<code>GITHUB_OUTPUT</code>的commitid，并拉取代码代码到路径prev，ref可以是分支，tag，commitid</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>拉取main分支代码到路径main</p>
+</li>
+<li>
+<p>安装python环境并设置缓存</p>
+</li>
+<li>
+<p>安装python依赖库</p>
+</li>
+<li>
+<p>运行脚本读取配置在仓库--&gt;Settings--&gt;Secrets and variables--&gt;Actions--&gt;Repository secrets中的环境变量，并把上次提交的sitemap.xml和本次提交的sitemap.xml作为命令行参数提交给python脚本</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/17/67c1bc7646f4be1d.png" alt="Repository secrets" tabindex="0" loading="lazy"><figcaption>Repository secrets</figcaption></figure>
+</li>
+</a></ol><a class="footnote-anchor" id="footnote-ref1">
+<hr class="footnotes-sep">
+</a><section class="footnotes"><a class="footnote-anchor" id="footnote-ref1">
+</a><ol class="footnotes-list"><a class="footnote-anchor" id="footnote-ref1">
+</a><li id="footnote1" class="footnote-item"><a class="footnote-anchor" id="footnote-ref1"></a><p><a class="footnote-anchor" id="footnote-ref1"></a><a href="https://docs.github.com/zh/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable" target="_blank" rel="noopener noreferrer">设置步骤的输出参数</a> <a href="#footnote-ref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded>
+      <enclosure url="https://w.wallhaven.cc/full/l3/wallhaven-l3xk6q.jpg" type="image/jpeg"/>
+    </item>
+    <item>
       <title>素材设计</title>
-      <link>https://oragekk.me/mark/site/design.html</link>
-      <guid>https://oragekk.me/mark/site/design.html</guid>
+      <link>https://oragekk.me/site/design.html</link>
+      <guid>https://oragekk.me/site/design.html</guid>
       <source url="https://oragekk.me/rss.xml">素材设计</source>
       <description>相关信息 素材、设计相关好用的网站 工具类</description>
       <category>收藏</category>
@@ -41,8 +113,8 @@
     </item>
     <item>
       <title>公开API</title>
-      <link>https://oragekk.me/mark/site/public-api.html</link>
-      <guid>https://oragekk.me/mark/site/public-api.html</guid>
+      <link>https://oragekk.me/site/public-api.html</link>
+      <guid>https://oragekk.me/site/public-api.html</guid>
       <source url="https://oragekk.me/rss.xml">公开API</source>
       <description>相关信息 免费公开的API网站，提供多种公共接口服务</description>
       <category>收藏</category>
@@ -52,6 +124,328 @@
 <p>免费公开的API网站，提供多种公共接口服务</p>
 </div>
 ]]></content:encoded>
+    </item>
+    <item>
+      <title>Vercel deploy忽略指定分支</title>
+      <link>https://oragekk.me/tutorial/vercel-deploy.html</link>
+      <guid>https://oragekk.me/tutorial/vercel-deploy.html</guid>
+      <source url="https://oragekk.me/rss.xml">Vercel deploy忽略指定分支</source>
+      <description>Vercel Ignored Build Step使用</description>
+      <category>Vercel</category>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</p>
+<!-- more -->
+<h2> 1. 前言</h2>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>这不是刚把博客部署从GitHub Pages转移到了Vercel上，稍微加快了一点国内的访问速度，然后发现了一个新问题~</p>
+<p>原先是推送到<code>main</code>分之，通过Github Action 工作流进行部署到<code>gh-page</code> 分支上</p>
+<p>转移到Vercel之后，工作流我并没有删掉，所以流程还是一样，就导致<code>main</code>提交了---&gt;Action----&gt;<code>gh-page</code>提交</p>
+<p>会触发两次Vercel的部署，当然<code>gh-page</code>是存放静态页面的分支，buid肯定是失败的。下边来解决这个问题吧</p>
+</div>
+<h2> 2. 步骤</h2>
+<p>如图所示，打开setting-Git-Ignored Build Step</p>
+<p>启用“忽略构建步骤”字段。如果命令返回“0”，则将跳过构建。但是，如果返回代码“1”或更大，则将生成新的部署。</p>
+<p>我是使用系统环境变量来做的，方式有很多，看自己方便吧，在Command处输入以下脚本表示只构建main分支</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>系统环境变量默认是曝光的，如果不生效，在Environment Variables 中勾选</p>
+<ul class="task-list-container">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" id="task-item-0" checked="checked" disabled="disabled"><label class="task-list-item-label" for="task-item-0"> Automatically expose System Environment Variables</label></li>
+</ul>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" alt="setting-Git-Ignored Build Step" tabindex="0" loading="lazy"><figcaption>setting-Git-Ignored Build Step</figcaption></figure>
+<h2> 3. 使用脚本</h2>
+<p>要在“忽略构建步骤”中运行 bash 脚本，您需要在该字段中设置以下内容：请注意该文件应该存在于您的存储库中。 bash 脚本示例： bash script.shbash 脚本的示例：<code>bash script.sh</code></p>
+<p><strong>注意</strong> 您也可以使用 Node 脚本（例如 ）。<code>node ignore-step.js</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 脚本，其中只允许部署对生产环境所做的提交。应将环境变量“VERCEL_ENV”添加到您的项目中。</p>
+<p>通过使用此命令，Vercel 将仅在“VERCEL_ENV”的值为“production”时构建部署。该变量已添加到环境变量 UI，使其可用于项目。</p>
+<h2> 4. <a href="#_7-%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%80%E8%A7%88%E8%A1%A8">使用环境变量</a></h2>
+<p>您可以直接在 Ignored Build Step 字段中创建引用系统环境变量的命令：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署对生产环境所做的提交。</p>
+<p>下面是一个示例脚本，它将有条件地构建某些分支：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署从分支“main”和“staging”进行的提交。</p>
+<h2> 5. 使用文件夹和工作区</h2>
+<p>在继续之前，请记住 Ignored Build Step 在您选择的“根目录”的同一文件夹中运行。因此，您可能需要稍微调整一下以适应您的需要。要构建仅考虑特定文件夹的新部署，您可以使用以下命令</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略构建步骤”命令的示例。如果将更改提交给“./packages/frontend/”，该命令将产生一个非空响应，从而允许构建继续进行。
+通过使用此命令，Vercel 将仅在目录内进行更改时构建部署。如果该文件夹是您选择的“根目录”，则可以使用：<code>packages/frontend/``./packages/frontend/</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到 “.”，则该命令将生成非空响应，从而允许继续生成。</p>
+<p>您还可以访问部署中的其他文件夹以检查更改。如果您在构建前端时选择了“根目录”，并且您的应用程序必须仅在进行更改时部署，您可以使用： <code>packages/web</code> <code>../../packages/docs</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到“../../packages/docs“，该命令将产生一个非空响应，允许构建继续。</p>
+<h2> 6. 在本地调试命令</h2>
+<p>要在本地调试忽略的构建步骤命令，首先使用可以复制 Vercel 上可用设置的文件夹非常重要。为此，您可以应用以下步骤：</p>
+<ol>
+<li>使用 将存储库克隆到另一个文件夹。<code>git clone --depth=10 (...)</code></li>
+<li>在终端中运行命令或脚本。</li>
+<li>您可以使用 检查最后一个命令返回的退出代码。<code>echo $?</code></li>
+</ol>
+<h2> 7. 系统环境变量一览表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名字</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>VERCEL</code></td>
+<td style="text-align:left">指示应用已在 Vercel 上部署和运行的指示器。 例：。<code>1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CI</code></td>
+<td style="text-align:left">指示代码在<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="noopener noreferrer">持续集成</a>环境中运行的指示器。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/deployments/configure-a-build" target="_blank" rel="noopener noreferrer">构建步骤</a>期间公开。<code>1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_ENV</code></td>
+<td style="text-align:left">部署和运行应用<a href="https://vercel.com/docs/concepts/projects/environment-variables#environments" target="_blank" rel="noopener noreferrer">的环境</a>。该值可以是 、 或 。<code>production``preview``development</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_URL</code></td>
+<td style="text-align:left"><a href="https://vercel.com/docs/concepts/deployments/generated-urls" target="_blank" rel="noopener noreferrer">生成的部署 URL</a> 的域名。例：。该值不包括协议方案。<code>*.vercel.app``https://</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_REGION</code></td>
+<td style="text-align:left">运行应用的<a href="https://vercel.com/docs/concepts/edge-network/regions" target="_blank" rel="noopener noreferrer">区域的</a> ID。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/functions" target="_blank" rel="noopener noreferrer">无服务器函数</a>的运行时公开。<code>cdg1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_PROVIDER</code></td>
+<td style="text-align:left">从中触发部署的 Git 提供程序。 例：。<code>github</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_REPO_SLUG</code></td>
+<td style="text-align:left">从中触发部署的源存储库。 例：。<code>my-site</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_REPO_OWNER</code></td>
+<td style="text-align:left">拥有从中触发部署的存储库的帐户。 例：。<code>acme</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_REPO_ID</code></td>
+<td style="text-align:left">从中触发部署的存储库的 ID。 例：。<code>117716146</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><mark><code>VERCEL_GIT_COMMIT_REF</code></mark></td>
+<td style="text-align:left">触发部署的提交的 git 分支。 例：。<code>improve-about-page</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_SHA</code></td>
+<td style="text-align:left">触发部署的提交的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。<code>fa1eade47b73733d6312d5abfad33ce9e4068081</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_MESSAGE</code></td>
+<td style="text-align:left">附加到触发部署的提交的消息。 例：。<code>Update about page</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_LOGIN</code></td>
+<td style="text-align:left">附加到部署项目的提交作者的用户名。 例：。<code>johndoe</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_NAME</code></td>
+<td style="text-align:left">附加到部署项目的提交的作者的名称。 例：。<code>John Doe</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_PREVIOUS_SHA</code></td>
+<td style="text-align:left">项目和分支的上次成功部署的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。 <strong>注意：</strong> 仅当提供了<a href="https://vercel.com/docs/concepts/projects/overview#ignored-build-step" target="_blank" rel="noopener noreferrer">忽略的生成步骤</a>时，才会公开此变量。<code>fa1eade47b73733d6312d5abfad33ce9e4068080</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_PULL_REQUEST_ID</code></td>
+<td style="text-align:left">触发部署的拉取请求 ID。如果在发出拉取请求之前在分支上创建了部署，则此值将为空字符串。 例：。<code>23</code></td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" type="image/png"/>
+    </item>
+    <item>
+      <title>提交URL到搜索引擎（百度、Bing、Google）</title>
+      <link>https://oragekk.me/posts/Python/submit-url.html</link>
+      <guid>https://oragekk.me/posts/Python/submit-url.html</guid>
+      <source url="https://oragekk.me/rss.xml">提交URL到搜索引擎（百度、Bing、Google）</source>
+      <description>相关信息 这是一个利用GitHub Actions自动触发的工作流进行解析更新的url并推送到搜索引擎的python脚本,除了之前介绍过的bing api之外，还增加了百度和Google的相关内容 关于GitHub Actions的介绍可以看这里👉GitHub Actions 关于GitHub Actions的配置可以看这里👉如何利用GitHub Actions推送URL到搜索引擎</description>
+      <category>python</category>
+      <pubDate>Mon, 17 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>这是一个利用<code>GitHub Actions</code>自动触发的工作流进行解析更新的url并推送到搜索引擎的python脚本,除了之前介绍过的bing api之外，还增加了百度和Google的相关内容</p>
+<p>关于<code>GitHub Actions</code>的介绍可以看这里👉<a href="/tutorial/github/github-action">GitHub Actions</a></p>
+<p>关于<code>GitHub Actions</code>的配置可以看这里👉<a href="/blog/auto-push">如何利用GitHub Actions推送URL到搜索引擎</a></p>
+</div>
+<!-- more -->
+<h2> 流程图</h2>
+<h2> 代码</h2>
+<details class="hint-container details"><summary>代码</summary>
+<div class="language-python line-numbers-mode" data-ext="py"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></details>
+<p>依赖库</p>
+<div class="language-text line-numbers-mode" data-ext="text"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 注意点</h2>
+<ol>
+<li>
+<p>此脚本不可直接使用，需配合GitHub Action，如果想要直接使用，请替换其中的环境变量为你的内容</p>
+<ul>
+<li><code>os.environ["BAIDU_KEY"]</code> 百度推送token</li>
+<li><code>os.environ["BING_KEY"]</code>  bing_api_key</li>
+<li><code>os.environ["GOOGLE_JSON"]</code> google indexing api 认证json</li>
+<li>取消 <code>从命令行参数提取sitemap</code>的步骤，直接赋值</li>
+</ul>
+</li>
+<li>
+<p>google indexing api参考这里👉<a href="https://developers.google.com/search/apis/indexing-api/v3/quickstart?hl=zh_CN" target="_blank" rel="noopener noreferrer">Indexing API 快速入门</a></p>
+</li>
+</ol>
+]]></content:encoded>
+      <enclosure url="https://w.wallhaven.cc/full/l8/wallhaven-l8z52r.jpg" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>GitHub Actions 使用介绍</title>
+      <link>https://oragekk.me/tutorial/github/github-action.html</link>
+      <guid>https://oragekk.me/tutorial/github/github-action.html</guid>
+      <source url="https://oragekk.me/rss.xml">GitHub Actions 使用介绍</source>
+      <description>GitHub Actions 是什么？ Github Actions 是 Github 官方出的持续集成服务, 挺早之前就推出了。类似的还有如微软的DevOps、GitLab CI、Circle CI、Travis CI等等。大家知道，持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。 很多操作在不同项目里面是类似的，完全可以共享。GitHub 注意到了这一点，想出了一个很妙的点子，允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。</description>
+      <category>GitHub</category>
+      <pubDate>Fri, 14 Apr 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<!-- more -->
+
+<h2> GitHub Actions 是什么？</h2>
+<p>Github Actions 是 Github 官方出的持续集成服务, 挺早之前就推出了。类似的还有如微软的DevOps、GitLab CI、Circle CI、Travis CI等等。大家知道，持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。</p>
+<p>很多操作在不同项目里面是类似的，完全可以共享。GitHub 注意到了这一点，想出了一个很妙的点子，允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。</p>
+<p>如果你需要某个 action，不必自己写复杂的脚本，直接引用他人写好的 action 即可，整个持续集成过程，就变成了一个 actions 的组合。这就是 GitHub Actions 最特别的地方。</p>
+<h2> 什么是CI/CD？</h2>
+<p><a href="https://link.zhihu.com/?target=https%3A//www.redhat.com/en/topics/devops/what-is-ci-cd" target="_blank" rel="noopener noreferrer">What is CI/CD? (redhat.com)</a></p>
+<p>字面意思就是持续集成Continuous Intergation/持续分发Continuous Delivery持续部署Continuous Deployment，网上有太多同质的解释都太过于晦涩，</p>
+<p>提到CI/CD就离不开一个词叫流水线。流水线上每个人的工作是分工明确的，而且工程是有先后顺序，就像造一台车，先造零件，然后组装、喷涂、内饰最后还要测试。软件开发同样如此，有前期的产品设计，UI设计、单元的开发，产品的测试，优化迭代等都由不同的人负责。</p>
+<p>CI/CD另一个作用就是解决团队代码中的冲突或错误。你提交的代码是否会和其他人的有冲突，如果有就不准你提交，回去再和其他哥们儿商量下。同样这一点也能解决你上传BUG代码的问题，同样禁止你。</p>
+<p>如果要做的这几点那就一定需要一个中心化的工厂而且有另一个高效的团队来管理这个工厂的正常运行。CI/CD背后的提供商就是这样的工厂，而为了保证“持续”这个词，任何人都不可能24小时不睡觉帮你在工厂审核你的代码，所以自动化也是CI/CD的一个关键，自动触发机制使得以上所有的操作都是自动化完成的。所以这个工厂其实是无人化的工厂。</p>
+<p>说到底CI/CD并不是一项新的技术，而是一种行业的标准，任何人在其上工作都必须遵守的标准，正因有这样的标准化流程，才能让团队的每一个人都能在自己的岗位上有效输出。说白了也就是领导团队想方设法提高员工效率榨干每一分钟的防摸鱼工具。（笑）</p>
+<p>确实是这样，CI/CD的标准化工具的出现使得从开发到部署的周期大幅度缩短，再配上云开发的代码仓，那简直就是：云仓CI，法力无边。Github Action出现了。</p>
+<h2> 基本概念</h2>
+<p>GitHub Actions 有一些自己的术语。</p>
+<p>（1）<strong>workflow</strong> （工作流程）：持续集成一次运行的过程，就是一个 workflow。</p>
+<p>（2）<strong>job</strong> （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。</p>
+<p>（3）<strong>step</strong>（步骤）：每个 job 由多个 step 构成，一步步完成。</p>
+<p>（4）<strong>action</strong> （动作）：每个 step 可以依次执行一个或多个命令（action）。</p>
+<h2> 关于工作流程</h2>
+<p>工作流是一个可配置的自动化过程，将运行一个或多个作业。工作流由签入到存储库的YAML文件定义，并将在存储库中的事件触发时运行，或者可以手动触发，或者按照定义的计划。</p>
+<p>工作流定义在存储库的 <code>.github/workflows</code> 目录中，一个存储库可以有多个工作流，每个工作流可以执行一组不同的任务。例如，您可以有一个工作流来构建和测试拉取请求，另一个工作流在每次创建发布时部署您的应用程序，还有一个工作流在每次有人打开新问题时添加标签。</p>
+<p>workflow 文件的配置字段非常多，详见<a href="https://help.github.com/en/articles/workflow-syntax-for-github-actions" target="_blank" rel="noopener noreferrer">官方文档</a>。下面是一些基本字段。</p>
+<p><strong>（1）<code>name</code></strong></p>
+<p><code>name</code>字段是 workflow 的名称。如果省略该字段，默认为当前 workflow 的文件名。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>（2）<code>on</code></strong></p>
+<p><code>on</code>字段指定触发 workflow 的条件，通常是某些事件。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>上面代码指定，<code>push</code>事件触发 workflow。</p>
+<p><code>on</code>字段也可以是事件的数组。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>上面代码指定，<code>push</code>事件或<code>pull_request</code>事件都可以触发 workflow。</p>
+<p>完整的事件列表，请查看<a href="https://help.github.com/en/articles/events-that-trigger-workflows" target="_blank" rel="noopener noreferrer">官方文档</a>。除了代码库事件，GitHub Actions 也支持外部事件触发，或者定时运行。</p>
+<p><strong>（3）<code>on.&lt;push|pull_request.&lt;tags|branches</code></strong></p>
+<p>指定触发事件时，可以限定分支或标签。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面代码指定，只有<code>master</code>分支发生<code>push</code>事件时，才会触发 workflow。</p>
+<p><strong>（4）<code>jobs.&lt;job_id.name</code></strong></p>
+<p>workflow 文件的主体是<code>jobs</code>字段，表示要执行的一项或多项任务。</p>
+<p><code>jobs</code>字段里面，需要写出每一项任务的<code>job_id</code>，具体名称自定义。<code>job_id</code>里面的<code>name</code>字段是任务的说明。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面代码的<code>jobs</code>字段包含两项任务，<code>job_id</code>分别是<code>my_first_job</code>和<code>my_second_job</code>。</p>
+<p><strong>（5）<code>jobs.&lt;job_id.needs</code></strong></p>
+<p><code>needs</code>字段指定当前任务的依赖关系，即运行顺序。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面代码中，<code>job1</code>必须先于<code>job2</code>完成，而<code>job3</code>等待<code>job1</code>和<code>job2</code>的完成才能运行。因此，这个 workflow 的运行顺序依次为：<code>job1</code>、<code>job2</code>、<code>job3</code>。</p>
+<p><strong>（6）<code>jobs.&lt;job_id.runs-on</code></strong></p>
+<p><code>runs-on</code>字段指定运行所需要的虚拟机环境。它是必填字段。目前可用的虚拟机如下。</p>
+<ul>
+<li><code>ubuntu-latest</code>，<code>ubuntu-18.04</code>或<code>ubuntu-16.04</code></li>
+<li><code>windows-latest</code>，<code>windows-2019</code>或<code>windows-2016</code></li>
+<li><code>macOS-latest</code>或<code>macOS-10.14</code></li>
+</ul>
+<p>下面代码指定虚拟机环境为<code>ubuntu-18.04</code>。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>（7）<code>jobs.&lt;job_id.steps</code></strong></p>
+<p><code>steps</code>字段指定每个 Job 的运行步骤，可以包含一个或多个步骤。每个步骤都可以指定以下三个字段。</p>
+<ul>
+<li><code>jobs.&lt;job_id.steps.name</code>：步骤名称。</li>
+<li><code>jobs.&lt;job_id.steps.run</code>：该步骤运行的命令或者 action。</li>
+<li><code>jobs.&lt;job_id.steps.env</code>：该步骤所需的环境变量。</li>
+</ul>
+<p>下面是一个完整的 workflow 文件的范例。</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>上面代码中，<code>steps</code>字段只包括一个步骤。该步骤先注入四个环境变量，然后执行一条 Bash 命令。</p>
+<h3> 工作流基础</h3>
+<p>工作流必须包含以下基本组件：</p>
+<ol>
+<li>一个或多个将触发工作流的事件。</li>
+<li>一个或多个作业，每个作业都将在运行机器上执行并运行一系列一个或多个步骤。</li>
+<li>每个步骤都可以运行您定义的脚本或运行操作，这是一个可重用的扩展，可以简化您的工作流程。</li>
+</ol>
+<h3> 工作流触发</h3>
+<p>可以有多种触发方式，具体参见<a href="https://docs.github.com/zh/actions/using-workflows/triggering-a-workflow" target="_blank" rel="noopener noreferrer">官方文档</a>,下面以我的一个工作流举例讲解触发事件</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这个例子的触发机制如下：</p>
+<ol>
+<li>当有推送行为发生</li>
+<li>推送分支为<code>gh-pages</code></li>
+<li><code>sitemap.xml</code>文件被修改</li>
+<li>每天 UTC 23:00触发<sup class="footnote-ref"><a href="#footnote1">[1]</a><a class="footnote-anchor" id="footnote-ref1"></a></sup></li><a class="footnote-anchor" id="footnote-ref1">
+<li>push下的分支和文件要同时触发才会使工作流运行</li>
+</a></ol><a class="footnote-anchor" id="footnote-ref1">
+<div class="hint-container danger">
+<p class="hint-container-title">注意!!!</p>
+<p>虽然官方文档未提及需要把<code>.github/workflows</code>目录下的工作流文件存储于指定触发分支下，但我实际操作中发现，如我设置的触发分支为<code>gh-pages</code>但假如我的.yaml文件在<code>main</code>分支下不在<code>gh-pages</code>根目录的<code>.github/workflows</code>文件夹下，实际并不会触发。</p>
+</div>
+</a><h2><a class="footnote-anchor" id="footnote-ref1"></a> 实例</h2>
+<hr>
+<div class="hint-container info">
+<p class="hint-container-title">相关信息</p>
+<p>这是一个<code>GitHub Actions</code>的配置文件，整体思路是，获取本次更新的url
+（通过对比两次提交的sitemap.xml文件），所以触发条件是deploy分支有推送并修改了<code>sitemap.xml</code>文件，再利用python脚本进行url推送到百度、Bing、Google</p>
+<p>脚本代码请看这里👉<a href="/posts/Python/submit-url">提交URL到搜索引擎（百度、Bing、Google）</a></p>
+</div>
+<!-- more -->
+<p>前些天不是写了Bing的提交脚本吗，但是每次都要自己手动跑脚本也很麻烦，但我又没有服务器，所以用上了GitHub Actions了嘛
+总的来说做了以下事情：</p>
+<ol>
+<li>提交代码并修改sitemap.xml 后触发工作流</li>
+<li>比对上一次提交和本次提交的新增URL</li>
+<li>将URL分别提交给百度站长、Bing、Google 供搜索引擎快速收录</li>
+<li></li>
+</ol>
+<h2> 流程解读</h2>
+<h2> 配置代码</h2>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 配置解读</h2>
+<h4> 触发</h4>
+<p>这个例子的触发机制如下：</p>
+<ol>
+<li>当有推送行为发生</li>
+<li>推送分支为<code>gh-pages</code></li>
+<li><code>sitemap.xml</code>文件被修改</li>
+</ol>
+<h4> 配置运行环境</h4>
+<p>这里指定<code>ubuntu-latest</code></p>
+<h4> 步骤</h4>
+<ol>
+<li>
+<p>拉取 gh-pages 分支代码到路径<code>gh-pages</code></p>
+</li>
+<li>
+<p>获取上一次提交SHA-1值使用如下命令，将获取到的倒数第二次git提交SHA-1值存储到环境变量<code>GITHUB_OUTPUT</code><sup class="footnote-ref"><a href="#footnote2">[2]</a><a class="footnote-anchor" id="footnote-ref2"></a></sup><a class="footnote-anchor" id="footnote-ref2">中，方便后续使用</a></p><a class="footnote-anchor" id="footnote-ref2">
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></a></li><a class="footnote-anchor" id="footnote-ref2">
+<li>
+<p>获取上一步存储到到<code>GITHUB_OUTPUT</code>的commitid，并拉取代码代码到路径prev，ref可以是分支，tag，commitid</p>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
+<li>
+<p>拉取main分支代码到路径main</p>
+</li>
+<li>
+<p>安装python环境并设置缓存</p>
+</li>
+<li>
+<p>安装python依赖库</p>
+</li>
+<li>
+<p>运行脚本读取配置在仓库--&gt;Settings--&gt;Secrets and variables--&gt;Actions--&gt;Repository secrets中的环境变量，并把上次提交的sitemap.xml和本次提交的sitemap.xml作为命令行参数提交给python脚本</p>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/04/17/67c1bc7646f4be1d.png" alt="Repository secrets" tabindex="0" loading="lazy"><figcaption>Repository secrets</figcaption></figure>
+</li>
+</a></ol><a class="footnote-anchor" id="footnote-ref2">
+<hr class="footnotes-sep">
+</a><section class="footnotes"><a class="footnote-anchor" id="footnote-ref2">
+</a><ol class="footnotes-list"><a class="footnote-anchor" id="footnote-ref2">
+</a><li id="footnote1" class="footnote-item"><a class="footnote-anchor" id="footnote-ref2"></a><p><a class="footnote-anchor" id="footnote-ref2">可以使用 </a><a href="https://crontab.guru/" target="_blank" rel="noopener noreferrer">crontab guru</a> 帮助生成 cron 语法并确认其运行时间。 为了帮助入门，还提供了 <a href="https://crontab.guru/examples.html" target="_blank" rel="noopener noreferrer">crontab guru 示例</a>列表。计划工作流程的通知将发送给最后修改工作流程文件中的 cron 语法的用户。 有关详细信息，请参阅“<a href="https://docs.github.com/zh/actions/monitoring-and-troubleshooting-workflows/notifications-for-workflow-runs" target="_blank" rel="noopener noreferrer">工作流程运行通知</a>”。 <a href="#footnote-ref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="footnote2" class="footnote-item"><p><a href="https://docs.github.com/zh/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable" target="_blank" rel="noopener noreferrer">设置步骤的输出参数</a> <a href="#footnote-ref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content:encoded>
+      <enclosure url="https://w.wallhaven.cc/full/j3/wallhaven-j3zvvp.jpg" type="image/jpeg"/>
     </item>
     <item>
       <title>前端-Q&amp;A</title>
@@ -629,136 +1023,6 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>Vercel deploy忽略指定分支</title>
-      <link>https://oragekk.me/mark/vercel-deploy.html</link>
-      <guid>https://oragekk.me/mark/vercel-deploy.html</guid>
-      <source url="https://oragekk.me/rss.xml">Vercel deploy忽略指定分支</source>
-      <description>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</description>
-      <category>收藏</category>
-      <pubDate>Fri, 31 Mar 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</p>
-<!-- more -->
-<h2> 1. 前言</h2>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>这不是刚把博客部署从GitHub Pages转移到了Vercel上，稍微加快了一点国内的访问速度，然后发现了一个新问题~</p>
-<p>原先是推送到<code>main</code>分之，通过Github Action 工作流进行部署到<code>gh-page</code> 分支上</p>
-<p>转移到Vercel之后，工作流我并没有删掉，所以流程还是一样，就导致<code>main</code>提交了---&gt;Action----&gt;<code>gh-page</code>提交</p>
-<p>会触发两次Vercel的部署，当然<code>gh-page</code>是存放静态页面的分支，buid肯定是失败的。下边来解决这个问题吧</p>
-</div>
-<h2> 2. 步骤</h2>
-<p>如图所示，打开setting-Git-Ignored Build Step</p>
-<p>启用“忽略构建步骤”字段。如果命令返回“0”，则将跳过构建。但是，如果返回代码“1”或更大，则将生成新的部署。</p>
-<p>我是使用系统环境变量来做的，方式有很多，看自己方便吧，在Command处输入以下脚本表示只构建main分支</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>系统环境变量默认是曝光的，如果不生效，在Environment Variables 中勾选</p>
-<ul class="task-list-container">
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" id="task-item-0" checked="checked" disabled="disabled"><label class="task-list-item-label" for="task-item-0"> Automatically expose System Environment Variables</label></li>
-</ul>
-<figure><img src="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" alt="setting-Git-Ignored Build Step" tabindex="0" loading="lazy"><figcaption>setting-Git-Ignored Build Step</figcaption></figure>
-<h2> 3. 使用脚本</h2>
-<p>要在“忽略构建步骤”中运行 bash 脚本，您需要在该字段中设置以下内容：请注意该文件应该存在于您的存储库中。 bash 脚本示例： bash script.shbash 脚本的示例：<code>bash script.sh</code></p>
-<p><strong>注意</strong> 您也可以使用 Node 脚本（例如 ）。<code>node ignore-step.js</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 脚本，其中只允许部署对生产环境所做的提交。应将环境变量“VERCEL_ENV”添加到您的项目中。</p>
-<p>通过使用此命令，Vercel 将仅在“VERCEL_ENV”的值为“production”时构建部署。该变量已添加到环境变量 UI，使其可用于项目。</p>
-<h2> 4. <a href="#_7-%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%80%E8%A7%88%E8%A1%A8">使用环境变量</a></h2>
-<p>您可以直接在 Ignored Build Step 字段中创建引用系统环境变量的命令：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署对生产环境所做的提交。</p>
-<p>下面是一个示例脚本，它将有条件地构建某些分支：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署从分支“main”和“staging”进行的提交。</p>
-<h2> 5. 使用文件夹和工作区</h2>
-<p>在继续之前，请记住 Ignored Build Step 在您选择的“根目录”的同一文件夹中运行。因此，您可能需要稍微调整一下以适应您的需要。要构建仅考虑特定文件夹的新部署，您可以使用以下命令</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略构建步骤”命令的示例。如果将更改提交给“./packages/frontend/”，该命令将产生一个非空响应，从而允许构建继续进行。
-通过使用此命令，Vercel 将仅在目录内进行更改时构建部署。如果该文件夹是您选择的“根目录”，则可以使用：<code>packages/frontend/``./packages/frontend/</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到 “.”，则该命令将生成非空响应，从而允许继续生成。</p>
-<p>您还可以访问部署中的其他文件夹以检查更改。如果您在构建前端时选择了“根目录”，并且您的应用程序必须仅在进行更改时部署，您可以使用： <code>packages/web</code> <code>../../packages/docs</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到“../../packages/docs“，该命令将产生一个非空响应，允许构建继续。</p>
-<h2> 6. 在本地调试命令</h2>
-<p>要在本地调试忽略的构建步骤命令，首先使用可以复制 Vercel 上可用设置的文件夹非常重要。为此，您可以应用以下步骤：</p>
-<ol>
-<li>使用 将存储库克隆到另一个文件夹。<code>git clone --depth=10 (...)</code></li>
-<li>在终端中运行命令或脚本。</li>
-<li>您可以使用 检查最后一个命令返回的退出代码。<code>echo $?</code></li>
-</ol>
-<h2> 7. 系统环境变量一览表</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">名字</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>VERCEL</code></td>
-<td style="text-align:left">指示应用已在 Vercel 上部署和运行的指示器。 例：。<code>1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>CI</code></td>
-<td style="text-align:left">指示代码在<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="noopener noreferrer">持续集成</a>环境中运行的指示器。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/deployments/configure-a-build" target="_blank" rel="noopener noreferrer">构建步骤</a>期间公开。<code>1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_ENV</code></td>
-<td style="text-align:left">部署和运行应用<a href="https://vercel.com/docs/concepts/projects/environment-variables#environments" target="_blank" rel="noopener noreferrer">的环境</a>。该值可以是 、 或 。<code>production``preview``development</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_URL</code></td>
-<td style="text-align:left"><a href="https://vercel.com/docs/concepts/deployments/generated-urls" target="_blank" rel="noopener noreferrer">生成的部署 URL</a> 的域名。例：。该值不包括协议方案。<code>*.vercel.app``https://</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_REGION</code></td>
-<td style="text-align:left">运行应用的<a href="https://vercel.com/docs/concepts/edge-network/regions" target="_blank" rel="noopener noreferrer">区域的</a> ID。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/functions" target="_blank" rel="noopener noreferrer">无服务器函数</a>的运行时公开。<code>cdg1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_PROVIDER</code></td>
-<td style="text-align:left">从中触发部署的 Git 提供程序。 例：。<code>github</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_REPO_SLUG</code></td>
-<td style="text-align:left">从中触发部署的源存储库。 例：。<code>my-site</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_REPO_OWNER</code></td>
-<td style="text-align:left">拥有从中触发部署的存储库的帐户。 例：。<code>acme</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_REPO_ID</code></td>
-<td style="text-align:left">从中触发部署的存储库的 ID。 例：。<code>117716146</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><mark><code>VERCEL_GIT_COMMIT_REF</code></mark></td>
-<td style="text-align:left">触发部署的提交的 git 分支。 例：。<code>improve-about-page</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_SHA</code></td>
-<td style="text-align:left">触发部署的提交的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。<code>fa1eade47b73733d6312d5abfad33ce9e4068081</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_MESSAGE</code></td>
-<td style="text-align:left">附加到触发部署的提交的消息。 例：。<code>Update about page</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_LOGIN</code></td>
-<td style="text-align:left">附加到部署项目的提交作者的用户名。 例：。<code>johndoe</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_NAME</code></td>
-<td style="text-align:left">附加到部署项目的提交的作者的名称。 例：。<code>John Doe</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_PREVIOUS_SHA</code></td>
-<td style="text-align:left">项目和分支的上次成功部署的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。 <strong>注意：</strong> 仅当提供了<a href="https://vercel.com/docs/concepts/projects/overview#ignored-build-step" target="_blank" rel="noopener noreferrer">忽略的生成步骤</a>时，才会公开此变量。<code>fa1eade47b73733d6312d5abfad33ce9e4068080</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_PULL_REQUEST_ID</code></td>
-<td style="text-align:left">触发部署的拉取请求 ID。如果在发出拉取请求之前在分支上创建了部署，则此值将为空字符串。 例：。<code>23</code></td>
-</tr>
-</tbody>
-</table>
-]]></content:encoded>
-      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" type="image/png"/>
-    </item>
-    <item>
       <title>评论插件 Waline 之邮件通知配置</title>
       <link>https://oragekk.me/blog/waline-mail.html</link>
       <guid>https://oragekk.me/blog/waline-mail.html</guid>
@@ -1076,101 +1340,6 @@ samples, guidance on mobile development, and a full API reference.</p>
 <li>fluttertoast: ^8.0.9</li>
 <li>cached_network_image: ^3.2.2</li>
 </ul>
-]]></content:encoded>
-    </item>
-    <item>
-      <title>建站过程</title>
-      <link>https://oragekk.me/blog/about.html</link>
-      <guid>https://oragekk.me/blog/about.html</guid>
-      <source url="https://oragekk.me/rss.xml">建站过程</source>
-      <description>建站过程 ✨📒 详细记录一下此次建站过程 开始 之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，对于我这个非专业前端人员来说，有些麻烦，所以一直有想更换引擎的想法 直到偶然间发现vuepress，首先是被vue3+typescript+vite吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了 vuepress-theme-hope，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</description>
-      <category>Blog</category>
-      <pubDate>Tue, 14 Mar 2023 21:45:45 GMT</pubDate>
-      <content:encoded><![CDATA[<h1> 建站过程</h1>
-<div class="hint-container info">
-<p class="hint-container-title">✨📒</p>
-<p>详细记录一下此次建站过程</p>
-</div>
-<h2> 开始</h2>
-<p>之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，对于我这个非专业前端人员来说，有些麻烦，所以一直有想更换引擎的想法
-直到偶然间发现vuepress，首先是被<code>vue3</code>+<code>typescript</code>+<code>vite</code>吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了
-<a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a>，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</p>
-<h2> Markdown增强</h2>
-<p>hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞<a href="/demo/markdown.html" target="blank">Markdown展示</a></p>
-<h2> 目录结构</h2>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 框架支持</h2>
-<p><a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">vuepress2.x</a></p>
-<h2> 主题支持</h2>
-<p><a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a></p>
-<h2> 自定义内容</h2>
-<p>基于原主题进行了继承，个性化内容如下，主要自定义内容分为</p>
-<ol>
-<li>
-<p><strong>替换主题组件</strong></p>
-<ul>
-<li>
-<p>BlogHero.vue</p>
-</li>
-<li>
-<p>PageFooter.vue</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>本地插件开发</strong></p>
-<ul>
-<li>vuepress-plugin-canvas（支持彩虹背景和动态几何图形两种）</li>
-<li>vuepress-plugin-gradient-cover （遮罩背景）</li>
-<li>vuepress-plugin-hitokoto （一言插件）</li>
-<li>vuepress-plugin-live2DAssist （看板娘辅助，由于子页有sidebar，看板娘会挡住，所以写了一个子页隐藏的小东西）</li>
-<li>vuepress-plugin-popper （鼠标特效，基于<a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>）</li>
-</ul>
-</li>
-<li>
-<p><strong>引用外部内容</strong></p>
-<ul>
-<li>
-<p><a href="https://github.com/oh-my-live2d/vuepress-plugin-oh-my-live2d" target="_blank" rel="noopener noreferrer">vuepress-plugin-oh-my-live2d</a> 看板娘插件</p>
-</li>
-<li>
-<p>不蒜子统计</p>
-</li>
-<li>
-<p><a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>原有插件只支持vuepress1.x，自己基于moefy-canvas进行了支持vuepress2.x的本地化插件开发</p>
-</li>
-<li>
-<p><a href="https://v2.vuepress.vuejs.org/zh/reference/plugin/google-analytics.html" target="_blank" rel="noopener noreferrer">@vuepress/plugin-google-analytics</a> 支持Google Analytics 4 正好看到通知原来的UA也要被强制转换了，所以更换了G4</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>配置内容</strong></p>
-<ul>
-<li>navbar</li>
-<li>sidebar</li>
-<li>评论基于 <a href="https://waline.js.org/" target="_blank" rel="noopener noreferrer">Waline</a></li>
-<li>搜索基于<a href="https://www.algolia.com/developers/?utm_content=powered_by&amp;utm_source=localhost&amp;utm_medium=referral&amp;utm_campaign=docsearch" target="_blank" rel="noopener noreferrer">algolia</a></li>
-<li>启用 copyright 版权信息插件</li>
-<li>feed rss插件</li>
-</ul>
-</li>
-<li>
-<p><strong>零碎</strong></p>
-<ul>
-<li>运行时间统计</li>
-<li>CSS 样式美化</li>
-<li>引入字体，品如手写体，夏行楷体</li>
-<li>wanlie 增加自定义emoji，并修改展示样式</li>
-<li>个性log</li>
-</ul>
-</li>
-</ol>
-<h2> 总结</h2>
-<p>过程中，碰到很多bug和问题，也学习了很多前端方面的知识，还学到了Vue3的setup语法和h函数的写法，磕磕绊绊，目前总算是上线了，后续有空再写吧 ┏(＾0＾)┛
-本地插件，喜欢自取，源码公开，点击右上角，github图标即可，当然不要忘记点个✨哦</p>
-<h2> 特别鸣谢</h2>
-<p><a href="https://blog.mo7.cc/" target="_blank" rel="noopener noreferrer">墨七</a></p>
-<p>遮罩背景css样式和bing每日图片内容，借鉴自墨七，感谢提供API接口</p>
 ]]></content:encoded>
     </item>
     <item>
@@ -3980,9 +4149,102 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <enclosure url="https://s2.ax1x.com/2019/11/15/MarNhq.md.png" type="image/png"/>
     </item>
     <item>
-      <title>关于我</title>
+      <title>关于本站</title>
       <link>https://oragekk.me/about.html</link>
       <guid>https://oragekk.me/about.html</guid>
+      <source url="https://oragekk.me/rss.xml">关于本站</source>
+      <description>关于本站 ✨📒 详细记录一下此次建站过程 开始 之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，对于我这个非专业前端人员来说，有些麻烦，所以一直有想更换引擎的想法 直到偶然间发现vuepress，首先是被vue3+typescript+vite吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了 vuepress-theme-hope，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</description>
+      <category>Blog</category>
+      <pubDate>Tue, 14 Mar 2023 21:45:45 GMT</pubDate>
+      <content:encoded><![CDATA[<h1> 关于本站</h1>
+<div class="hint-container info">
+<p class="hint-container-title">✨📒</p>
+<p>详细记录一下此次建站过程</p>
+</div>
+<h2> 开始</h2>
+<p>之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，对于我这个非专业前端人员来说，有些麻烦，所以一直有想更换引擎的想法
+直到偶然间发现vuepress，首先是被<code>vue3</code>+<code>typescript</code>+<code>vite</code>吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了
+<a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a>，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</p>
+<h2> Markdown增强</h2>
+<p>hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞<a href="/demo/markdown.html" target="blank">Markdown展示</a></p>
+<h2> 目录结构</h2>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 框架支持</h2>
+<p><a href="https://v2.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer">vuepress2.x</a></p>
+<h2> 主题支持</h2>
+<p><a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a></p>
+<h2> 自定义内容</h2>
+<p>基于原主题进行了继承，个性化内容如下，主要自定义内容分为</p>
+<ol>
+<li>
+<p><strong>替换主题组件</strong></p>
+<ul>
+<li>
+<p>BlogHero.vue</p>
+</li>
+<li>
+<p>PageFooter.vue</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>本地插件开发</strong></p>
+<ul>
+<li>vuepress-plugin-canvas（支持彩虹背景和动态几何图形两种）</li>
+<li>vuepress-plugin-gradient-cover （遮罩背景）</li>
+<li>vuepress-plugin-hitokoto （一言插件）</li>
+<li>vuepress-plugin-live2DAssist （看板娘辅助，由于子页有sidebar，看板娘会挡住，所以写了一个子页隐藏的小东西）</li>
+<li>vuepress-plugin-popper （鼠标特效，基于<a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>）</li>
+</ul>
+</li>
+<li>
+<p><strong>引用外部内容</strong></p>
+<ul>
+<li>
+<p><a href="https://github.com/oh-my-live2d/vuepress-plugin-oh-my-live2d" target="_blank" rel="noopener noreferrer">vuepress-plugin-oh-my-live2d</a> 看板娘插件</p>
+</li>
+<li>
+<p>不蒜子统计</p>
+</li>
+<li>
+<p><a href="https://github.com/moefyit/moefy-canvas" target="_blank" rel="noopener noreferrer">@moefy-canvas/theme-popper</a>原有插件只支持vuepress1.x，自己基于moefy-canvas进行了支持vuepress2.x的本地化插件开发</p>
+</li>
+<li>
+<p><a href="https://v2.vuepress.vuejs.org/zh/reference/plugin/google-analytics.html" target="_blank" rel="noopener noreferrer">@vuepress/plugin-google-analytics</a> 支持Google Analytics 4 正好看到通知原来的UA也要被强制转换了，所以更换了G4</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>配置内容</strong></p>
+<ul>
+<li>navbar</li>
+<li>sidebar</li>
+<li>评论基于 <a href="https://waline.js.org/" target="_blank" rel="noopener noreferrer">Waline</a></li>
+<li>搜索基于<a href="https://www.algolia.com/developers/?utm_content=powered_by&amp;utm_source=localhost&amp;utm_medium=referral&amp;utm_campaign=docsearch" target="_blank" rel="noopener noreferrer">algolia</a></li>
+<li>启用 copyright 版权信息插件</li>
+<li>feed rss插件</li>
+</ul>
+</li>
+<li>
+<p><strong>零碎</strong></p>
+<ul>
+<li>运行时间统计</li>
+<li>CSS 样式美化</li>
+<li>引入字体，品如手写体，夏行楷体</li>
+<li>wanlie 增加自定义emoji，并修改展示样式</li>
+<li>个性log</li>
+<li>自动推送新文章url到搜索引擎（百度、Bing、Google）👉<a href="/platform/github/github-action">详细配置</a></li>
+</ul>
+</li>
+</ol>
+<h2> 总结</h2>
+<p>过程中，碰到很多bug和问题，也学习了很多前端方面的知识，还学到了Vue3的setup语法和h函数的写法，磕磕绊绊，目前总算是上线了，后续有空再写吧 ┏(＾0＾)┛
+本地插件，喜欢自取，源码公开，点击右上角，github图标即可，当然不要忘记点个✨哦</p>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>关于我</title>
+      <link>https://oragekk.me/intro.html</link>
+      <guid>https://oragekk.me/intro.html</guid>
       <source url="https://oragekk.me/rss.xml">关于我</source>
       <description>关于我 Profile Exploration &amp;amp; geek enthusiast, full-stack front-end engineer, UX Designer | Currently focusing on cross-platform development with main directions in iOS, ReactNative, Flutter, and Vue | Discovering a bigger world together with you. Profile 探索 &amp;amp; 极客 爱好者，大前端工程师，用户体验设计师 |目前主要研究方向在跨平台开发上，iOS、ReactNative、Flutter、Vue是主要方向| 期待与你一起发现更大的世界</description>
       <category>About</category>
@@ -4018,35 +4280,6 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p><a href="/intro">传送门</a></p>
 ]]></content:encoded>
       <enclosure url="https://count.getloli.com/get/@:oragekk?theme=gelbooru-h" type="image/"/>
-    </item>
-    <item>
-      <title>关于本站</title>
-      <link>https://oragekk.me/intro.html</link>
-      <guid>https://oragekk.me/intro.html</guid>
-      <source url="https://oragekk.me/rss.xml">关于本站</source>
-      <description>关于本站 🧩 这里会记录一些和站点相关的文章 目录 📌 评论插件 Waline 之邮件通知配置 📌 新站建站过程 📌 Jekyll的旧站回忆 📌 评论系统从多说迁移到disqus</description>
-      <pubDate>Wed, 22 Feb 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[<h1> 关于本站</h1>
-<div class="hint-container tip">
-<p class="hint-container-title">🧩</p>
-<p>这里会记录一些和站点相关的文章</p>
-</div>
-<h2> 目录</h2>
-<ul>
-<li>
-<p><a href="/blog/waline-mail.html" target="blank">📌 评论插件 Waline 之邮件通知配置</a></p>
-</li>
-<li>
-<p><a href="/blog/about.html" target="blank">📌 新站建站过程</a></p>
-</li>
-<li>
-<p><a href="/blog/jekyll.html" target="blank">📌 Jekyll的旧站回忆</a></p>
-</li>
-<li>
-<p><a href="/blog/disqus.html" target="blank">📌 评论系统从多说迁移到disqus</a></p>
-</li>
-</ul>
-]]></content:encoded>
     </item>
     <item>
       <title>Markdown 展示</title>
