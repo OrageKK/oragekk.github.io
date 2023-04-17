@@ -1,14 +1,16 @@
 ---
-title: "收藏"
-icon: "hk-shoucang1"
+title: "GitHub"
+icon: "github"
 date: 1978-01-09
 timeline: false
 index: false
 article: false
+dir:
+  order: 1
 ---
 
 :::info
-这里放置收藏的相关的内容
+这里放置GitHub相关的内容
 :::
 
 --- 

@@ -16,7 +16,7 @@ projects:
   - icon: /logo.svg
     name: 关于本站
     desc: 这里有关于站点的详细介绍
-    link: /intro
+    link: /about
 
   - icon: /assets/link.svg
     name: 友情链接
@@ -31,7 +31,7 @@ projects:
   - icon: /assets/shoucang.svg
     name: 收藏
     desc: 有趣的内容
-    link: /mark
+    link: /site
 
   # - icon: friend
   #   name: 伙伴名称

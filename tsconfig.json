@@ -18,6 +18,6 @@
     "src/.vuepress/**/*.ts",
     "src/.vuepress/**/*.js",
     "src/.vuepress/**/*.vue"
-  ],
+, "vite.config.ts"  ],
   "exclude": ["node_modules", "dist", "draft"]
 }

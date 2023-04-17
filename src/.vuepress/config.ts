@@ -14,7 +14,9 @@ import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
-import { containerPlugin } from '@vuepress/plugin-container'
+import { viteBundler } from "@vuepress/bundler-vite";
+import { hopeTheme } from "vuepress-theme-hope";
+
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   base: "/",
@@ -37,9 +39,24 @@ export default defineUserConfig({
     "@Api": path.resolve(__dirname, "./data/api.ts"),
   },
 
-  theme,
+  theme: theme,
 
   port: 9527,
+
+  bundler: viteBundler({
+    viteOptions: {
+      server: {
+        proxy: {
+          "/bing": {
+            target: "https://cn.bing.com/",
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/bing/, ""),
+          },
+        },
+      },
+    },
+    vuePluginOptions: {},
+  }),
 
   plugins: [
     // 代码高亮

@@ -10,7 +10,7 @@ export const localTheme = (options: ThemeOptions): Theme => {
   return {
     name: "vuepress-theme-local",
 
-    extends: hopeTheme(options),
+    extends: hopeTheme(options, { custom: true }),
 
     alias: {
       // 你可以在这里覆盖或新增别名
@@ -19,7 +19,7 @@ export const localTheme = (options: ThemeOptions): Theme => {
         __dirname,
         "./components/PageFooter.vue"
       ),
-      "@theme-hope/modules/blog/components/BlogHero":path.resolve(
+      "@theme-hope/modules/blog/components/BlogHero": path.resolve(
         __dirname,
         "./components/BlogHero.vue"
       ),

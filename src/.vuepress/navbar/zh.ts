@@ -23,12 +23,19 @@ export const zhNavbar = navbar([
           },
         ],
       },
+      {
+        text: "博客相关",
+        prefix:"/blog/",
+        children: [
+          { text: "博客相关", icon: "blog", link: "" },
+        ],
+      },
     ],
   },
   {
-    text: "收藏",
-    icon: "hk-shoucang1",
-    link: "/mark/",
+    text: "软件/工具教程",
+    icon: "software",
+    link: "/tutorial/",
   },
   {
     text: "留言板",
@@ -43,6 +50,6 @@ export const zhNavbar = navbar([
   {
     text: "关于",
     icon: "info",
-    link: "/about",
+    link: "/intro",
   },
 ]);

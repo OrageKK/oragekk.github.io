@@ -2,8 +2,8 @@
 title: "站点收藏"
 icon: "sitemap"
 date: 1978-01-09
+index: true
 timeline: false
-index: false
 article: false
 ---
 

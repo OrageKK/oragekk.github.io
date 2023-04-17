@@ -1,6 +1,11 @@
 <template>
   <div id="BingSwitchWrapper">
-    <a :href="bingData.CopyrightLink" target="_Blank" id="bingLink" v-if="bingData">
+    <a
+      :href="bingData.copyrightlink"
+      target="_Blank"
+      id="bingLink"
+      v-if="bingData"
+    >
       <div class="bingLink-icon">
         <svg
           class="mapPin"
@@ -16,23 +21,32 @@
           ></path>
         </svg>
       </div>
-      <div id="bingLink-text">{{ bingData.Title }}</div>
+      <div id="bingLink-text">{{ title }}</div>
     </a>
     <div id="left" @click="leftClick" :class="{ disabled: lDisabled }"></div>
     <div id="right" @click="rightClick" :class="{ disabled: rDisabled }"></div>
   </div>
 </template>
 <script lang="ts" setup>
-import {PropType} from "vue";
-import { Datum } from "../api/bing";
+import { PropType, computed } from "vue";
+import { Image } from "../api/bing";
 const props = defineProps({
   bingData: {
     // 提供相对 `Object` 更确定的类型
-    type: Object as PropType<Datum>,
+    type: Object as PropType<Image>,
     required: true,
   },
   lDisabled: Boolean,
   rDisabled: Boolean,
+});
+const title = computed(() => {
+  if (props.bingData.copyright != undefined) {
+    const index = props.bingData.copyright.indexOf("(");
+    return index != -1
+      ? props.bingData.copyright.substring(0, index)
+      : props.bingData.copyright;
+  }
+  return props.bingData.copyright;
 });
 // 声明自定义事件
 const emit = defineEmits(["leftClick", "rightClick"]);

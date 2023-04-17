@@ -1,11 +1,12 @@
 ---
 title: "Vercel deploy忽略指定分支"
 icon: "launch"
-subtitle: "Vercel Ignored Build Step使用"
+description: "Vercel Ignored Build Step使用"
 date: 2023-03-31
 star: true
+isOriginal: true
 category:
-  - 收藏
+  - Vercel
 tag:
   - Vercel
 ---

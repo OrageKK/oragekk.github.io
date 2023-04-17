@@ -1,21 +1,35 @@
-import { AxiosResponse } from "./../../../../node_modules/axios/index.d";
 // To parse this data:
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 export interface BingResponse {
-  Code: number;
-  Data: Datum[];
-  Msg: string;
+  images: Image[];
+  tooltips: Tooltips;
 }
 
-export interface Datum {
-  Ssd: string;
-  Path: string;
-  Url: string;
-  Copyright: string;
-  CopyrightLink: string;
-  Title: string;
-  EN?: Datum;
+export interface Image {
+  bot: number;
+  copyright: string;
+  copyrightlink: string;
+  drk: number;
+  enddate: string;
+  fullstartdate: string;
+  hs: any[];
+  hsh: string;
+  quiz: string;
+  startdate: string;
+  title: string;
+  top: number;
+  url: string;
+  urlbase: string;
+  wp: boolean;
+}
+
+export interface Tooltips {
+  loading: string;
+  next: string;
+  previous: string;
+  walle: string;
+  walls: string;
 }
 
 // Converts JSON strings to/from your types
@@ -28,6 +42,9 @@ export class BingApi {
     return JSON.stringify(value);
   }
   public static request(): Promise<AxiosResponse<BingResponse>> {
-    return axios.get<BingResponse>("//file.mo7.cc/api/public/url");
+    axios.defaults.baseURL = '/bing/'
+    return axios.get<BingResponse>(
+      "HPImageArchive.aspx?format=js&idx=0&n=7&mkt=zh-CN"
+    );
   }
 }

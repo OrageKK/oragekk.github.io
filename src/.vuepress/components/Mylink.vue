@@ -24,7 +24,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType ,defineProps } from "vue";
 import { LinkData } from "../data/friendData";
 const props = defineProps({
   type: String,

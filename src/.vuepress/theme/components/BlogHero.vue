@@ -54,33 +54,34 @@ export default defineComponent({
         return;
       }
       bingIndex.value--;
-      frontmatter.value.bgImage = withBase(bingData.value.Url);
+      frontmatter.value.bgImage = withBase(bingData.value.url);
       let f = document.querySelector(".footer-wrapper");
-      f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
+      f && (f.style.backgroundImage = `url(${bingData.value.url})`);
     };
     const rightClick = () => {
       if (rDisabled.value) {
         return;
       }
       bingIndex.value++;
-      frontmatter.value.bgImage = withBase(bingData.value.Url);
+      frontmatter.value.bgImage = withBase(bingData.value.url);
       let f = document.querySelector(".footer-wrapper");
-      f && (f.style.backgroundImage = `url(${bingData.value.Url})`);
+      f && (f.style.backgroundImage = `url(${bingData.value.url})`);
     };
     const getImage = () => {
       BingApi.request().then((res) => {
         if (res.status == 200) {
-          bingDatasRef.value = res.data.Data;
-          for (const [index, infos] of res.data.Data.entries()) {
+          for (const [index, image] of res.data.images.entries()) {
+            image.url = `https://cn.bing.com/${image.url}`;
             var n = new Image();
-            n.src = infos.Url;
+            n.src = image.url;
             n.onload = () => {};
             if (index == 0) {
               let f = document.querySelector(".footer-wrapper");
-              f && (f.style.backgroundImage = `url(${infos.Url})`);
-              frontmatter.value.bgImage = withBase(infos.Url);
+              f && (f.style.backgroundImage = `url(${image.url})`);
+              frontmatter.value.bgImage = withBase(image.url);
             }
           }
+          bingDatasRef.value = res.data.images;
         }
       });
     };

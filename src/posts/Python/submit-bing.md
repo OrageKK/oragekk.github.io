@@ -3,11 +3,11 @@ title: "使用Bing API提交网站URL"
 icon: "tool"
 subtitle: "python"
 date: 2023-03-24 10:52:27
+isOriginal: true
 category:
   - python
 tag:
   - 工具脚本
-  - python
 ---
 
 :::tip

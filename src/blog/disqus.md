@@ -1,5 +1,6 @@
 ---
 title: "评论系统从多说迁移到disqus指南"
+shortTitle: "多说迁移到disqus指南"
 icon: expansion
 date: 2017-04-14
 category:
