@@ -42,9 +42,8 @@ export class BingApi {
     return JSON.stringify(value);
   }
   public static request(): Promise<AxiosResponse<BingResponse>> {
-    axios.defaults.baseURL = '/bing/'
     return axios.get<BingResponse>(
-      "HPImageArchive.aspx?format=js&idx=0&n=7&mkt=zh-CN"
+      "/bing/HPImageArchive.aspx?format=js&idx=0&n=7&mkt=zh-CN"
     );
   }
 }
