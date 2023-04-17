@@ -48,7 +48,7 @@ export default defineUserConfig({
       server: {
         proxy: {
           "/bing": {
-            target: "https://cn.bing.com/",
+            target: "https://cn.bing.com",
             changeOrigin: true,
             rewrite: (path) => path.replace(/^\/bing/, ""),
           },
