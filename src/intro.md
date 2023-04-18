@@ -1,11 +1,11 @@
 ---
-icon: info
+icon: people
 date: 2023-03-12
+sidebar: false
 category:
   - About
 tag:
   - About
-sidebar: false
 comment: false
 ---
 # 关于我

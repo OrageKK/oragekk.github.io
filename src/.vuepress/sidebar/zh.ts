@@ -27,7 +27,7 @@ export const zhSidebar = sidebar({
           text: "跨平台开发",
           icon: "relation",
           prefix: "cross-platform/",
-          link:"cross-platform/",
+          link: "cross-platform/",
           // children: ["Flutter/", "ReactNative/"],
         },
         {
@@ -47,13 +47,13 @@ export const zhSidebar = sidebar({
           text: "Python",
           icon: "python",
           prefix: "Python/",
-          link:"Python/",
+          link: "Python/",
         },
       ],
     },
     {
       text: "软件/工具教程",
-      icon:"software",
+      icon: "software",
       prefix: "tutorial/",
       link: "tutorial",
     },
@@ -76,7 +76,12 @@ export const zhSidebar = sidebar({
       prefix: "private/",
       children: "structure",
     },
-    "about"
+    {
+      text: "关于",
+      icon: "info",
+      prefix: "about/",
+      link: "about",
+    },
   ],
   "/posts/Linux/": "structure",
   "/posts/Python/": "structure",
@@ -85,6 +90,6 @@ export const zhSidebar = sidebar({
   "/posts/iOS/": "structure",
   "/posts/Web/": "structure",
   "/site/": "structure",
-  "/blog":"structure",
-  "/tutorial":"structure"
+  "/blog": "structure",
+  "/tutorial": "structure",
 });

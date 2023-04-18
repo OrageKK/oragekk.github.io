@@ -11,6 +11,7 @@
     "docs:update-package": "npx vp-update"
   },
   "devDependencies": {
+    "@vuepress/core": "2.0.0-beta.61",
     "@vuepress/client": "2.0.0-beta.61",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.61",
     "@vuepress/plugin-google-analytics": "^2.0.0-beta.61",
@@ -23,6 +24,7 @@
     "vuepress-theme-hope": "2.0.0-beta.203"
   },
   "dependencies": {
+    "@moefy-canvas/core": "^0.5.2",
     "@moefy-canvas/theme-popper": "^0.5.2",
     "axios": "^1.3.4",
     "http-proxy-middleware": "^2.0.6",

@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  '@moefy-canvas/core':
+    specifier: ^0.5.2
+    version: registry.npmmirror.com/@moefy-canvas/core@0.5.2
   '@moefy-canvas/theme-popper':
     specifier: ^0.5.2
     version: registry.npmmirror.com/@moefy-canvas/theme-popper@0.5.2
@@ -18,6 +21,9 @@ devDependencies:
   '@vuepress/client':
     specifier: 2.0.0-beta.61
     version: registry.npmmirror.com/@vuepress/client@2.0.0-beta.61
+  '@vuepress/core':
+    specifier: 2.0.0-beta.61
+    version: registry.npmmirror.com/@vuepress/core@2.0.0-beta.61
   '@vuepress/plugin-docsearch':
     specifier: ^2.0.0-beta.61
     version: registry.npmmirror.com/@vuepress/plugin-docsearch@2.0.0-beta.61(@algolia/client-search@4.17.0)
