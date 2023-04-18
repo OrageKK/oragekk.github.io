@@ -148,15 +148,15 @@ export default defineUserConfig({
       models: [
         {
           scale: 0.3,
+          path: "/sipeibojue_5/sipeibojue_5.model3.json",
+        },
+        {
+          scale: 0.3,
           path: "/lafei_4/lafei_4.model3.json",
         },
         {
           scale: 0.7,
           path: "/z46_2/z46_2.model3.json",
-        },
-        {
-          scale: 0.3,
-          path: "/sipeibojue_5/sipeibojue_5.model3.json",
         },
       ],
       tips: {
