@@ -27,12 +27,18 @@ devDependencies:
   '@vuepress/plugin-shiki':
     specifier: ^2.0.0-beta.61
     version: registry.npmmirror.com/@vuepress/plugin-shiki@2.0.0-beta.61
+  '@vuepress/shared':
+    specifier: 2.0.0-beta.61
+    version: registry.npmmirror.com/@vuepress/shared@2.0.0-beta.61
   '@vuepress/utils':
     specifier: 2.0.0-beta.61
     version: registry.npmmirror.com/@vuepress/utils@2.0.0-beta.61
   vue:
     specifier: ^3.2.47
     version: registry.npmmirror.com/vue@3.2.47
+  vue-router:
+    specifier: ^4.1.6
+    version: registry.npmmirror.com/vue-router@4.1.6(vue@3.2.47)
   vuepress:
     specifier: 2.0.0-beta.61
     version: registry.npmmirror.com/vuepress@2.0.0-beta.61(@vuepress/client@2.0.0-beta.61)(vue@3.2.47)

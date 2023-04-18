@@ -1,6 +1,6 @@
 import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
 import { onMounted, onBeforeUnmount, nextTick } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRouter } from "vue-router";
 import { HitokotoOption } from "..";
 import { HitokotoApi } from "./hitokoto-api";
 declare const backgroundOptions: HitokotoOption;
