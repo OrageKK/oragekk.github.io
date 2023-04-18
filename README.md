@@ -43,3 +43,5 @@
 [墨七](https://blog.mo7.cc/)
 
 遮罩背景css样式和bing每日图片内容，借鉴自墨七
+
+> 详细介绍参考：[关于本站](https://oragekk.me/about)
