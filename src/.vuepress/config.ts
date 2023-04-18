@@ -1,5 +1,5 @@
 import { getDirname, path } from "@vuepress/utils";
-import { defineUserConfig } from "vuepress";
+import { defineUserConfig,viteBundler } from "vuepress";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
 import {
@@ -14,8 +14,6 @@ import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
-import { viteBundler } from "@vuepress/bundler-vite";
-import { hopeTheme } from "vuepress-theme-hope";
 
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({

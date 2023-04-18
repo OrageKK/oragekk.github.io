@@ -98,7 +98,7 @@ def extract_urls_from_sitemap(sitemap_path):
 
 
 def diff_urls(urls, prev_urls):
-    final_urls = list(set(urls) ^ set(prev_urls))
+    final_urls = list(set(urls) - set(prev_urls))
     return final_urls
 
 # 推送URL列表到百度站长
