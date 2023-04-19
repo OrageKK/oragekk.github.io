@@ -2210,7 +2210,7 @@ packages:
       '@mdit/plugin-tex': registry.npmmirror.com/@mdit/plugin-tex@0.4.3
       '@types/katex': registry.npmmirror.com/@types/katex@0.16.0
       '@types/markdown-it': registry.npmmirror.com/@types/markdown-it@12.2.3
-      katex: registry.npmmirror.com/katex@0.16.4
+      katex: registry.npmmirror.com/katex@0.16.6
       markdown-it: registry.npmmirror.com/markdown-it@13.0.1
     dev: true
 
@@ -5505,10 +5505,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  registry.npmmirror.com/katex@0.16.4:
-    resolution: {integrity: sha512-WudRKUj8yyBeVDI4aYMNxhx5Vhh2PjpzQw1GRu/LVGqL4m1AxwD1GcUp0IMbdJaf5zsjtj8ghP0DOQRYhroNkw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/katex/-/katex-0.16.4.tgz}
+  registry.npmmirror.com/katex@0.16.6:
+    resolution: {integrity: sha512-XVB7X8jEogjJ+OY+a9JdE+VOk9i7znela0HP6WaDbpB4sUh8ghrG0Ccluu2MA2tcJbFAViBC9aVXus2UvkEr8A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/katex/-/katex-0.16.6.tgz}
     name: katex
-    version: 0.16.4
+    version: 0.16.6
     hasBin: true
     dependencies:
       commander: registry.npmmirror.com/commander@8.3.0
@@ -6517,10 +6517,10 @@ packages:
     hasBin: true
     dev: true
 
-  registry.npmmirror.com/semver@7.4.0:
-    resolution: {integrity: sha512-RgOxM8Mw+7Zus0+zcLEUn8+JfoLpj/huFTItQy2hsM4khuC1HYRDp0cU482Ewn/Fcy6bCjufD8vAj7voC66KQw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver/-/semver-7.4.0.tgz}
+  registry.npmmirror.com/semver@7.5.0:
+    resolution: {integrity: sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/semver/-/semver-7.5.0.tgz}
     name: semver
-    version: 7.4.0
+    version: 7.5.0
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7436,7 +7436,7 @@ packages:
       echarts: registry.npmmirror.com/echarts@5.4.2
       flowchart.ts: registry.npmmirror.com/flowchart.ts@0.1.2
       js-yaml: registry.npmmirror.com/js-yaml@4.1.0
-      katex: registry.npmmirror.com/katex@0.16.4
+      katex: registry.npmmirror.com/katex@0.16.6
       markdown-it: registry.npmmirror.com/markdown-it@13.0.1
       mermaid: registry.npmmirror.com/mermaid@10.1.0
       reveal.js: registry.npmmirror.com/reveal.js@4.5.0
@@ -7703,7 +7703,7 @@ packages:
       execa: registry.npmmirror.com/execa@7.1.1
       fflate: registry.npmmirror.com/fflate@0.7.4
       gray-matter: registry.npmmirror.com/gray-matter@4.0.3
-      semver: registry.npmmirror.com/semver@7.4.0
+      semver: registry.npmmirror.com/semver@7.5.0
       striptags: registry.npmmirror.com/striptags@3.2.0
       vue: registry.npmmirror.com/vue@3.2.47
       vue-router: registry.npmmirror.com/vue-router@4.1.6(vue@3.2.47)

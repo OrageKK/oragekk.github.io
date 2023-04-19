@@ -21,7 +21,7 @@ export default localTheme({
     // 默认：
     "//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css",
     // 自己的
-    "//at.alicdn.com/t/c/font_3941380_ybrvf6nmz48.css"
+    "//at.alicdn.com/t/c/font_3941380_ybrvf6nmz48.css",
   ],
 
   logo: "/logo.svg",
@@ -147,6 +147,7 @@ export default localTheme({
       chart: true,
       codetabs: true,
       container: true,
+      card: true,
       demo: true,
       echarts: true,
       figure: true,

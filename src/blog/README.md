@@ -13,12 +13,12 @@ icon: blog
 :::
 
 ## 目录
-- [📌 如何利用GitHub Action提交URL到搜索引擎](blog/auto-push)
-- [📌 评论插件 Waline 之邮件通知配置](blog/waline-mail)
+- [📌 如何利用GitHub Action提交URL到搜索引擎](/blog/auto-push)
+- [📌 评论插件 Waline 之邮件通知配置](/blog/waline-mail)
 
 - [📌 新站建站过程](/about)
 
-- [📌 Jekyll的旧站回忆](blog/jekyll)
+- [📌 Jekyll的旧站回忆](/blog/jekyll)
 
-- [📌 评论系统从多说迁移到disqus](blog/disqus)
+- [📌 评论系统从多说迁移到disqus](/blog/disqus)
 

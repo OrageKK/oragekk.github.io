@@ -1,6 +1,5 @@
-const startTime = "10/31/2016 10:00:00";
-
 function show_runtime() {
+    const startTime = "10/31/2016 10:00:00";
     window.setTimeout("show_runtime()", 1000);
     const longtime = calculateTimePassed(startTime)
     const el = document.getElementById("runtime_span")
