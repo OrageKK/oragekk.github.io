@@ -18,16 +18,18 @@
     <span id="runtime_span"></span>
   </footer>
 </template>
-<script setup>
+
+<script setup lang="ts">
 import { usePageFrontmatter } from "@vuepress/client";
 import { isString } from "@vuepress/shared";
-import { computed, watch } from "vue";
+import { computed, watch, onMounted } from "vue";
 import {
   usePageAuthor,
   useThemeLocaleData,
 } from "@theme-hope/composables/index";
 import { useRouter } from "vue-router";
 import script from "../utils/busuanzi.pure";
+import { show_runtime } from "../utils/time";
 
 // 或取 当前vue-router 实例
 const router = useRouter();
@@ -35,8 +37,10 @@ const router = useRouter();
 watch(router.currentRoute, async (to, from) => {
   if (to.path != from.path) {
     script.fetch();
-    // console.log("to.path：" + to.path + "\n" + "from.path：" + from.path)
   }
+});
+onMounted(() => {
+  show_runtime();
 });
 const frontmatter = usePageFrontmatter();
 const themeLocale = useThemeLocaleData();

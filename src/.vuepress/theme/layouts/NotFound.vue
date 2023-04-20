@@ -41,7 +41,7 @@ const getMsg = () => {
   const messages = themeLocale.value.routeLocales["notFoundMsg"];
   return messages[Math.floor(Math.random() * messages.length)];
 };
-const images = ref(["5198525_2688451.png", "5198525_2688452.png"]);
+const images = ref(["404_bg_1.png", "404_bg_2.png"]);
 const background = computed(() => {
   const randomIndex = Math.floor(Math.random() * images.value.length);
   return {

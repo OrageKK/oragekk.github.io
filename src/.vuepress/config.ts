@@ -19,10 +19,7 @@ const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   base: "/",
   lang: "zh-CN",
-  head: [
-    ["meta", { name: "referrer", content: "no-referrer-when-downgrade" }],
-    ["script", { src: "/script/time.js" }],
-  ],
+  head: [["meta", { name: "referrer", content: "no-referrer-when-downgrade" }]],
   locales: {
     "/": {
       lang: "zh-CN",
@@ -144,12 +141,8 @@ export default defineUserConfig({
     // 看板娘插件
     ohmylive2dPlugin({
       // 在这里进行配置
-      source: "/assets",
+      source: "/assets/live2D",
       models: [
-        {
-          scale: 0.3,
-          path: "/sipeibojue_5/sipeibojue_5.model3.json",
-        },
         {
           scale: 0.3,
           path: "/lafei_4/lafei_4.model3.json",
@@ -157,6 +150,10 @@ export default defineUserConfig({
         {
           scale: 0.7,
           path: "/z46_2/z46_2.model3.json",
+        },
+        {
+          scale: 0.3,
+          path: "/sipeibojue_5/sipeibojue_5.model3.json",
         },
       ],
       tips: {

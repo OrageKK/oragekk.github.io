@@ -1,8 +1,8 @@
-import { localTheme } from "./theme/index";
+import { MyTheme } from "./theme/index";
 import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
 
-export default localTheme({
+export default MyTheme({
   hotReload: false,
   hostname: "https://oragekk.me",
   themeColor: {

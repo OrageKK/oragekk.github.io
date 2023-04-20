@@ -27,6 +27,7 @@
     <div id="right" @click="rightClick" :class="{ disabled: rDisabled }"></div>
   </div>
 </template>
+
 <script lang="ts" setup>
 import { PropType, computed } from "vue";
 import { Image } from "../api/bing";

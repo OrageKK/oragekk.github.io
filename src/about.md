@@ -1,7 +1,6 @@
 ---
 date: 2023-3-14 21:45:45
 icon: info
-sidebar: false
 category:
   - Blog
 tag:
@@ -22,51 +21,60 @@ tag:
 
 ## Markdown增强
 
-hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞[Markdown展示](/demo/markdown.md)
+hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，最方便的是可以直接写流程图了，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞[Markdown展示](/demo/markdown.md)
 
 ## 目录结构
 
 ```shell
--src
-    +---.vuepress
-    |   +---components
-    |   +---data
-    |   +---navbar
-    |   +---plugins
-    |   |   +---vuepress-plugin-canvas
-    |   |   |   +---client
-    |   |   |   \---components
-    |   |   +---vuepress-plugin-gradient-cover
-    |   |   |   \---client
-    |   |   |       +---components
-    |   |   |       \---style
-    |   |   +---vuepress-plugin-hitokoto
-    |   |   |   \---client
-    |   |   +---vuepress-plugin-live2DAssist
-    |   |   \---vuepress-plugin-popper
-    |   |       \---client
-    |   |           \---components
-    |   +---public
-    |   |   +---assets
-    |   |   |   +---font
-    |   |   |   +---icon
-    |   |   |   +---lafei_4
-    |   |   |   |   +---motions
-    |   |   |   |   \---textures
-    |   |   |   +---sipeibojue_5
-    |   |   |   |   +---motions
-    |   |   |   |   \---textures
-    |   |   |   \---z46_2
-    |   |   |       +---motions
-    |   |   |       \---textures
-    |   |   \---script
-    |   +---sidebar
-    |   +---styles
-    |   \---theme
-    |       +---api
-    |       +---components
-    |       \---utils
-    \---
+.
+├── .github
+│   ├── ISSUE_TEMPLATE # issus 模版
+│   │   └── bug-report.yml
+│   └── workflows
+│       └── deploy-docs.yml # 推送脚本
+├── CNAME
+├── LICENSE
+├── README.md
+├── api
+│   └── proxy.js # 跨域代理
+├── env.d.ts
+├── package.json
+├── pnpm-lock.yaml
+├── script
+│   ├── requirements.txt 
+│   └── submit.py # Github Actions 推送URL使用脚本
+├── src
+│   ├── .vuepress
+│   │   ├── client.ts # 客户端配置文件
+│   │   ├── components
+│   │   │   ├── MyCoverLink.vue # 友链组件
+│   │   │   └── Mylink.vue # 卡片组件
+│   │   ├── config.ts # vuepress配置文件
+│   │   ├── data # 数据
+│   │   ├── navbar
+│   │   ├── plugins
+│   │   │   ├── vuepress-plugin-canvas
+│   │   │   ├── vuepress-plugin-gradient-cover
+│   │   │   ├── vuepress-plugin-hitokoto
+│   │   │   ├── vuepress-plugin-live2DAssist
+│   │   │   └── vuepress-plugin-popper
+│   │   ├── public
+│   │   │   ├── assets # 资源
+│   │   ├── sidebar
+│   │   ├── styles
+│   │   ├── theme
+│   │   │   ├── api
+│   │   │   │   └── bing.ts # bing 每日壁纸
+│   │   │   ├── components #自定义组件
+│   │   │   ├── index.ts
+│   │   │   ├── layouts # 自定义布局
+│   │   │   └── utils
+│   │   │       ├── busuanzi.pure.js # 不蒜子统计
+│   │   │       └── time.ts #运行时间
+│   │   └── theme.ts # 主题配置文件
+│   └── README.md
+├── tsconfig.json
+└── vercel.json # vercel 配置文件
 ```
 
 ## 框架支持

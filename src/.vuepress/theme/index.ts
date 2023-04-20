@@ -6,7 +6,7 @@ import type { Theme } from "@vuepress/core";
 
 const __dirname = getDirname(import.meta.url);
 
-export const localTheme = (options: ThemeOptions): Theme => {
+export const MyTheme = (options: ThemeOptions): Theme => {
   return {
     name: "vuepress-theme-local",
 
