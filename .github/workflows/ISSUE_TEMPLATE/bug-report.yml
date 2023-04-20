@@ -1,0 +1,73 @@
+name: 🐛 错误报告 | Bug report
+description: Create a report to help us improve
+title: "[Bug]"
+labels:
+  - bug
+assignees: Oragekk
+body:
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: |-
+        Make SURE that you follow these statements.
+      options:
+        - label: I cloned this repository.
+          required: true
+          
+        - label: I am using **LTS** version of Node.js.
+          required: true
+
+        - label: I am using the **latest v2 version** of VuePress and VuePress official plugins.
+          required: true
+
+        - label: I am using the **latest v2 version** of vuepress-theme-hope and all plugins in this repo.
+          required: true
+
+        - label: I followed the docs and I double checked my configuration.
+          required: true
+
+        - label: I have searched [FAQ](https://theme-hope.vuejs.press/faq/) and I did not find the answer.
+          required: true
+
+  - type: input
+    id: package
+    attributes:
+      label: Package name
+      description: Which package are you reporting
+      value: vuepress-theme-hope
+      placeholder: package name
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: operating-systems
+    attributes:
+      label: Which operating system are you using?
+      description: You may select more than one. Don’t select anything if it's not about the environment.
+      options:
+        - label: macOS
+        - label: Windows
+        - label: Linux
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Describe the bug
+
+        > If applicable, add screenshots and log to help explain your problem.(如果适用，请添加屏幕截图和日志以帮助解释你的问题。)
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.(清晰而简明地描述什么是错误。)
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: If you are not reporting something obvious, a minimal reproduction repo and related log is required.(如果您没有报告明显的内容，则需要最少的可复现存储库和相关日志。)
+      placeholder: Add any other context about the problem here. Especially the issue occurs in certain OS, browser or configuration.（在此处添加有关该问题的任何其他上下文。尤其是该问题发生在某些操作系统、浏览器或配置中。）
