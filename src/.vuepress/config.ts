@@ -50,7 +50,7 @@ export default defineUserConfig({
         },
       },
     },
-    vuePluginOptions: {},
+    // vuePluginOptions: {},
   }),
 
   plugins: [

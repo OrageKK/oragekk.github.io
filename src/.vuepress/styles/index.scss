@@ -1,5 +1,7 @@
 // place your custom styles here
 @use "@sass-palette/hope-config";
+@use "waline";
+
 @font-face {
   font-family: "Slidexiaxing";
   src: url("/assets/font/Slidexiaxing-Regular.woff2") format("woff2"),
@@ -27,13 +29,23 @@
 .blog-page-wrapper {
   z-index: 2;
 }
+
 .theme-container .sidebar {
+  transition: 0.3s;
+  top: var(--navbar-height);
   @media (min-width: hope-config.$pad) {
     z-index: 4;
     background-color: transparent;
   }
 }
-
+// .hide-navbar {
+//   .sidebar {
+//     top: 0;
+//   }
+//   .toggle-sidebar-wrapper {
+//     top: 0;
+//   }
+// }
 [data-theme="light"] .theme-container .sidebar {
   @media (max-width: hope-config.$tablet) {
     background-color: rgba(255, 255, 255, 0.6);
@@ -117,52 +129,9 @@
   border: 1px solid #fff !important;
 }
 
-body {
-  @media (min-width: 1440px) {
-    font-size: 17px;
-  }
-  // 引用样式修改
-  blockquote {
-    border-inline-start: 0.3rem solid;
-    border-color: #8c9595;
-    background-color: rgba(207, 204, 201, 0.159);
-    border-radius: 5px;
-    padding: 0.8rem 1rem;
-    color: #666;
-  }
-}
-[data-theme="dark"] blockquote {
-  border-color: #8c9595 !important;
-  background-color: rgba(207, 204, 201, 0.1);
-  color: #999;
-}
-[data-theme="light"] .code-demo-container {
-  background-color: #fff;
-}
-[data-theme="dark"] .code-demo-container {
-  background-color: #282c34;
-}
 // 适配移动端
 table {
   table-layout: fixed !important;
   width: 100%;
   display: table;
-}
-// Powered by Waline v2.14.7
-// .wl-power {
-//   display: none;
-// }
-// waline emoji
-.wl-content .vemoji,
-.wl-content .wl-emoji {
-  height: 2.5em;
-}
-.wl-emoji-popup .wl-emoji {
-  max-width: 2em;
-  max-height: 2em;
-}
-.wl-emoji-popup .wl-tabs {
-  @media (max-width: hope-config.$tablet) {
-    white-space: pre-wrap;
-  }
 }

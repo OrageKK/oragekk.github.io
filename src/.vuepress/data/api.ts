@@ -3,7 +3,7 @@ import { LinkData } from "./friendData";
 export const api: LinkData[] = [
   {
     name: "姬长信API For Docker",
-    desc: "姬长信API For Docker 一个基于多种编程语言开源免费不限制提供生活常用,出行服务,开发工具,金融服务,通讯服务和公益大数据的平台.",
+    desc: "一个开源免费不限制提供生活常用,出行服务,开发工具,金融服务,通讯服务和公益大数据的平台.",
     ico: "/assets/github.svg",
     link: "https://api.isoyu.com/",
   },

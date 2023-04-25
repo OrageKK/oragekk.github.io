@@ -1,23 +1,15 @@
-@keyframes move {
-    0%,to {
-        background-size: 130vmax 130vmax,80vmax 80vmax,90vmax 90vmax,110vmax 110vmax,90vmax 90vmax;
-        background-position: -80vmax -80vmax,60vmax -30vmax,10vmax 10vmax,-30vmax -10vmax,50vmax 50vmax
-    }
 
-    25% {
-        background-size: 100vmax 100vmax,90vmax 90vmax,100vmax 100vmax,90vmax 90vmax,60vmax 60vmax;
-        background-position: -60vmax -60vmax,50vmax -40vmax,0vmax 10vmax,-40vmax -20vmax,40vmax 40vmax
-    }
-
-    50% {
-        background-size: 90vmax 90vmax,100vmax 100vmax,80vmax 80vmax,90vmax 90vmax,60vmax 60vmax;
-        background-position: -70vmax -70vmax,40vmax -40vmax,0vmax 10vmax,-50vmax -30vmax,30vmax 30vmax
-    }
-
-    75% {
-        background-size: 80vmax 80vmax,70vmax 70vmax,80vmax 80vmax,70vmax 70vmax,50vmax 50vmax;
-        background-position: -60vmax -60vmax,60vmax -30vmax,10vmax 10vmax,-40vmax -40vmax,50vmax 50vmax
-    }
+/* 定义 keyframes 动画 */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 .page-bg {
   user-select: none;
@@ -27,24 +19,25 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-color: #e493d0;
-  background-image: radial-gradient(
-      closest-side,
-      rgb(235, 105, 78),
-      rgba(235, 105, 78, 0)
-    ),
-    radial-gradient(closest-side, rgb(243, 11, 164), rgba(243, 11, 164, 0)),
-    radial-gradient(closest-side, rgb(254, 234, 131), rgba(254, 234, 131, 0)),
-    radial-gradient(closest-side, rgb(170, 142, 245), rgba(170, 142, 245, 0)),
-    radial-gradient(closest-side, rgb(248, 192, 147), rgba(248, 192, 147, 0));
-  background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
-    110vmax 110vmax, 90vmax 90vmax;
-  background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
-    -30vmax -10vmax, 50vmax 50vmax;
-  background-repeat: no-repeat;
-  animation: 6s move linear infinite;
-  // backdrop-filter: saturate(150%) blur(12px);
-  // z-index: 1;
+  // background-color: #e493d0;
+  // background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  background-image: linear-gradient(
+    to right,
+    #eea2a2 0%,
+    #bbc1bf 19%,
+    #57c6e1 42%,
+    #b49fda 79%,
+    #7ac5d8 100%
+  );
+  // background-image: linear-gradient(
+  //   -225deg,
+  //   #eea2a2 0%,
+  //   #2cd8d5 30%,
+  //   #c5c1ff 56%,
+  //   #ffbac3 100%
+  // );
+  animation: gradientBG 15s ease infinite; /* 应用动画 */
+  background-size: 300% 300%; /* 背景大小 */
 }
 .page-bg::after {
   content: "";
@@ -59,9 +52,9 @@
   user-select: none;
   pointer-events: none;
 }
-[data-theme=dark] .page-bg:after {
-    background-color: #1d2025b3;
+[data-theme="dark"] .page-bg:after {
+  background-color: #1d2025b3;
 }
-[data-theme=light] .page-bg:after {
-    background-color: #ffffff1a;
+[data-theme="light"] .page-bg:after {
+  background-color: #ffffff1a;
 }

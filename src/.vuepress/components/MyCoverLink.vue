@@ -63,7 +63,13 @@ switch (props.type) {
   min-height: 10rem;
   color: inherit;
   // background-image: linear-gradient(to right, #434343 0%, black 100%);
-  background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+  background-image: linear-gradient(
+    to top,
+    #7873f5 0%,
+    #97d9e1 33%,
+    #ec77ab 100%
+  );
+  // background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
 
   box-shadow: 1px 1px 8px var(--card-shadow);
   cursor: pointer;

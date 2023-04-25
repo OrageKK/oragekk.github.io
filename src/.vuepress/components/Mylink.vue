@@ -6,7 +6,7 @@
       :key="index"
     >
       <a
-        class="item project"
+        class="item project-card"
         :class="GetColorClassName(index)"
         :href="item.link"
         target="_blank"
@@ -44,7 +44,7 @@ const GetColorClassName = (index) => {
 a.item {
   text-decoration: none;
 }
-.project .image {
+.project-card .image {
   border-radius: 50%;
 }
 </style>

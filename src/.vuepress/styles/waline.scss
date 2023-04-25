@@ -1,0 +1,19 @@
+@use "@sass-palette/hope-config";
+// Powered by Waline v2.14.7
+// .wl-power {
+//   display: none;
+// }
+// waline emoji
+.wl-content .vemoji,
+.wl-content .wl-emoji {
+  height: 2.5em;
+}
+.wl-emoji-popup .wl-emoji {
+  max-width: 2em;
+  max-height: 2em;
+}
+.wl-emoji-popup .wl-tabs {
+  @media (max-width: hope-config.$tablet) {
+    white-space: pre-wrap;
+  }
+}
