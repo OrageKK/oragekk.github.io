@@ -11,8 +11,8 @@
     "docs:update-package": "npx vp-update"
   },
   "devDependencies": {
-    "@vuepress/core": "2.0.0-beta.61",
     "@vuepress/client": "2.0.0-beta.61",
+    "@vuepress/core": "2.0.0-beta.61",
     "@vuepress/plugin-docsearch": "2.0.0-beta.61",
     "@vuepress/plugin-google-analytics": "2.0.0-beta.61",
     "@vuepress/plugin-shiki": "2.0.0-beta.61",
@@ -21,12 +21,12 @@
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vuepress": "2.0.0-beta.61",
-    "vuepress-theme-hope": "2.0.0-beta.206",
-    "@waline/client": "^2.15.2"
+    "vuepress-theme-hope": "2.0.0-beta.206"
   },
   "dependencies": {
     "@moefy-canvas/core": "^0.5.2",
     "@moefy-canvas/theme-popper": "^0.5.2",
+    "@waline/client": "^2.15.2",
     "axios": "^1.3.4",
     "http-proxy-middleware": "^2.0.6",
     "vuepress-plugin-oh-my-live2d": "^0.5.0"

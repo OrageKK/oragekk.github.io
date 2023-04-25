@@ -45,7 +45,7 @@ const images = ref(["404_bg_1.png", "404_bg_2.png"]);
 const background = computed(() => {
   const randomIndex = Math.floor(Math.random() * images.value.length);
   return {
-    backgroundImage: `url(/assets/${images.value[randomIndex]})`,
+    backgroundImage: `url(/assets/image/${images.value[randomIndex]})`,
   };
 });
 
