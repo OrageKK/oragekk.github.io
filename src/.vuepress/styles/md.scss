@@ -1,28 +1,26 @@
 body {
-    @media (min-width: 1440px) {
-      font-size: 17px;
-    }
-    // 引用样式修改
-    blockquote {
-      border-inline-start: 0.3rem solid;
-      border-color: #8c9595;
-      background-color: rgba(207, 204, 201, 0.159);
-      border-radius: 5px;
-      padding: 0.8rem 1rem;
-      color: #666;
-    }
+  @media (min-width: 1440px) {
+    font-size: 17px;
   }
-
-
+  // 引用样式修改
+  blockquote {
+    border-inline-start: 0.3rem solid;
+    border-color: #8c9595;
+    background-color: rgba(207, 204, 201, 0.159);
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    color: #666;
+  }
+}
 
 [data-theme="dark"] blockquote {
-    border-color: #8c9595 !important;
-    background-color: rgba(207, 204, 201, 0.1);
-    color: #999;
-  }
-  [data-theme="light"] .code-demo-container {
-    background-color: #fff;
-  }
-  [data-theme="dark"] .code-demo-container {
-    background-color: #282c34;
-  }
+  border-color: #8c9595 !important;
+  background-color: rgba(207, 204, 201, 0.1);
+  color: #999;
+}
+[data-theme="light"] .code-demo-container {
+  background-color: #fff;
+}
+[data-theme="dark"] .code-demo-container {
+  background-color: #282c34;
+}

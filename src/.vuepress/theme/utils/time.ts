@@ -3,7 +3,7 @@ export const show_runtime = (): void => {
   window.setTimeout(show_runtime, 1000);
   const longtime = calculateTimePassed(startTime);
   const el = document.getElementById("runtime_span");
-  el && (el.innerHTML = `小破站已苟延残喘: ${longtime}`);
+  el && (el.innerHTML = `小破站已萌萌哒运行: ${longtime}`);
 };
 
 const isLeapYear = (year: number): boolean => {
@@ -35,6 +35,15 @@ const calculateTimePassed = (startTime: string): string => {
     days--;
   }
 
+  // Adjust for leap years
+  let leapDays = 0;
+  for (let i = start.getFullYear(); i <= now.getFullYear(); i++) {
+    if (isLeapYear(i)) {
+      leapDays++;
+    }
+  }
+  days += leapDays;
+
   // Adjust for months
   if (days < 0) {
     const previousMonth = now.getMonth() - 1 < 0 ? 11 : now.getMonth() - 1;
@@ -50,15 +59,6 @@ const calculateTimePassed = (startTime: string): string => {
     months += 12;
     years--;
   }
-
-  // Adjust for leap years
-  let leapDays = 0;
-  for (let i = start.getFullYear(); i <= now.getFullYear(); i++) {
-    if (isLeapYear(i)) {
-      leapDays++;
-    }
-  }
-  days += leapDays;
 
   return `${years}年${months}个月${days}天${hours}时${minutes}分${seconds}秒`;
 };

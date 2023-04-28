@@ -1,15 +1,9 @@
 // place your custom styles here
 @use "@sass-palette/hope-config";
 @use "waline";
+@use "md";
 
-@font-face {
-  font-family: "Slidexiaxing";
-  src: url("/assets/font/Slidexiaxing-Regular.woff2") format("woff2"),
-    url("/assets/font/Slidexiaxing-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap');
 @font-face {
   font-family: "PRshouxie";
   src: url("/assets/font/8d6a7466947745f9f211cd17e0ed5dc3.woff2")
@@ -19,6 +13,15 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "ZWZT";
+  src: url("https://gcore.jsdelivr.net/gh/ZhongZN/ZFonts/13.woff2")
+      format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .blog .fullscreen h1 {
   font-size: 2.8rem;
 }
