@@ -1,0 +1,1 @@
+import{_ as n,P as o,Q as a,a5 as c,S as e,F as s}from"./framework-7b5b8af8.js";const l={},r=e("div",{class:"hint-container info"},[e("p",{class:"hint-container-title"},"相关信息"),e("p",null,"这里放置 系统 相关的内容")],-1);function _(i,d){const t=s("AutoCatalog");return o(),a("div",null,[r,c(t)])}const m=n(l,[["render",_],["__file","index.html.vue"]]);export{m as default};
