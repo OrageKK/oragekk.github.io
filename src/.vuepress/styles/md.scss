@@ -1,13 +1,9 @@
 body {
-  @media (min-width: 1440px) {
-    font-size: 17px;
-  }
   // 引用样式修改
   blockquote {
-    border-inline-start: 0.3rem solid;
-    border-color: #8c9595;
-    background-color: rgba(207, 204, 201, 0.159);
-    border-radius: 5px;
+    border-inline-start: 0.2rem solid;
+    border-color: #bdc2c2;
+    background-color: rgba(198, 197, 196, 0.159);
     padding: 0.8rem 1rem;
     color: #666;
   }
