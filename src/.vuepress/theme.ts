@@ -28,7 +28,7 @@ export default MyTheme({
 
   repo: "OrageKK/oragekk.github.io",
 
-  docsDir: "docs",
+  docsDir: "src",
 
   blog: {
     medias: {
@@ -103,6 +103,7 @@ export default MyTheme({
       "/demo/encrypt.html": ["1234"],
     },
   },
+
 
   plugins: {
     blog: true,
