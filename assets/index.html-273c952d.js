@@ -1,0 +1,1 @@
+import{_ as o,P as n,Q as a,a5 as s,S as e,F as c}from"./framework-fb12a34e.js";const l={},r=e("div",{class:"hint-container info"},[e("p",{class:"hint-container-title"},"相关信息"),e("p",null,"这里放置 others 相关的内容")],-1);function _(i,d){const t=c("AutoCatalog");return n(),a("div",null,[r,s(t)])}const m=o(l,[["render",_],["__file","index.html.vue"]]);export{m as default};
