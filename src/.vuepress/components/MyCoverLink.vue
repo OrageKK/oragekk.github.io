@@ -121,6 +121,8 @@ a.card-body {
         object-fit: contain;
         box-shadow: 0 0 0 0.2rem rgba(195, 195, 195, 0.2),
           0 0 0 0.4rem rgba(195, 195, 195, 0.1);
+        // 禁用鼠标悬停，防止点击进入图片预览模式
+        pointer-events: none !important;
       }
     }
     .link-text {
