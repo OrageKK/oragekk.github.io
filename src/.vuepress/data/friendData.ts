@@ -42,4 +42,10 @@ export const friends: LinkData[] = [
     ico: "https://liubing.me/logo.png",
     link: "https://liubing.me/",
   },
+  {
+    name: "OhYee ⭐",
+    desc: "个人向笔记性质技术分享，共产主义开源编程🤪",
+    ico: "https://static.oyohyee.com/logo.svg",
+    link: "https://www.ohyee.cc/",
+  },
 ];
