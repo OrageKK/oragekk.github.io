@@ -48,4 +48,22 @@ export const friends: LinkData[] = [
     ico: "https://static.oyohyee.com/logo.svg",
     link: "https://www.ohyee.cc/",
   },
+  {
+    name: "SaraKale’s blog",
+    desc: "星轮流转，唯心不变…",
+    ico: "https://npm.elemecdn.com/sarakale-assets@v1/sarakale.jpg",
+    link: "https://sarakale.top/blog/",
+  },
+  {
+    name: "Leonus",
+    desc: "进一寸有进一寸的欢喜。",
+    ico: "https://q1.qlogo.cn/g?b=qq&nk=990320751&s=5",
+    link: "https://blog.leonus.cn/",
+  },
+  {
+    name: "UyoAhz",
+    desc: " 集中精神，以气御剪",
+    ico: "https://q1.qlogo.cn/g?b=qq&nk=2496091142&s=640",
+    link: "https://uyoahz.cn/",
+  },
 ];
