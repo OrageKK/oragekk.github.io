@@ -3,7 +3,7 @@
   <CommonWrapper>
     <template #default>
       <template v-if="frontmatter.home">
-        <HomePage v-if="frontmatter.home"/>
+        <HomePage v-if="frontmatter.home" />
       </template>
       <template v-else>
         <FadeSlideY>

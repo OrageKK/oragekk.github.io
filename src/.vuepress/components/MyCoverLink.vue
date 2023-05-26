@@ -31,7 +31,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import { defineProps } from "vue";
 import { friends, LinkData } from "../data/friendData";
 const props = defineProps({
   type: {
