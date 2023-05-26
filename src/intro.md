@@ -48,4 +48,4 @@ _Exploration & geek enthusiast, full-stack front-end engineer, UX Designer | Cur
  [![Ashutosh's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=oragekk&theme=dracula)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 ## 关于本站
-[传送门](/intro)
+[传送门](/about)

@@ -131,6 +131,8 @@ a.card-body {
       flex-basis: 160px;
       text-align: center;
       padding: 0 0.8rem;
+      font-family: ZWZT,
+        '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", STHeiti, "Microsoft YaHei", SimSun, sans-serif';
       @media (max-width: hope-config.$tablet) {
         flex-shrink: 1;
       }
