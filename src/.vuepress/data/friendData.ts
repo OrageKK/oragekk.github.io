@@ -52,7 +52,7 @@ export const friends: LinkData[] = [
     name: "SaraKale’s blog",
     desc: "星轮流转，唯心不变…",
     ico: "https://npm.elemecdn.com/sarakale-assets@v1/sarakale.jpg",
-    link: "https://sarakale.top/blog/",
+    link: "https://www.sarakale.top/blog/",
   },
   {
     name: "Leonus",
