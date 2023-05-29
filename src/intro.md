@@ -45,7 +45,7 @@ _Exploration & geek enthusiast, full-stack front-end engineer, UX Designer | Cur
 ![:Augenestern-creator](https://count.getloli.com/get/@:oragekk?theme=gelbooru-h)
 
 ## Activity Graph
- [![Ashutosh's github activity graph](https://github-readme-activity-graph.cyclic.app/graph?username=oragekk&theme=dracula)](https://github.com/ashutosh00710/github-readme-activity-graph)
+ [![Ashutosh's github activity graph](https://github-readme-activity-graph-sandy.vercel.app/graph?username=oragekk&theme=dracula)](https://github.com/OrageKK/github-readme-activity-graph)
 
 ## 关于本站
 [传送门](/about)
