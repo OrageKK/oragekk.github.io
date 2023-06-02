@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 29 May 2023 06:26:50 GMT</pubDate>
-    <lastBuildDate>Mon, 29 May 2023 06:26:50 GMT</lastBuildDate>
+    <pubDate>Fri, 02 Jun 2023 09:48:37 GMT</pubDate>
+    <lastBuildDate>Fri, 02 Jun 2023 09:48:37 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Vue</category>
@@ -20,7 +20,6 @@
     <category>GitHub</category>
     <category>浏览器</category>
     <category>CSS</category>
-    <category>CSS$$</category>
     <category>JavaScript</category>
     <category>Linux</category>
     <category>前端跨平台</category>
@@ -1365,7 +1364,7 @@
       <guid>https://oragekk.me/posts/Web/CSS/containing-block.html</guid>
       <source url="https://oragekk.me/rss.xml">你不知道的 CSS 之包含块</source>
       <description>你不知道的 CSS 之包含块 一说到 CSS 盒模型，这是很多小伙伴耳熟能详的知识，甚至有的小伙伴还能说出 border-box 和 content-box 这两种盒模型的区别。 但是一说到 CSS 包含块，有的小伙伴就懵圈了，什么是包含块？好像从来没有听说过这玩意儿。 好吧，如果你对包含块的知识一无所知，那么系好安全带，咱们准备出发了。</description>
-      <category>CSS$$</category>
+      <category>CSS</category>
       <pubDate>Thu, 06 Apr 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<h1> 你不知道的 CSS 之包含块</h1>
 <p>一说到 CSS 盒模型，这是很多小伙伴耳熟能详的知识，甚至有的小伙伴还能说出 border-box 和 content-box 这两种盒模型的区别。</p>
