@@ -1,24 +1,24 @@
 <template>
-  <div class="project-panel">
+  <div class="vp-project-panel">
     <template
       v-if="linkDatas.length > 0"
       v-for="(item, index) in linkDatas"
       :key="index"
     >
       <a
-        class="item project-card"
+        class="item vp-project-card"
         :class="GetColorClassName(index)"
         :href="item.link"
         target="_blank"
       >
         <img
-          class="image"
+          class="vp-project-image"
           :src="item.ico"
           alt=""
           onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'
         />
-        <div class="name">{{ item.name }}</div>
-        <div class="desc">{{ item.desc }}</div>
+        <div class="vp-project-name">{{ item.name }}</div>
+        <div class="vp-project-desc">{{ item.desc }}</div>
       </a>
     </template>
   </div>

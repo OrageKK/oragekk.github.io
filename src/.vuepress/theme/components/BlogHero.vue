@@ -99,7 +99,7 @@ export default defineComponent({
             {
               ref: hero,
               class: [
-                "blog-hero",
+                "vp-blog-hero",
                 {
                   fullscreen: isFullScreen.value,
                   "no-bg": !bgImage.value,
@@ -109,7 +109,7 @@ export default defineComponent({
             [
               bgImage.value
                 ? h("div", {
-                    class: "mask",
+                    class: "vp-blog-mask",
                     style: {
                       background: `url(${bgImage.value}) center/cover no-repeat`,
                       ...frontmatter.value.bgImageStyle,
@@ -119,7 +119,7 @@ export default defineComponent({
               h(DropTransition, { appear: true, delay: 0.04 }, () =>
                 heroImage.value
                   ? h("img", {
-                      class: "hero-image",
+                      class: "vp-blog-hero-image",
                       style: frontmatter.value.heroImageStyle,
                       src: withBase(heroImage.value),
                       alt: frontmatter.value.heroAlt || "hero image",
@@ -129,14 +129,14 @@ export default defineComponent({
               h(DropTransition, { appear: true, delay: 0.08 }, () =>
                 frontmatter.value.heroText === false
                   ? null
-                  : h("h1", frontmatter.value.heroText || title.value)
+                  : h("h1", { class: "vp-blog-hero-title" }, frontmatter.value.heroText || title.value)
               ),
               h(DropTransition, { appear: true, delay: 0.12 }, () =>
                 frontmatter.value.tagline
                   ? h(
                       "div",
                       {
-                        class: "description",
+                        class: "vp-blog-hero-description",
                         id: "hitokoto",
                       },
                       [
@@ -197,7 +197,7 @@ export default defineComponent({
   },
 });
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 // 一言
 #hitokoto {
   margin: 1.2rem auto 0;

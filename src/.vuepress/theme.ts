@@ -1,16 +1,11 @@
 import { MyTheme } from "./theme/index";
 import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
-
+import { path } from "@vuepress/utils";
 export default MyTheme({
   hotReload: false,
   hostname: "https://oragekk.me",
-  themeColor: {
-    blue: "#2196f3",
-    red: "#f26d6d",
-    green: "#3eaf7c",
-    orange: "#fb9b5f",
-  },
+  themeColor: true,
   fullscreen: true,
   author: {
     name: "Oragekk",
@@ -103,10 +98,28 @@ export default MyTheme({
       "/demo/encrypt.html": ["1234"],
     },
   },
-
-
   plugins: {
-    blog: true,
+    blog: {
+      filter: ({ filePathRelative, frontmatter }) => {
+        // 将标记为非文章，并且是说说的加入文章采集中，以便后续筛选
+        if (!frontmatter.article && frontmatter.news) return true;
+
+        return true;
+      },
+
+      type: [
+        {
+          key: "news",
+          filter: (page) => page.frontmatter.news === true,
+          path: "/news/",
+          layout: "News",
+          frontmatter: () => ({ title: "说说" }),
+        },
+      ],
+    },
+    photoSwipe: {
+      selector: [".theme-hope-content :not(a) > img:not([no-view])",".news-content :not(a) > .vp-article-excerpt img"],
+    },
     git: true,
     feed: {
       rss: true,

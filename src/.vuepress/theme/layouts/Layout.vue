@@ -38,7 +38,7 @@ import {
   useThemeLocaleData,
   useWindowSize,
 } from "@theme-hope/composables/index";
-
+declare const ENABLE_BLOG: boolean
 const themeData = useThemeData();
 const themeLocale = useThemeLocaleData();
 const page = usePageData();

@@ -1,5 +1,5 @@
 <template>
-  <div class="project-panel">
+  <div class="vp-project-panel">
     <template
       v-if="linkDatas.length > 0"
       v-for="(item, index) in linkDatas"

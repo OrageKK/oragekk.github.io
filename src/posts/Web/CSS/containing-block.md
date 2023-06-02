@@ -2,7 +2,7 @@
 date: 2023-04-06
 icon: box
 category:
-  - CSS$$
+  - CSS
 tag:
   - 前端开发
 ---

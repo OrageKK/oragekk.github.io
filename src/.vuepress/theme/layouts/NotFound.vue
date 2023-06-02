@@ -52,6 +52,7 @@ const background = computed(() => {
 </script>
 <style scoped lang="scss">
 .page.not-found {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
