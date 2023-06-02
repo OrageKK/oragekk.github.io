@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 02 Jun 2023 10:45:55 GMT</pubDate>
-    <lastBuildDate>Fri, 02 Jun 2023 10:45:55 GMT</lastBuildDate>
+    <pubDate>Fri, 02 Jun 2023 10:59:50 GMT</pubDate>
+    <lastBuildDate>Fri, 02 Jun 2023 10:59:50 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Vue</category>
@@ -4727,14 +4727,21 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p>基于原主题进行了继承，个性化内容如下，主要自定义内容分为</p>
 <ol>
 <li>
-<p><strong>替换主题组件</strong></p>
+<p><strong>自定义布局</strong></p>
 <ul>
-<li>
-<p>BlogHero.vue</p>
+<li>NotFound.vue</li>
+<li>Layout.vue(增加打赏组件)</li>
+<li>News.vue(说说列表布局)</li>
+</ul>
 </li>
 <li>
-<p>PageFooter.vue</p>
-</li>
+<p><strong>自定义组件</strong></p>
+<ul>
+<li>BlogHero.vue</li>
+<li>PageFooter.vue</li>
+<li>Sponsor.vue（打赏组件）</li>
+<li>NewsList.vue （说说列表）</li>
+<li>NewsItem.vue （说说item）</li>
 </ul>
 </li>
 <li>
@@ -4773,6 +4780,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <li>搜索基于<a href="https://www.algolia.com/developers/?utm_content=powered_by&amp;utm_source=localhost&amp;utm_medium=referral&amp;utm_campaign=docsearch" target="_blank" rel="noopener noreferrer">algolia</a></li>
 <li>启用 copyright 版权信息插件</li>
 <li>feed rss插件</li>
+<li>增加文章类型-说说，为说说markdown图片添加预览选择器</li>
 </ul>
 </li>
 <li>
@@ -4788,8 +4796,10 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 </li>
 </ol>
 <h2> 总结</h2>
-<p>过程中，碰到很多bug和问题，也学习了很多前端方面的知识，还学到了Vue3的setup语法和h函数的写法，磕磕绊绊，目前总算是上线了，后续有空再写吧 ┏(＾0＾)┛
-本地插件，喜欢自取，源码公开，点击右上角，github图标即可，当然不要忘记点个✨哦</p>
+<blockquote>
+<p>未完待续，持续优化中</p>
+</blockquote>
+<p>本地插件，喜欢自取，源码公开，点击右上角，github图标即可，当然不要忘记点个✨哦</p>
 ]]></content:encoded>
     </item>
     <item>
