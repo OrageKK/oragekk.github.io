@@ -41,7 +41,7 @@ const hasGlobalComponent = (componentName) => {
 .vp-blog-main {
   flex: 1;
   width: 0;
-  max-width: 830px;
+  max-width: 780px;
 }
 .waline-wrapper {
   // background-color: rgba(255, 255, 255, 0.8);

@@ -93,6 +93,9 @@ h3 {
   font-weight: bold;
   font-style: italic;
   font-family: PRshouxie;
+  @media (max-width: hope-config.$pad) {
+    font-size: 1.8rem;
+  }
 }
 h3::before {
   content: "共" attr(data-item-count) "条碎碎念~ (｡♥‿♥｡)";

@@ -97,6 +97,9 @@ const pinfo = pageInfo.value;
     padding: 2px 6px;
     text-align: center;
     font-family: ZWZT;
+    @media (max-width: hope-config.$pad) {
+      font-size: 0.8rem;
+    }
   }
 }
 
