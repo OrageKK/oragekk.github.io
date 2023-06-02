@@ -45,11 +45,7 @@ const hasGlobalComponent = (componentName) => {
 }
 .waline-wrapper {
   // background-color: rgba(255, 255, 255, 0.8);
-  width: 100%;
-  height: 100%;
   border-radius: 0.4rem;
-  // background-image:linear-gradient(to right, #fff 0%, rgba(216, 223, 184, 0.8) 30% ,rgba(255, 255, 255, 0.8)100%) ;
-  // background-image: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
   background-image: linear-gradient(to top, #a8ede9be 0%, #fed6e3b1 100%);
 }
 </style>
