@@ -1,0 +1,1 @@
+import{_ as t,o,c,h as _,a as e}from"./app-24d049e1.js";const n={},s=e("p",null,"至暗时刻--同样的六月",-1),a=e("p",null,"加油吧💪🏻",-1);function r(l,m){return o(),c("div",null,[s,a,_(" more ")])}const f=t(n,[["render",r],["__file","2.html.vue"]]);export{f as default};
