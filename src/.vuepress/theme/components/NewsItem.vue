@@ -125,7 +125,7 @@ const routeName = computed(() => (route ? route.name.toString() : ""));
 
   &:hover {
     box-shadow: 0 2px 6px 2px var(--card-shadow);
-    transform: scale(1.02, 1.02);
+    transform: scale(1.01);
   }
 }
 .news-item-content {
