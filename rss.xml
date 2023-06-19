@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Wed, 07 Jun 2023 07:57:29 GMT</pubDate>
-    <lastBuildDate>Wed, 07 Jun 2023 07:57:29 GMT</lastBuildDate>
+    <pubDate>Mon, 19 Jun 2023 03:17:28 GMT</pubDate>
+    <lastBuildDate>Mon, 19 Jun 2023 03:17:28 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Vue</category>
@@ -49,23 +49,23 @@
 <p>本文章的优化手段基于<code>vue2</code></p>
 <!-- more -->
 <h2> 服务端渲染 SSR or 预渲染</h2>
-<p>客户端渲染：使用 JavaScript 框架进行页面渲染
+<p>客户端渲染：使用 JavaScript 框架进行页面渲染<br>
 服务端渲染：服务端将HTML文本组装好，并返回给浏览器，这个HTML文本被浏览器解析之后，不需要经过 JavaScript 脚本的执行，即可直接构建出希望的 DOM 树并展示到页面中，最后将这些静态标记"激活"为客户端上完全可交互的应用程序。</p>
 <p><strong>优点：</strong></p>
-<p>更好的 SEO，由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面。对客户端渲染的页面来说，简直无能为力，因为返回的HTML是一个空壳，它需要执行 JavaScript 脚本之后才会渲染真正的页面。
+<p>更好的 SEO，由于搜索引擎爬虫抓取工具可以直接查看完全渲染的页面。对客户端渲染的页面来说，简直无能为力，因为返回的HTML是一个空壳，它需要执行 JavaScript 脚本之后才会渲染真正的页面。<br>
 用户将会更快速地看到完整渲染的页面</p>
 <p><strong>缺点:</strong></p>
-<p>为了实现服务端渲染，应用代码中需要兼容服务端和客户端两种运行情况
-由于服务器增加了渲染HTML的需求，使得原本只需要输出静态资源文件的nodejs服务，新增了数据获取的IO和渲染HTML的CPU占用，
+<p>为了实现服务端渲染，应用代码中需要兼容服务端和客户端两种运行情况<br>
+由于服务器增加了渲染HTML的需求，使得原本只需要输出静态资源文件的nodejs服务，新增了数据获取的IO和渲染HTML的CPU占用，<br>
 服务器渲染应用程序，需要处于 Node.js server 运行环境。</p>
 <h3> 如何实现？</h3>
 <p>想要在服务器端渲染，我们需要做什么呢？那就是同构我们的项目，Vue.js 是构建客户端应用程序的框架，服务器渲染的 Vue.js 应用程序也可以被认为是"同构"或"通用"，因为应用程序的大部分代码都可以在服务器和客户端上运行</p>
-<p>当运行在不同环境中时，我们的代码将不会完全相同，同构就是让一份代码，既可以在服务端中执行，也可以在客户端中执行，并且执行的效果都是一样的，都是完成这个html的组装，正确的显示页面。
+<p>当运行在不同环境中时，我们的代码将不会完全相同，同构就是让一份代码，既可以在服务端中执行，也可以在客户端中执行，并且执行的效果都是一样的，都是完成这个html的组装，正确的显示页面。<br>
 对于同构应用来说，我们必须实现客户端与服务端的路由、模型组件、数据模型的共享。</p>
 <h3> 服务器端渲染注意事项</h3>
-<p>为避免造成交叉请求状态污染，每个请求应该都是全新的、独立的应用程序实例。
-由于没有动态更新，所有的生命周期钩子函数中，只有 beforeCreate 和 created 会在服务器端渲染(SSR)过程中被调用。
-通用代码不可接受像 window 或 document，这种仅浏览器可用的全局变量
+<p>为避免造成交叉请求状态污染，每个请求应该都是全新的、独立的应用程序实例。<br>
+由于没有动态更新，所有的生命周期钩子函数中，只有 beforeCreate 和 created 会在服务器端渲染(SSR)过程中被调用。<br>
+通用代码不可接受像 window 或 document，这种仅浏览器可用的全局变量<br>
 浏览器可能会更改的一些特殊的 HTML 结构，例如，浏览器会在</p>
 <p>内部自动注入 ，然而，由于 Vue 生成的虚拟 DOM(virtual DOM) 不包含 ，所以会导致无法匹配。</p>
 <h2> 使用key</h2>
@@ -280,8 +280,8 @@
 <p>也就是说，在响应式数据发生变化时，render 函数执行是异步的，并且在微队列中。</p>
 <h2> 8. <strong>异步更新队列</strong></h2>
 <blockquote>
-<p>Vue侦听到数据变化，就会开启一个队列。但是组件不会立即重新渲染，而是先会缓冲在同一个事件循环中的发生的所有数据变化。此时如果同一个watcher被多次触发，只会被推入到队列中一次，这样可以**「避免不必要的计算和DOM更操作」**。
-在下一个事件循环”tick“中， Vue刷新队列并执行实际（已去重的）工作（更新渲染）。
+<p>Vue侦听到数据变化，就会开启一个队列。但是组件不会立即重新渲染，而是先会缓冲在同一个事件循环中的发生的所有数据变化。此时如果同一个watcher被多次触发，只会被推入到队列中一次，这样可以**「避免不必要的计算和DOM更操作」**。<br>
+在下一个事件循环”tick“中， Vue刷新队列并执行实际（已去重的）工作（更新渲染）。<br>
 为此，Vue提供了异步更新的监听接口 —— <code>Vue.nextTick(callback)</code> 或 <code>this.$nextTick(callback)</code> 。当数据发生改变，异步DOM更新完成后，callback回调将被调用。开发者可以在回调中，操作更新后的DOM。</p>
 </blockquote>
 <p><strong>「举例1」</strong></p>
@@ -587,12 +587,12 @@
       <pubDate>Mon, 17 Apr 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
-<p>这是一个<code>GitHub Actions</code>的配置文件，整体思路是，获取本次更新的url
+<p>这是一个<code>GitHub Actions</code>的配置文件，整体思路是，获取本次更新的url<br>
 （通过对比两次提交的sitemap.xml文件），所以触发条件是deploy分支有推送并修改了<code>sitemap.xml</code>文件，再利用python脚本进行url推送到百度、Bing、Google</p>
 <p>脚本代码请看这里👉<a href="/posts/Python/submit-url">提交URL到搜索引擎（百度、Bing、Google）</a></p>
 </div>
 <!-- more -->
-<p>前些天不是写了Bing的提交脚本吗，但是每次都要自己手动跑脚本也很麻烦，但我又没有服务器，所以用上了GitHub Actions了嘛
+<p>前些天不是写了Bing的提交脚本吗，但是每次都要自己手动跑脚本也很麻烦，但我又没有服务器，所以用上了GitHub Actions了嘛<br>
 总的来说做了以下事情：</p>
 <ol>
 <li>提交代码并修改sitemap.xml 后触发工作流</li>
@@ -716,7 +716,7 @@
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署从分支“main”和“staging”进行的提交。</p>
 <h2> 5. 使用文件夹和工作区</h2>
 <p>在继续之前，请记住 Ignored Build Step 在您选择的“根目录”的同一文件夹中运行。因此，您可能需要稍微调整一下以适应您的需要。要构建仅考虑特定文件夹的新部署，您可以使用以下命令</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略构建步骤”命令的示例。如果将更改提交给“./packages/frontend/”，该命令将产生一个非空响应，从而允许构建继续进行。
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略构建步骤”命令的示例。如果将更改提交给“./packages/frontend/”，该命令将产生一个非空响应，从而允许构建继续进行。<br>
 通过使用此命令，Vercel 将仅在目录内进行更改时构建部署。如果该文件夹是您选择的“根目录”，则可以使用：<code>packages/frontend/``./packages/frontend/</code></p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到 “.”，则该命令将生成非空响应，从而允许继续生成。</p>
 <p>您还可以访问部署中的其他文件夹以检查更改。如果您在构建前端时选择了“根目录”，并且您的应用程序必须仅在进行更改时部署，您可以使用： <code>packages/web</code> <code>../../packages/docs</code></p>
@@ -936,12 +936,12 @@
 <hr>
 <div class="hint-container info">
 <p class="hint-container-title">相关信息</p>
-<p>这是一个<code>GitHub Actions</code>的配置文件，整体思路是，获取本次更新的url
+<p>这是一个<code>GitHub Actions</code>的配置文件，整体思路是，获取本次更新的url<br>
 （通过对比两次提交的sitemap.xml文件），所以触发条件是deploy分支有推送并修改了<code>sitemap.xml</code>文件，再利用python脚本进行url推送到百度、Bing、Google</p>
 <p>脚本代码请看这里👉<a href="/posts/Python/submit-url">提交URL到搜索引擎（百度、Bing、Google）</a></p>
 </div>
 <!-- more -->
-<p>前些天不是写了Bing的提交脚本吗，但是每次都要自己手动跑脚本也很麻烦，但我又没有服务器，所以用上了GitHub Actions了嘛
+<p>前些天不是写了Bing的提交脚本吗，但是每次都要自己手动跑脚本也很麻烦，但我又没有服务器，所以用上了GitHub Actions了嘛<br>
 总的来说做了以下事情：</p>
 <ol>
 <li>提交代码并修改sitemap.xml 后触发工作流</li>
@@ -1198,9 +1198,9 @@
 <p>但<strong>消息队列是有优先级的</strong></p>
 <p>根据 W3C 的最新解释:</p>
 <ul>
-<li>每个任务都有一个任务类型，同一个类型的任务必须在一个队列，不同类型的任务可以分属于不同的队列。
+<li>每个任务都有一个任务类型，同一个类型的任务必须在一个队列，不同类型的任务可以分属于不同的队列。<br>
 在一次事件循环中，浏览器可以根据实际情况从不同的队列中取出任务执行。</li>
-<li>浏览器必须准备好一个微队列，微队列中的任务优先所有其他任务执行
+<li>浏览器必须准备好一个微队列，微队列中的任务优先所有其他任务执行<br>
 <a href="https://html.spec.whatwg.org/multipage/webappapis.html#perform-a-microtask-checkpoint" target="_blank" rel="noopener noreferrer">https://html.spec.whatwg.org/multipage/webappapis.html#perform-a-microtask-checkpoint</a></li>
 </ul>
 <blockquote>
@@ -1616,7 +1616,7 @@
 <p><code>AUTHOR_EMAIL</code>: 博主邮箱，用来接收新评论通知。如果是博主发布的评论则不进行提醒通知。</p>
 <div class="hint-container tip">
 <p class="hint-container-title">注意</p>
-<p>其中<code>SITE_NAME</code>如果有类似 <code>xxxx's Blog</code> 这种的网站名称，在 Vercel 中配置的时候，可以使用<code>xxxx Blog</code> 格式
+<p>其中<code>SITE_NAME</code>如果有类似 <code>xxxx's Blog</code> 这种的网站名称，在 Vercel 中配置的时候，可以使用<code>xxxx Blog</code> 格式<br>
 因为<code>'</code>单引号会在模版中被转义为<code>&amp;#39;s</code></p>
 </div>
 </a><h3><a class="footnote-anchor" id="footnote-ref2"></a> 1.2 waline 邮件通知选填环境变量</h3>
@@ -1687,7 +1687,7 @@
 <p>正确使用姿势:</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 4. 结语</h3>
 <p>至此，大功告成，所有的注意点我都写在上边了</p>
-<p>此模版来自SaraKale<sup class="footnote-ref"><a href="#footnote4">[4]</a><a class="footnote-anchor" id="footnote-ref4"></a></sup><a class="footnote-anchor" id="footnote-ref4">，经</a><a href="https://blog.ganxb2.com/" target="_blank" rel="noopener noreferrer">小波同学</a>修改美化
+<p>此模版来自SaraKale<sup class="footnote-ref"><a href="#footnote4">[4]</a><a class="footnote-anchor" id="footnote-ref4"></a></sup><a class="footnote-anchor" id="footnote-ref4">，经</a><a href="https://blog.ganxb2.com/" target="_blank" rel="noopener noreferrer">小波同学</a>修改美化<br>
 其他模版同理，可以去SaraKale这里看看</p>
 <hr class="footnotes-sep">
 <section class="footnotes">
@@ -1758,7 +1758,7 @@
 <p>键盘输入i编辑文件，插入以下内容：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>myserver.sh文件中变量解释：</p>
 <div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>插入完成后键盘esc 然后输入:wq退出，接下来给文件赋权</p>
-<p>chmod 777 <a href="http://myserver.sh" target="_blank" rel="noopener noreferrer">myserver.sh</a>
+<p>chmod 777 <a href="http://myserver.sh" target="_blank" rel="noopener noreferrer">myserver.sh</a><br>
 打开iTerm2，打开Preferences配置界面，Profiles -&gt; general，左下角点击+号，新建profile，参考下面图片在对应位置输入内容即可。</p>
 <figure><img src="https://s3.bmp.ovh/imgs/2023/03/24/349fdd06e7bc428d.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <p>Name:根据需求输入，通常选择标识性较强的内容便于区分，例如服务器的IP地址</p>
@@ -1770,7 +1770,7 @@
 <p>B 代表服务器端口号一般远程连接端口为：22</p>
 <p>C 代表服务器用户名一般为：root</p>
 <p>D 代表服务器IP：公网IP填写</p>
-<p>E 代表服务器密码：根据自己实际的服务器密码填写
+<p>E 代表服务器密码：根据自己实际的服务器密码填写<br>
 设置好之后打开iTerm2，点击profiles，点击前面自己新增的连接远程服务器的profile的名字</p>
 <p>首次连接需要输入一次服务器密码，之后再连接就免密码登陆了</p>
 </div>
@@ -1821,8 +1821,8 @@
       <pubDate>Mon, 20 Mar 2023 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<div class="hint-container tip">
 <p class="hint-container-title">提示</p>
-<p>把之前学习时候写的demo拿出来记录一下
-地址：
+<p>把之前学习时候写的demo拿出来记录一下<br>
+地址：<br>
 <a href="https://github.com/OrageKK/flutter_my_app" target="_blank" rel="noopener noreferrer">flutter_my_app</a></p>
 </div>
 <p>demo是照着B站的视频敲的，现在可能用不上了，但是还是觉得当时写的demo对于想学习flutter的新手来说作用还是有的，因为视频课程很零散，所以我边看边写了一个app，里边基本介绍了大部分基础的用法，当然进阶的东西，这部分demo是没有的，最近也在忙，有空了再补一部分进阶的东西吧</p>
@@ -1840,8 +1840,8 @@
 <li><a href="https://docs.flutter.dev/get-started/codelab" target="_blank" rel="noopener noreferrer">Lab: Write your first Flutter app</a></li>
 <li><a href="https://docs.flutter.dev/cookbook" target="_blank" rel="noopener noreferrer">Cookbook: Useful Flutter samples</a></li>
 </ul>
-<p>For help getting started with Flutter development, view the
-<a href="https://docs.flutter.dev/" target="_blank" rel="noopener noreferrer">online documentation</a>, which offers tutorials,
+<p>For help getting started with Flutter development, view the<br>
+<a href="https://docs.flutter.dev/" target="_blank" rel="noopener noreferrer">online documentation</a>, which offers tutorials,<br>
 samples, guidance on mobile development, and a full API reference.</p>
 <h2> 包含</h2>
 <ul>
@@ -1912,11 +1912,11 @@ samples, guidance on mobile development, and a full API reference.</p>
 <li>由于 disqus 不支持多说导出的.json 文件，所以需要进行转换为 xml 文件，此处使用 github 上的轮子<a href="https://github.com/JamesPan/duoshuo-migrator" target="_blank" rel="noopener noreferrer">JamesPan/duoshuo-migrator</a></li>
 <li>使用步骤
 <ol>
-<li>下载<a href="https://github.com/JamesPan/duoshuo-migrator/blob/master/duoshuo-migrator.py?raw=true" target="_blank" rel="noopener noreferrer">duoshuo-migrator.py</a>并安装依赖
+<li>下载<a href="https://github.com/JamesPan/duoshuo-migrator/blob/master/duoshuo-migrator.py?raw=true" target="_blank" rel="noopener noreferrer">duoshuo-migrator.py</a>并安装依赖<br>
 <img src="http://i2.muimg.com/567571/f98e1281fec1cdd7.png" alt="" loading="lazy"></li>
 <li>执行 <code>python duoshuo-migrator.py -i ~/Desktop/export.json  -o disqus.xml</code>命令<br>
 <img src="http://i2.muimg.com/567571/8e27bcddc31c29b2.png" alt="" loading="lazy"></li>
-<li>将转换完成文件导入
+<li>将转换完成文件导入<br>
 <img src="http://i2.muimg.com/567571/213761ad8cf62886.png" alt="" loading="lazy"></li>
 </ol>
 </li>
@@ -1959,7 +1959,7 @@ samples, guidance on mobile development, and a full API reference.</p>
 </ul>
 <hr>
 <p>配置的过程中也没遇到什么坑，基本就是 Git 的流程，相当顺手</p>
-<p>大的 Jekyll 主题直接 fork 了 Hux Blog
+<p>大的 Jekyll 主题直接 fork 了 Hux Blog<br>
 本地调试环境需要 <code>gem install jekyll</code>，结果 rubygem 的源居然被墙了……后来手动改成了我大淘宝的镜像源才成功，现在淘宝的镜像地址也重定向了到<a href="http://gems.ruby-china.org/" target="_blank" rel="noopener noreferrer">gems.ruby-china.org</a> 公司的新电脑，正好连带配环境，装 rvm，ruby，gems，jekyll。搞定。不过最后的本地预览还是没搞好。索性我就改了 commit，去站点看效果。</p>
 <p>之后看到域名还是 github 提供的固定域名，心里觉得不够高大上，果断万网去买了一个。还很便宜咯。。不过价格就不告诉你们了 😜</p>
 <hr>
@@ -2133,7 +2133,7 @@ samples, guidance on mobile development, and a full API reference.</p>
 <ul>
 <li>
 <h4> Bell Labs</h4>
-Bell 和 AT&amp;A 在那时已经是一家了，可以看到那时的通信公司真是一线 IT 公司呢。
+Bell 和 AT&amp;A 在那时已经是一家了，可以看到那时的通信公司真是一线 IT 公司呢。<br>
 <strong>C 语言也是 Bell Labs 的产物</strong>，从一开始就是为了用于 Unix 而设计出来的。所以 Unix （在 73 年用 C 重写）在高校流行后，C 语言也获得了广泛支持。</li>
 </ul>
 <p>AT&amp;T licensed Unix to outside parties(第三方) from the late 1970s, leading to a variety of both <strong>academic</strong> (最有有名的 BSD ) and <strong>commercial</strong> (Microsoft Xenix, IBM AIX, SunOS Solaris)</p>
@@ -2224,7 +2224,7 @@ Bell 和 AT&amp;A 在那时已经是一家了，可以看到那时的通信公�
 <figure><img src="http://dl2.iteye.com/upload/attachment/0047/4142/d770c85a-49b7-3c7f-8ae2-cbb6451e00d8.png" alt="Public License" tabindex="0" loading="lazy"><figcaption>Public License</figcaption></figure>
 <h4> Android</h4>
 <p>Android is a mobile OS based on <strong>Linux Kernel</strong>, so it's definitely <strong>Unix-like</strong>.</p>
-<p><strong>Linux is under GPL so Android has to be open source</strong>.
+<p><strong>Linux is under GPL so Android has to be open source</strong>.<br>
 Android's source code is released by Google under open source licenses, although most Android devices ultimately ship with a combination of open source and proprietary software, including proprietary software developed and licensed by Google <em>(GMS are all proprietary)</em></p>
 <h4> Android Kernel</h4>
 <p>Android's kernel is based on one of the Linux kernel's long-term support (LTS) branches.</p>
@@ -2549,7 +2549,7 @@ Android's source code is released by Google under open source licenses, although
 <p>typeScript 是<a href="https://baike.baidu.com/item/JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a>的一个超集，而且本质上向这个语言添加了可选的静态类型和基于类的<a href="https://baike.baidu.com/item/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B" target="_blank" rel="noopener noreferrer">面向对象编程</a>。</p>
 <p>本次开发使用 typeScript 作为 ReactNative 的开发语言，对比 JavaScript 有一些优势</p>
 <h4> 一、ts 的静态检查</h4>
-<p>参考<a href="https://www.zhihu.com/question/64563945" target="_blank" rel="noopener noreferrer">为什么要使用 TypeScript？有哪些情景请简单介绍一下，或者来个例子?</a>
+<p>参考<a href="https://www.zhihu.com/question/64563945" target="_blank" rel="noopener noreferrer">为什么要使用 TypeScript？有哪些情景请简单介绍一下，或者来个例子?</a><br>
 TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义？标准答案是“静态类型更有利于构建大型应用”。为什么静态类型有利于构建大型应用？我总结，利在两点。</p>
 <p>其一，静态类型检查可以做到 early fail，即你编写的代码即使没有被执行到，一旦你编写代码时发生类型不匹配，语言在编译阶段（解释执行也一样，可以在运行前）即可发现。针对大型应用，测试调试分支覆盖困难，很多代码并不一定能够在所有条件下执行到。而假如你的代码简单到任何改动都可以从 UI 体现出来，这确实跟大型应用搭不上关系，那么静态类型检查确实没什么作用。</p>
 <p>配合 vscode 的<strong>TSLint</strong>插件可以很好的实现静态语法检查</p>
@@ -2798,34 +2798,34 @@ TS 对 JS 的改进主要是静态类型检查，静态类型检查有何意义�
 <p>首先因为 CoreML 和 Vision 都是 iOS 11 才有的功能，你要确保 Xcode9 和 iOS 11 的设备，当然模拟器也可以。开发语言使用 Swift4</p>
 <ol>
 <li>
-<p>将模型添加到 Xcode 中
-创建工程并引入模型文件
-<img src="https://storage1.cuntuku.com/2017/11/21/Snip20171121_6.png" alt="Snip20171121_6.png" loading="lazy">
-单击这个文件就可以看到这个模型的详细信息
-<a href="https://cuntuku.com/image/KNKHr" target="_blank" rel="noopener noreferrer"><img src="https://storage2.cuntuku.com/2017/11/21/Snip20171121_7.md.png" alt="Snip20171121_7.md.png" loading="lazy"></a>
+<p>将模型添加到 Xcode 中<br>
+创建工程并引入模型文件<br>
+<img src="https://storage1.cuntuku.com/2017/11/21/Snip20171121_6.png" alt="Snip20171121_6.png" loading="lazy"><br>
+单击这个文件就可以看到这个模型的详细信息<br>
+<a href="https://cuntuku.com/image/KNKHr" target="_blank" rel="noopener noreferrer"><img src="https://storage2.cuntuku.com/2017/11/21/Snip20171121_7.md.png" alt="Snip20171121_7.md.png" loading="lazy"></a><br>
 下面是这个模型的官方介绍</p>
 <blockquote>
 <p>Detects the dominant objects present in an image from a set of 1000 categories such as trees, animals, food, vehicles, people, and more.大意为可以从 1000 个类别中筛选传树木、动物、食品、汽车、人等等。</p>
 </blockquote>
 </li>
 <li>
-<p>模型解读
-inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参数 classLabelProbs 和 classLabel
+<p>模型解读<br>
+inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参数 classLabelProbs 和 classLabel<br>
 ，classLabelProbs 是一个[string:Double]的字典数组，数组里每一个字典就是这个输入图片分析得出可能的一个结果 string 就是对图片类型的描述，而 double 就是可能性百分比。另一个 classLabel 就是最有可能的一个一个结果描述</p>
 
 </li>
 <li>
-<p>编写代码
-定义一个 imageView，一个 Label，一个 button
+<p>编写代码<br>
+定义一个 imageView，一个 Label，一个 button<br>
 点击按钮打开相册选取图片，选取完成执行下面的方法，然后再 label 显示分析结果</p>
 </li>
 </ol>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 运行效果</h2>
-<p><a href="https://cuntuku.com/image/KNToV" target="_blank" rel="noopener noreferrer"><img src="https://storage2.cuntuku.com/2017/11/21/Snip20171121_3.md.png" alt="Snip20171121_3.md.png" loading="lazy"></a>
-<a href="https://cuntuku.com/image/KNvFW" target="_blank" rel="noopener noreferrer"><img src="https://storage1.cuntuku.com/2017/11/21/Snip20171121_4.md.png" alt="Snip20171121_4.md.png" loading="lazy"></a>
+<p><a href="https://cuntuku.com/image/KNToV" target="_blank" rel="noopener noreferrer"><img src="https://storage2.cuntuku.com/2017/11/21/Snip20171121_3.md.png" alt="Snip20171121_3.md.png" loading="lazy"></a><br>
+<a href="https://cuntuku.com/image/KNvFW" target="_blank" rel="noopener noreferrer"><img src="https://storage1.cuntuku.com/2017/11/21/Snip20171121_4.md.png" alt="Snip20171121_4.md.png" loading="lazy"></a><br>
 <a href="https://cuntuku.com/image/KNNdd" target="_blank" rel="noopener noreferrer"><img src="https://storage2.cuntuku.com/2017/11/21/Snip20171121_5.md.png" alt="Snip20171121_5.md.png" loading="lazy"></a></p>
 <h2> Demo</h2>
-<p><a href="https://github.com/OrageKK/coreML-Examples" target="_blank" rel="noopener noreferrer">👉Demo 下载</a>
+<p><a href="https://github.com/OrageKK/coreML-Examples" target="_blank" rel="noopener noreferrer">👉Demo 下载</a><br>
 <strong>如果有帮助烦请点 star</strong></p>
 ]]></content:encoded>
       <enclosure url="http://upload-images.jianshu.io/upload_images/74454-4726f1eccb39b18c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" type="image/"/>
@@ -2895,8 +2895,8 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <p>5.接下来，给你的 playground 的起个名字，把他保存起来。</p>
 <p>开始 coding</p>
 <h2> 开始</h2>
-<p>确保在 Xcode playground 中启用 Live View 特性，您将能够看到可视化界面!
-需要引入 CreateMLUI，CreateMLUI 是一个与 CreateML 类似的框架，但它有一个 UI。到目前为止，CreateMLUI 只能用于图像分类.
+<p>确保在 Xcode playground 中启用 Live View 特性，您将能够看到可视化界面!<br>
+需要引入 CreateMLUI，CreateMLUI 是一个与 CreateML 类似的框架，但它有一个 UI。到目前为止，CreateMLUI 只能用于图像分类.<br>
 然后在 playground 中输入以下代码</p>
 <figure><img src="http://www.demodashi.com/contentImages/image/20190724/FqBcXuSwRDOxpw8UBTF.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <p>运行之后是这个样子的</p>
@@ -2917,7 +2917,7 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <p>接下来可以打开 CoreML 模型并查看元数据。它有你填的所有东西!恭喜你!您是您自己的图像分类器模型的作者，它非常强大，并且只需要 17 KB!</p>
 <figure><img src="http://www.demodashi.com/contentImages/image/20190724/gAS7BWestsJDUJChOch.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <h2> 文本分类器模型</h2>
-<p>接下来，我们将使用 Create ML 构建一个垃圾邮件检测器模型。
+<p>接下来，我们将使用 Create ML 构建一个垃圾邮件检测器模型。<br>
 废话不多说，上代码</p>
 <figure><img src="http://www.demodashi.com/contentImages/image/20190724/Zb3xW53OWSeEt2pw1k7.png" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
 <ul>
@@ -3195,7 +3195,7 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 </ul>
 <h2> 数据库修复</h2>
 <ul>
-<li>官方的 Dump 恢复方案 - 遍历 sqlite_master 表，将未损坏的表和已损坏的前半部分读取出来将 dump 出来的 SQL 语句逐行执行，最终可以得到一个等效的新 DB
+<li>官方的 Dump 恢复方案 - 遍历 sqlite_master 表，将未损坏的表和已损坏的前半部分读取出来将 dump 出来的 SQL 语句逐行执行，最终可以得到一个等效的新 DB<br>
 功率约为 30%。 - 第一页就损坏后续无法读取</li>
 <li>备份恢复方案
 <ul>
@@ -3381,10 +3381,10 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <p>原文中先定义一个 Pokemon 类</p>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>延时执行的闭包</p>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 默认捕捉语法</h2>
-<p>在 swift 中默认的捕捉语法是:<strong>被捕获的变量在闭包被执行的时候才被定值</strong><a href="https://link.juejin.im/?target=http%3A%2F%2Falisoftware.github.io%2Fswift%2Fclosures%2F2016%2F07%2F25%2Fclosure-capture-1%2F%23fn%3Ablock-modifier" target="_blank" rel="noopener noreferrer">1</a>
+<p>在 swift 中默认的捕捉语法是:<strong>被捕获的变量在闭包被执行的时候才被定值</strong><a href="https://link.juejin.im/?target=http%3A%2F%2Falisoftware.github.io%2Fswift%2Fclosures%2F2016%2F07%2F25%2Fclosure-capture-1%2F%23fn%3Ablock-modifier" target="_blank" rel="noopener noreferrer">1</a><br>
 . 我们能说它捕获到了这个变量的<em>引用</em>(或者 &nbsp;<em>指针</em>)。</p>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这个闭包会在 demo1() 方法函数执行完成后 1 秒后被执行，并且我们已退出了方法函数的作用域… 当然 Pokemon 仍然是存在的，当这个代码块在下一个 1 秒后再次被执行的时候！</p>
-<div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，当这个闭包被 GCD 执行后，这个闭包自行释放，就是 Pokemon 内部的 init 方法执行的时候。
+<div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>在这个例子中，当这个闭包被 GCD 执行后，这个闭包自行释放，就是 Pokemon 内部的 init 方法执行的时候。<br>
 此处 Swift 自动捕获到这个 pokemon 变量，当 demo1 方法执行完成并且释放掉的时候，1s 之后闭包被执行的时候还是捕获到了 pokemon</p>
 <h2> 被捕获到的变量都被执行的时候定值</h2>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此处在创建了 test1 闭包之后，我们改变了 name 的值，打印结果是 Aby。说明此处 Swift 捕获到的是 name 这个变量的引用(指针)</p>
@@ -3394,13 +3394,13 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <p>如果捕获的值是一个 &nbsp;var 并不是一个 &nbsp;let，你还是可以修改这个值 &nbsp;<strong>在闭包内部</strong><a href="https://link.juejin.im/?target=http%3A%2F%2Falisoftware.github.io%2Fswift%2Fclosures%2F2016%2F07%2F25%2Fclosure-capture-1%2F%23fn%3Aobjc_block_modify" target="_blank" rel="noopener noreferrer">2</a></p>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>此处打印结果为 Jack，再一次印证，闭包内捕获的是变量 name 的引用，因为它可以被改变，而不是一个静态的拷贝</p>
 <h2> 捕获一个作为静态 copy 的变量</h2>
-<div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>如果你想要在闭包<strong>创建</strong>的时候捕获变量的值，而不是仅仅当闭包执行的时候去获取它的定值，你能使用一个<strong>捕获列表</strong>。
-<strong>捕获列表</strong>可以被编码在方括号的中间，在闭包开括号的右边（并且在闭包的参数 / 或者有返回值之前）<a href="https://link.juejin.im/?target=http%3A%2F%2Falisoftware.github.io%2Fswift%2Fclosures%2F2016%2F07%2F25%2Fclosure-capture-1%2F%23fn%3Ain-keyword" target="_blank" rel="noopener noreferrer">3</a>
-。
+<div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p>如果你想要在闭包<strong>创建</strong>的时候捕获变量的值，而不是仅仅当闭包执行的时候去获取它的定值，你能使用一个<strong>捕获列表</strong>。<br>
+<strong>捕获列表</strong>可以被编码在方括号的中间，在闭包开括号的右边（并且在闭包的参数 / 或者有返回值之前）<a href="https://link.juejin.im/?target=http%3A%2F%2Falisoftware.github.io%2Fswift%2Fclosures%2F2016%2F07%2F25%2Fclosure-capture-1%2F%23fn%3Ain-keyword" target="_blank" rel="noopener noreferrer">3</a><br>
+。<br>
 为了在闭包创建的时候，捕获变量的值（而不是这个变量本身的引用），你可以使用 &nbsp;[形参 = 实参]</p>
 <p>你也可以这样写，不过我觉得不够清晰</p>
 <div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这里的捕获列表大概相当于文中的如下代码</p>
-<div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这就好像，如果我们创建一个中间变量去指向同一个 pokemon，并且捕获这个变量
+<div class="language-swift line-numbers-mode" data-ext="swift"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这就好像，如果我们创建一个中间变量去指向同一个 pokemon，并且捕获这个变量<br>
 事实上，使用这个捕获列表和上面的代码一样… 除了这个 pokemonCopy 的中间变量是闭包的局部变量，并且将只能在闭包内被访问。</p>
 <h2> 总结</h2>
 <ul>
@@ -3580,17 +3580,17 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <h2> 编译设置</h2>
 <ul>
 <li>
-<p><code>Optimization Level</code>设置为<code>Fastest, Smallest [-Os]</code>，<code>Strip Debug</code>
-<code>Symbols During Copy</code>设置为<code>YES (COPY_PHASE_STRIP = YES)</code>
+<p><code>Optimization Level</code>设置为<code>Fastest, Smallest [-Os]</code>，<code>Strip Debug</code><br>
+<code>Symbols During Copy</code>设置为<code>YES (COPY_PHASE_STRIP = YES)</code><br>
 这样会减小接近一半的体积，但是在 release 版本，这些貌似是默认的配置，但是不妨也检查一下。 此外在 debug 版本最好在完成开发测试后，设置成这种模式，重新测试一遍，因为不同的编译设置可能会掩盖一些 bug。</p>
 </li>
 <li>
 <p>设置<code>IOS_DEPLOYMENT_TARGET</code> 为想要运行系统的最低版本</p>
 </li>
 <li>
-<p>设置需要的 arm&nbsp;<a href="http://lib.csdn.net/base/16" target="_blank" rel="noopener noreferrer">架构</a>，设置 <code>ARCHS = arm64</code>可以消除 armv6 架构，潜在的减少近一半的容量。
-<a href="https://www.innerfence.com/howto/apple-ios-devices-dates-versions-instruction-sets" target="_blank" rel="noopener noreferrer">iOS Devices: ARM，尺寸，像素一览表</a>
-1，如果想自己的 app 在各个机器都能够最高效率的运行，则需要将 Build Active Architecture Only 改为 NO,Valid architectures 选择对应的指令集：armv7 armv7s arm64。这个会为各个指令集编译对应的代码，因此最后的 ipa 体积基本翻了 3 倍,Release 版本必须 NO。
+<p>设置需要的 arm&nbsp;<a href="http://lib.csdn.net/base/16" target="_blank" rel="noopener noreferrer">架构</a>，设置 <code>ARCHS = arm64</code>可以消除 armv6 架构，潜在的减少近一半的容量。<br>
+<a href="https://www.innerfence.com/howto/apple-ios-devices-dates-versions-instruction-sets" target="_blank" rel="noopener noreferrer">iOS Devices: ARM，尺寸，像素一览表</a><br>
+1，如果想自己的 app 在各个机器都能够最高效率的运行，则需要将 Build Active Architecture Only 改为 NO,Valid architectures 选择对应的指令集：armv7 armv7s arm64。这个会为各个指令集编译对应的代码，因此最后的 ipa 体积基本翻了 3 倍,Release 版本必须 NO。<br>
 2，如果想让 app 体积保持最小，则现阶段应该选择 Valid architectures 为 armv7,这样 Build Active Architecture Only 选 YES 或 NO 就无所谓了</p>
 </li>
 </ul>
@@ -3600,18 +3600,18 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 </ul>
 <h2> 编译选项</h2>
 <ol>
-<li>编译器优化级别
+<li>编译器优化级别<br>
 Build Settings-&gt;Optimization Level 有几个编译优化选项，release 版应该选择 Fastest, Smalllest，这个选项会开启那些不增加代码大小的全部优化，并让可执行文件尽可能小。</li>
-<li>去除符号信息
-Strip Linked Product / Deployment Postprocessing / Symbols Hidden by Default 在 release 版本应该设为 yes，可以去除不必要的调试符号。Symbols Hidden by Default 会把所有符号都定义成”private extern”，详细信息见<a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachOTopics/1-Articles/executing_files.html#//apple_ref/doc/uid/TP40001829-97021-TPXREF121" target="_blank" rel="noopener noreferrer">官方文档</a>。
+<li>去除符号信息<br>
+Strip Linked Product / Deployment Postprocessing / Symbols Hidden by Default 在 release 版本应该设为 yes，可以去除不必要的调试符号。Symbols Hidden by Default 会把所有符号都定义成”private extern”，详细信息见<a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/MachOTopics/1-Articles/executing_files.html#//apple_ref/doc/uid/TP40001829-97021-TPXREF121" target="_blank" rel="noopener noreferrer">官方文档</a>。<br>
 这些选项目前都是 XCode 里 release 的默认选项，但旧版 XCode 生成的项目可能不是，可以检查一下。其他优化还可以参考官方文档—<a href="https://developer.apple.com/legacy/library/documentation/Performance/Conceptual/CodeFootprint/CodeFootprint.pdf" target="_blank" rel="noopener noreferrer">CodeFootprint.pdf</a></li>
 </ol>
 <h3> 第三方库统计</h3>
 <p>项目里会引入很多第三方静态库，如果能知道这些第三方库在可执行文件里占用的大小，就可以评估是否值得去找替代方案去掉这个第三方库。我们可以从 linkmap 中统计出这个信息，对此写了个 node.js 脚本，可以通过 linkmap 统计每个.o 目标文件占用的体积和每个.a 静态库占用的体积，<a href="https://gist.github.com/bang590/8f3e9704f1c2661836cd" target="_blank" rel="noopener noreferrer">详见这里</a>(需翻墙)。</p>
 <h3> ARC-&gt;MRC</h3>
-<p>有人提出用 ARC 写的代码编译出来的可执行文件是会比用 MRC 大的，原因大致是 ARC 代码会在某些情况多出一些 retain 和 release 的指令，例如调用一个方法，它返回的对象会被 retain，退出作用域后会被 release，MRC 就不需要，汇编指令变多，机器码变多，可执行文件就变大了。还有其他细节实现的区别，先不纠结了。
-那用 ARC 究竟会增大多少体积？我觉得从汇编指令的增多减少去算是很难算准确的，这东西涉及细节太多，还是得从统计的角度计算。做了几个对比试验，统计了几个同时支持 ARC/MRC 的开源项目在开启/关闭 ARC 的情况下<strong>TEXT 代码段的大小对比。只对比</strong>TEXT 代码段是因为：
-ARC 对可执行文件大小的影响几乎都是在代码段
+<p>有人提出用 ARC 写的代码编译出来的可执行文件是会比用 MRC 大的，原因大致是 ARC 代码会在某些情况多出一些 retain 和 release 的指令，例如调用一个方法，它返回的对象会被 retain，退出作用域后会被 release，MRC 就不需要，汇编指令变多，机器码变多，可执行文件就变大了。还有其他细节实现的区别，先不纠结了。<br>
+那用 ARC 究竟会增大多少体积？我觉得从汇编指令的增多减少去算是很难算准确的，这东西涉及细节太多，还是得从统计的角度计算。做了几个对比试验，统计了几个同时支持 ARC/MRC 的开源项目在开启/关闭 ARC 的情况下<strong>TEXT 代码段的大小对比。只对比</strong>TEXT 代码段是因为：<br>
+ARC 对可执行文件大小的影响几乎都是在代码段<br>
 可执行文件会进行某种对齐，例如有些段在不足 32K 的时候填充 0 直到对齐 32K，若用可执行文件大小对比结果可能是对齐后的，不准确。</p>
 <p>实验数据：</p>
 <table>
@@ -3644,20 +3644,20 @@ ARC 对可执行文件大小的影响几乎都是在代码段
 </tr>
 </tbody>
 </table>
-<p>结果是 ARC 大概会使代码段增加 10%的 size，考虑代码段占可执行文件大约有 80%，估计对整个可执行文件的影响会是 8%。
+<p>结果是 ARC 大概会使代码段增加 10%的 size，考虑代码段占可执行文件大约有 80%，估计对整个可执行文件的影响会是 8%。<br>
 可以评估一下 8%的体积下降是不是值得把项目里某些模块改成 MRC，这样程序的维护成本上升了，一般不到特殊情况不建议这么做。</p>
 <h3> 无用代码</h3>
-<p>在项目里新建一个类，给它添加几个方法，但不要在任何地方 import 它，build 完项目后观察 linkmap，你会发现这个类还是被编译进可执行文件了。
-按 C++的经验，没有被使用到的类和方法编译器都会优化掉，不会编进最终的可执行文件，但 object-c 不一样，因为 object-c 的动态特性，它可以通过类和方法名反射获得这个类和方法进行调用，所以就算在代码里某个类没被使用到，编译器也没法保证这个类不会在运行时通过反射去调用，所以只要是在项目里的文件，无论是否又被使用到都会被编译进可执行文件。
+<p>在项目里新建一个类，给它添加几个方法，但不要在任何地方 import 它，build 完项目后观察 linkmap，你会发现这个类还是被编译进可执行文件了。<br>
+按 C++的经验，没有被使用到的类和方法编译器都会优化掉，不会编进最终的可执行文件，但 object-c 不一样，因为 object-c 的动态特性，它可以通过类和方法名反射获得这个类和方法进行调用，所以就算在代码里某个类没被使用到，编译器也没法保证这个类不会在运行时通过反射去调用，所以只要是在项目里的文件，无论是否又被使用到都会被编译进可执行文件。<br>
 对此我们可以通过脚本，遍历整个项目的文件，找出所有没有被引用的类文件和没有被调用的方法，在保证没有其他地方动态调用的情况下把它们去掉。如果整个项目历时很长，历时代码遗留较多，这个清理对可执行文件省出的空间还是挺可观的。</p>
 <h3> 类/方法名长度</h3>
-<p>观察 linkmap 可以发现每个类和方法名都在__cstring 段里都存了相应的字符串值，所以类和方法名的长短也是对可执行文件大小是有影响的，原因还是 object-c 的动态特性，因为需要通过类/方法名反射找到这个类/方法进行调用，object-c 对象模型会把类/方法名字符串都保存下来。
-对此我们可以考虑在编译前把所有类和方法名进行混淆，跟压缩 js 一样，把长名字替换成短名字，这样做的好处除了缩小体积外，还对安全性有很大提升，别人拿到可执行文件对它 class-dump 出来的结果都是混淆后的类和方法名，就无法从类和方法名中猜出某个方法是做什么的，就难以挂钩子进行 hack。不过这样做有个缺点，就是 crash 堆栈反解出来的堆栈方法名会是混淆后的，需要再加一层混淆-&gt;原名的转换，实现和使用成本有点高。
+<p>观察 linkmap 可以发现每个类和方法名都在__cstring 段里都存了相应的字符串值，所以类和方法名的长短也是对可执行文件大小是有影响的，原因还是 object-c 的动态特性，因为需要通过类/方法名反射找到这个类/方法进行调用，object-c 对象模型会把类/方法名字符串都保存下来。<br>
+对此我们可以考虑在编译前把所有类和方法名进行混淆，跟压缩 js 一样，把长名字替换成短名字，这样做的好处除了缩小体积外，还对安全性有很大提升，别人拿到可执行文件对它 class-dump 出来的结果都是混淆后的类和方法名，就无法从类和方法名中猜出某个方法是做什么的，就难以挂钩子进行 hack。不过这样做有个缺点，就是 crash 堆栈反解出来的堆栈方法名会是混淆后的，需要再加一层混淆-&gt;原名的转换，实现和使用成本有点高。<br>
 实际上这部分占用的长度比较小，中型项目也就几百 K，对安全性要求高的情况可以试试。</p>
 <h3> 冗余字符串</h3>
 <p>代码上定义的所有静态字符串都会记录在在可执行文件的__cstring 段，如果项目里 Log 非常多，这个空间占用也是可观的，也有几百 K 的大小，可以考虑清理所有冗余的字符串。另外如果有特别长的字符串，建议抽离保存成静态文件，因为 AppStore 对可执行文件加密导致压缩率低，特别长的字符串抽离成静态资源文件后压缩率会比在可执行文件里高很多。</p>
 <h3> CheckList</h3>
-<p>最后把缩减<a href="http://lib.csdn.net/base/1" target="_blank" rel="noopener noreferrer">iOS</a>安装包大小的各种方法列出来做了张 CheckList 图：
+<p>最后把缩减<a href="http://lib.csdn.net/base/1" target="_blank" rel="noopener noreferrer">iOS</a>安装包大小的各种方法列出来做了张 CheckList 图：<br>
 <img src="http://upload-images.jianshu.io/upload_images/2076247-dde8e96bdd40396b.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
 <p>参考文献：<a href="http://blog.cnbang.net/tech/2296/" target="_blank" rel="noopener noreferrer">http://blog.cnbang.net/tech/2296/</a></p>
 ]]></content:encoded>
@@ -3832,18 +3832,18 @@ ARC 对可执行文件大小的影响几乎都是在代码段
 <p>###应用场景</p>
 <ul>
 <li>
-<p>创建常驻线程，执行一些会一直存在的任务。该线程的生命周期跟 &nbsp;App
-&nbsp; 相同
-@autoreleasepool {
-NSLog(@"%@", [NSThread currentThread]);
-NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-// 只有添加端口后，才能能够保证运行循环持续运行
-[runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+<p>创建常驻线程，执行一些会一直存在的任务。该线程的生命周期跟 &nbsp;App<br>
+&nbsp; 相同<br>
+@autoreleasepool {<br>
+NSLog(@"%@", [NSThread currentThread]);<br>
+NSRunLoop *runLoop = [NSRunLoop currentRunLoop];<br>
+// 只有添加端口后，才能能够保证运行循环持续运行<br>
+[runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];<br>
 [runLoop run];</p>
 
 </li>
 <li>
-<p>维护线程的生命周期，让线程不自动退出，<code>isFinished</code>
+<p>维护线程的生命周期，让线程不自动退出，<code>isFinished</code><br>
 &nbsp; 为 &nbsp;<code>Yes</code>时退出</p>
 </li>
 <li>
@@ -3854,9 +3854,9 @@ NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
 <blockquote>
 <p>####提示：一般在开发中很少会主动创建 Runloop，而通常会把事件添加到 Runloop 中。</p>
 </blockquote>
-<p>###参考文章
-<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW23" target="_blank" rel="noopener noreferrer">官方文档</a>
-<a href="http://blog.ibireme.com/2015/05/18/runloop/" target="_blank" rel="noopener noreferrer">深入理解 Runloop</a>
+<p>###参考文章<br>
+<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html#//apple_ref/doc/uid/10000057i-CH16-SW23" target="_blank" rel="noopener noreferrer">官方文档</a><br>
+<a href="http://blog.ibireme.com/2015/05/18/runloop/" target="_blank" rel="noopener noreferrer">深入理解 Runloop</a><br>
 <a href="http://www.cnblogs.com/zy1987/p/4582466.html" target="_blank" rel="noopener noreferrer">Runloop 原理和核心机制</a></p>
 ]]></content:encoded>
     </item>
@@ -3911,7 +3911,7 @@ NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
 <p>本文介绍 iOS 中 cookie 的使用包含 AFNetWorking 3.0 中的使用，常用于登录状态信息保存</p>
 </blockquote>
 <h2> 什么是 Cookies？</h2>
-<p>Cookie 是由服务器保存在用户浏览器（客户端）上的一块数据，它可以包含有关用户的信息,比如果登陆的状态，用户标识等。
+<p>Cookie 是由服务器保存在用户浏览器（客户端）上的一块数据，它可以包含有关用户的信息,比如果登陆的状态，用户标识等。<br>
 Cookie 有什么作用？</p>
 <p>主要用在以下三个方面:</p>
 <ul>
@@ -4032,9 +4032,9 @@ Cookie 有什么作用？</p>
 </blockquote>
 <h3> info.plist</h3>
 <h4> 常见设置</h4>
-<p>建立一个工程后,会在 Supporting files 文件夹下看到一个"<em>工程名-Info.plist</em>"的文件,该文件对工程做一些运行期的配置,非常重要,不能删除.
-在旧版 Xcode 创建的工程中,这个配置文件的名字叫做"Info.plist".
-项目中的其他 plist 文件不能带有"Info"这个字眼,不然会被错认为是传说中非常重要的"Info.plist".
+<p>建立一个工程后,会在 Supporting files 文件夹下看到一个"<em>工程名-Info.plist</em>"的文件,该文件对工程做一些运行期的配置,非常重要,不能删除.<br>
+在旧版 Xcode 创建的工程中,这个配置文件的名字叫做"Info.plist".<br>
+项目中的其他 plist 文件不能带有"Info"这个字眼,不然会被错认为是传说中非常重要的"Info.plist".<br>
 项目中还有一个"InfoPlist.strings"的文件(Xcode6 之后需手动添加),跟 Info.plist 文件的本地化相关.</p>
 <h4> Info.plist 常见属性:</h4>
 <ol>
@@ -4044,7 +4044,7 @@ Cookie 有什么作用？</p>
 <li>Bundle version(CFBundleVersion)-应用程序的版本号,每次往 App Store 上发布一个新版本时,需要增加这个版本号;</li>
 <li>Main storyboard file base name(NSMainStoryboardFile)-主 storyboard 文件名称;</li>
 <li>Bundle identifier(CFBundleIdentifier)-项目的唯一标识,部署到真机时用到;</li>
-<li>额外说一下从 iOS9 开始，所有的 http 请求都改成了 https，采用 TLS 1.2 协议，目的是增强数据安全。如果不更新的话，暂时可以在 Info.plist 中声明，使用不安全的网络请求。
+<li>额外说一下从 iOS9 开始，所有的 http 请求都改成了 https，采用 TLS 1.2 协议，目的是增强数据安全。如果不更新的话，暂时可以在 Info.plist 中声明，使用不安全的网络请求。<br>
 可以在 info.plist 中添加一下字段
 即如：![](http://upload-images.jianshu.io/upload_images/2076247-22165721d20be6ab?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 </li>
@@ -4053,41 +4053,41 @@ Cookie 有什么作用？</p>
 <p>项目的 Supporting files 文件夹下面有个"工程名-Prefix.pch"文件,也是一个头文件;</p>
 
 <h3> UIApplication</h3>
-<p>UIApplication 对象是应用程序的象征;
-&nbsp;&nbsp;&nbsp;&nbsp; 每一个应用都有自己的 UIApplication 对象,而且是单例的;
-&nbsp;&nbsp;&nbsp;&nbsp; 通过[UIApplication sharedApplication]可以获得这个单例对象;
-&nbsp;&nbsp;&nbsp;&nbsp; 一个 iOS 程序启动后创建的第一个对象就是 UIApplication 对象;
+<p>UIApplication 对象是应用程序的象征;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 每一个应用都有自己的 UIApplication 对象,而且是单例的;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 通过[UIApplication sharedApplication]可以获得这个单例对象;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 一个 iOS 程序启动后创建的第一个对象就是 UIApplication 对象;<br>
 &nbsp;&nbsp;&nbsp;&nbsp; 利用 UIApplication 对象,能进行一些应用级别的操作.</p>
 <h4> UIApplication 的常用属性</h4>
-<p>设置应用程序图标右上角的红色提醒数字:
-@property(nonatomic)&nbsp;NSInteger&nbsp;applicationIconBadgeNumber;
-设置联网指示器(菊花)的可见性
+<p>设置应用程序图标右上角的红色提醒数字:<br>
+@property(nonatomic)&nbsp;NSInteger&nbsp;applicationIconBadgeNumber;<br>
+设置联网指示器(菊花)的可见性<br>
 @property(nonatomic,getter=isNetworkActivityIndicatorVisible)&nbsp;BOOL&nbsp;networkActivityIndicatorVisible;</p>
 <h3> 状态栏</h3>
 <h5> 从 iOS7 开始,系统提供了两种管理状态栏的方式:</h5>
-<p>1.&gt;通过 UIViewController 管理(在 iOS 中,默认情况下,状态栏都是由 UIViewController 管理的):
-状态栏的样式:
--&nbsp;(UIStatusBarStyle)preferredStatusBarStyle;
-&nbsp; 状态栏的可见性
--&nbsp;(BOOL)prefersStatusBarHidden;
-2.&gt;通过 UIApplication 管理(一个应用程序的状态栏都由它统一管理)
+<p>1.&gt;通过 UIViewController 管理(在 iOS 中,默认情况下,状态栏都是由 UIViewController 管理的):<br>
+状态栏的样式:<br>
+-&nbsp;(UIStatusBarStyle)preferredStatusBarStyle;<br>
+&nbsp; 状态栏的可见性<br>
+-&nbsp;(BOOL)prefersStatusBarHidden;<br>
+2.&gt;通过 UIApplication 管理(一个应用程序的状态栏都由它统一管理)<br>
 application.statusBarHidden&nbsp;=&nbsp;NO;</p>
 <h4> openURL:</h4>
-<p>UIApplication 有个功能十分强大的 openURL 方法:
--&nbsp;(BOOL)openURL:(NSURL*)url;
+<p>UIApplication 有个功能十分强大的 openURL 方法:<br>
+-&nbsp;(BOOL)openURL:(NSURL*)url;<br>
 openURL:方法的部分功能有</p>
 <ul>
-<li>打电话
-UIApplication&nbsp;*app&nbsp;=&nbsp;[UIApplication&nbsp;sharedApplication];
+<li>打电话<br>
+UIApplication&nbsp;*app&nbsp;=&nbsp;[UIApplication&nbsp;sharedApplication];<br>
 [app&nbsp;openURL:[NSURL&nbsp;URLWithString:@"tel://10086"]];</li>
-<li>发短信
+<li>发短信<br>
 [app&nbsp;openURL:[NSURL&nbsp;URLWithString:@"sms://10086"]];</li>
-<li>发邮件
+<li>发邮件<br>
 [app&nbsp;openURL[NSURL&nbsp;URLWithString:@"mailto://605453790@qq.com"]];</li>
-<li>打开一个网页资源
+<li>打开一个网页资源<br>
 [app&nbsp;openURL:[NSURL&nbsp;URLWithString:@"<a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer">http://www.baidu.com</a>"]];</li>
-<li>打开其他 app 程序
-NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField.text];
+<li>打开其他 app 程序<br>
+NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField.text];<br>
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];</li>
 </ul>
 <h3> UIApplication 和 delegate</h3>
@@ -4099,16 +4099,16 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
 
 <p>每次新建完项目,都有个带有"AppDelegate"字眼的类,它就是 UIApplication 的代理,<em>AppDelegate</em>默认已经遵守了<code>UIApplicationDelegate</code>协议,已经是 UIApplication 的代理;</p>
 <h3> UIWindow</h3>
-<p>UIWindow 是一种特殊的 UIView,通常在一个 App 中只会有一个 UIWindow;
-&nbsp;&nbsp;&nbsp;&nbsp;iOS 程序启动完毕后,创建的第一个视图控件就是 UIWindow,接着创建控制器的 View,最后将控制器的 view 添加到 UIWindow 上,于是控制器的 view 就显示在屏幕上了.
-&nbsp;&nbsp;&nbsp;&nbsp; 一个程序之所以能显示在屏幕上,完全是因为它有 UIWindow,没有 UIWindow,就看不见任何 UI 界面;
-添加 UIView 到 UIWindow 中的两种常见方式:
-&nbsp;&nbsp;&nbsp;&nbsp;1&gt; 直接将 view 添加到 UIWindow 中,但并不会理会 view 对应的 UIViewController
+<p>UIWindow 是一种特殊的 UIView,通常在一个 App 中只会有一个 UIWindow;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;iOS 程序启动完毕后,创建的第一个视图控件就是 UIWindow,接着创建控制器的 View,最后将控制器的 view 添加到 UIWindow 上,于是控制器的 view 就显示在屏幕上了.<br>
+&nbsp;&nbsp;&nbsp;&nbsp; 一个程序之所以能显示在屏幕上,完全是因为它有 UIWindow,没有 UIWindow,就看不见任何 UI 界面;<br>
+添加 UIView 到 UIWindow 中的两种常见方式:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1&gt; 直接将 view 添加到 UIWindow 中,但并不会理会 view 对应的 UIViewController<br>
 -&nbsp;(void)addSubview:(UIView&nbsp;*)view;</p>
 <p>2&gt; 自动将 rootViewController 的 view 添加到 UIWindow 中,负责管理 rootViewController 的生命周期;</p>
 
-<p>常用方法:
-&nbsp; -&nbsp;(void)makeKeyWindow;&nbsp;&nbsp;//让当前 UIWindow 变成 keyWindow(主窗口)&nbsp;
+<p>常用方法:<br>
+&nbsp; -&nbsp;(void)makeKeyWindow;&nbsp;&nbsp;//让当前 UIWindow 变成 keyWindow(主窗口)&nbsp;<br>
 -&nbsp;(void)makeKeyAndVisible;&nbsp;&nbsp;//让当前 UIWindow 变成 keyWindow，并显示出来</p>
 <h4> UIWindow 的获得:</h4>
 
@@ -4229,21 +4229,21 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
 <ul>
 <li><code>gem sources --remove https://rubygems.org/</code></li>
 <li><code>gem source -a https://gems.ruby-china.org</code></li>
-<li>查看是否切换成功 <code>gem source -l</code>
-如果出现下图这样的就说明切换成功了, 如果还是官方的源, 请手动重启电脑尝试
+<li>查看是否切换成功 <code>gem source -l</code><br>
+如果出现下图这样的就说明切换成功了, 如果还是官方的源, 请手动重启电脑尝试<br>
 <img src="http://upload-images.jianshu.io/upload_images/2076247-365912ab78be4906.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></li>
 </ul>
 <h4> 接下来就可以开始升级了 cocoapods 了</h4>
 <ul>
 <li><code>sudo gem install -n /usr/local/bin cocoapods --pre</code></li>
-<li>是的, 你没看错是这个命令, 然后终端会出现一大推东西, 别管他, 最后停下来是这样的就差不多了
+<li>是的, 你没看错是这个命令, 然后终端会出现一大推东西, 别管他, 最后停下来是这样的就差不多了<br>
 <img src="http://upload-images.jianshu.io/upload_images/2076247-81b6046594fe772b.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></li>
-<li>然后查看版本<code>pod --version</code>
+<li>然后查看版本<code>pod --version</code><br>
 出现 1.1.1，恭喜你已经安装成功了</li>
 <li>接下来设置 pod 仓库 <code>pod setup</code></li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/2076247-cafa12def948db48.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="Paste_Image.png" loading="lazy">
-此处需要耐心等待，根据网络情况完成时间长短不一。
+<p><img src="http://upload-images.jianshu.io/upload_images/2076247-cafa12def948db48.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="Paste_Image.png" loading="lazy"><br>
+此处需要耐心等待，根据网络情况完成时间长短不一。<br>
 可以在终端中 CD 到<code>~/.cocoapods</code>目录中输入 <code>du -sh *</code>查看下载进度</p>
 <h3> 至此, 已经升级到 cocoapods1.1.1 了, 可以愉快的把玩 Swift3.0 的一些三方库了</h3>
 ]]></content:encoded>
@@ -4258,12 +4258,12 @@ NSString *urlString = [NSString stringWithFormat:@"AppJumpSecond://%@",textField
       <category>iOS</category>
       <pubDate>Wed, 30 Aug 2017 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<blockquote>
-<p><a href="http://www.jianshu.com/p/b7a646a6c80e" target="_blank" rel="noopener noreferrer">参考地址</a>
+<p><a href="http://www.jianshu.com/p/b7a646a6c80e" target="_blank" rel="noopener noreferrer">参考地址</a><br>
 ijkplayer 是一款做视频直播的框架，基于 FFmpeg，支持 Android 和 iOS。这里介绍一下 iOS 中集成 ijkplayer</p>
 </blockquote>
 <h2> 一、FFmpeg</h2>
 <p>FFmpeg 是一套可以用来记录、转换数字音频、视频，并能将其转化为流的开源计算机程序。它包括了领先的音/视频编码库 libavcodec 等。</p>
-<p><strong>libavformat</strong>：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构
+<p><strong>libavformat</strong>：用于各种音视频封装格式的生成和解析，包括获取解码所需信息以生成解码上下文结构<br>
 和读取音视频帧等功能；</p>
 <p><strong>libavcodec</strong>：用于各种类型声音/图像编解码；</p>
 <p><strong>libavutil</strong>：包含一些公共的工具函数；</p>
@@ -4306,7 +4306,7 @@ ijkplayer 是一款做视频直播的框架，基于 FFmpeg，支持 Android 和
 <p>MMS over TCP</p>
 <h2> 二、下载 ijkplayer</h2>
 <p>ijkplayer 下载地址:<a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="noopener noreferrer">https://github.com/Bilibili/ijkplayer</a></p>
-<p>下载完成后解压, 解压后文件夹内部目录如下图:
+<p>下载完成后解压, 解压后文件夹内部目录如下图:<br>
 <img src="https://storage2.cuntuku.com/2017/08/31/ijkplayer.png" alt="ijkplayer.png" loading="lazy"></p>
 <h2> 三、编译</h2>
 <p>其实这里主要是编译 FFmpeg，因为他是一个 C 语言的跨平台库，需要 sh 脚本来进行编译</p>
@@ -4319,20 +4319,20 @@ ijkplayer 是一款做视频直播的框架，基于 FFmpeg，支持 Android 和
 </ol>
 <h2> 四、打包 IJKMediaFramework.framework 框架</h2>
 <p>其实集成 ijkplayer 有两种方法，一种是按照 Demo 中的导入 IJKMediaPlayer.xcodeproj，此方法不是很推荐</p>
-<p>下面主要说另一种把 ijkplayer 打包成 framework 导入工程中使用.
+<p>下面主要说另一种把 ijkplayer 打包成 framework 导入工程中使用.<br>
 首先打开工程 IJKMediaPlayer.xcodeproj,<img src="http://upload-images.jianshu.io/upload_images/1803339-607cc84c212faf90.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="IJKMediaPlayer.xcodeproj" loading="lazy"></p>
 <p>选择 IJKMediaFramework 点击 EditScheme<img src="http://upload-images.jianshu.io/upload_images/1803339-bbc0adc479cebb69.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
 <p>选择 release<img src="http://upload-images.jianshu.io/upload_images/1803339-daa4498f7e0746d0.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
 <p>设置好 scheme 后, 分别选择真机和模拟器进行编译, 编译完成后, 进入 Finder,<img src="http://upload-images.jianshu.io/upload_images/1803339-344cda905745ff39.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
 <p>下面开始合并真机和模拟器版本的 framework, 注意不要合并错了, 合并的是这个文件, 如下图:<img src="http://upload-images.jianshu.io/upload_images/1803339-ec00ef4cb15c66d1.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
-<p>打开终端, 进行合并, 命令行具体格式为:
+<p>打开终端, 进行合并, 命令行具体格式为:<br>
 lipo -create 真机版本路径 模拟器版本路径 -output 合并后的文件路径</p>
 <p>合并后如下图<img src="http://upload-images.jianshu.io/upload_images/1803339-d025e12bf804ee05.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
 <p>用合并后的 IJKMediaFramework 把原来的 IJKMediaFramework 替换掉<img src="http://upload-images.jianshu.io/upload_images/1803339-8d228ab56eb77f43.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="" loading="lazy"></p>
 <h2> 五、在 iOS 项目中集成 ijkplayer</h2>
-<p>新建工程, 导入合并后的 IJKMediaFramework.framework 以及相关依赖框架以及相关依赖框架,如下图:
+<p>新建工程, 导入合并后的 IJKMediaFramework.framework 以及相关依赖框架以及相关依赖框架,如下图:<br>
 <img src="https://storage1.cuntuku.com/2017/08/31/5.png" alt="5.png" loading="lazy"></p>
-<p>导入框架后在 ViewController.m 中进行 buid，如果成功，说明集成成功。然后可以在控制器中写一个 Demo 测试<img src="https://storage1.cuntuku.com/2017/08/31/Snip20170831_10.png" alt="Snip20170831_10.png" loading="lazy">
+<p>导入框架后在 ViewController.m 中进行 buid，如果成功，说明集成成功。然后可以在控制器中写一个 Demo 测试<img src="https://storage1.cuntuku.com/2017/08/31/Snip20170831_10.png" alt="Snip20170831_10.png" loading="lazy"><br>
 可以是 mp4 格式，也可以是 m3u8,rtmp,hls 等流媒体</p>
 <blockquote>
 <p><a href="https://github.com/OrageKK/ijkPlayerDemo" target="_blank" rel="noopener noreferrer">demo 地址</a></p>
@@ -4379,7 +4379,7 @@ lipo -create 真机版本路径 模拟器版本路径 -output 合并后的文件
 <h2> AFSecurityPolicy 相关的配置</h2>
 <ul>
 <li>
-<p>SSLPinningMode
+<p>SSLPinningMode<br>
 SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证书</p>
 <div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>AFSSLPinningModeNone: 代表客户端无条件地信任服务器端返回的证书。</p>
 <p>AFSSLPinningModePublicKey: 代表客户端会将服务器端返回的证书与本地保存的证书中，PublicKey 的部分进行校验；如果正确，才继续进行。</p>
@@ -4395,12 +4395,12 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <h2> 客户端配置</h2>
 <ul>
 <li>
-<p>首先导入证书到项目
-<a href="https://cuntuku.com/image/4xc6p" target="_blank" rel="noopener noreferrer"><img src="https://storage1.cuntuku.com/2017/08/16/daoru.md.png" alt="daoru.md.png" loading="lazy"></a>
+<p>首先导入证书到项目<br>
+<a href="https://cuntuku.com/image/4xc6p" target="_blank" rel="noopener noreferrer"><img src="https://storage1.cuntuku.com/2017/08/16/daoru.md.png" alt="daoru.md.png" loading="lazy"></a><br>
 <a href="https://cuntuku.com/image/4xyN0" target="_blank" rel="noopener noreferrer"><img src="https://storage2.cuntuku.com/2017/08/16/phases.md.png" alt="phases.md.png" loading="lazy"></a></p>
 </li>
 <li>
-<p>配置 info.plist 文件
+<p>配置 info.plist 文件<br>
 <a href="https://cuntuku.com/image/4xA2z" target="_blank" rel="noopener noreferrer"><img src="https://storage1.cuntuku.com/2017/08/16/infoplist.md.png" alt="infoplist.md.png" loading="lazy"></a></p>
 </li>
 <li>
@@ -4489,12 +4489,12 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 
 </li>
 <li>
-<p>异步绘制
+<p>异步绘制<br>
 <code>// 异步绘制   layer.drawsAsynchronously = YES;</code></p>
 </li>
 </ul>
 <figure><img src="http://upload-images.jianshu.io/upload_images/2076247-b9d269a0daab047f.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="Color Blended Layers模式下" tabindex="0" loading="lazy"><figcaption>Color Blended Layers模式下</figcaption></figure>
-<p>下图是使用了 CornerRadius 设置圆角之后 Color Misaligned Images 检测效果
+<p>下图是使用了 CornerRadius 设置圆角之后 Color Misaligned Images 检测效果<br>
 <img src="http://upload-images.jianshu.io/upload_images/2076247-a60b840cceed974b.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="Color Misaligned Images模式下" loading="lazy"></p>
 <p>此处使用了一张 800*** 800 的图片设置在一个 200*200 的 ImageView 上，没有做任何特殊处理</p>
 <hr>
@@ -4504,7 +4504,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p>新建一个 UIImage 分类</p>
 </li>
 <li>
-<p>定义方法
+<p>定义方法<br>
 - (void)oa_cornerImageWithSize:(CGSize)size fillColor: (UIColor *)fillColor</p>
 
 </li>
@@ -4513,8 +4513,8 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 
 <p>4.模拟器<code>Color Blended Layers</code> 和<code>Color Misaligned Images</code>检测结果如下图</p>
 <figure><img src="http://upload-images.jianshu.io/upload_images/2076247-d35c6e1664f0601e.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240" alt="优化之后" tabindex="0" loading="lazy"><figcaption>优化之后</figcaption></figure>
-<p>5.Color Misaligned Images 如果是黄色说明图像做过拉伸处理，如果在 tableView 快速滚动中，附加操作越多，性能越差
-使用如上方法不仅可以裁切圆角头像，同时解决了 800***800 设置在 200*200 的 ImageView 上会拉伸的问题
+<p>5.Color Misaligned Images 如果是黄色说明图像做过拉伸处理，如果在 tableView 快速滚动中，附加操作越多，性能越差<br>
+使用如上方法不仅可以裁切圆角头像，同时解决了 800***800 设置在 200*200 的 ImageView 上会拉伸的问题<br>
 此举可以帮助 tableView 提升一部分性能</p>
 ]]></content:encoded>
       <enclosure url="http://upload-images.jianshu.io/upload_images/2076247-98a0c6450c69fa62.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" type="image/"/>
@@ -4590,7 +4590,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
       <category>iOS</category>
       <pubDate>Fri, 12 Jan 2018 00:00:00 GMT</pubDate>
       <content:encoded><![CDATA[<blockquote>
-<p>最近有些忙，好久没有写博客了。
+<p>最近有些忙，好久没有写博客了。<br>
 分享一个 cell 做单选的思路</p>
 </blockquote>
 <h2> 可行的思路</h2>
@@ -4617,7 +4617,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div></li>
 </ol>
 <blockquote>
-<p>至此结束，可以看一下效果
+<p>至此结束，可以看一下效果<br>
 <img src="https://storage4.cuntuku.com/2018/01/13/dvITJ.gif" alt="效果图.md.gif" loading="lazy"></p>
 </blockquote>
 ]]></content:encoded>
@@ -4643,7 +4643,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p>然后 shell 解析这种命令再反馈给内核去执行一系列操作.</p>
 <p>zsh 和 shell 有什么关系呢?</p>
 <p>其实 zsh 也是一种 shell ,但是并不是我们系统默认的 shell ,unix 衍生系统的默认 shell 都是 bash。</p>
-<p>查看已安装 shell
+<p>查看已安装 shell<br>
 查看 Mac 上已有的 shell,一共有 6 种</p>
 <hr>
 <p><code>cat /etc/shells</code></p>
@@ -4713,8 +4713,8 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p>详细记录一下此次建站过程</p>
 </div>
 <h2> 开始</h2>
-<p>之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，有些麻烦，所以一直有想更换引擎的想法
-直到偶然间发现vuepress，首先是被<code>vue3</code>+<code>typescript</code>+<code>vite</code>吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了
+<p>之前的博客是基于jekyll打造的，要添加和定制化的东西都只能基于html+js+css完成，有些麻烦，所以一直有想更换引擎的想法<br>
+直到偶然间发现vuepress，首先是被<code>vue3</code>+<code>typescript</code>+<code>vite</code>吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了<br>
 <a href="https://theme-hope.vuejs.press/zh/" target="_blank" rel="noopener noreferrer">vuepress-theme-hope</a>，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……</p>
 <h2> Markdown增强</h2>
 <p>hope主题的markdown效果是出乎意料的好，而且支持了很多普通markdown不支持的东西，如自定义容器、带tab的代码块，最方便的是可以直接写流程图了，可选高亮主题（本站代码高亮基于shikiPlugin,虽不如默认的prismjs轻量高效，但能提供更准确的语法高亮）具体效果看这里☞<a href="/demo/markdown.html" target="blank">Markdown展示</a></p>
