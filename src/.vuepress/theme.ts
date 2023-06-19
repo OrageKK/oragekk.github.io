@@ -99,6 +99,12 @@ export default MyTheme({
     },
   },
   plugins: {
+    components:{
+      components:[
+        "VidStack",
+        "BiliBili"
+      ]
+    },
     blog: {
       filter: ({ filePathRelative, frontmatter }) => {
         // 将标记为非文章，并且是说说的加入文章采集中，以便后续筛选

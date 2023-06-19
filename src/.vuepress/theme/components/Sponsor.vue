@@ -314,7 +314,6 @@ li[id$="_donate"]:hover::after {
   left: calc(50% - 90px);
   width: 180px;
   height: 180px;
-  background: #fff no-repeat center center url(../simple/images/WeChanSQ.png);
   background-size: 160px;
   border-radius: 6px;
   cursor: pointer;

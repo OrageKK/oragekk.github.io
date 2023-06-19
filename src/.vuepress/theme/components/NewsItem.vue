@@ -21,7 +21,8 @@
         <hr class="vp-article-hr" />
         <slot name="excerpt" v-bind="{ excerpt }">
           <template v-if="excerpt">
-            <div class="vp-article-excerpt" v-html="excerpt"></div>
+            <!-- <div class="vp-article-excerpt" v-html="excerpt"></div> -->
+            <Content :page-key="routeName" />
           </template>
         </slot>
       </div>
@@ -40,7 +41,10 @@ import TagInfo from "@theme-hope/modules/info/components/TagInfo";
 import WordInfo from "@theme-hope/modules/info/components/WordInfo";
 import { toRef } from "vue";
 import { ArticleInfo } from "vuepress-theme-hope/shared";
+import { Content } from "@vuepress/client";
+import { useRouter } from "vue-router";
 import "vuepress-theme-hope/client/modules/info/styles/page-info.scss";
+import { computed } from "vue";
 interface Articles {
   /**
    * Article path
@@ -68,6 +72,10 @@ const {
   ["u" /* ArticleInfoType.sticky */]: sticky,
 } = articleInfo.value;
 const pinfo = pageInfo.value;
+const router = useRouter();
+// 假设你要获取 path 为 '/foo' 的路由的名称
+const route = router.resolve(props.path);
+const routeName = computed(() => (route ? route.name.toString() : ""));
 </script>
 
 <style lang="scss" scoped>
