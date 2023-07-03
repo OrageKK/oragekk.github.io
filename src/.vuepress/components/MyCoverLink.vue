@@ -164,19 +164,20 @@ a.card-body {
     }
   }
 }
-
-a.card-body:hover {
-  .link-picture {
-    transform: scale(1);
-    filter: opacity(1) blur(0px) saturate(150%);
-  }
-  .link-avatar {
-    transform: rotate(360deg) scale(1.3);
-    opacity: 0;
-  }
-  .link-text {
-    transform: translateX(100%);
-    opacity: 0;
+@media (any-hover: hover) {
+  a.card-body:hover {
+    .link-picture {
+      transform: scale(1);
+      filter: opacity(1) blur(0px) saturate(150%);
+    }
+    .link-avatar {
+      transform: rotate(360deg) scale(1.3);
+      opacity: 0;
+    }
+    .link-text {
+      transform: translateX(100%);
+      opacity: 0;
+    }
   }
 }
 .card-body .link-picture {
