@@ -62,8 +62,14 @@ export const friends: LinkData[] = [
   },
   {
     name: "UyoAhz",
-    desc: " 集中精神，以气御剪",
+    desc: "集中精神，以气御剪",
     ico: "https://q1.qlogo.cn/g?b=qq&nk=2496091142&s=640",
     link: "https://uyoahz.cn/",
+  },
+  {
+    name: "铭心石刻",
+    desc: "愿岁并谢，与友长兮",
+    ico: " https://blog.kouseki.cn/imgs/avatar.webp",
+    link: "https://blog.kouseki.cn/",
   },
 ];
