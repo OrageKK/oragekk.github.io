@@ -72,4 +72,11 @@ export const friends: LinkData[] = [
     ico: " https://blog.kouseki.cn/imgs/avatar.webp",
     link: "https://blog.kouseki.cn/",
   },
+  {
+    name: "Anjhon’s blog",
+    desc: "但知行好事，莫要问前程",
+    ico: " https://s2.loli.net/2023/05/16/MdciSXAbrEx3LW9.jpg",
+    link: "https://www.anjhon.top/",
+  },
+  
 ];
