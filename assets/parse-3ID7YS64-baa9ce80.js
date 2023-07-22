@@ -1,2 +1,0 @@
-import{d as r,g as h}from"./register-CZKN5SKP-d34ba57f.js";import"./app-389bbef1.js";var o=/,/g,u="-->",f=class extends r{parse(s,e){var i,a;if(s==="")this.a&&(this.d.push(this.a),(a=(i=this.f).onCue)==null||a.call(i,this.a),this.a=null),this.k=0;else if(this.k===2)this.a.text+=(this.a.text?`
-`:"")+s;else if(s.includes(u)){const t=this.o(s,e);t&&(this.a=new h(t[0],t[1],t[2].join(" ")),this.a.id=this.s,this.k=2)}this.s=s}o(s,e){return super.o(s.replace(o,"."),e)}};function p(){return new f}export{f as SRTParser,p as default};
