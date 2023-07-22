@@ -1,0 +1,1 @@
+import{f as t}from"./register-CZKN5SKP-d34ba57f.js";import"./app-389bbef1.js";var i=Symbol(0),r,u=class extends t{constructor(){super(...arguments),this[r]=!0}get type(){return"audio"}setup(e){super.setup(e),this.type==="audio"&&e.delegate.e("provider-setup",{detail:this})}get audio(){return this.a}};r=i;export{i as AUDIO_PROVIDER,u as AudioProvider};
