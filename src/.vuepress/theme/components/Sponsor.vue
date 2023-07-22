@@ -314,7 +314,9 @@ li[id$="_donate"]:hover::after {
   left: calc(50% - 90px);
   width: 180px;
   height: 180px;
-  background-size: 160px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   border-radius: 6px;
   cursor: pointer;
   box-shadow: 0 10px 20px rgba(103, 207, 248, 0.5);
