@@ -9,7 +9,9 @@ interface GradientCoverOptions {
   size?: number;
 }
 
-const gradientCoverPlugin = (options?: GradientCoverOptions): PluginFunction => {
+const gradientCoverPlugin = (
+  options?: GradientCoverOptions
+): PluginFunction => {
   return (app) => {
     return {
       name: "vuepress-plugin-gradient-cover",
@@ -17,8 +19,12 @@ const gradientCoverPlugin = (options?: GradientCoverOptions): PluginFunction => 
         coverOptions: options,
       },
       multiple: false,
-      clientConfigFile: path.resolve(__dirname, "./client/cover-client-config.ts"),
+      clientConfigFile: path.resolve(
+        __dirname,
+        "./client/cover-client-config.ts"
+      ),
     };
   };
 };
-export { gradientCoverPlugin ,GradientCoverOptions};
+export { gradientCoverPlugin };
+export type { GradientCoverOptions };

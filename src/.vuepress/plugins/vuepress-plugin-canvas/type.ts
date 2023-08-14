@@ -20,4 +20,5 @@ interface BackgroundOptions {
   ribbonOption?: RibbonOptions;
 }
 
-export { BackgroundOptions, CanvasPluginType, RibbonOptions };
+export { CanvasPluginType };
+export type { BackgroundOptions, RibbonOptions };

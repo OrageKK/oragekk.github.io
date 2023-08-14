@@ -12,7 +12,10 @@ const popperPlugin = (options?: PopperOption): PluginFunction => {
         popperOptions: options,
       },
       multiple: false,
-      clientConfigFile: path.resolve(__dirname, "./client/popper-client-config.ts"),
+      clientConfigFile: path.resolve(
+        __dirname,
+        "./client/popper-client-config.ts"
+      ),
     };
   };
 };

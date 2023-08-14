@@ -65,7 +65,7 @@ export default defineUserConfig({
       config: {
         shape: PopperShape.Star,
         size: 1.95,
-        numParticles: 10,
+        numParticles: 8,
       },
     }),
     // 看板娘辅助插件
