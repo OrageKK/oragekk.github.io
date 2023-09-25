@@ -92,7 +92,7 @@ h3 {
   font-size: 3rem;
   font-weight: bold;
   font-style: italic;
-  font-family: PRshouxie;
+  font-family: ZWZT;
   @media (max-width: hope-config.$pad) {
     font-size: 1.8rem;
   }

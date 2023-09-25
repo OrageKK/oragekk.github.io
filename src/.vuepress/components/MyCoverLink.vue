@@ -16,7 +16,7 @@
           <div class="card-content">
             <div class="link-avatar my-auto">
               <img
-                :src="item.ico"
+                :src="item.icon"
                 onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'
               />
             </div>
