@@ -37,7 +37,7 @@ _Exploration & geek enthusiast, full-stack front-end engineer, UX Designer | Cur
 
 ## Github Summary
 
-<img src="https://github-profile-trophy.vercel.app/?username=oragekk&theme=radical&margin-w=25" alt="Github Summary"/>
+<img src="https://github-trophies.vercel.app/?username=oragekk&theme=radical&margin-w=25" alt="Github Summary"/>
 <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=oragekk&theme=radical&layout=compact&bg_color=30,ef475d,904e95&title_color=fff&text_color=fff" />
 <img src="https://github-readme-stats.vercel.app/api?username=oragekk&count_private=true&show_icons=true&theme=radical&bg_color=30,ef475d,904e95&title_color=fff&text_color=fff" />
 
