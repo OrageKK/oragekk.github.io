@@ -144,17 +144,18 @@ export default defineUserConfig({
       source: "/assets/live2D",
       models: [
         {
-          scale: 0.3,
+          scale: 0.44,
+          path: "/sipeibojue_5/sipeibojue_5.model3.json",
+        },
+        {
+          scale: 0.4,
           path: "/lafei_4/lafei_4.model3.json",
         },
         {
-          scale: 0.7,
+          scale: 1.0,
           path: "/z46_2/z46_2.model3.json",
         },
-        {
-          scale: 0.3,
-          path: "/sipeibojue_5/sipeibojue_5.model3.json",
-        },
+        
       ],
       tips: {
         style: {

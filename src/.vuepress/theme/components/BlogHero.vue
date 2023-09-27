@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import {
   usePageFrontmatter,
   usePageHeadTitle,
@@ -12,29 +12,35 @@ import {
   ref,
   nextTick,
   createApp,
+  watchEffect,
+  watch,
 } from "vue";
-import DropTransition from "vuepress-theme-hope/components/transitions/DropTransition";
-import { SlideDownIcon } from "vuepress-theme-hope/modules/blog/components/icons/icons.js";
-import defaultHeroBgImagePath from "vuepress-theme-hope/modules/blog/assets/hero.jpg";
+import DropTransition from "@theme-hope/components/transitions/DropTransition";
+import { SlideDownIcon } from "@theme-hope/modules/blog/components/icons/icons.js";
 import "vuepress-theme-hope/modules/blog/styles/blog-hero.scss";
 import SwitchBtn from "./SwitchBtn.vue";
 import { BingApi } from "../api/bing";
+import { ThemeHopePageFrontmatter } from "vuepress-theme-hope/shared/frontmatter";
+import { isString } from "@vuepress/shared";
 export default defineComponent({
   name: "BlogHero",
   setup() {
-    const app = createApp();
-    app.component("SwitchBtn", SwitchBtn);
+    const defaultHeroBgImagePath = withBase("/assets/home_bg3.jpg");
     const title = usePageHeadTitle();
-    const frontmatter = usePageFrontmatter();
+    const frontmatter = usePageFrontmatter<ThemeHopePageFrontmatter>();
     const hero = ref();
     const heroImage = computed(() => frontmatter.value.heroImage || null);
     const isFullScreen = computed(
       () => frontmatter.value.heroFullScreen || false
     );
     const bgImage = computed(() =>
-      frontmatter.value.bgImage
+      bingData.value.url != null
+        ? bingData.value.url
+        : isString(frontmatter.value.bgImage)
         ? withBase(frontmatter.value.bgImage)
-        : frontmatter.value.bgImage ?? defaultHeroBgImagePath
+        : frontmatter.value.bgImage === false
+        ? null
+        : defaultHeroBgImagePath
     );
     // 背景相关
     const bingDatasRef = ref();
@@ -48,14 +54,13 @@ export default defineComponent({
         ? true
         : false
     );
-
     const leftClick = () => {
       if (lDisabled.value) {
         return;
       }
       bingIndex.value--;
       frontmatter.value.bgImage = withBase(bingData.value.url);
-      let f = document.querySelector(".footer-wrapper");
+      let f = document.querySelector(".footer-wrapper") as HTMLElement;
       f && (f.style.backgroundImage = `url(${bingData.value.url})`);
     };
     const rightClick = () => {
@@ -64,7 +69,7 @@ export default defineComponent({
       }
       bingIndex.value++;
       frontmatter.value.bgImage = withBase(bingData.value.url);
-      let f = document.querySelector(".footer-wrapper");
+      let f = document.querySelector(".footer-wrapper") as HTMLElement;
       f && (f.style.backgroundImage = `url(${bingData.value.url})`);
     };
     const getImage = () => {
@@ -76,7 +81,7 @@ export default defineComponent({
             n.src = image.url;
             n.onload = () => {};
             if (index == 0) {
-              let f = document.querySelector(".footer-wrapper");
+              let f = document.querySelector(".footer-wrapper") as HTMLElement;
               f && (f.style.backgroundImage = `url(${image.url})`);
               frontmatter.value.bgImage = withBase(image.url);
             }
@@ -110,10 +115,12 @@ export default defineComponent({
               bgImage.value
                 ? h("div", {
                     class: "vp-blog-mask",
-                    style: {
-                      background: `url(${bgImage.value}) center/cover no-repeat`,
-                      ...frontmatter.value.bgImageStyle,
-                    },
+                    style: [
+                      {
+                        background: `url(${bgImage.value}) center/cover no-repeat`,
+                      },
+                      frontmatter.value.bgImageStyle,
+                    ],
                   })
                 : null,
               h(DropTransition, { appear: true, delay: 0.04 }, () =>
@@ -127,9 +134,13 @@ export default defineComponent({
                   : null
               ),
               h(DropTransition, { appear: true, delay: 0.08 }, () =>
-                frontmatter.value.heroText === false
+                frontmatter.value.heroText === null
                   ? null
-                  : h("h1", { class: "vp-blog-hero-title" }, frontmatter.value.heroText || title.value)
+                  : h(
+                      "h1",
+                      { class: "vp-blog-hero-title" },
+                      frontmatter.value.heroText || title.value
+                    )
               ),
               h(DropTransition, { appear: true, delay: 0.12 }, () =>
                 frontmatter.value.tagline

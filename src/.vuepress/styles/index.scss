@@ -88,6 +88,7 @@
 [data-theme="light"] .vp-pagination .vp-pagination-nav input,
 [data-theme="light"] .vp-pagination .vp-pagination-number div,
 [data-theme="light"] .wl-panel,
+[data-theme="light"] .timeline-wrapper,
 [data-theme="light"] .back-to-top [data-theme="light"] .page-bg {
   background-color: #ffffffb3;
 }
@@ -99,6 +100,7 @@
 [data-theme="dark"] .vp-pagination .vp-pagination-nav input,
 [data-theme="dark"] .vp-pagination .vp-pagination-number div,
 [data-theme="dark"] .wl-panel,
+[data-theme="dark"] .timeline-wrapper,
 [data-theme="dark"] .back-to-top [data-theme="dark"] .page-bg {
   background-color: #1d2025b3;
 }
@@ -120,6 +122,16 @@
 [data-theme="dark"] .vp-blog-hero .vp-blog-mask:after {
   background: #000;
   opacity: 0.5 !important;
+}
+
+// 时间轴
+.timeline-wrapper {
+  box-shadow: 0 1px 3px 1px var(--card-shadow);
+  backdrop-filter: saturate(150%) blur(0.75rem);
+  --dot-bar-color: #ebf6f6;
+  .timeline-content::after {
+    width: 3px;
+  }
 }
 
 // 看板娘

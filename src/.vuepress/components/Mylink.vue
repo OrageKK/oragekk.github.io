@@ -13,7 +13,7 @@
       >
         <img
           class="vp-project-image"
-          :src="item.ico"
+          :src="item.icon"
           alt=""
           onerror='this.onerror=null,this.src=this.srcset="/assets/avatar.webp"'
         />

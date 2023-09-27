@@ -98,7 +98,8 @@ a.card-body {
     top: 50%; /* 垂直位置为50% */
     left: 50%; /* 水平位置为50% */
     transform: translate(-50%, -50%); /* 移动到中心位置 */
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
     .link-avatar {
       flex: none;
@@ -128,7 +129,6 @@ a.card-body {
       transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* 添加过渡效果 */
       line-height: 2.5;
       flex: none;
-      flex-basis: 160px;
       text-align: center;
       padding: 0 0.8rem;
       font-family: ZWZT,

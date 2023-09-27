@@ -60,7 +60,7 @@ bszTag = {
     this.bszs.map(function (t) {
       var e = document.getElementById("busuanzi_value_" + t);
       if(t == "site_pv") {
-        e && (e.innerHTML = n[t]+14000)
+        e && (e.innerHTML = n[t]+15000)
       }else if(t == "site_uv") {
         e && (e.innerHTML = n[t]+11000)
       }else {

@@ -1,5 +1,5 @@
 import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import { onMounted } from "vue";
 
 export default defineClientConfig({
@@ -18,9 +18,11 @@ export default defineClientConfig({
           switchOml(false);
         }
       });
+      // 获取当前路由实例
+      const route = useRoute();
+      const cpath = route.path;
       setTimeout(() => {
-        const path = usePageData().value.path;
-        if (path == "/") {
+        if (cpath == "/") {
           switchOml(true);
         } else {
           switchOml(false);
@@ -41,6 +43,7 @@ function switchOml(show: boolean) {
   }
   let oml = document.getElementById("oml-stage");
   let omlt = document.getElementById("oml-tips");
+
   if (show) {
     oml && (oml.style.visibility = "visible");
     omlt && (omlt.style.display = "block");
