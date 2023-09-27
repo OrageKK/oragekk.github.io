@@ -84,4 +84,10 @@ export const friends: LinkData[] = [
     icon: "https://www.qiaoxiao.top/static/avater/avater.jpg",
     link: "https://yanyuplus.cn/",
   },
+  {
+    name: "Quantum Bit",
+    desc: "Never stop searching, even if only for a brief flash of light.",
+    icon: "https://www.eula.club/avatar.png",
+    link: "https://www.eula.club"
+  },
 ];
