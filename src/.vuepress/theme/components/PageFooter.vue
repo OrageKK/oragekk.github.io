@@ -70,8 +70,12 @@ const copyright = computed(() =>
     ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
     : false
 );
-const defaultHeroBgImagePath = window.localStorage.getItem('bgImage');
-const bgImage = ref(`url(${defaultHeroBgImagePath})`);
+const bgImage = ref('');
+
+onMounted(() => {
+  const defaultHeroBgImagePath = window.localStorage.getItem('bgImage');
+  bgImage.value = `url(${defaultHeroBgImagePath})`
+})
 
 </script>
 
