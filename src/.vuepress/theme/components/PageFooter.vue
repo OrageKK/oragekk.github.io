@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePageFrontmatter } from "@vuepress/client";
+import { usePageFrontmatter, withBase } from "@vuepress/client";
 import { isString } from "@vuepress/shared";
 import { computed, watch, onMounted } from "vue";
 import {
@@ -30,6 +30,7 @@ import {
 import { useRouter } from "vue-router";
 import script from "../utils/busuanzi.pure";
 import { show_runtime } from "../utils/time";
+import { ref } from "vue";
 
 // 或取 当前vue-router 实例
 const router = useRouter();
@@ -69,9 +70,15 @@ const copyright = computed(() =>
     ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
     : false
 );
+const defaultHeroBgImagePath = window.localStorage.getItem('bgImage');
+const bgImage = ref(`url(${defaultHeroBgImagePath})`);
+
 </script>
 
 <style lang="scss">
+.footer-wrapper {
+  background-image: v-bind(bgImage);
+}
 .footer-wrapper:before {
   content: "";
   position: absolute;

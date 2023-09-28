@@ -14,6 +14,7 @@ import {
   createApp,
   watchEffect,
   watch,
+  provide,
 } from "vue";
 import DropTransition from "@theme-hope/components/transitions/DropTransition";
 import { SlideDownIcon } from "@theme-hope/modules/blog/components/icons/icons.js";
@@ -72,6 +73,12 @@ export default defineComponent({
       let f = document.querySelector(".footer-wrapper") as HTMLElement;
       f && (f.style.backgroundImage = `url(${bingData.value.url})`);
     };
+    watch(
+      () => bgImage.value,
+      (newValue, oldValue) => {
+        window.localStorage.setItem("bgImage", newValue);
+      }
+    );
     const getImage = () => {
       BingApi.request().then((res) => {
         if (res.status == 200) {

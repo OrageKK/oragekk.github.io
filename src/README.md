@@ -32,7 +32,7 @@ projects:
   - icon: /assets/shoucang.svg
     name: 收藏
     desc: 有趣的内容
-    link: /site
+    link: /collect
 
   # - icon: friend
   #   name: 伙伴名称

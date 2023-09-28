@@ -38,6 +38,11 @@ export const zhNavbar = navbar([
     link: "/tutorial/",
   },
   {
+    text: "收藏",
+    icon: "hk-shoucang1",
+    link: "/collect",
+  },
+  {
     text: "说说",
     icon: "news",
     link: "/news",

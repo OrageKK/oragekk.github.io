@@ -10,6 +10,7 @@
       "@/*": ["src/*"],
       "@theme-hope/*": ["node_modules/vuepress-theme-hope/lib/client/*"],
       "vuepress-theme-hope/*": ["node_modules/vuepress-theme-hope/lib/*"],
+      "vuepress-shared/*":["node_modules/vuepress-shared/lib/*"]
     },
     "types": [
       "@vuepress/client/types"

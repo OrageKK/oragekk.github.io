@@ -72,6 +72,10 @@
   backdrop-filter: saturate(150%) blur(0.75rem);
   z-index: 2;
 }
+#main-content.vp-project-home {
+  z-index: 2;
+  backdrop-filter: saturate(150%) blur(0.5rem);
+}
 .vp-page.not-found {
   max-width: none;
   background-color: transparent;
@@ -89,6 +93,7 @@
 [data-theme="light"] .vp-pagination .vp-pagination-number div,
 [data-theme="light"] .wl-panel,
 [data-theme="light"] .timeline-wrapper,
+[data-theme="light"] .vp-project-home,
 [data-theme="light"] .back-to-top [data-theme="light"] .page-bg {
   background-color: #ffffffb3;
 }
@@ -101,6 +106,7 @@
 [data-theme="dark"] .vp-pagination .vp-pagination-number div,
 [data-theme="dark"] .wl-panel,
 [data-theme="dark"] .timeline-wrapper,
+[data-theme="dark"] .vp-project-home,
 [data-theme="dark"] .back-to-top [data-theme="dark"] .page-bg {
   background-color: #1d2025b3;
 }
@@ -132,6 +138,11 @@
   .timeline-content::after {
     width: 3px;
   }
+}
+
+// features
+.vp-features {
+  justify-content: flex-start;
 }
 
 // 看板娘

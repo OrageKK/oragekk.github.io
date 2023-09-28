@@ -1,6 +1,6 @@
 {
   "name": "oragekk",
-  "version": "2.1.0",
+  "version": "2.5.0",
   "description": "上冬十二的博客",
   "license": "MIT",
   "type": "module",
@@ -23,7 +23,8 @@
     "vuepress": "2.0.0-beta.67",
     "vuepress-plugin-blog2": "2.0.0-beta.237",
     "vuepress-plugin-comment2": "2.0.0-beta.237",
-    "vuepress-theme-hope": "2.0.0-beta.237"
+    "vuepress-theme-hope": "2.0.0-beta.237",
+    "vuepress-shared": "2.0.0-beta.237"
   },
   "dependencies": {
     "@moefy-canvas/core": "^0.5.2",

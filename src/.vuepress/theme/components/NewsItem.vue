@@ -98,8 +98,8 @@ const routeName = computed(() => (route ? route.name.toString() : ""));
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: #000;
-    color: white;
+    // background-color: #000;
+    color: var(--text-color);
     border-radius: 0.3rem;
     font-size: 0.9rem;
     padding: 2px 6px;
@@ -110,7 +110,14 @@ const routeName = computed(() => (route ? route.name.toString() : ""));
     }
   }
 }
-
+[data-theme="dark"] .tag {
+  background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+  color: var(--text-color);
+}
+[data-theme="light"] .tag {
+  background-image: linear-gradient(to right, #09203f 0%, #537895 100%);
+  color: #fff;
+}
 .vp-article-item {
   overflow: hidden;
   padding: 0;

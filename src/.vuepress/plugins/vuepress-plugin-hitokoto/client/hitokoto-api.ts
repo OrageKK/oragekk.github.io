@@ -17,11 +17,11 @@ export interface Hitokoto {
 
 // Converts JSON strings to/from your types
 export class HitokotoApi {
-  public static toWelcome(json: string): Hitokoto {
+  public static toHitokoto(json: string): Hitokoto {
     return JSON.parse(json);
   }
 
-  public static welcomeToJson(value: Hitokoto): string {
+  public static HitokotoToJson(value: Hitokoto): string {
     return JSON.stringify(value);
   }
   public static request(): Promise<AxiosResponse<Hitokoto>> {
