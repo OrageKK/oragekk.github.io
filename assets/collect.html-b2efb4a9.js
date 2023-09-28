@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as t,f as o}from"./app-2ec7332a.js";const l={};function n(r,a){return c(),t("div",null,[o(" markdownlint-disable ")])}const s=e(l,[["render",n],["__file","collect.html.vue"]]);export{s as default};
