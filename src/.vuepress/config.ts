@@ -141,7 +141,7 @@ export default defineUserConfig({
     // 看板娘插件
     ohmylive2dPlugin({
       // 在这里进行配置
-      source: "/assets/live2D",
+      source: "https://cdn.jsdelivr.net/gh/oragekk/blog-assets/live2D",
       models: [
         {
           scale: 0.44,
