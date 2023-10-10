@@ -1,1 +1,0 @@
-import{_ as o,r as t,o as c,c as n,d as s,f as a,a as r}from"./app-6f679c77.js";const _={},l=r("p",null,"“世间多是方展博，人间难寻小犹太”",-1);function i(m,d){const e=t("BiliBili");return c(),n("div",null,[l,s(e,{bvid:"BV1ve4y1776E"}),a(" more ")])}const B=o(_,[["render",i],["__file","3.html.vue"]]);export{B as default};
