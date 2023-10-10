@@ -16,6 +16,17 @@
       <div class="copyright">{{ copyright }}</div>
     </div>
     <span id="runtime_span"></span>
+    <div class="footer-link">
+      <a href="https://www.foreverblog.cn/go.html" target="_blank">
+        <img src="https://img.foreverblog.cn/wormhole_1.gif" alt="" style="width: auto; height: 32px"
+          title="穿梭虫洞-随机访问十年之约友链博客" /></a>
+      <a href="https://www.travellings.cn/go.html" target="_blank">
+        <img src="https://www.travellings.cn/assets/logo.gif" alt="" style="width: auto; height: 32px"
+          title="开往-友链接力" /></a>
+      <!-- <a href="https://www.foreverblog.cn/" target="_blank">
+        <img src="https://img.foreverblog.cn/logo_en_default.png" alt="" style="width: auto; height: 16px" />
+      </a> -->
+    </div>
   </footer>
 </template>
 
@@ -58,31 +69,31 @@ const content = computed(() => {
   return footer === false
     ? false
     : isString(footer)
-    ? footer
-    : themeLocale.value.footer || "";
+      ? footer
+      : themeLocale.value.footer || "";
 });
 const copyright = computed(() =>
   "copyright" in frontmatter.value
     ? frontmatter.value.copyright
     : "copyright" in themeLocale.value
-    ? themeLocale.value.copyright
-    : author.value.length
-    ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
-    : false
+      ? themeLocale.value.copyright
+      : author.value.length
+        ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
+        : false
 );
-const bgImage = ref('');
+const bgImage = ref("");
 
 onMounted(() => {
-  const defaultHeroBgImagePath = window.localStorage.getItem('bgImage');
-  bgImage.value = `url(${defaultHeroBgImagePath})`
-})
-
+  const defaultHeroBgImagePath = window.localStorage.getItem("bgImage");
+  bgImage.value = `url(${defaultHeroBgImagePath})`;
+});
 </script>
 
 <style lang="scss">
 .footer-wrapper {
   background-image: v-bind(bgImage);
 }
+
 .footer-wrapper:before {
   content: "";
   position: absolute;
@@ -92,14 +103,17 @@ onMounted(() => {
   height: 100%;
   z-index: 1;
 }
+
 [data-theme="light"] .footer-wrapper:before {
   background: #000;
   opacity: 0.3;
 }
+
 [data-theme="dark"] .footer-wrapper:before {
   background: #000;
   opacity: 0.7;
 }
+
 .footer-wrapper {
   position: relative;
   display: flex;
@@ -140,12 +154,14 @@ onMounted(() => {
     // display: block;
     min-height: 136px;
   }
+
   .footer-content {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     z-index: 1;
+
     .footer {
       margin: 0.5rem 1rem;
       font-size: 14px;
@@ -154,11 +170,24 @@ onMounted(() => {
         display: none;
       }
     }
+
     .copyright {
       margin: 6px 0;
       font-size: 13px;
     }
   }
+
+  .footer-link {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    z-index: 1;
+
+    a {
+      margin: 0.5rem;
+    }
+  }
+
   .no-sidebar &,
   .sidebar-collapsed & {
     padding-inline-start: 2rem;
@@ -174,7 +203,8 @@ onMounted(() => {
     z-index: 1;
   }
 }
-.page:not(.not-found) + .footer-wrapper {
+
+.page:not(.not-found)+.footer-wrapper {
   margin-top: -2rem;
 }
 </style>

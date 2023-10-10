@@ -3,6 +3,8 @@ import { defineClientConfig } from "@vuepress/client";
 import NotFound from "./theme/layouts/NotFound.vue";
 import Layout from "./theme/layouts/Layout.vue";
 import News from "./theme/layouts/News.vue";
+import Wormhole from "./theme/components/Wormhole";
+import Travelling from "./theme/components/Travelling";
 import "vuepress-theme-hope/presets/bounce-icon.scss";
 export default defineClientConfig({
   // 你可以在这里覆盖或新增布局
@@ -10,6 +12,10 @@ export default defineClientConfig({
     Layout,
     NotFound,
     News,
+  },
+  enhance: ({ app }) => {
+    app.component("Wormhole", Wormhole);
+    app.component("Travelling", Travelling);
   },
   setup() {
     onMounted(() => {
