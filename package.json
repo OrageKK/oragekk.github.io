@@ -23,13 +23,17 @@
     "vuepress": "2.0.0-beta.67",
     "vuepress-plugin-blog2": "2.0.0-beta.237",
     "vuepress-plugin-comment2": "2.0.0-beta.237",
-    "vuepress-theme-hope": "2.0.0-beta.237",
-    "vuepress-shared": "2.0.0-beta.237"
+    "vuepress-plugin-meting2": "^1.2.1",
+    "vuepress-shared": "2.0.0-beta.237",
+    "vuepress-theme-hope": "2.0.0-beta.237"
   },
   "dependencies": {
     "@moefy-canvas/core": "^0.5.2",
     "@moefy-canvas/theme-popper": "^0.5.2",
+    "aplayer": "^1.10.1",
     "axios": "^1.5.1",
+    "deepmerge-ts": "^5.1.0",
+    "hls.js": "^1.4.3",
     "http-proxy-middleware": "^2.0.6",
     "vuepress-plugin-oh-my-live2d": "0.6.0"
   },

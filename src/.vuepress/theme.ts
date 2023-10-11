@@ -106,7 +106,7 @@ export default MyTheme({
   },
   plugins: {
     components: {
-      components: ["VidStack", "BiliBili"],
+      components: ["VidStack", "BiliBili","Badge"],
     },
     blog: {
       filter: ({ filePathRelative, frontmatter }) => {

@@ -155,6 +155,13 @@
   border: 1px solid #fff !important;
 }
 
+// #oml-stage {
+//   bottom: 20% !important;
+// }
+
+.aplayer.aplayer-fixed{
+  z-index: 9998 !important;
+}
 // 适配移动端
 table {
   table-layout: fixed !important;

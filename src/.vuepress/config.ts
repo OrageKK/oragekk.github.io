@@ -14,6 +14,7 @@ import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
+import metingPlugin from "vuepress-plugin-meting2";
 
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
@@ -54,6 +55,15 @@ export default defineUserConfig({
   }),
 
   plugins: [
+    metingPlugin({
+      metingOptions: {
+        global:false,
+        server: "tencent",
+        api: "https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r",
+        type: "playlist",
+        mid: "851947617",
+      },
+    }),
     // 代码高亮
     shikiPlugin({
       theme: "one-dark-pro",
@@ -155,7 +165,6 @@ export default defineUserConfig({
           scale: 1.0,
           path: "/z46_2/z46_2.model3.json",
         },
-        
       ],
       tips: {
         style: {
