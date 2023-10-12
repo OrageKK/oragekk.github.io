@@ -6,10 +6,12 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 10 Oct 2023 07:29:37 GMT</pubDate>
-    <lastBuildDate>Tue, 10 Oct 2023 07:29:37 GMT</lastBuildDate>
+    <pubDate>Thu, 12 Oct 2023 01:58:24 GMT</pubDate>
+    <lastBuildDate>Thu, 12 Oct 2023 01:58:24 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>开源软件</category>
+    <category>GitHub</category>
     <category>AI</category>
     <category>Vue</category>
     <category>Flutter</category>
@@ -18,7 +20,6 @@
     <category>收藏</category>
     <category>Vercel</category>
     <category>python</category>
-    <category>GitHub</category>
     <category>浏览器</category>
     <category>CSS</category>
     <category>JavaScript</category>
@@ -28,6 +29,35 @@
     <category>Swift</category>
     <category>About</category>
     <category>使用指南</category>
+    <item>
+      <title>vuepress-plugin-meting2</title>
+      <link>https://oragekk.me/tutorial/OSS/meting2.html</link>
+      <guid>https://oragekk.me/tutorial/OSS/meting2.html</guid>
+      <source url="https://oragekk.me/rss.xml">vuepress-plugin-meting2</source>
+      <description>支持vuepress2.x的音乐播放器</description>
+      <category>开源软件</category>
+      <category>GitHub</category>
+      <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 前言</h2>
+<p>嘿~<br>
+🍰🍰🍰 播放器有了，撒花✿✿ヽ(°▽°)ノ✿🎉🎉🎉</p>
+<p align="center">
+   <a href="https://www.npmjs.com/package/vuepress-plugin-meting2" target="_blank"><img alt="npm" src="https://img.shields.io/npm/v/vuepress-plugin-meting2.svg"></a>&nbsp;
+   <a href="https://github.com/moefyit/vuepress-plugin-meting2/stargazers" target="_blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/oragekk/vuepress-plugin-meting2"></a>&nbsp;
+   <a href="https://www.npmjs.com/package/vuepress-plugin-meting2" target="_blank"><img alt="downloads" src="https://img.shields.io/npm/dt/vuepress-plugin-meting2.svg"></a>&nbsp;
+   <a href="https://www.npmjs.com/package/vuepress-plugin-meting2" target="_blank"><img alt="downloads" src="https://img.shields.io/npm/dm/vuepress-plugin-meting2.svg"></a>&nbsp;
+   <a href="https://github.com/oragekk/vuepress-plugin-meting2/blob/main/LICENSE" target="_blank"><img alt="GitHub license" src="https://img.shields.io/github/license/oragekk/vuepress-plugin-meting2"></a>
+</p>
+<p>文档👉🏻戳这里<a href="https://github.com/OrageKK/vuepress-plugin-meting2" target="_blank" rel="noopener noreferrer">文档</a></p>
+<h2> 介绍</h2>
+<p>借鉴了<a href="https://github.com/u2sb/vuepress-plugin-sbaudio" target="_blank" rel="noopener noreferrer">vuepress-plugin-sbaudio</a>和<a href="https://github.com/moefyit/vuepress-plugin-meting" target="_blank" rel="noopener noreferrer">vuepress-plugin-meting</a> 在此表示感谢 </p>
+<p>借鉴MetingJS解析和使用APlayer作为播放组件</p>
+<h2> 安装很方便</h2>
+
+<h2> 使用也很方便</h2>
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 可作为组件引入</h3>
+]]></content:encoded>
+    </item>
     <item>
       <title>谷歌发布多平台应用开发神器Project IDX！PaLM 2加持</title>
       <link>https://oragekk.me/tutorial/idx-dev.html</link>
