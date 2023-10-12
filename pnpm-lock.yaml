@@ -68,8 +68,8 @@ devDependencies:
     specifier: 2.0.0-beta.237
     version: 2.0.0-beta.237(vuepress@2.0.0-beta.67)
   vuepress-plugin-meting2:
-    specifier: ^1.2.1
-    version: 1.2.1
+    specifier: ^1.3.0
+    version: 1.3.0
   vuepress-shared:
     specifier: 2.0.0-beta.237
     version: 2.0.0-beta.237(vuepress@2.0.0-beta.67)
@@ -6398,8 +6398,8 @@ packages:
       - supports-color
     dev: true
 
-  /vuepress-plugin-meting2@1.2.1:
-    resolution: {integrity: sha512-CX0KIne4oQFUBw9Zgc883Dx2VSL0tcRNFb244vHKtLGllML/zkBzxtA4EQyMjCkfOIhsaWgyZVb3h0lMVtIAZQ==}
+  /vuepress-plugin-meting2@1.3.0:
+    resolution: {integrity: sha512-ge4jbJ/j+uNijYNd2OhoqK2OVvCBtWB7RoN/UjSJ8ySHAL7CTgnmUAOX4cDBLmK9jvAsqB2Nhn1buq6Az00bNg==}
     dependencies:
       aplayer: 1.10.1
       deepmerge-ts: 5.1.0
