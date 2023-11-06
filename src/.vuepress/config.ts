@@ -57,7 +57,7 @@ export default defineUserConfig({
   plugins: [
     metingPlugin({
       metingOptions: {
-        global:false,
+        global:true,
         server: "tencent",
         api: "https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r",
         type: "playlist",
