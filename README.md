@@ -31,14 +31,14 @@
    - NewsList.vue （说说列表）
    - NewsItem.vue （说说item）
 
-3. **本地插件开发**
+3. **插件开发**
 
    - vuepress-plugin-canvas（支持彩虹背景和动态几何图形两种）
    - vuepress-plugin-gradient-cover （遮罩背景）
    - vuepress-plugin-hitokoto （一言插件）
    - vuepress-plugin-live2DAssist （看板娘辅助，由于子页有sidebar，看板娘会挡住，所以写了一个子页隐藏的小东西）
    - vuepress-plugin-popper （鼠标特效，基于[@moefy-canvas/theme-popper](https://github.com/moefyit/moefy-canvas)）
-
+   - [vuepress-plugin-meting2](https://github.com/OrageKK/vuepress-plugin-meting2) （播放器插件，可以全局使用和md文件使用）
 4. **引用外部内容**
 
    - [vuepress-plugin-oh-my-live2d](https://github.com/oh-my-live2d/vuepress-plugin-oh-my-live2d) 看板娘插件
