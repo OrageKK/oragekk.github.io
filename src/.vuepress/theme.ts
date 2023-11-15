@@ -172,12 +172,12 @@ export default MyTheme({
       chart: true,
       codetabs: true,
       container: true,
-      card: true,
       demo: true,
       echarts: true,
       figure: true,
       flowchart: true,
       gfm: true,
+      tasklist:true,
       imgLazyload: true,
       imgSize: true,
       include: true,
@@ -187,7 +187,9 @@ export default MyTheme({
       playground: {
         presets: ["ts", "vue"],
       },
-      presentation: ["highlight", "math", "search", "notes", "zoom"],
+      revealJs:{
+        plugins:["highlight", "math", "search", "notes", "zoom"]
+      },
       stylize: [
         {
           matcher: "Recommended",
