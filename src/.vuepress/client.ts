@@ -17,7 +17,7 @@ export default defineClientConfig({
     app.component("Wormhole", Wormhole);
     app.component("Travelling", Travelling);
   },
-  setup() {
+  setup: () => { 
     onMounted(() => {
       console.log(
         `%c ✨上冬十二的博客 v2.1.0✨ %c ✨Oragekk's Blog✨ %c\n
@@ -30,5 +30,5 @@ export default defineClientConfig({
         `color: #51c4d3; font-size:12px;`
       );
     });
-  },
+  }
 });

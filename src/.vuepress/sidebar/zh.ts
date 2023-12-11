@@ -49,6 +49,12 @@ export const zhSidebar = sidebar({
           prefix: "Python/",
           link: "Python/",
         },
+        {
+          text: "Rust",
+          icon: "hk-rust",
+          prefix: "Rust/",
+          link: "Rust/",
+        },
       ],
     },
     {

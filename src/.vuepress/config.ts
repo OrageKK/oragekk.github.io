@@ -15,7 +15,6 @@ import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import metingPlugin from "vuepress-plugin-meting2";
-
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   base: "/",
@@ -53,11 +52,10 @@ export default defineUserConfig({
     },
     // vuePluginOptions: {},
   }),
-
   plugins: [
     metingPlugin({
       metingOptions: {
-        global:true,
+        global: true,
         server: "tencent",
         api: "https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r",
         type: "playlist",

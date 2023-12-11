@@ -1,7 +1,6 @@
 import { MyTheme } from "./theme/index";
 import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
-import { path } from "@vuepress/utils";
 export default MyTheme({
   hotReload: false,
   hostname: "https://oragekk.me",
@@ -16,7 +15,7 @@ export default MyTheme({
     // 默认：
     "//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css",
     // 自己的
-    "//at.alicdn.com/t/c/font_3941380_v3cmbn6mn5j.css",
+    "//at.alicdn.com/t/c/font_3941380_40oya9bsklp.css",
   ],
 
   logo: "/logo.svg",
