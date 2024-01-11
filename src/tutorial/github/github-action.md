@@ -1,6 +1,6 @@
 ---
-title: "GitHub Actions 使用介绍"
-icon: "actions"
+title: GitHub Actions 使用介绍
+icon: actions
 date: 2023-04-14
 star: true
 cover: "https://w.wallhaven.cc/full/j3/wallhaven-j3zvvp.jpg"
