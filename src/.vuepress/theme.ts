@@ -2,7 +2,7 @@ import { MyTheme } from "./theme/index";
 import { zhNavbar } from "./navbar/index.js";
 import { zhSidebar } from "./sidebar/index.js";
 export default MyTheme({
-  hotReload: false,
+  hotReload: true,
   hostname: "https://oragekk.me",
   themeColor: true,
   fullscreen: true,

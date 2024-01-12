@@ -1,5 +1,5 @@
 ---
-title: "开源项目"
+title: "CI/CD"
 icon: "software"
 date: 1978-01-09
 timeline: false
@@ -10,7 +10,7 @@ dir:
 ---
 
 :::info
-这里放置开源软件相关的内容
+这里放置开CI/CD相关的内容
 :::
 
 --- 

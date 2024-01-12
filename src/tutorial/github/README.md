@@ -7,7 +7,6 @@ index: false
 article: false
 dir:
   order: 1
-  collapsible: false
 ---
 
 :::info

@@ -5,6 +5,7 @@ description: "Vercel Ignored Build Step使用"
 date: 2023-03-31
 star: true
 isOriginal: true
+order: 2
 category:
   - Vercel
 tag:

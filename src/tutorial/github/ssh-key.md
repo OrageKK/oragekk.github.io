@@ -3,7 +3,7 @@ title: Git SSH 密钥配置
 icon: safe
 date: 2024-01-11
 category:
-  - GitHub
+  - Git
 tag:
   - ssh_key
 ---
