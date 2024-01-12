@@ -6,10 +6,14 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Tue, 07 Nov 2023 03:40:04 GMT</pubDate>
-    <lastBuildDate>Tue, 07 Nov 2023 03:40:04 GMT</lastBuildDate>
+    <pubDate>Fri, 12 Jan 2024 08:00:24 GMT</pubDate>
+    <lastBuildDate>Fri, 12 Jan 2024 08:00:24 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+    <category>工具教程</category>
+    <category>Vercel</category>
+    <category>Git</category>
+    <category>rust</category>
     <category>开源软件</category>
     <category>GitHub</category>
     <category>AI</category>
@@ -18,7 +22,6 @@
     <category>Dart</category>
     <category>Blog</category>
     <category>收藏</category>
-    <category>Vercel</category>
     <category>python</category>
     <category>浏览器</category>
     <category>CSS</category>
@@ -29,6 +32,346 @@
     <category>Swift</category>
     <category>About</category>
     <category>使用指南</category>
+    <item>
+      <title>Jenkins 远程触发构建踩坑记</title>
+      <link>https://oragekk.me/tutorial/CI_CD/Jenkins.html</link>
+      <guid>https://oragekk.me/tutorial/CI_CD/Jenkins.html</guid>
+      <source url="https://oragekk.me/rss.xml">Jenkins 远程触发构建踩坑记</source>
+      <description>CSRF crumbk,Jenkins,</description>
+      <category>工具教程</category>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>如果想在代码 Push 后，或者 Merge request 后，自动部署，可以采用多种方案，以下介绍两种</p>
+<p>不知道如何配置的同学，可以参考一下</p>
+</div>
+<h2> 1. 通过 Jenkins 提供的【触发远程构建】</h2>
+<h3> 1.1. 勾选【触发远程构建】并填入 token</h3>
+<figure><img src="https://s3.bmp.ovh/imgs/2024/01/12/45009f0747ed807a.png" alt="勾选远程构建开关" tabindex="0" loading="lazy"><figcaption>勾选远程构建开关</figcaption></figure>
+<h3> 1.2. 配置 API token</h3>
+<ol>
+<li>
+<p>打开 Jenkins 控制台。</p>
+</li>
+<li>
+<p>在顶部导航栏中，点击您的用户名，然后选择 "Configure" 选项。</p>
+</li>
+<li>
+<p>在配置页面中，向下滚动，找到 "API Token" 部分。</p>
+</li>
+<li>
+<p>如果您之前没有生成过 API Token，则点击 "Add new Token" 或 "Generate Token" 按钮。</p>
+</li>
+<li>
+<p>在生成或更改 Token 的过程中，您可能需要提供您的 Jenkins 用户密码进行身份验证。</p>
+</li>
+<li>
+<p>生成或更改成功后，您将看到新生成的 Token 值。请将其复制并妥善保存，因为在以后的访问中，您将无法再查看该 Token 的值。</p>
+</li>
+</ol>
+<h3> 1.3. 如何调用 Url</h3>
+<p>Jenkins 提供了便捷的远程触发功能，但是需要配置一个 token，然后在 push 后，通过 post 请求，调用 Jenkins 的 url 即可触发构建</p>
+<p>调用 url 可以使用 python 脚本，或者 curl 命令，一般配合 git 提交，使用 curl 命令居多</p>
+<p>下面以 GitLab CI/CD 为例进行举例</p>
+<p>GitLab CI/CD 是一个简洁好用的的持续集成/持续交付的框架。通过为你的项目配置一个或者多个 GitLab Runner，然后撰写一个 .gitlab-ci.yml，你就可以很方便地利用 GitLab CI/CD 来为你的项目引入持续集成/交付的功能。比较类似之前介绍过的<a href="/tutorial/github/github-action.html" target="blank">GitHubAction</a></p>
+<p>GitLab CI/CD 是通过 GitLab Runner 来执行的</p>
+<p>GitLab CI/CD 将按照 Stage 定义的顺序来执行，任何一个 Stage 失败，整个 CI/CD 将失败</p>
+<p>每一个 Stage 可以被若干个 Job 关联。Stage 在执行的时候，关联到这个 Stage 的所有 Job 都将被执行，不过不同的 Job 可能是并行执行的。</p>
+<p>每个 Job 在执行的时候，会先按照缓存策略加载缓存数据，然后按照顺序依次运行 before_script、script 和 after_script 中配置的脚本，运行完毕以后，会将生成的数据保存到缓存中。</p>
+<h3> 1.4. 编写.gitlab-ci.yml</h3>
+<div class="language-yaml line-numbers-mode" data-ext="yml"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>大意是当 master 分支 deploy 时执行 ./deploy.sh 脚本<br>
+这里 script 调用了一个 shell 脚本，因为在 yml 文件中写脚本比较麻烦，个人比较习惯在 sh 文件中写脚本，然后在 yml 文件中调用这个脚本即可</p>
+<h3> 1.5.  <code>deploy.sh</code></h3>
+<p>由于新版本的 Jenkins 安全机制，每次调用 API 前都需要先调用获取获取 CSRF crumb 值的接口</p>
+<p>下面脚本演示了，如何先获取 crumb 的值，并在之后触发远程构建 API 的时候，携带这个值</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 2. 通过 GitLab 的 <strong>webhook</strong> 触发远程构建</h2>
+<p>使用 gitlab 的 <strong>webhook</strong> 配合 Jenkins 实现自动化部署。<br>
+Jenkins 需要安装 GitLab Plugin 插件，然后配置 <strong>webhook</strong> 即可。</p>
+<h3> 2.1. 勾选插件选项</h3>
+<figure><img src="https://s3.bmp.ovh/imgs/2024/01/12/fe222283253f58a1.png" alt="勾选插件选项" tabindex="0" loading="lazy"><figcaption>勾选插件选项</figcaption></figure>
+<h3> 2.2. 选择配置</h3>
+<p>插件有很多配置项，这里我们常用的就是过滤分支，可以选择，有以下选项</p>
+<ul>
+<li><strong>Include</strong></li>
+<li><strong>Exclude</strong></li>
+<li><strong>正则表达式</strong></li>
+<li><strong>tag</strong></li>
+</ul>
+<figure><img src="https://s3.bmp.ovh/imgs/2024/01/12/893d0e7b5ca4e1b9.png" alt="设置token" tabindex="0" loading="lazy"><figcaption>设置token</figcaption></figure>
+<h3> 2.3. 将生成的 url 和 token 填入 GitLab 中</h3>
+<p>可以选择触发的 events<br>
+<img src="https://s3.bmp.ovh/imgs/2024/01/12/525dcea85ba7ae20.png" alt="填入GitLab" loading="lazy"></p>
+<h3> 2.4. 查看运行结果</h3>
+<figure><img src="https://s3.bmp.ovh/imgs/2024/01/12/b5afe5d3321e17da.png" alt="查看运行结果" tabindex="0" loading="lazy"><figcaption>查看运行结果</figcaption></figure>
+]]></content:encoded>
+      <enclosure url="https://s3.bmp.ovh/imgs/2024/01/12/45009f0747ed807a.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Vercel deploy忽略指定分支</title>
+      <link>https://oragekk.me/tutorial/CI_CD/vercel-deploy.html</link>
+      <guid>https://oragekk.me/tutorial/CI_CD/vercel-deploy.html</guid>
+      <source url="https://oragekk.me/rss.xml">Vercel deploy忽略指定分支</source>
+      <description>Vercel Ignored Build Step使用</description>
+      <category>Vercel</category>
+      <pubDate>Fri, 31 Mar 2023 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[
+<p>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</p>
+<!-- more -->
+<h2> 1. 前言</h2>
+<div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>这不是刚把博客部署从GitHub Pages转移到了Vercel上，稍微加快了一点国内的访问速度，然后发现了一个新问题~</p>
+<p>原先是推送到<code>main</code>分之，通过Github Action 工作流进行部署到<code>gh-page</code> 分支上</p>
+<p>转移到Vercel之后，工作流我并没有删掉，所以流程还是一样，就导致<code>main</code>提交了---&gt;Action----&gt;<code>gh-page</code>提交</p>
+<p>会触发两次Vercel的部署，当然<code>gh-page</code>是存放静态页面的分支，buid肯定是失败的。下边来解决这个问题吧</p>
+</div>
+<h2> 2. 步骤</h2>
+<p>如图所示，打开setting-Git-Ignored Build Step</p>
+<p>启用“忽略构建步骤”字段。如果命令返回“0”，则将跳过构建。但是，如果返回代码“1”或更大，则将生成新的部署。</p>
+<p>我是使用系统环境变量来做的，方式有很多，看自己方便吧，在Command处输入以下脚本表示只构建main分支</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>系统环境变量默认是曝光的，如果不生效，在Environment Variables 中勾选</p>
+<ul class="task-list-container">
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" id="task-item-0" checked="checked" disabled="disabled"><label class="task-list-item-label" for="task-item-0"> Automatically expose System Environment Variables</label></li>
+</ul>
+<figure><img src="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" alt="setting-Git-Ignored Build Step" tabindex="0" loading="lazy"><figcaption>setting-Git-Ignored Build Step</figcaption></figure>
+<h2> 3. 使用脚本</h2>
+<p>要在“忽略构建步骤”中运行 bash 脚本，您需要在该字段中设置以下内容：请注意该文件应该存在于您的存储库中。 bash 脚本示例： bash script.shbash 脚本的示例：<code>bash script.sh</code></p>
+<p><strong>注意</strong> 您也可以使用 Node 脚本（例如 ）。<code>node ignore-step.js</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 脚本，其中只允许部署对生产环境所做的提交。应将环境变量“VERCEL_ENV”添加到您的项目中。</p>
+<p>通过使用此命令，Vercel 将仅在“VERCEL_ENV”的值为“production”时构建部署。该变量已添加到环境变量 UI，使其可用于项目。</p>
+<h2> 4. <a href="#_7-%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%80%E8%A7%88%E8%A1%A8">使用环境变量</a></h2>
+<p>您可以直接在 Ignored Build Step 字段中创建引用系统环境变量的命令：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署对生产环境所做的提交。</p>
+<p>下面是一个示例脚本，它将有条件地构建某些分支：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署从分支“main”和“staging”进行的提交。</p>
+<h2> 5. 使用文件夹和工作区</h2>
+<p>在继续之前，请记住 Ignored Build Step 在您选择的“根目录”的同一文件夹中运行。因此，您可能需要稍微调整一下以适应您的需要。要构建仅考虑特定文件夹的新部署，您可以使用以下命令</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略构建步骤”命令的示例。如果将更改提交给“./packages/frontend/”，该命令将产生一个非空响应，从而允许构建继续进行。<br>
+通过使用此命令，Vercel 将仅在目录内进行更改时构建部署。如果该文件夹是您选择的“根目录”，则可以使用：<code>packages/frontend/``./packages/frontend/</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到 “.”，则该命令将生成非空响应，从而允许继续生成。</p>
+<p>您还可以访问部署中的其他文件夹以检查更改。如果您在构建前端时选择了“根目录”，并且您的应用程序必须仅在进行更改时部署，您可以使用： <code>packages/web</code> <code>../../packages/docs</code></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到“../../packages/docs“，该命令将产生一个非空响应，允许构建继续。</p>
+<h2> 6. 在本地调试命令</h2>
+<p>要在本地调试忽略的构建步骤命令，首先使用可以复制 Vercel 上可用设置的文件夹非常重要。为此，您可以应用以下步骤：</p>
+<ol>
+<li>使用 将存储库克隆到另一个文件夹。<code>git clone --depth=10 (...)</code></li>
+<li>在终端中运行命令或脚本。</li>
+<li>您可以使用 检查最后一个命令返回的退出代码。<code>echo $?</code></li>
+</ol>
+<h2> 7. 系统环境变量一览表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名字</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>VERCEL</code></td>
+<td style="text-align:left">指示应用已在 Vercel 上部署和运行的指示器。 例：。<code>1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>CI</code></td>
+<td style="text-align:left">指示代码在<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="noopener noreferrer">持续集成</a>环境中运行的指示器。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/deployments/configure-a-build" target="_blank" rel="noopener noreferrer">构建步骤</a>期间公开。<code>1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_ENV</code></td>
+<td style="text-align:left">部署和运行应用<a href="https://vercel.com/docs/concepts/projects/environment-variables#environments" target="_blank" rel="noopener noreferrer">的环境</a>。该值可以是 、 或 。<code>production``preview``development</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_URL</code></td>
+<td style="text-align:left"><a href="https://vercel.com/docs/concepts/deployments/generated-urls" target="_blank" rel="noopener noreferrer">生成的部署 URL</a> 的域名。例：。该值不包括协议方案。<code>*.vercel.app``https://</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_REGION</code></td>
+<td style="text-align:left">运行应用的<a href="https://vercel.com/docs/concepts/edge-network/regions" target="_blank" rel="noopener noreferrer">区域的</a> ID。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/functions" target="_blank" rel="noopener noreferrer">无服务器函数</a>的运行时公开。<code>cdg1</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_PROVIDER</code></td>
+<td style="text-align:left">从中触发部署的 Git 提供程序。 例：。<code>github</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_REPO_SLUG</code></td>
+<td style="text-align:left">从中触发部署的源存储库。 例：。<code>my-site</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_REPO_OWNER</code></td>
+<td style="text-align:left">拥有从中触发部署的存储库的帐户。 例：。<code>acme</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_REPO_ID</code></td>
+<td style="text-align:left">从中触发部署的存储库的 ID。 例：。<code>117716146</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><mark><code>VERCEL_GIT_COMMIT_REF</code></mark></td>
+<td style="text-align:left">触发部署的提交的 git 分支。 例：。<code>improve-about-page</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_SHA</code></td>
+<td style="text-align:left">触发部署的提交的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。<code>fa1eade47b73733d6312d5abfad33ce9e4068081</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_MESSAGE</code></td>
+<td style="text-align:left">附加到触发部署的提交的消息。 例：。<code>Update about page</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_LOGIN</code></td>
+<td style="text-align:left">附加到部署项目的提交作者的用户名。 例：。<code>johndoe</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_NAME</code></td>
+<td style="text-align:left">附加到部署项目的提交的作者的名称。 例：。<code>John Doe</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_PREVIOUS_SHA</code></td>
+<td style="text-align:left">项目和分支的上次成功部署的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。 <strong>注意：</strong> 仅当提供了<a href="https://vercel.com/docs/concepts/projects/overview#ignored-build-step" target="_blank" rel="noopener noreferrer">忽略的生成步骤</a>时，才会公开此变量。<code>fa1eade47b73733d6312d5abfad33ce9e4068080</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>VERCEL_GIT_PULL_REQUEST_ID</code></td>
+<td style="text-align:left">触发部署的拉取请求 ID。如果在发出拉取请求之前在分支上创建了部署，则此值将为空字符串。 例：。<code>23</code></td>
+</tr>
+</tbody>
+</table>
+]]></content:encoded>
+      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" type="image/png"/>
+    </item>
+    <item>
+      <title>Git SSH 密钥配置</title>
+      <link>https://oragekk.me/tutorial/github/ssh-key.html</link>
+      <guid>https://oragekk.me/tutorial/github/ssh-key.html</guid>
+      <source url="https://oragekk.me/rss.xml">Git SSH 密钥配置</source>
+      <description>在 GitLab 中配置 SSH 密钥 生成 SSH 密钥对 如果您还没有 SSH 密钥对，请首先生成一对密钥。在终端中执行以下命令： ssh-keygen -t rsa -C &amp;quot;your.email@example.com&amp;quot; -b 4096</description>
+      <category>Git</category>
+      <pubDate>Thu, 11 Jan 2024 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> 在 GitLab 中配置 SSH 密钥</h2>
+<h3> 生成 SSH 密钥对</h3>
+<p>如果您还没有 SSH 密钥对，请首先生成一对密钥。在终端中执行以下命令：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>这将生成一个 RSA 类型的密钥对，并将私钥保存在 <code>~/.ssh/id_rsa</code>，公钥保存在 <code>~/.ssh/id_rsa.pub</code>。</p>
+<h3> 复制公钥内容</h3>
+<p>打开公钥文件 <strong>~/.ssh/id_rsa.pub</strong>，将其中的内容复制到剪贴板。您可以使用以下命令来完成：</p>
+<p><strong>macOS:</strong></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>GNU/Linux (requires the xclip package):</strong></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>Windows Command Line:</strong></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p><strong>Git Bash on Windows / Windows PowerShell:</strong></p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><h3> 将您的SSH密钥添加到GitLab。</h3>
+<ol>
+<li>
+<p>登录到 GitLab</p>
+</li>
+<li>
+<p>打开您的 GitLab 帐户，在右上角点击个人头像，选择设置</p>
+</li>
+<li>
+<p>在左侧导航到 SSH 密钥设置</p>
+</li>
+<li>
+<p>在 "SSH Keys" 页面，粘贴之前复制的公钥内容到 "Key" 字段中，并为该密钥添加一个可识别的标题（如 "My SSH Key"）。然后点击 "Add Key" 按钮。</p>
+</li>
+</ol>
+<h3> 验证 SSH 密钥</h3>
+<p>GitLab 将验证并添加您提供的 SSH 密钥。如果一切顺利，您将在页面上看到成功的消息。</p>
+<h3> 测试 SSH 连接</h3>
+<p>为了确保 SSH 密钥配置正确，您可以在终端中执行以下命令进行测试：</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>如果配置正确，您将看到与 GitLab 相关的欢迎消息。<br>
+现在，您已经成功在 GitLab 中配置了 SSH 密钥。这将允许您通过 SSH 协议进行与 GitLab 之间的安全通信，例如进行代码的克隆、推送和拉取操作。</p>
+<div class="hint-container important">
+<p class="hint-container-title">重要</p>
+<p>我们建议您使用ssh密钥而非用户名密码登录</p>
+<p>因为有些情况比如更换git客户端、或者某些自动化脚本，是无法使用用户名密码登录的</p>
+<p>对于macOS用户，我强烈建议您添加以下命令到zsh的配置文件 <code>~/.zprofile</code>中</p>
+<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>该命令的作用是将指定的 SSH 私钥文件 id_rsa 添加到 Apple Keychain 中，并将输出静默地丢弃，以确保在终端上不会显示任何输出信息。这通常用于在登录时自动加载 SSH 密钥，并将其保存在钥匙串中，以便在需要时无需再次手动输入密码或密钥口令。</p>
+</div>
+]]></content:encoded>
+    </item>
+    <item>
+      <title>初识Rust</title>
+      <link>https://oragekk.me/posts/Rust/first-time.html</link>
+      <guid>https://oragekk.me/posts/Rust/first-time.html</guid>
+      <source url="https://oragekk.me/rss.xml">初识Rust</source>
+      <description>Rust 发展历程 Rust 最早是 Mozilla 雇员 Graydon Hoare 的个人项目。从 2009 年开始，得到了 Mozilla 研究院的资助，2010 年项目对外公布，2010 ～ 2011 年间实现自举。自此以后，Rust 在部分重构 -&amp;gt; 崩溃的边缘反复横跳（历程极其艰辛），终于，在 2015 年 5 月 15 日发布 1.0 版。 在紧锣密鼓的开发过程中，Rust 建立了一个强大且活跃的社区，形成一整套完善稳定的项目贡献机制（Rust 能够飞速发展，与这一点密不可分）。Rust 现在由 Rust 项目开发者社区 维护， Rust 基金会赞助支持。</description>
+      <category>rust</category>
+      <pubDate>Thu, 07 Dec 2023 17:14:55 GMT</pubDate>
+      <content:encoded><![CDATA[<h2> Rust 发展历程</h2>
+<p>Rust 最早是 Mozilla 雇员 Graydon Hoare 的个人项目。从 2009 年开始，得到了 Mozilla 研究院的资助，2010 年项目对外公布，2010 ～ 2011 年间实现自举。自此以后，Rust 在部分重构 -&gt; 崩溃的边缘反复横跳（历程极其艰辛），终于，在 2015 年 5 月 15 日发布 1.0 版。</p>
+<p>在紧锣密鼓的开发过程中，Rust 建立了一个强大且活跃的社区，形成一整套完善稳定的项目贡献机制（Rust 能够飞速发展，与这一点密不可分）。Rust 现在由 <a href="https://github.com/rust-lang/rust" target="_blank" rel="noopener noreferrer">Rust 项目开发者社区</a> 维护， <a href="https://foundation.rust-lang.org/" target="_blank" rel="noopener noreferrer">Rust 基金会</a>赞助支持。</p>
+<p>大家可能疑惑 Rust 为啥用了这么久才到 1.0 版本？与之相比，Go 语言 2009 年发布，却在 2012 年仅用 3 年就发布了 1.0 版本。</p>
+<ul>
+<li>首先，Rust 语言特性较为复杂，所以需要全盘考虑的问题非常多；</li>
+<li>其次，Rust 当时的参与者太多，七嘴八舌的声音很多，众口难调，而 Rust 开发团队又非常重视社区的意见；</li>
+<li>最后，一旦 1.0 快速发布，那绝大部分语言特性就无法再被修改，对于有完美强迫症的 Rust 开发者团队来说，某种程度上的不完美是不可接受的。</li>
+</ul>
+<p>因此，Rust 语言用了足足 6 年时间，才发布了尽善尽美的 1.0 版本。</p>
+<h2> <a href="https://course.rs/into-rust.html#%E4%B8%BA%E4%BD%95%E5%8F%88%E6%9D%A5%E4%B8%80%E9%97%A8%E6%96%B0%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener noreferrer">为何又来一门新语言？</a></h2>
+<p>简而言之，<strong>因为还缺一门无 GC 且无需手动内存管理、性能高、工程性强、语言级安全性以及能同时得到工程派和学院派认可的语言</strong>，而 Rust 就是这样的语言。你也可以回忆下熟悉的语言，看是不是有另外一门可以同时满足这些需求：)</p>
+<p>至于 Rust 最为人诟病的点，那也就一个：学习曲线陡峭。不过当语言生态起来后，这都不算问题。</p>
+<h3> <a href="https://course.rs/into-rust.html#%E7%BC%93%E8%A7%A3%E5%86%85%E5%8D%B7" target="_blank" rel="noopener noreferrer">缓解内卷</a></h3>
+<p>有人说 Rust 作为新语言会增加内卷，其实恰恰相反，Rust 可以缓解内卷。为何不说 C++ 内卷，而说 Java、Python、JS 内卷？不就是后几个相对简单、上手容易嘛？而 Rust 怎么看也是 C++ 级别的上手难度。</p>
+<p>其实从我内心不可告人的角度出发，并不希望 Rust 大众化，因为这样可以保饭碗、保薪资，还能拥有行业内的地位。但是从对 Rust 的喜爱角度出发，我还是希望能卷一些。不过，目前来看真的卷不动，现在全世界范围内 Rust 的需求都大于供给，特别是优秀的 Rust 程序员更是难寻。</p>
+<p>与 Go 语言相比，成为一名优秀的 Rust 程序员所需的门槛高得多，例如融汇贯通 Rust 语言各种中高级特性、闭着眼睛趟过各种坑、不用回忆无需查找就能立刻写出最合适的包/模块/方法、性能/安全/工程性的权衡选择信手拈来、深层性能优化易如反掌、异步编程小菜一碟，更别说 Rust 之外的操作系统、网络、算法等等相关知识。</p>
+<p>所以，Rust 可以缓解内卷，而不是增加内卷。可以说是程序员的福音，不再是被随意替换的螺丝钉。</p>
+<h4> <a href="https://course.rs/into-rust.html#%E8%BF%90%E8%A1%8C%E6%95%88%E7%8E%87" target="_blank" rel="noopener noreferrer">运行效率</a></h4>
+<p>得益于各种零开销抽象、深入到底层的优化潜力、优质的标准库和第三方库实现，Rust 具备非常优秀的性能，和 C、C++ 是 <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust.html" target="_blank" rel="noopener noreferrer">一个级别</a>。</p>
+<p>同时 Rust 有一个极大的优点：只要按照正确的方式使用 Rust，无需性能优化，就能有非常优秀的表现，不可谓不惊艳。</p>
+<p>现在有不少用 Rust 重写的工具、平台都超过了原来用 C、C++ 实现的版本，将老前辈拍死在沙滩上，俨然成为一种潮流～～</p>
+<h4> <a href="https://course.rs/into-rust.html#%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87" target="_blank" rel="noopener noreferrer">开发效率</a></h4>
+<p>Rust 的开发效率可以用先抑后扬来形容。在最初上手写项目时，你的开发速度将显著慢于 Go、Java 等语言，不过，一旦开始熟悉标准库、熟悉生命周期和所有权的常用解决方法，开发效率将大幅提升，甚至当形成肌肉记忆后，开发效率将不会慢于这些语言，而且原生就能写出高质量、安全、高效的代码，可以说中高级 Rust 程序员就是高效程序员的代名词。</p>
+<h3> <a href="https://course.rs/into-rust.html#%E5%BC%80%E6%BA%90" target="_blank" rel="noopener noreferrer">开源</a></h3>
+<p>目前 Rust 的主战场是在开源上，Go 的成功也证明了农村包围城市( 开源包围商业 )的可行性。</p>
+<ul>
+<li>UI 层开发，Rust 的 WASM 发展的如火如荼，隐隐有王者风范，在 JS 的基础设施领域，Rust 也是如鱼得水，例如 <code>swc</code>、 <code>deno</code> 等。同时 <code>nextjs</code> 也是押宝 Rust，可以说 Rust 在前端的成功完全是无心插柳柳成荫。</li>
+<li>基础设施层、数据库、搜索引擎、网络设施、云原生等都在出现 Rust 的身影，而且还不少。</li>
+<li>系统开发，目前 Linux 已经将 Rust 语言纳入内核，是继 C 语言后第二门支持内核开发的语言，不过刚开始将主要支持驱动开发。</li>
+<li>系统工具，现在最流行的就是用 Rust 重写之前 C、C++ 写的一票系统工具，还都获得了挺高的关注和很好的效果，例如 sd, exa, ripgrep, fd, bat 等。</li>
+<li>操作系统，正在使用 Rust 开发的操作系统有好几个，其中最有名的可能就是谷歌的 Fuchsia，Rust 在其中扮演非常重要的角色。</li>
+<li>区块链，如果 Rust 的份额说第二，应该没人敢稳说自己是第一吧？</li>
+</ul>
+<p>类似的还有很多，我们就不一一列举。总之，现在有大量的项目正在被 Rust 重写，同时还有海量的项目在等待被重写，这些都是赚取github 星星和认可的好机会。在其它语言杀成一片红海时，Rust 还留了一大片蓝海等待大家的探索！</p>
+<h3> <a href="https://course.rs/into-rust.html#%E7%9B%B8%E6%AF%94%E5%85%B6%E4%BB%96%E8%AF%AD%E8%A8%80-rust-%E7%9A%84%E4%BC%98%E5%8A%BF" target="_blank" rel="noopener noreferrer">相比其他语言 Rust 的优势</a></h3>
+<p>由于篇幅有限，我们这里不会讲述详细的对比，就是简单介绍下 Rust 的优势，并不是说 Rust 优于这些语言，大家轻喷：)</p>
+<h4> <a href="https://course.rs/into-rust.html#go" target="_blank" rel="noopener noreferrer">Go</a></h4>
+<p>Rust 语言表达能力更强，性能更高。同时线程安全方面 Rust 也更强，不容易写出错误的代码。包管理 Rust 也更好，Go 虽然在 1.10 版本后提供了包管理，但是目前还比不上 Rust 。</p>
+<h4> <a href="https://course.rs/into-rust.html#c" target="_blank" rel="noopener noreferrer">C++</a></h4>
+<p>Rust 与 C++ 的性能旗鼓相当，但是在安全性方面 Rust 会更优，特别是使用第三方库时，Rust 的严格要求会让三方库的质量明显高很多。</p>
+<p>语言本身的学习，Rust 的前中期学习曲线会更陡峭，但是在实际的项目开发过程中，C++ 会更难，代码也更难以维护。</p>
+<h4> <a href="https://course.rs/into-rust.html#java" target="_blank" rel="noopener noreferrer">Java</a></h4>
+<p>除了极少数纯粹的数字计算性能，Rust 的性能全面领先于 Java 。同时 Rust 占用内存小的多，因此实现同等规模的服务，Rust 所需的硬件成本会显著降低。</p>
+<h4> <a href="https://course.rs/into-rust.html#python" target="_blank" rel="noopener noreferrer">Python</a></h4>
+<p>性能自然是 Rust 完胜，同时 Rust 对运行环境要求较低，这两点差不多就足够抉择了。不过 Python 和 Rust 的彼此适用面其实也不太冲突。</p>
+<h3> <a href="https://course.rs/into-rust.html#%E4%BD%BF%E7%94%A8%E7%8E%B0%E7%8A%B6" target="_blank" rel="noopener noreferrer">使用现状</a></h3>
+<ul>
+<li>AWS 从 2017 年开始就用 Rust 实现了无服务器计算平台： AWS Lambda 和 AWS Fargate，并且用 Rust 重写了 Bottlerocket OS 和 AWS Nitro 系统，这两个是弹性计算云 (EC2) 的重要服务</li>
+<li>Cloudflare 是 Rust 的重度用户，DNS、无服务计算、网络包监控等基础设施都与 Rust 密不可分</li>
+<li>Dropbox 的底层存储服务完全由 Rust 重写，达到了数万 PB 的规模</li>
+<li>Google 除了在安卓系统的部分模块中使用 Rust 外，还在它最新的操作系统 Fuchsia 中重度使用 Rust</li>
+<li>Facebook 使用 Rust 来增强自己的网页端、移动端和 API 服务的性能，同时还写了 Hack 编程语言的虚拟机</li>
+<li>Microsoft 使用 Rust 为 Azure 平台提供一些组件，其中包括 IoT 的核心服务</li>
+<li>GitHub 和 <a href="http://npmjs.com" target="_blank" rel="noopener noreferrer">npmjs.com</a>，使用 Rust 提供高达每天 13 亿次的 npm 包下载</li>
+<li>Rust 目前已经成为全世界区块链平台的首选开发语言</li>
+<li>TiDB，国内最有名的开源分布式数据库</li>
+</ul>
+<p>尤其值得一提的是，AWS 实际上在押宝 Rust，内部对 Rust 的使用已经上升到头等公民 <strong>first-class</strong> 的地位。</p>
+<h2> <a href="https://course.rs/into-rust.html#rust-%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0" target="_blank" rel="noopener noreferrer">Rust 语言版本更新</a></h2>
+<p>与其它语言相比，Rust 的更新迭代较为频繁（得益于精心设计过的发布流程以及 Rust 语言开发者团队的严格管理）：</p>
+<ul>
+<li>每 6 周发布一个迭代版本</li>
+<li>2-3 年发布一个新的大版本，例如 Rust 2018 edition，Rust 2021 edition</li>
+</ul>
+<p>好处在于，可以满足不同的用户群体的需求：</p>
+<ul>
+<li>对于活跃的 Rust 用户，他们总是能很快获取到新的语言内容，毕竟，尝鲜是技术爱好者的共同特点：)</li>
+<li>对于一般的用户，edition 大版本的发布会告诉他们：Rust 语言相比上次大版本发布，有了重大的改进，值得一看</li>
+<li>对于 Rust 语言开发者，可以让他们的工作成果更快的被世人所知，不必锦衣夜行</li>
+</ul>
+<h2> 总结</h2>
+<p>连续 6 年最受欢迎的语言当然不是浪得虚名。 无 GC、效率高、工程性强、强安全性以及能同时得到工程派和学院派认可，这些令 Rust 拥有了自己的特色和生存空间。社区的友善，生态的快速发展，大公司的重仓跟进，一切的一切都在说明 Rust 的璀璨未来。</p>
+<p>当然，语言毕竟只是工具，我们不能神话它，但是可以给它一个机会，也许，你最终能收获自己的真爱 ：)</p>
+<p>相信大家听了这么多 Rust 的优点，已经迫不及待想要开始学习旅程，那么容我引用一句 CS（Counter-Strike：反恐精英） 的经典台词：Ok, Let's Rust.</p>
+<blockquote>
+<p>引自：<a href="https://course.rs/into-rust.html" target="_blank" rel="noopener noreferrer">Rust语言圣经(Rust Course)</a></p>
+</blockquote>
+]]></content:encoded>
+    </item>
     <item>
       <title>vuepress-plugin-meting2</title>
       <link>https://oragekk.me/tutorial/OSS/meting2.html</link>
@@ -802,136 +1145,6 @@
 ]]></content:encoded>
     </item>
     <item>
-      <title>Vercel deploy忽略指定分支</title>
-      <link>https://oragekk.me/tutorial/vercel-deploy.html</link>
-      <guid>https://oragekk.me/tutorial/vercel-deploy.html</guid>
-      <source url="https://oragekk.me/rss.xml">Vercel deploy忽略指定分支</source>
-      <description>Vercel Ignored Build Step使用</description>
-      <category>Vercel</category>
-      <pubDate>Fri, 31 Mar 2023 00:00:00 GMT</pubDate>
-      <content:encoded><![CDATA[
-<p>一招教你解决Vercel deploy时总是任意分支都可以触发，如果你的项目有多个分支，可以指定某一个或几个有提交时触发deploy</p>
-<!-- more -->
-<h2> 1. 前言</h2>
-<div class="hint-container tip">
-<p class="hint-container-title">提示</p>
-<p>这不是刚把博客部署从GitHub Pages转移到了Vercel上，稍微加快了一点国内的访问速度，然后发现了一个新问题~</p>
-<p>原先是推送到<code>main</code>分之，通过Github Action 工作流进行部署到<code>gh-page</code> 分支上</p>
-<p>转移到Vercel之后，工作流我并没有删掉，所以流程还是一样，就导致<code>main</code>提交了---&gt;Action----&gt;<code>gh-page</code>提交</p>
-<p>会触发两次Vercel的部署，当然<code>gh-page</code>是存放静态页面的分支，buid肯定是失败的。下边来解决这个问题吧</p>
-</div>
-<h2> 2. 步骤</h2>
-<p>如图所示，打开setting-Git-Ignored Build Step</p>
-<p>启用“忽略构建步骤”字段。如果命令返回“0”，则将跳过构建。但是，如果返回代码“1”或更大，则将生成新的部署。</p>
-<p>我是使用系统环境变量来做的，方式有很多，看自己方便吧，在Command处输入以下脚本表示只构建main分支</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>系统环境变量默认是曝光的，如果不生效，在Environment Variables 中勾选</p>
-<ul class="task-list-container">
-<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" id="task-item-0" checked="checked" disabled="disabled"><label class="task-list-item-label" for="task-item-0"> Automatically expose System Environment Variables</label></li>
-</ul>
-<figure><img src="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" alt="setting-Git-Ignored Build Step" tabindex="0" loading="lazy"><figcaption>setting-Git-Ignored Build Step</figcaption></figure>
-<h2> 3. 使用脚本</h2>
-<p>要在“忽略构建步骤”中运行 bash 脚本，您需要在该字段中设置以下内容：请注意该文件应该存在于您的存储库中。 bash 脚本示例： bash script.shbash 脚本的示例：<code>bash script.sh</code></p>
-<p><strong>注意</strong> 您也可以使用 Node 脚本（例如 ）。<code>node ignore-step.js</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 脚本，其中只允许部署对生产环境所做的提交。应将环境变量“VERCEL_ENV”添加到您的项目中。</p>
-<p>通过使用此命令，Vercel 将仅在“VERCEL_ENV”的值为“production”时构建部署。该变量已添加到环境变量 UI，使其可用于项目。</p>
-<h2> 4. <a href="#_7-%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%B8%80%E8%A7%88%E8%A1%A8">使用环境变量</a></h2>
-<p>您可以直接在 Ignored Build Step 字段中创建引用系统环境变量的命令：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署对生产环境所做的提交。</p>
-<p>下面是一个示例脚本，它将有条件地构建某些分支：</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>一个示例 Ignored Build Step 命令，其中只允许部署从分支“main”和“staging”进行的提交。</p>
-<h2> 5. 使用文件夹和工作区</h2>
-<p>在继续之前，请记住 Ignored Build Step 在您选择的“根目录”的同一文件夹中运行。因此，您可能需要稍微调整一下以适应您的需要。要构建仅考虑特定文件夹的新部署，您可以使用以下命令</p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略构建步骤”命令的示例。如果将更改提交给“./packages/frontend/”，该命令将产生一个非空响应，从而允许构建继续进行。<br>
-通过使用此命令，Vercel 将仅在目录内进行更改时构建部署。如果该文件夹是您选择的“根目录”，则可以使用：<code>packages/frontend/``./packages/frontend/</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到 “.”，则该命令将生成非空响应，从而允许继续生成。</p>
-<p>您还可以访问部署中的其他文件夹以检查更改。如果您在构建前端时选择了“根目录”，并且您的应用程序必须仅在进行更改时部署，您可以使用： <code>packages/web</code> <code>../../packages/docs</code></p>
-<div class="language-bash line-numbers-mode" data-ext="sh"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div></div></div><p>“忽略的生成步骤”命令的示例。如果将更改提交到“../../packages/docs“，该命令将产生一个非空响应，允许构建继续。</p>
-<h2> 6. 在本地调试命令</h2>
-<p>要在本地调试忽略的构建步骤命令，首先使用可以复制 Vercel 上可用设置的文件夹非常重要。为此，您可以应用以下步骤：</p>
-<ol>
-<li>使用 将存储库克隆到另一个文件夹。<code>git clone --depth=10 (...)</code></li>
-<li>在终端中运行命令或脚本。</li>
-<li>您可以使用 检查最后一个命令返回的退出代码。<code>echo $?</code></li>
-</ol>
-<h2> 7. 系统环境变量一览表</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">名字</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>VERCEL</code></td>
-<td style="text-align:left">指示应用已在 Vercel 上部署和运行的指示器。 例：。<code>1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>CI</code></td>
-<td style="text-align:left">指示代码在<a href="https://en.wikipedia.org/wiki/Continuous_integration" target="_blank" rel="noopener noreferrer">持续集成</a>环境中运行的指示器。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/deployments/configure-a-build" target="_blank" rel="noopener noreferrer">构建步骤</a>期间公开。<code>1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_ENV</code></td>
-<td style="text-align:left">部署和运行应用<a href="https://vercel.com/docs/concepts/projects/environment-variables#environments" target="_blank" rel="noopener noreferrer">的环境</a>。该值可以是 、 或 。<code>production``preview``development</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_URL</code></td>
-<td style="text-align:left"><a href="https://vercel.com/docs/concepts/deployments/generated-urls" target="_blank" rel="noopener noreferrer">生成的部署 URL</a> 的域名。例：。该值不包括协议方案。<code>*.vercel.app``https://</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_REGION</code></td>
-<td style="text-align:left">运行应用的<a href="https://vercel.com/docs/concepts/edge-network/regions" target="_blank" rel="noopener noreferrer">区域的</a> ID。 例：。 <strong>注意：</strong> 此变量仅在<a href="https://vercel.com/docs/concepts/functions" target="_blank" rel="noopener noreferrer">无服务器函数</a>的运行时公开。<code>cdg1</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_PROVIDER</code></td>
-<td style="text-align:left">从中触发部署的 Git 提供程序。 例：。<code>github</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_REPO_SLUG</code></td>
-<td style="text-align:left">从中触发部署的源存储库。 例：。<code>my-site</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_REPO_OWNER</code></td>
-<td style="text-align:left">拥有从中触发部署的存储库的帐户。 例：。<code>acme</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_REPO_ID</code></td>
-<td style="text-align:left">从中触发部署的存储库的 ID。 例：。<code>117716146</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><mark><code>VERCEL_GIT_COMMIT_REF</code></mark></td>
-<td style="text-align:left">触发部署的提交的 git 分支。 例：。<code>improve-about-page</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_SHA</code></td>
-<td style="text-align:left">触发部署的提交的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。<code>fa1eade47b73733d6312d5abfad33ce9e4068081</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_MESSAGE</code></td>
-<td style="text-align:left">附加到触发部署的提交的消息。 例：。<code>Update about page</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_LOGIN</code></td>
-<td style="text-align:left">附加到部署项目的提交作者的用户名。 例：。<code>johndoe</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_COMMIT_AUTHOR_NAME</code></td>
-<td style="text-align:left">附加到部署项目的提交的作者的名称。 例：。<code>John Doe</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_PREVIOUS_SHA</code></td>
-<td style="text-align:left">项目和分支的上次成功部署的 git <a href="https://help.github.com/articles/github-glossary/#commit" target="_blank" rel="noopener noreferrer">SHA</a>。 例：。 <strong>注意：</strong> 仅当提供了<a href="https://vercel.com/docs/concepts/projects/overview#ignored-build-step" target="_blank" rel="noopener noreferrer">忽略的生成步骤</a>时，才会公开此变量。<code>fa1eade47b73733d6312d5abfad33ce9e4068080</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>VERCEL_GIT_PULL_REQUEST_ID</code></td>
-<td style="text-align:left">触发部署的拉取请求 ID。如果在发出拉取请求之前在分支上创建了部署，则此值将为空字符串。 例：。<code>23</code></td>
-</tr>
-</tbody>
-</table>
-]]></content:encoded>
-      <enclosure url="https://s3.bmp.ovh/imgs/2023/03/31/5ae4ba35bd181dcf.png" type="image/png"/>
-    </item>
-    <item>
       <title>提交URL到搜索引擎（百度、Bing、Google）</title>
       <link>https://oragekk.me/posts/Python/submit-url.html</link>
       <guid>https://oragekk.me/posts/Python/submit-url.html</guid>
@@ -1053,7 +1266,7 @@
 <li>每天 UTC 23:00触发<sup class="footnote-ref"><a href="#footnote1">[1]</a><a class="footnote-anchor" id="footnote-ref1"></a></sup></li><a class="footnote-anchor" id="footnote-ref1">
 <li>push下的分支和文件要同时触发才会使工作流运行</li>
 </a></ol><a class="footnote-anchor" id="footnote-ref1">
-<div class="hint-container danger">
+<div class="hint-container caution">
 <p class="hint-container-title">注意!!!</p>
 <p>虽然官方文档未提及需要把<code>.github/workflows</code>目录下的工作流文件存储于指定触发分支下，但我实际操作中发现，如我设置的触发分支为<code>gh-pages</code>但假如我的.yaml文件在<code>main</code>分支下不在<code>gh-pages</code>根目录的<code>.github/workflows</code>文件夹下，实际并不会触发。</p>
 </div>
@@ -1804,7 +2017,7 @@
 <div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div></div></div><p><code>MAIL_TEMPLATE</code></p>
 <div class="language-html line-numbers-mode" data-ext="html"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3> 3.3 使用服务端入口文件index.js变量设置模版</h3>
 <p>文件初始内容为:</p>
-<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container danger">
+<div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container caution">
 <p class="hint-container-title">注意!!!</p>
 <p>在我查阅资料的过程中，发现很多教程中填写index.js的方式都是错误的，如下:</p>
 <div class="language-javascript line-numbers-mode" data-ext="js"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>这就是导致很多人index.js配置不成功的原因，把模版配置写在了postSave这个钩子函数里边,在Vercel部署的过程中就会直接报错，语法不正确</p>
@@ -5009,7 +5222,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <p class="hint-container-title">自定义标题</p>
 <p>警告容器</p>
 </div>
-<div class="hint-container danger">
+<div class="hint-container caution">
 <p class="hint-container-title">自定义标题</p>
 <p>危险容器</p>
 </div>
@@ -5088,7 +5301,7 @@ SSLPinningMode 定义了 https 连接时，如何校验服务器端给予的证�
 <li><a href="https://theme-hope.vuejs.press/zh/guide/markdown/mermaid.html" target="_blank" rel="noopener noreferrer">查看详情</a></li>
 </ul>
 <h4> Tex 语法</h4>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><msup><mi mathvariant="normal">∂</mi><mi>r</mi></msup><mrow><mi mathvariant="normal">∂</mi><msup><mi>ω</mi><mi>r</mi></msup></mrow></mfrac><mrow><mo fence="true">(</mo><mfrac><msup><mi>y</mi><mi>ω</mi></msup><mi>ω</mi></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><msup><mi>y</mi><mi>ω</mi></msup><mi>ω</mi></mfrac><mo fence="true">)</mo></mrow><mrow><mo fence="true">{</mo><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mi>r</mi></msup><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><mfrac><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup><mi>r</mi><mo>⋯</mo><mo stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mrow><mi>r</mi><mo>−</mo><mi>i</mi></mrow></msup></mrow><msup><mi>ω</mi><mi>i</mi></msup></mfrac><mo fence="true">}</mo></mrow></mrow><annotation encoding="application/x-tex">
+<p v-pre="" class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><msup><mi mathvariant="normal">∂</mi><mi>r</mi></msup><mrow><mi mathvariant="normal">∂</mi><msup><mi>ω</mi><mi>r</mi></msup></mrow></mfrac><mrow><mo fence="true">(</mo><mfrac><msup><mi>y</mi><mi>ω</mi></msup><mi>ω</mi></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mrow><mo fence="true">(</mo><mfrac><msup><mi>y</mi><mi>ω</mi></msup><mi>ω</mi></mfrac><mo fence="true">)</mo></mrow><mrow><mo fence="true">{</mo><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mi>r</mi></msup><mo>+</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><mfrac><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>1</mn><msup><mo stretchy="false">)</mo><mi>i</mi></msup><mi>r</mi><mo>⋯</mo><mo stretchy="false">(</mo><mi>r</mi><mo>−</mo><mi>i</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mi>log</mi><mo>⁡</mo><mi>y</mi><msup><mo stretchy="false">)</mo><mrow><mi>r</mi><mo>−</mo><mi>i</mi></mrow></msup></mrow><msup><mi>ω</mi><mi>i</mi></msup></mfrac><mo fence="true">}</mo></mrow></mrow><annotation encoding="application/x-tex">
 \frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right)
 = \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^i r \cdots (r-i+1) (\log y)^{r-i}} {\omega^i} \right\}
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.4em;vertical-align:-0.95em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.5904em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord" style="margin-right:0.05556em;">∂</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3414em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">ω</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.0277em;vertical-align:-1.2777em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3414em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">ω</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size4">{</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5017em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7507em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">−</span><span class="mord">1</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8247em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">i</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size4">}</span></span></span></span></span></span></span></p>
