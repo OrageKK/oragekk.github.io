@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Fri, 19 Jan 2024 03:49:14 GMT</pubDate>
-    <lastBuildDate>Fri, 19 Jan 2024 03:49:14 GMT</lastBuildDate>
+    <pubDate>Sat, 20 Jan 2024 08:17:40 GMT</pubDate>
+    <lastBuildDate>Sat, 20 Jan 2024 08:17:40 GMT</lastBuildDate>
     <generator>vuepress-plugin-feed2</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>工具教程</category>
@@ -3613,53 +3613,56 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
       <enclosure url="https://s2.ax1x.com/2019/11/15/Ma6EBF.png" type="image/png"/>
     </item>
     <item>
-      <title>YYMemoryCache 源码分析</title>
+      <title>YYCache优秀的缓存设计</title>
       <link>https://oragekk.me/posts/iOS/source/YYMemoryCache.html</link>
       <guid>https://oragekk.me/posts/iOS/source/YYMemoryCache.html</guid>
-      <source url="https://oragekk.me/rss.xml">YYMemoryCache 源码分析</source>
-      <description>YYMemoryCache 源码分析 提示 YYMemoryCache 是内存缓存，所以存取速度非常快，主要用到两种数据结构的 LRU 淘汰算法 LRU 淘汰算法 LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。 最常见的实现是使用一个链表保存缓存数据 【命中率】 当存在热点数据时，LRU 的效率很好，但偶发性的、周期性的批量操作会导致 LRU 命中率急剧下降，缓存污染情况比较严重。 Cache 的容量是有限的，当 Cache 的空间都被占满后，如果再次发生缓存失效，就必须选择一个缓存块来替换掉。LRU 法是依据各块使用的情况， 总是选择那个最长时间未被使用的块替换。这种方法比较好地反映了程序局部性规律</description>
+      <source url="https://oragekk.me/rss.xml">YYCache优秀的缓存设计</source>
+      <description>1.1. 前言 开发中总会用到各种缓存，但是各位有没有考虑过什么样的缓存才能被叫做优秀的缓存，或者说优秀的缓存应该具备哪些特质？ 本文将结合 YYCache 的源码逐步带大家找到答案。 YYCache 是一个线程安全的高性能键值缓存（该项目是 YYKit 组件之一） YYCache 的代码逻辑清晰，注释详尽，加上自身不算太大的代码量使得其阅读非常简单，更加难能可贵的是它的性能还非常高。</description>
       <category>iOS</category>
       <pubDate>Fri, 26 Apr 2019 16:08:25 GMT</pubDate>
-      <content:encoded><![CDATA[<h1> YYMemoryCache 源码分析</h1>
+      <content:encoded><![CDATA[<h2> 1.1. 前言</h2>
+<p>开发中总会用到各种缓存，但是各位有没有考虑过什么样的缓存才能被叫做优秀的缓存，或者说优秀的缓存应该具备哪些特质？<br>
+本文将结合 YYCache 的源码逐步带大家找到答案。<br>
+YYCache 是一个线程安全的高性能键值缓存（该项目是 YYKit 组件之一）<br>
+YYCache 的代码逻辑清晰，注释详尽，加上自身不算太大的代码量使得其阅读非常简单，更加难能可贵的是它的性能还非常高。</p>
+<!-- more -->
 <div class="hint-container tip">
 <p class="hint-container-title">提示</p>
-<p>YYMemoryCache 是内存缓存，所以存取速度非常快，主要用到两种数据结构的 LRU 淘汰算法</p>
+<p>YYCache 是由 YYMemoryCache 与 YYDiskCache 两部分组成的，其中 YYMemoryCache 作为高速内存缓存，而 YYDiskCache 则作为低速磁盘缓存。<br>
+YYMemoryCache 是内存缓存，所以存取速度非常快，主要用到两种数据结构的 LRU 淘汰算法</p>
 </div>
-<ol>
-<li>
-<p>LRU 淘汰算法</p>
-<blockquote>
+<p>NSCache 是苹果提供的一个简单的内存缓存，它有着和 NSDictionary 类似的 API，不同点是它是线程安全的，并且不会 retain key。我在测试时发现了它的几个特点：NSCache 底层并没有用 NSDictionary 等已有的类，而是直接调用了 libcache.dylib，其中线程安全是由 pthread_mutex 完成的。另外，它的性能和 key 的相似度有关，如果有大量相似的 key (比如 “1”, “2”, “3”, …)，NSCache 的存取性能会下降得非常厉害，大量的时间被消耗在 CFStringEqual() 上，不知这是不是 NSCache 本身设计的缺陷。</p>
+<h2> 1.2. 介绍</h2>
+<p>YYMemoryCache 是一个高速的内存缓存，用于存储键值对。它与 NSDictionary 相反，Key 被保留并且不复制。API 和性能类似于 NSCache，所有方法都是线程安全的。</p>
+<p>YYMemoryCache 对象与 NSCache 的不同之处在于：</p>
+<p>YYMemoryCache 使用 LRU(least-recently-used) 算法来驱逐对象；NSCache 的驱逐方式是非确定性的。<br>
+YYMemoryCache 提供 age、cost、count 三种方式控制缓存；NSCache 的控制方式是不精确的。<br>
+YYMemoryCache 可以配置为在收到内存警告或者 App 进入后台时自动逐出对象。</p>
+<div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2> 1.3. YYMemoryCache 是如何做到线程安全的</h2>
+<div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><div class="hint-container tip">
+<p class="hint-container-title">提示</p>
+<p>在最初 YYMemoryCache 这里使用的锁是 OSSpinLock 自旋锁（详见 <a href="https://blog.ibireme.com/2015/10/26/yycache/" target="_blank" rel="noopener noreferrer">YYCache 设计思路</a> 备注-关于锁），后面有人在 Github 向作者提 issue 反馈 OSSpinLock 不安全，经过作者的确认（详见 不再安全的 OSSpinLock）最后选择用 pthread_mutex 替代 OSSpinLock。</p>
+</div>
+<h2> 1.4. LRU 淘汰算法</h2>
 <p>LRU（Least recently used，最近最少使用）算法根据数据的历史访问记录来进行淘汰数据，其核心思想是“如果数据最近被访问过，那么将来被访问的几率也更高”。</p>
 <p>最常见的实现是使用一个链表保存缓存数据</p>
 <p>【命中率】</p>
 <p>当存在热点数据时，LRU 的效率很好，但偶发性的、周期性的批量操作会导致 LRU 命中率急剧下降，缓存污染情况比较严重。</p>
 <p>Cache 的容量是有限的，当 Cache 的空间都被占满后，如果再次发生缓存失效，就必须选择一个缓存块来替换掉。LRU 法是依据各块使用的情况， 总是选择那个最长时间未被使用的块替换。这种方法比较好地反映了程序局部性规律</p>
-</blockquote>
-</li>
-</ol>
-<!-- more -->
-<ol start="2">
-<li>
-<p>数据结构</p>
+<h2> 1.5. 数据结构</h2>
 <ul>
-<li>双向链表 (Doubly Linked List)</li>
-<li>哈希表 (Dictionary)</li>
+<li>双向链表 (Doubly Linked List) <code>_YYLinkedMap</code></li>
+<li>哈希表 (Dictionary) <code>CFMutableDictionaryRef _dic</code></li>
 </ul>
-</li>
-<li>
-<p>缓存操作</p>
+<h2> 1.6. 缓存操作</h2>
 <ul>
 <li>新数据插入到链表头部；</li>
 <li>每当缓存命中（即缓存数据被访问），则将数据移到链表头部；</li>
 <li>当链表满的时候，将链表尾部的数据丢弃。</li>
 </ul>
-</li>
-<li>
-<p>分析图</p>
-<figure><a href="https://cuntuku.com/image/bpM38" target="_blank" rel="noopener noreferrer"><img src="https://storage6.cuntuku.com/2019/04/27/bpM38.png" alt="bpM38.png" tabindex="0" loading="lazy"></a><figcaption>bpM38.png</figcaption></figure>
-</li>
-<li>
-<p>YYMemoryCache.m 里的两个分类</p>
+<h2> 1.7. 分析图</h2>
+<figure><img src="https://s3.bmp.ovh/imgs/2024/01/20/c6e7391286dce045.webp" alt="" tabindex="0" loading="lazy"><figcaption></figcaption></figure>
+<h2> 1.8. YYMemoryCache.m 里的两个分类</h2>
 <ol>
 <li>
 <p>链表节点 <code>_YYLinkedMapNode</code></p>
@@ -3668,9 +3671,7 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 <p>链表 <code>_YYLinkedMap</code></p>
 <div class="language-objc line-numbers-mode" data-ext="objc"><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div></li>
 </ol>
-</li>
-<li>
-<p>链表插入、查找、替换操作实现</p>
+<h2> 1.9. 链表插入、查找、替换操作实现</h2>
 <ul>
 <li>
 <p>添加节点到链表头节点</p>
@@ -3695,14 +3696,8 @@ inputs 中写了需要一个 image 大小 299*299；outputs 里会有两个参�
 </ul>
 </li>
 </ul>
-</li>
-</ol>
-<blockquote>
-<p>图片引用自<a href="https://www.jianshu.com/p/492c3c3a0485" target="_blank" rel="noopener noreferrer">YYCache 源码分析(二)</a> 感谢作者</p>
-<p>ps 未完待续……</p>
-</blockquote>
 ]]></content:encoded>
-      <enclosure url="https://storage6.cuntuku.com/2019/04/27/bpM38.png" type="image/png"/>
+      <enclosure url="https://s3.bmp.ovh/imgs/2024/01/20/c6e7391286dce045.webp" type="image/webp"/>
     </item>
     <item>
       <title>深入理解swift中闭包的捕捉语义</title>
