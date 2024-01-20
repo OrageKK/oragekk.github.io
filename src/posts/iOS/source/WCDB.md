@@ -1,6 +1,7 @@
 ---
 title: "WCDB漫谈"
 date: 2018-01-18
+icon: others
 category:
   - iOS
 tag:
