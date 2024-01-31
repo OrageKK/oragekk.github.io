@@ -90,4 +90,10 @@ export const friends: LinkData[] = [
     icon: "https://www.eula.club/avatar.png",
     link: "https://www.eula.club"
   },
+  {
+    name: "Camill",
+    desc: "嵌入式、ROS、还有生活！",
+    icon: "https://www.camill.love/img/myself.jpg",
+    link: "https://camill.love"
+  },
 ];
