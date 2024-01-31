@@ -12,6 +12,9 @@ article: false
 import MyCoverLink from "@MyCoverLink";
 </script>
 
+## 失效链接
+<MyCoverLink type="invalid"/>
+
 ## 本站信息如下
 
 ::: code-tabs
