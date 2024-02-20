@@ -41,7 +41,7 @@ import TagInfo from "@theme-hope/modules/info/components/TagInfo";
 import WordInfo from "@theme-hope/modules/info/components/WordInfo";
 import { toRef } from "vue";
 import { ArticleInfo } from "vuepress-theme-hope/shared";
-import { Content } from "@vuepress/client";
+import { Content } from "vuepress/client";
 import { useRouter } from "vue-router";
 import "vuepress-theme-hope/client/modules/info/styles/page-info.scss";
 import { computed } from "vue";

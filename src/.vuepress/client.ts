@@ -1,5 +1,5 @@
 import { onMounted } from "vue";
-import { defineClientConfig } from "@vuepress/client";
+import { defineClientConfig } from "vuepress/client";
 import NotFound from "./theme/layouts/NotFound.vue";
 import Layout from "./theme/layouts/Layout.vue";
 import News from "./theme/layouts/News.vue";

@@ -1,4 +1,4 @@
-import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
+import { defineClientConfig} from "vuepress/client";
 import { onMounted } from "vue";
 import ribbon from "../components/ribbon";
 import figure from "../components/figure";
@@ -31,6 +31,5 @@ export default defineClientConfig({
       }
     });
   },
-  layouts: {},
   rootComponents: [],
 });

@@ -1,4 +1,4 @@
-import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
+import { defineClientConfig} from "vuepress/client";
 import { useRouter, useRoute } from "vue-router";
 import { onMounted } from "vue";
 
@@ -30,7 +30,6 @@ export default defineClientConfig({
       }, 1000);
     });
   },
-  layouts: {},
   rootComponents: [],
 });
 

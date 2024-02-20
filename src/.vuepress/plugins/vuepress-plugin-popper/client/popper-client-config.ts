@@ -1,4 +1,4 @@
-import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
+import { defineClientConfig, usePageData, useSiteData } from "vuepress/client";
 import {DenaroMoefyCanvas} from "../client/components/DenaroMoefyCanvas"
 
 

@@ -70,6 +70,11 @@ features:
     details: 自瑞士的临时文件中转网站，最多发送 25 GB，保存最多30天，免费且无需注册
     link: https://www.swisstransfer.com/
 
+  - title: 前端框架招聘热度
+    icon: flow
+    details: 全国前端框架招聘热度排行
+    link: https://react.lllomh.com/index.html
+
 
 
 footer: <div><span>Powered by <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank">VuePress</a></span>|<span>Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">Hope</a></span></div>

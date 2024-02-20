@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePageFrontmatter, withBase } from "@vuepress/client";
+import { usePageFrontmatter, withBase } from "vuepress/client";
 import { isString } from "@vuepress/shared";
 import { computed, watch, onMounted } from "vue";
 import {

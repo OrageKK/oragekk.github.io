@@ -1,4 +1,4 @@
-import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
+import { defineClientConfig } from "vuepress/client";
 import { GradientCoverOptions } from "..";
 import { onMounted } from "vue";
 import BlogBg from "../client/components/BlogBg"

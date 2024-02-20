@@ -13,7 +13,7 @@
       "vuepress-shared/*":["node_modules/vuepress-shared/lib/*"]
     },
     "types": [
-      "@vuepress/client/types"
+      "vuepress/client-types"
     ]
   },
   "include": [
