@@ -119,7 +119,6 @@ export default MyTheme({
         {
           key: "news",
           filter: (page) => page.frontmatter.news === true,
-          path: "/news/",
           layout: "News",
           frontmatter: () => ({ title: "说说" }),
         },
