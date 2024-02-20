@@ -90,6 +90,12 @@ export const friends: LinkData[] = [
     icon: "https://www.camill.love/img/myself.jpg",
     link: "https://camill.love"
   },
+  {
+    name: "芈渡",
+    desc: "开发日常",
+    icon: "https://www.lllomh.com/static/images/photos.jpg",
+    link: "https://www.lllomh.com/"
+  },
 ];
 export const invalid: LinkData[] = [
   {
