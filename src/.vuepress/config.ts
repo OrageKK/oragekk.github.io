@@ -16,6 +16,7 @@ import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
 import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import metingPlugin from "vuepress-plugin-meting2";
+
 const __dirname = getDirname(import.meta.url);
 export default defineUserConfig({
   base: "/",
@@ -49,7 +50,7 @@ export default defineUserConfig({
             rewrite: (path) => path.replace(/^\/bing/, ""),
           },
         },
-      },
+      }
     },
     // vuePluginOptions: {},
   }),

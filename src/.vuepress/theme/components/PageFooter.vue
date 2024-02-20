@@ -39,8 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { usePageFrontmatter, withBase } from "vuepress/client";
-import { isString } from "@vuepress/shared";
+import { usePageFrontmatter } from "vuepress/client";
+import { isString } from "vuepress/shared";
 import { computed, watch, onMounted } from "vue";
 import {
   usePageAuthor,
@@ -89,7 +89,7 @@ const content = computed(() => {
 });
 const copyright = computed(() =>
   "copyright" in frontmatter.value
-    ? frontmatter.value.copyright
+    ? frontmatter.value["copyright"]
     : "copyright" in themeLocale.value
     ? themeLocale.value.copyright
     : author.value.length

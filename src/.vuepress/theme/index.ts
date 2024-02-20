@@ -1,8 +1,8 @@
 // .vuepress/theme/index.ts
-import { getDirname, path } from "@vuepress/utils";
+import { getDirname, path } from "vuepress/utils";
 import { hopeTheme } from "vuepress-theme-hope";
 import type { ThemeOptions } from "vuepress-theme-hope";
-import type { Theme } from "@vuepress/core";
+import type { Theme } from "vuepress/core";
 
 const __dirname = getDirname(import.meta.url);
 

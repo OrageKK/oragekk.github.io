@@ -40,7 +40,7 @@ import PageViewInfo from "@theme-hope/modules/info/components/PageViewInfo";
 import TagInfo from "@theme-hope/modules/info/components/TagInfo";
 import WordInfo from "@theme-hope/modules/info/components/WordInfo";
 import { toRef } from "vue";
-import { ArticleInfo } from "vuepress-theme-hope/shared";
+import type { ArticleInfo } from "vuepress-theme-hope";
 import { Content } from "vuepress/client";
 import { useRouter } from "vue-router";
 import "vuepress-theme-hope/client/modules/info/styles/page-info.scss";
@@ -59,17 +59,12 @@ interface Articles {
    */
   info: ArticleInfo;
 }
-const props = defineProps<Articles>();
+const props = defineProps<Articles>() as Articles;
 const articleInfo = toRef(props, "info");
-const { info: pageInfo, items } = useArticleInfo(props);
+const { info: pageInfo } = useArticleInfo(props);
 const {
   ["t" /* ArticleInfoType.title */]: title,
-  ["s" /* ArticleInfoType.title */]: shortTitle,
-  ["y" /* ArticleInfoType.type */]: type,
-  ["n" /* ArticleInfoType.isEncrypted */]: isEncrypted = false,
-  ["v" /* ArticleInfoType.cover */]: cover,
   ["e" /* ArticleInfoType.excerpt */]: excerpt,
-  ["u" /* ArticleInfoType.sticky */]: sticky,
 } = articleInfo.value;
 const pinfo = pageInfo.value;
 const router = useRouter();

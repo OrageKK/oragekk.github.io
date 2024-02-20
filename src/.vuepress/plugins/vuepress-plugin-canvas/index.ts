@@ -1,5 +1,5 @@
 import { App, PageOptions, PluginFunction } from "vuepress";
-import { getDirname, path } from "@vuepress/utils";
+import { getDirname, path } from "vuepress/utils";
 import { BackgroundOptions,CanvasPluginType } from "./type";
 
 const __dirname = getDirname(import.meta.url);

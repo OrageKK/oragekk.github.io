@@ -20,7 +20,7 @@ import BlogWrapper from "@theme-hope/modules/blog/components/BlogWrapper";
 import DropTransition from "@theme-hope/components/transitions/DropTransition";
 import { useDarkmode } from "@theme-hope/modules/outlook/composables/index";
 import { useBlogType } from '@vuepress/plugin-blog/client'
-import { ArticleInfo } from "vuepress-theme-hope/shared";
+import type { ArticleInfo } from "vuepress-theme-hope";
 import NewsList from "../components/NewsList.vue";
 
 const news = useBlogType<ArticleInfo>("news");
