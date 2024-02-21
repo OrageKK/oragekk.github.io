@@ -27,7 +27,7 @@ export default MyTheme({
   navbarLayout: {
     start: ["Brand"],
     center: ["Links"],
-    end: ["Language", "Repo","Wormhole", "Travelling",  "Outlook", "Search"],
+    end: ["Language", "Repo", "Wormhole", "Travelling", "Outlook", "Search"],
   },
 
   blog: {
@@ -105,7 +105,7 @@ export default MyTheme({
   },
   plugins: {
     components: {
-      components: ["BiliBili","Badge"],
+      components: ["BiliBili", "Badge"],
     },
     blog: {
       filter: ({ filePathRelative, frontmatter }) => {
@@ -175,7 +175,7 @@ export default MyTheme({
       figure: true,
       flowchart: true,
       gfm: true,
-      tasklist:true,
+      tasklist: true,
       imgLazyload: true,
       imgSize: true,
       include: true,
@@ -185,8 +185,8 @@ export default MyTheme({
       playground: {
         presets: ["ts", "vue"],
       },
-      revealJs:{
-        plugins:["highlight", "math", "search", "notes", "zoom"]
+      revealJs: {
+        plugins: ["highlight", "math", "search", "notes", "zoom"]
       },
       stylize: [
         {

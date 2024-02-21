@@ -22,7 +22,7 @@
         <slot name="excerpt" v-bind="{ excerpt }">
           <template v-if="excerpt">
             <!-- <div class="vp-article-excerpt" v-html="excerpt"></div> -->
-            <Content :page-key="routeName" />
+            <Content :path="routePath" />
           </template>
         </slot>
       </div>
@@ -68,9 +68,9 @@ const {
 } = articleInfo.value;
 const pinfo = pageInfo.value;
 const router = useRouter();
-// 假设你要获取 path 为 '/foo' 的路由的名称
+// 2024年02月21日15:24:10 更改routeName为routePath 因为Content组件变化
 const route = router.resolve(props.path);
-const routeName = computed(() => (route ? route.name.toString() : ""));
+const routePath = computed(() => (route ? route.path.toString() : ""));
 </script>
 
 <style lang="scss" scoped>

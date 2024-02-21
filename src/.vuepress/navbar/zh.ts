@@ -46,7 +46,7 @@ export const zhNavbar = navbar([
   {
     text: "说说",
     icon: "news",
-    link: "/news",
+    link: "/news/",
   },
   {
     text: "留言板",
