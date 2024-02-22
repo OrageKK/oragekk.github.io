@@ -1,4 +1,4 @@
-import { defineClientConfig, usePageData, useSiteData } from "@vuepress/client";
+import { defineClientConfig } from "vuepress/client";
 import { onMounted, onBeforeUnmount, nextTick } from "vue";
 import { useRouter } from "vue-router";
 import { HitokotoOption } from "..";
@@ -106,6 +106,5 @@ export default defineClientConfig({
       clearInterval(timer);
     });
   },
-  layouts: {},
   rootComponents: [],
 });

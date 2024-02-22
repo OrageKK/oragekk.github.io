@@ -21,7 +21,7 @@
   </CommonWrapper>
 </template>
 <script setup lang="ts">
-import { useRouteLocale } from "@vuepress/client";
+import { useRouteLocale } from "vuepress/client";
 import { useLink } from "vue-router";
 import CommonWrapper from "@theme-hope/components/CommonWrapper";
 import SkipLink from "@theme-hope/components/SkipLink";

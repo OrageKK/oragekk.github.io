@@ -31,11 +31,11 @@
 import { computed, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import DropTransition from "@theme-hope/components/transitions/DropTransition";
-import { Article } from "vuepress-plugin-blog2/client";
+import type { Article } from '@vuepress/plugin-blog/client';
 import Pagination from "@theme-hope/modules/blog/components/Pagination";
 import { EmptyIcon } from "@theme-hope/modules/blog/components/icons/index";
 import { useBlogOptions } from "@theme-hope/modules/blog/composables/index";
-import { ArticleInfo } from "vuepress-theme-hope/shared";
+import type { ArticleInfo } from "vuepress-theme-hope";
 import NewsItem from "./NewsItem.vue";
 import { HitokotoApi } from "../../plugins/vuepress-plugin-hitokoto/client/hitokoto-api";
 declare const SUPPORT_PAGEVIEW: boolean;

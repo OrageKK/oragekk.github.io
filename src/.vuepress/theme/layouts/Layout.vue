@@ -24,7 +24,7 @@
   </CommonWrapper>
 </template>
 <script setup lang="ts">
-import { usePageData, usePageFrontmatter } from "@vuepress/client";
+import { usePageData, usePageFrontmatter } from "vuepress/client";
 import { computed, onMounted, h, resolveComponent } from "vue";
 import CommonWrapper from "@theme-hope/components/CommonWrapper";
 import BloggerInfo from "@theme-hope/modules/blog/components/BloggerInfo";

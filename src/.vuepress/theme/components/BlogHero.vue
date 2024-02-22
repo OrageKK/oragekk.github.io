@@ -1,9 +1,9 @@
 <script lang="ts">
 import {
   usePageFrontmatter,
-  usePageHeadTitle,
+  usePageData,
   withBase,
-} from "@vuepress/client";
+} from "vuepress/client";
 import {
   computed,
   onMounted,
@@ -22,12 +22,12 @@ import "vuepress-theme-hope/modules/blog/styles/blog-hero.scss";
 import SwitchBtn from "./SwitchBtn.vue";
 import { BingApi } from "../api/bing";
 import { ThemeHopePageFrontmatter } from "vuepress-theme-hope/shared/frontmatter";
-import { isString } from "@vuepress/shared";
+import { isString } from "vuepress/shared";
 export default defineComponent({
   name: "BlogHero",
   setup() {
     const defaultHeroBgImagePath = withBase("/assets/home_bg3.jpg");
-    const title = usePageHeadTitle();
+    const pageData = usePageData();
     const frontmatter = usePageFrontmatter<ThemeHopePageFrontmatter>();
     const hero = ref();
     const heroImage = computed(() => frontmatter.value.heroImage || null);
@@ -146,7 +146,7 @@ export default defineComponent({
                   : h(
                       "h1",
                       { class: "vp-blog-hero-title" },
-                      frontmatter.value.heroText || title.value
+                      frontmatter.value.heroText || pageData.value.title
                     )
               ),
               h(DropTransition, { appear: true, delay: 0.12 }, () =>

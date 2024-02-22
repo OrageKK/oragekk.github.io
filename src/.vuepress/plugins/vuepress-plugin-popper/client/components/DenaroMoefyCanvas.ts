@@ -3,7 +3,6 @@ import type { VNode } from "vue";
 import { defineComponent, h, onBeforeUnmount, onMounted } from "vue";
 import { PopperOption } from "../../type";
 import { Popper, PopperConfig, PopperShape } from "@moefy-canvas/theme-popper";
-import "@vuepress/client/types";
 declare const popperOptions: PopperOption;
 const MAX_Z_INDEX = 2147483647;
 export const DenaroMoefyCanvas = defineComponent({
