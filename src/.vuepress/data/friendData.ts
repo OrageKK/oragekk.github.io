@@ -96,13 +96,14 @@ export const friends: LinkData[] = [
     icon: "https://www.lllomh.com/static/images/photos.jpg",
     link: "https://www.lllomh.com/"
   },
-];
-export const invalid: LinkData[] = [
   {
     name: "OhYee ⭐",
     desc: "个人向笔记性质技术分享，共产主义开源编程🤪",
     icon: "https://static.oyohyee.com/logo.svg",
     link: "https://www.ohyee.cc/",
   },
+];
+export const invalid: LinkData[] = [
+  
   
 ];
