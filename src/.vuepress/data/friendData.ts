@@ -75,7 +75,7 @@ export const friends: LinkData[] = [
   {
     name: "OhYee ⭐",
     desc: "个人向笔记性质技术分享，共产主义开源编程🤪",
-    icon: "https://static.oyohyee.com/logo.svg",
+    icon: "https://static.ohyee.cc/logo.svg",
     link: "https://www.ohyee.cc/",
   },
   {
