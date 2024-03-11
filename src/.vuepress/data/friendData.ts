@@ -73,6 +73,12 @@ export const friends: LinkData[] = [
     link: "https://www.anjhon.top/",
   },
   {
+    name: "OhYee ⭐",
+    desc: "个人向笔记性质技术分享，共产主义开源编程🤪",
+    icon: "https://static.oyohyee.com/logo.svg",
+    link: "https://www.ohyee.cc/",
+  },
+  {
     name: "寒烟志",
     desc: "半山腰总是挤的，你得去山顶看看",
     icon: "https://www.qiaoxiao.top/static/avater/avater.jpg",
@@ -97,10 +103,10 @@ export const friends: LinkData[] = [
     link: "https://www.lllomh.com/"
   },
   {
-    name: "OhYee ⭐",
-    desc: "个人向笔记性质技术分享，共产主义开源编程🤪",
-    icon: "https://static.oyohyee.com/logo.svg",
-    link: "https://www.ohyee.cc/",
+    name: "SMallTIAN’s Blog",
+    desc: "写我想写的，说我想说的。只要自己开心就好。",
+    icon: "https://mcsmalltian.com/frontend/img/avatar.webp",
+    link: "https://blog.mcsmalltian.com/",
   },
 ];
 export const invalid: LinkData[] = [
