@@ -5,7 +5,7 @@ article: false
 ---
 
 # 留言板 ✨
-![](https://tenapi.cn/v2/acg)
+![](https://tuapi.eees.cc/api.php?category=dongman&px=pc&type=302)
 
 :::: tip 博主留言✨📒
 欢迎来到留言板，这里是一个和时间无关的地方，一个让你的思绪在文字间蔓延的角落。

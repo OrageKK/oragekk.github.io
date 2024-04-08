@@ -10,4 +10,4 @@ article: false
 这里放置 iOS 相关的内容
 :::
 
-<AutoCatalog />
+<Catalog />

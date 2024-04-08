@@ -11,4 +11,4 @@ article: false
 :::
 
 
-<AutoCatalog />
+<Catalog />

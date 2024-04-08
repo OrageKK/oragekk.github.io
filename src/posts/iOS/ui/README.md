@@ -13,4 +13,4 @@ dir:
 这里放置 UI 相关的内容
 :::
 
-<AutoCatalog />
+<Catalog />

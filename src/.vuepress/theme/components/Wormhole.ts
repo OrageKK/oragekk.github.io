@@ -4,9 +4,9 @@ import { h } from "vue";
 const Wormhole: FunctionalComponent = () =>
   h(
     "div",
-    { class: "nav-item vp-repo" },
+    { class: "vp-nav-item vp-action" },
     h("a", {
-      class: "vp-repo-link",
+      class: "vp-action-link",
       href: "https://foreverblog.cn/go.html",
       title:"穿梭虫洞-随机访问十年之约友链博客",
       target: "_blank",

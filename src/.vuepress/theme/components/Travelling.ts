@@ -4,9 +4,9 @@ import { h } from "vue";
 const Travelling: FunctionalComponent = () =>
   h(
     "div",
-    { class: "nav-item vp-repo" },
+    { class: "vp-nav-item vp-action" },
     h("a", {
-      class: "vp-repo-link",
+      class: "vp-action-link",
       href: "https://www.travellings.cn/go.html",
       title:"开往",
       target: "_blank",

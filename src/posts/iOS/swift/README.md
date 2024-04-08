@@ -13,4 +13,4 @@ dir:
 这里放置 Swift 相关的内容
 :::
 
-<AutoCatalog />
+<Catalog />

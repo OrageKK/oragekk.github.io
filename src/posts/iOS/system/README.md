@@ -13,4 +13,4 @@ dir:
 这里放置 系统 相关的内容
 :::
 
-<AutoCatalog />
+<Catalog />

@@ -21,11 +21,11 @@ import BlogWrapper from "@theme-hope/modules/blog/components/BlogWrapper";
 import DropTransition from "@theme-hope/components/transitions/DropTransition";
 import { useDarkmode } from "@theme-hope/modules/outlook/composables/index";
 import { useBlogType } from '@vuepress/plugin-blog/client'
-import type { ArticleInfo } from "vuepress-theme-hope";
 import SkipLink from "@theme-hope/components/SkipLink";
 import NewsList from "../components/NewsList.vue";
+import { ArticleInfoData } from "vuepress-theme-hope/shared";
 
-const news = useBlogType<ArticleInfo>("news");
+const news = useBlogType<ArticleInfoData>("news");
 const page = usePageData();
 const items = computed(() => (news.value ? news.value.items : null));
 const { isDarkmode } = useDarkmode();

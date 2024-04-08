@@ -61,7 +61,7 @@ export const zhSidebar = sidebar({
       text: "软件/工具教程",
       icon: "software",
       prefix: "tutorial/",
-      link: "tutorial",
+      link: "tutorial/",
     },
     {
       text: "博客相关",
@@ -73,7 +73,7 @@ export const zhSidebar = sidebar({
       text: "站点收藏",
       icon: "sitemap",
       prefix: "site",
-      link: "site",
+      link: "site/",
       children: "structure",
     },
     {

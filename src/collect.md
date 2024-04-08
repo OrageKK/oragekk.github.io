@@ -11,7 +11,7 @@ actions:
     type: primary
 
   - text: 更新历史 💡
-    link: /timeline
+    link: /timeline/
 
   - text: 关于本站 🛠
     link: /about

@@ -12,4 +12,4 @@ dir:
 这里放置 Flutter 内容
 :::
 
-<AutoCatalog />
+<Catalog />

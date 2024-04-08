@@ -1,10 +1,6 @@
 <template>
   <div class="vp-article-wrapper">
-    <article
-      class="vp-article-item"
-      vocab="https://schema.org/"
-      typeof="Article"
-    >
+    <article class="vp-article-item" vocab="https://schema.org/" typeof="Article">
       <div class="news-item-content">
         <div class="info-row">
           <img class="avatar" src="/assets/avatar.webp" />
@@ -45,6 +41,7 @@ import { Content } from "vuepress/client";
 import { useRouter } from "vue-router";
 import "vuepress-theme-hope/client/modules/info/styles/page-info.scss";
 import { computed } from "vue";
+import { ArticleInfoData } from "vuepress-theme-hope/shared";
 interface Articles {
   /**
    * Article path
@@ -57,7 +54,7 @@ interface Articles {
    *
    * 文章信息
    */
-  info: ArticleInfo;
+  info: ArticleInfoData;
 }
 const props = defineProps<Articles>() as Articles;
 const articleInfo = toRef(props, "info");
@@ -82,6 +79,7 @@ const routePath = computed(() => (route ? route.path.toString() : ""));
 
   text-align: start;
   overflow-wrap: break-word;
+
   @media (max-width: hope-config.$pad) {
     margin: 0 auto 1rem;
   }
@@ -89,6 +87,7 @@ const routePath = computed(() => (route ? route.path.toString() : ""));
   &:last-child {
     margin-bottom: 0;
   }
+
   .tag {
     position: absolute;
     top: 15px;
@@ -100,19 +99,23 @@ const routePath = computed(() => (route ? route.path.toString() : ""));
     padding: 2px 6px;
     text-align: center;
     font-family: ZWZT;
+
     @media (max-width: hope-config.$pad) {
       font-size: 0.8rem;
     }
   }
 }
+
 [data-theme="dark"] .tag {
   background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
   color: var(--text-color);
 }
+
 [data-theme="light"] .tag {
   background-image: linear-gradient(to right, #09203f 0%, #537895 100%);
   color: #fff;
 }
+
 .vp-article-item {
   overflow: hidden;
   padding: 0;
@@ -130,14 +133,17 @@ const routePath = computed(() => (route ? route.path.toString() : ""));
     transform: scale(1.01);
   }
 }
+
 .news-item-content {
   position: relative;
   width: 100%;
   padding: 20px 40px;
   box-sizing: border-box;
+
   .info-row {
     display: flex;
     flex-direction: row;
+
     // margin: 0px 20px;
     .avatar {
       width: 40px;
@@ -146,15 +152,14 @@ const routePath = computed(() => (route ? route.path.toString() : ""));
       margin-right: 10px;
     }
   }
+
   .vp-article-hr {
     height: 2px;
     border: none;
-    background: linear-gradient(
-      to right,
-      #7873f5 0%,
-      #97d9e1 33%,
-      #ec77ab 100%
-    );
+    background: linear-gradient(to right,
+        #7873f5 0%,
+        #97d9e1 33%,
+        #ec77ab 100%);
   }
 }
 </style>

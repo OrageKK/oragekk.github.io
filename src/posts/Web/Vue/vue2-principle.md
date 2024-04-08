@@ -4,7 +4,7 @@ icon: customize
 date: 2023-05-16
 star: true
 headerDepth: 3
-cover: 'https://w.wallhaven.cc/full/5w/wallhaven-5wmyo8.jpg'
+cover: 'https://files.codelife.cc/wallhaven/full/5w/wallhaven-5wmyo8.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp'
 category:
   - Vue
 tag:

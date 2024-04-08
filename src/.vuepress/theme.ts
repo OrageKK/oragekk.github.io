@@ -212,7 +212,7 @@ export default MyTheme({
     pwa: {
       favicon: "/favicon.ico",
       cacheHTML: true,
-      cachePic: true,
+      cacheImage: true,
       appendBase: true,
       apple: {
         icon: "/assets/icon/apple-icon-152.png",

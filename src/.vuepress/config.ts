@@ -66,7 +66,10 @@ export default defineUserConfig({
     }),
     // 代码高亮
     shikiPlugin({
-      theme: "one-dark-pro",
+      themes: {
+        light: "one-dark-pro",
+        dark: "one-dark-pro",
+      },
     }),
     // 一言插件
     hitokotoPlugin({}),

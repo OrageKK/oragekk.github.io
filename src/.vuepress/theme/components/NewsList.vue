@@ -7,7 +7,7 @@
     <figure>
       <img
         class="news-top-img"
-        src="https://api.vvhan.com/api/acgimg"
+        src="https://tuapi.eees.cc/api.php?category=dongman&px=pc&type=302"
         alt="图"
       />
     </figure>
@@ -35,13 +35,14 @@ import type { Article } from '@vuepress/plugin-blog/client';
 import Pagination from "@theme-hope/modules/blog/components/Pagination";
 import { EmptyIcon } from "@theme-hope/modules/blog/components/icons/index";
 import { useBlogOptions } from "@theme-hope/modules/blog/composables/index";
-import type { ArticleInfo } from "vuepress-theme-hope";
+
 import NewsItem from "./NewsItem.vue";
 import { HitokotoApi } from "../../plugins/vuepress-plugin-hitokoto/client/hitokoto-api";
+import { ArticleInfoData } from "vuepress-theme-hope/shared";
 declare const SUPPORT_PAGEVIEW: boolean;
 
 const props = defineProps<{
-  items: Article<ArticleInfo>[];
+  items: Article<ArticleInfoData>[];
 }>();
 const route = useRoute();
 const router = useRouter();
