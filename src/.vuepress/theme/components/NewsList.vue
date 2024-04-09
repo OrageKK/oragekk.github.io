@@ -1,15 +1,12 @@
 <template>
   <div id="article-list" class="vp-article-list">
-    <h3>{{hitokotoContent}}</h3>
+    <h3>{{ hitokotoContent }}</h3>
     <p class="sub-title" :data-item-count="String(items.length)">
       共{{ items.length }}条碎碎念~ (｡♥‿♥｡)
     </p>
     <figure>
-      <img
-        class="news-top-img"
-        src="https://tuapi.eees.cc/api.php?category=dongman&px=pc&type=302"
-        alt="图"
-      />
+      <img class="news-top-img" src="https://tuapi.eees.cc/api.php?category=dongman&px=pc&type=302" alt="图"
+        :key="imageKey" />
     </figure>
     <template v-if="currentArticles.length">
       <template v-for="({ info, path }, index) in currentArticles">
@@ -17,12 +14,8 @@
           <NewsItem :info="info" :path="path" :key="path" />
         </DropTransition>
       </template>
-      <Pagination
-        :current="currentPage"
-        :perPage="articlePerPage"
-        :total="items.length"
-        @update-current-page="updatePage"
-      />
+      <Pagination :current="currentPage" :perPage="articlePerPage" :total="items.length"
+        @update-current-page="updatePage" />
     </template>
     <EmptyIcon v-else />
   </div>
@@ -66,6 +59,13 @@ const updatePage = (page: number) => {
 };
 const hitokotoContent = ref('');
 
+const imageKey = ref(Math.random());
+
+router.beforeEach((to, from, next) => {
+  // 执行重新加载图片的逻辑
+  imageKey.value = Math.random();
+  next();
+});
 // 获取一言
 (async function () {
   const res = await HitokotoApi.request();
@@ -105,15 +105,15 @@ onMounted(() => {
 <style lang="scss" scoped>
 h3 {
   font-family: PRshouxie;
+
   @media (max-width: hope-config.$pad) {
     font-size: 1.8rem;
   }
-  background: linear-gradient(
-    120deg,
+
+  background: linear-gradient(120deg,
     var(--theme-color-light),
     var(--theme-color) 30%,
-    #50e3eb 100%
-  );
+    #50e3eb 100%);
   -webkit-background-clip: text;
   background-clip: text;
   font-weight: bold;
@@ -121,15 +121,19 @@ h3 {
   line-height: 1.5;
   -webkit-text-fill-color: transparent;
 }
+
 .sub-title {
   font-family: ZWZT;
   font-size: 1.5rem;
+
   @media (max-width: hope-config.$pad) {
     font-size: 1.0rem;
   }
+
   font-weight: bold;
   text-align: right;
 }
+
 .sub-title::before {
   content: "共" attr(data-item-count) "条碎碎念~ (｡♥‿♥｡)";
   position: absolute;
@@ -140,6 +144,7 @@ h3 {
   -webkit-mask-image: linear-gradient(transprent, #6c6868);
   mask-image: linear-gradient(transprent, #6c6868);
 }
+
 figure {
   position: relative;
   display: flex;
@@ -149,10 +154,12 @@ figure {
   text-align: center;
   transition: transform var(--vp-tt);
 }
+
 .news-top-img {
   overflow: hidden;
   border-radius: 8px;
 }
+
 .news-top-img:hover {
   box-shadow: 2px 2px 10px 0 var(--card-shadow);
 }
