@@ -97,12 +97,6 @@ export const friends: LinkData[] = [
     link: "https://camill.love"
   },
   {
-    name: "芈渡",
-    desc: "开发日常",
-    icon: "https://www.lllomh.com/static/images/photos.jpg",
-    link: "https://www.lllomh.com/"
-  },
-  {
     name: "SMallTIAN’s Blog",
     desc: "写我想写的，说我想说的。只要自己开心就好。",
     icon: "https://mcsmalltian.com/frontend/img/avatar.webp",
