@@ -138,7 +138,7 @@ export default MyTheme({
       provider: "Waline",
       serverURL: "https://talk.oragekk.me/", // your server url
       reaction: true,
-      requiredMeta: ["nick"],
+      requiredMeta: ["nick",'mail'],
       wordLimit: 300,
       emoji: [
         "https://unpkg.com/@waline/emojis@1.1.0/tieba",
