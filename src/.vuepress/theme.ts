@@ -140,8 +140,6 @@ export default MyTheme({
       reaction: true,
       requiredMeta: ["nick",'mail'],
       wordLimit: 300,
-      recaptchaV3Key:"6LcI0bopAAAAAE7PyKIZ7HnMP8Dro6JiHlX3E4CB",
-      login:"force",
       emoji: [
         "https://unpkg.com/@waline/emojis@1.1.0/tieba",
         "https://unpkg.com/@waline/emojis@1.1.0/weibo",
