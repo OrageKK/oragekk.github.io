@@ -1,6 +1,6 @@
 ---
 title: "一个 waline 评论系统bug引发的思考"
-icon: customize
+icon: hk-waline
 date: 2024-05-23
 star: true
 headerDepth: 3
