@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Thu, 23 May 2024 13:05:55 GMT</pubDate>
-    <lastBuildDate>Thu, 23 May 2024 13:05:55 GMT</lastBuildDate>
+    <pubDate>Fri, 24 May 2024 01:52:03 GMT</pubDate>
+    <lastBuildDate>Fri, 24 May 2024 01:52:03 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Vue</category>
@@ -261,7 +261,7 @@
 <p>回复完成后<code>CommentCard.vue</code>-<code>CommentBox.vue</code>销毁，顶部的<code>CommentBox.vue</code>组件重新渲染</p>
 </li>
 </ul>
-<p><mark>顶部的<code>CommentBox.vue</code>组件重新渲染会触发 watch，此时取值是旧值，</mark> 经查看，<code>submitComment</code>中的<code>editor.value=''``执行完后，</code>localStorage<code> 中的值并未立即修改，所以重新渲染的顶部</code>CommentBox.vue<code>组件在初始化时取到的值仍为</code>localStorage`中的旧值。</p>
+<p><mark>顶部的<code>CommentBox.vue</code>组件重新渲染会触发 watch，此时取值是旧值，</mark> 经查看，<code>submitComment</code>中的<code>editor.value=''</code>执行完后， <code>localStorage</code> 中的值并未立即修改，所以重新渲染的顶部<code>CommentBox.vue</code>组件在初始化时取到的值仍为<code>localStorage</code>中的旧值。</p>
 <h2>3. 验证</h2>
 <p>上边已经基本确定问题出在这句上</p>
 <div class="language-typescript line-numbers-mode" data-ext="ts" data-title="ts"><pre class="shiki shiki-themes one-dark-pro one-dark-pro" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span style="color:#E5C07B;--shiki-dark:#E5C07B">editor</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">.</span><span style="color:#E06C75;--shiki-dark:#E06C75">value</span><span style="color:#56B6C2;--shiki-dark:#56B6C2"> =</span><span style="color:#98C379;--shiki-dark:#98C379"> ""</span><span style="color:#ABB2BF;--shiki-dark:#ABB2BF">;</span></span>
