@@ -248,7 +248,7 @@ watch(
 
 - 回复完成后`CommentCard.vue`-`CommentBox.vue`销毁，顶部的`CommentBox.vue`组件重新渲染
 
-==顶部的`CommentBox.vue`组件重新渲染会触发 watch，此时取值是旧值，== 经查看，`submitComment`中的` editor.value=''``执行完后， `localStorage` 中的值并未立即修改，所以重新渲染的顶部`CommentBox.vue`组件在初始化时取到的值仍为`localStorage`中的旧值。
+==顶部的`CommentBox.vue`组件重新渲染会触发 watch，此时取值是旧值，== 经查看，`submitComment`中的`editor.value=''`执行完后， `localStorage` 中的值并未立即修改，所以重新渲染的顶部`CommentBox.vue`组件在初始化时取到的值仍为`localStorage`中的旧值。
 
 ## 3. 验证
 
