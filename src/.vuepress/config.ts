@@ -62,7 +62,11 @@ export default defineUserConfig({
         api: "https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r",
         type: "playlist",
         mid: "851947617",
+        aplayerOptions: {
+          lrcDisplay: 'hide'
+        }
       },
+
     }),
     // 代码高亮
     shikiPlugin({
