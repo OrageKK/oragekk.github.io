@@ -31,24 +31,24 @@ import BloggerInfo from "@theme-hope/modules/blog/components/BloggerInfo";
 import HomePage from "@theme-hope/components/HomePage";
 import NormalPage from "@theme-hope/components/NormalPage";
 import SkipLink from "@theme-hope/components/SkipLink";
-import FadeSlideY from "@theme-hope/components/transitions/FadeSlideY";
+import { FadeSlideY } from "@theme-hope/components/transitions/FadeSlideY";
 import Sponsor from "../components/Sponsor.vue";
 import {
   useThemeData,
   useThemeLocaleData,
   useWindowSize,
 } from "@theme-hope/composables/index";
-declare const ENABLE_BLOG: boolean
+declare const __VP_BLOG__: boolean
 const themeData = useThemeData();
 const themeLocale = useThemeLocaleData();
 const page = usePageData();
 const frontmatter = usePageFrontmatter();
 const { isMobile } = useWindowSize();
 const sidebarDisplay = computed(() =>
-  ENABLE_BLOG
+  __VP_BLOG__
     ? themeLocale.value.blog?.sidebarDisplay ||
-      themeData.value.blog?.sidebarDisplay ||
-      "mobile"
+    themeData.value.blog?.sidebarDisplay ||
+    "mobile"
     : "none"
 );
 </script>

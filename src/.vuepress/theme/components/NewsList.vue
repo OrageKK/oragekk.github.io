@@ -21,18 +21,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch, nextTick } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import DropTransition from "@theme-hope/components/transitions/DropTransition";
+import { DropTransition } from "@theme-hope/components/transitions/DropTransition";
 import type { Article } from '@vuepress/plugin-blog/client';
 import Pagination from "@theme-hope/modules/blog/components/Pagination";
 import { EmptyIcon } from "@theme-hope/modules/blog/components/icons/index";
 import { useBlogOptions } from "@theme-hope/modules/blog/composables/index";
-
+import { isSupported, usePageview } from "@vuepress/plugin-comment/pageview";
 import NewsItem from "./NewsItem.vue";
 import { HitokotoApi } from "../../plugins/vuepress-plugin-hitokoto/client/hitokoto-api";
 import { ArticleInfoData } from "vuepress-theme-hope/shared";
-declare const SUPPORT_PAGEVIEW: boolean;
 
 const props = defineProps<{
   items: Article<ArticleInfoData>[];
@@ -40,23 +39,10 @@ const props = defineProps<{
 const route = useRoute();
 const router = useRouter();
 const blogOptions = useBlogOptions();
+const updatePageview = usePageview();
 const currentPage = ref(1);
-const articlePerPage = computed(() => blogOptions.value.articlePerPage || 10);
-const currentArticles = computed(() =>
-  props.items.slice(
-    (currentPage.value - 1) * articlePerPage.value,
-    currentPage.value * articlePerPage.value
-  )
-);
-const updatePage = (page: number) => {
-  currentPage.value = page;
-  const query = { ...route.query };
-  if (query["page"] === page.toString() || (page === 1 && !query["page"]))
-    return;
-  if (page === 1) delete query["page"];
-  else query["page"] = page.toString();
-  void router.push({ path: route.path, query });
-};
+const articlePerPage = computed(() => blogOptions.value.articlePerPage ?? 10);
+const currentArticles = computed(() => props.items.slice((currentPage.value - 1) * articlePerPage.value, currentPage.value * articlePerPage.value));
 const hitokotoContent = ref('');
 
 const imageKey = ref(Math.random());
@@ -73,34 +59,38 @@ router.beforeEach((to, from, next) => {
     hitokotoContent.value = res.data.hitokoto;
   }
 })();
+
+const updatePage = async (page) => {
+  currentPage.value = page;
+  const query = { ...route.query };
+  const needUpdate = !(query["page"] === page.toString() || // Page equal as query
+    // Page is 1 and query is empty
+    (page === 1 && !query["page"]));
+  if (needUpdate) {
+    if (page === 1)
+      delete query["page"];
+    else
+      query["page"] = page.toString();
+    await router.push({ path: route.path, query });
+  }
+  if (isSupported) {
+    await nextTick();
+    updatePageview({ selector: ".vp-pageview" });
+  }
+};
 onMounted(() => {
   const { page } = route.query;
-  updatePage(page ? Number(page) : 1);
-  if (SUPPORT_PAGEVIEW)
-    if (SUPPORT_PAGEVIEW) {
-      void import(
-        /* webpackChunkName: "pageview" */ "vuepress-plugin-comment2/pageview"
-      ).then(({ updatePageview }) => {
-        updatePageview();
-      });
-    }
+  void updatePage(page ? Number(page) : 1);
   watch(currentPage, () => {
-    // list top border distance
-    const distance =
-      document.querySelector("#article-list").getBoundingClientRect().top +
+    // List top border distance
+    const distance = document.querySelector("#article-list").getBoundingClientRect().top +
       window.scrollY;
     setTimeout(() => {
       window.scrollTo(0, distance);
     }, 100);
   });
-  // FIXME: Workaround for https://github.com/vuepress/vuepress-next/issues/1249
-  watch(
-    () => route.query,
-    ({ page }) => {
-      updatePage(page ? Number(page) : 1);
-    }
-  );
 });
+
 </script>
 <style lang="scss" scoped>
 h3 {

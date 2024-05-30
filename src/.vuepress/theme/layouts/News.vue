@@ -18,7 +18,7 @@
 import { computed, resolveComponent } from "vue";
 import { usePageData } from "vuepress/client";
 import BlogWrapper from "@theme-hope/modules/blog/components/BlogWrapper";
-import DropTransition from "@theme-hope/components/transitions/DropTransition";
+import { DropTransition } from "@theme-hope/components/transitions/DropTransition";
 import { useDarkmode } from "@theme-hope/modules/outlook/composables/index";
 import { useBlogType } from '@vuepress/plugin-blog/client'
 import SkipLink from "@theme-hope/components/SkipLink";

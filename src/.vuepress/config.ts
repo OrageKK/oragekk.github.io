@@ -2,7 +2,7 @@ import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 import { viteBundler } from '@vuepress/bundler-vite'
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
-// import { ohmylive2dPlugin } from "vuepress-plugin-oh-my-live2d";
+// import { oml2dPlugin } from "vuepress-plugin-oh-my-live2d";
 import {
   canvasPlugin,
   CanvasPluginType,
@@ -66,7 +66,6 @@ export default defineUserConfig({
           lrcDisplay: 'hide'
         }
       },
-
     }),
     // 代码高亮
     shikiPlugin({
@@ -156,32 +155,39 @@ export default defineUserConfig({
       },
     }),
     // 看板娘插件
-    // ohmylive2dPlugin({
-    //   // 在这里进行配置
-    //   source: "https://cdn.jsdelivr.net/gh/oragekk/blog-assets/live2D",
+    // oml2dPlugin({
     //   models: [
     //     {
-    //       scale: 0.44,
-    //       path: "/sipeibojue_5/sipeibojue_5.model3.json",
+    //       scale: 0.04,
+    //       path: "https://cdn.jsdelivr.net/gh/oragekk/blog-assets/live2D/sipeibojue_5/sipeibojue_5.model3.json",
+    //       position: [0, 70],
+    //       stageStyle: {
+    //         height: 350
+    //       }
     //     },
     //     {
-    //       scale: 0.4,
-    //       path: "/lafei_4/lafei_4.model3.json",
+    //       scale: 0.04,
+    //       path: "https://cdn.jsdelivr.net/gh/oragekk/blog-assets/live2D/lafei_4/lafei_4.model3.json",
+    //       position: [0, 80],
+    //       stageStyle: {
+    //         height: 360
+    //       }
     //     },
     //     {
-    //       scale: 1.0,
-    //       path: "/z46_2/z46_2.model3.json",
+    //       scale: 0.1,
+    //       path: "https://cdn.jsdelivr.net/gh/oragekk/blog-assets/live2D/z46_2/z46_2.model3.json",
+    //       position: [0, 60],
+    //       stageStyle: {
+    //         height: 330
+    //       }
     //     },
     //   ],
     //   tips: {
-    //     style: {
-    //       width: 150,
-    //       height: 100,
-    //       offsetX: 0,
-    //       offsetY: 90,
+    //     idleTips: {
+    //       wordTheDay:true
     //     },
     //   },
-    // }),
+    // })
   ],
   // Enable it with pwa
   shouldPrefetch: false,
