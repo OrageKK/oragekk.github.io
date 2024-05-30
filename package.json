@@ -20,7 +20,6 @@
     "@vuepress/plugin-comment": "2.0.0-rc.31",
     "@vuepress/plugin-pwa": "2.0.0-rc.31",
     "@vuepress/helper": "2.0.0-rc.31",
-    "@vuepress/plugin-shiki": "2.0.0-rc.32",
     "@waline/client": "^3.2.1",
     "chart.js": "^4.4.3",
     "echarts": "^5.5.0",

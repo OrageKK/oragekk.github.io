@@ -63,7 +63,7 @@ export default MyTheme({
       // Whatsapp: "https://example.com",
       // Youtube: "https://example.com",
       // Zhihu: "https://example.com",
-      
+
     },
     name: "上冬十二",
   },
@@ -101,6 +101,13 @@ export default MyTheme({
     },
   },
   plugins: {
+    // 代码高亮
+    shiki: {
+      themes: {
+        light: "one-dark-pro",
+        dark: "one-dark-pro",
+      },
+    },
     components: {
       components: ["BiliBili", "Badge"],
     },
@@ -135,7 +142,7 @@ export default MyTheme({
       provider: "Waline",
       serverURL: "https://talk.oragekk.me/", // your server url
       reaction: true,
-      requiredMeta: ["nick",'mail'],
+      requiredMeta: ["nick", 'mail'],
       wordLimit: 300,
       emoji: [
         "https://unpkg.com/@waline/emojis@1.1.0/tieba",
