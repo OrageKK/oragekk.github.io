@@ -13,7 +13,6 @@ import theme from "./theme.js";
 import { popperPlugin } from "./plugins/vuepress-plugin-popper";
 import { PopperShape } from "@moefy-canvas/theme-popper";
 import { hitokotoPlugin } from "./plugins/vuepress-plugin-hitokoto";
-import { shikiPlugin } from "@vuepress/plugin-shiki";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import metingPlugin from "vuepress-plugin-meting2";
 
