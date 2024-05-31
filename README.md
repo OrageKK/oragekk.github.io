@@ -4,7 +4,7 @@
 
 地址：[https://oragekk.me](https://oragekk.me)
 
-基于`vuepress2.x`和`vuepress-theme-hope`开发，最大限度利用vite的打包速度，基于TypeScript使用vue3编写组件
+基于`vuepress2.x`和`vuepress-theme-hope`开发，基于TypeScript使用vue3编写组件
 
 ## 框架支持
 
@@ -63,7 +63,7 @@
    - 引入字体，品如手写体，夏行楷体
    - waline 增加自定义emoji，并修改展示样式
    - 个性log
-   - 自动推送新文章url到搜索引擎（百度、Bing、Google）👉[详细配置](/platform/github/github-action)
+   - 自动推送新文章url到搜索引擎（百度、Bing、Google）👉[详细配置](https://oragekk.me/blog/auto-push.html)
 
 
 ## 使用方式
