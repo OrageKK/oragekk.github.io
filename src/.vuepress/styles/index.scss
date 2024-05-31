@@ -8,7 +8,8 @@
   font-family: "PRshouxie";
   src: url("https://cdn.jsdelivr.net/gh/oragekk/blog-assets/font/8d6a7466947745f9f211cd17e0ed5dc3.woff2")
       format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/oragekk/blog-assets/font/8d6a7466947745f9f211cd17e0ed5dc3.woff") format("woff");
+    url("https://cdn.jsdelivr.net/gh/oragekk/blog-assets/font/8d6a7466947745f9f211cd17e0ed5dc3.woff")
+      format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -155,10 +156,7 @@
   border: 1px solid #fff !important;
 }
 
-// #oml-stage {
-//   bottom: 20% !important;
-// }
-.aplayer.aplayer-fixed{
+.aplayer.aplayer-fixed {
   z-index: 9998 !important;
 }
 // 适配移动端
@@ -173,4 +171,74 @@ hr {
   height: 1px;
   border: none;
   background: linear-gradient(to right, #7873f5 0%, #97d9e1 33%, #ec77ab 100%);
+}
+
+// 代码块样式
+.theme-hope-content > div[class*="language-"] {
+  @media (max-width: hope-config.$tablet) {
+    margin: 0.875rem -1.5rem;
+    border-radius: 6px;
+  }
+}
+div[class*="language-"].line-numbers-mode:after {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.7rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 12px;
+  content: "";
+  background: #fc625d;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+}
+div[class*="language-"]:after {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.7rem;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 12px;
+  content: "";
+  background: #fc625d;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+}
+div[class*="language-"].line-numbers-mode .line-numbers {
+  background-color: var(--code-bg-color) !important;
+  width: 2.4rem;
+  padding: 0.6rem 0;
+  margin-top: 34px;
+  margin-bottom: 10px;
+}
+div[class*="language-"] {
+  background-color: var(--code-bg-color) !important;
+  padding-top: 33px;
+  padding-bottom: 15px;
+  margin: 20px 0;
+}
+div[class*="language-"]:before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0.55rem;
+  left: 5rem;
+  z-index: 3;
+  color: var(--code-line-number-color);
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: system-ui;
+}
+div[class*="language-"]:hover:before {
+  display: block !important;
+}
+div[class*="language-"].line-numbers-mode pre code {
+  padding: 0.6rem 1rem;
+}
+div[class*="language-"]:not([class*="line-numbers-mode"]) pre code {
+  padding: 0 1rem;
+}
+div[class*="language-"].line-numbers-mode pre {
+  margin: 0;
+  margin-left: 2.4rem;
+  border-left: 2px solid var(--code-highlight-bg-color);
+  border-radius: 0px;
 }

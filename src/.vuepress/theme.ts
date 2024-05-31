@@ -107,6 +107,7 @@ export default MyTheme({
         light: "one-dark-pro",
         dark: "one-dark-pro",
       },
+      lineNumbers:15,
     },
     components: {
       components: ["BiliBili", "Badge"],
