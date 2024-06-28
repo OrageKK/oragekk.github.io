@@ -102,6 +102,12 @@ export const friends: LinkData[] = [
     icon: "https://mcsmalltian.com/frontend/img/avatar.webp",
     link: "https://blog.mcsmalltian.com/",
   },
+  {
+    name: "LineXic书屋",
+    desc: "念念不忘，必有回响",
+    icon: "https://linexic.top/logo.png",
+    link: "https://linexic.top/",
+  },
 ];
 export const invalid: LinkData[] = [
   
