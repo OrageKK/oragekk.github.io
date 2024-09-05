@@ -108,6 +108,12 @@ export const friends: LinkData[] = [
     icon: "https://linexic.top/logo.png",
     link: "https://linexic.top/",
   },
+  {
+    name: "RichELF",
+    desc: "给岁月以文明，给机器以生命。",
+    icon: "https://richelf.tech/favicon.ico",
+    link: "https://richelf.tech/",
+  }
 ];
 export const invalid: LinkData[] = [
   
