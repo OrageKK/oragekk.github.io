@@ -113,6 +113,18 @@ export const friends: LinkData[] = [
     desc: "给岁月以文明，给机器以生命。",
     icon: "https://richelf.tech/favicon.ico",
     link: "https://richelf.tech/",
+  },
+  {
+    name: "文奚•技术驿站",
+    desc: "代码在手，天下我有",
+    icon: "http://vxcode.top/assets/icon/logo2.png",
+    link: "https://vxcode.top",
+  },
+  {
+    name: "火柴人儿的小站",
+    desc: "仰望星空的打工人",
+    icon: "https://upyun.huochairener-blog.cn/hexo/avater/202407011007774.png",
+    link: "https://huochairener-blog.cn/",
   }
 ];
 export const invalid: LinkData[] = [
