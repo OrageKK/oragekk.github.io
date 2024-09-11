@@ -97,12 +97,6 @@ export const friends: LinkData[] = [
     link: "https://camill.love"
   },
   {
-    name: "SMallTIAN’s Blog",
-    desc: "写我想写的，说我想说的。只要自己开心就好。",
-    icon: "https://mcsmalltian.com/frontend/img/avatar.webp",
-    link: "https://blog.mcsmalltian.com/",
-  },
-  {
     name: "LineXic书屋",
     desc: "念念不忘，必有回响",
     icon: "https://linexic.top/logo.png",
@@ -128,6 +122,10 @@ export const friends: LinkData[] = [
   }
 ];
 export const invalid: LinkData[] = [
-  
-  
+  {
+    name: "SMallTIAN’s Blog",
+    desc: "写我想写的，说我想说的。只要自己开心就好。",
+    icon: "https://mcsmalltian.com/frontend/img/avatar.webp",
+    link: "https://blog.mcsmalltian.com/",
+  },
 ];

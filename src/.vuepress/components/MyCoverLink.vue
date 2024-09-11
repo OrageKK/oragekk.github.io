@@ -3,7 +3,7 @@
     <template v-if="linkDatas.length > 0" v-for="(item, index) in linkDatas" :key="index">
       <div class="link-card">
         <a class="card-body" :href="item.link" target="_blank">
-          <img class="link-picture" :src="`https://s0.wp.com/mshots/v1/${item.link}?w=323px&h=200px`" alt=""
+          <img class="link-picture" :src="`https://s0.wp.com/mshots/v1/${encodeURIComponent(item.link)}?w=323&h=200`" alt=""
             rel="noopener noreferrer external" />
           <div class="card-content">
             <div class="link-avatar my-auto">
