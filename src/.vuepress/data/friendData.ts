@@ -111,7 +111,7 @@ export const friends: LinkData[] = [
   {
     name: "文奚•技术驿站",
     desc: "代码在手，天下我有",
-    icon: "http://vxcode.top/assets/icon/logo2.png",
+    icon: "https://vxcode.top/assets/icon/logo2.png",
     link: "https://vxcode.top",
   },
   {
