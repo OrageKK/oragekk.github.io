@@ -125,6 +125,12 @@ export const friends: LinkData[] = [
     desc: "仰望星空的打工人",
     icon: "https://bu.dusays.com/2024/09/11/66e1573305b78.jpg",
     link: "https://huochairener-blog.cn/",
+  },
+  {
+    name: "运维开发绿皮书",
+    desc: "放置运维开发笔记、搜集、摘录、实践，保持好奇心，看文需谨慎，后果很严重！",
+    icon: "https://www.geekery.cn/logo.svg",
+    link: "https://www.geekery.cn/",
   }
 ];
 export const invalid: LinkData[] = [
