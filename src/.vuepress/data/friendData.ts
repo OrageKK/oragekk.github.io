@@ -131,6 +131,12 @@ export const friends: LinkData[] = [
     desc: "放置运维开发笔记、搜集、摘录、实践，保持好奇心，看文需谨慎，后果很严重！",
     icon: "https://www.geekery.cn/logo.svg",
     link: "https://www.geekery.cn/",
+  },
+  {
+    name: "Brandon",
+    desc: "Web开发，摄影 & 旅行",
+    icon: "https://heybran.tech/wp-content/uploads/2024/10/heybran-logo-1.svg",
+    link: "https://heybran.tech/",
   }
 ];
 export const invalid: LinkData[] = [
