@@ -137,6 +137,12 @@ export const friends: LinkData[] = [
     desc: "Web开发，摄影 & 旅行",
     icon: "https://heybran.tech/wp-content/uploads/2024/10/heybran-logo-1.svg",
     link: "https://heybran.tech/",
+  },
+  {
+    name: "问心斋",
+    desc: "一只狗的精神自留地",
+    icon: "https://blog.ehnap.com/logo.webp",
+    link: "https://blog.ehnap.com/",
   }
 ];
 export const invalid: LinkData[] = [
