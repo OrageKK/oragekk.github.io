@@ -143,6 +143,12 @@ export const friends: LinkData[] = [
     desc: "一只狗的精神自留地",
     icon: "https://blog.ehnap.com/logo.webp",
     link: "https://blog.ehnap.com/",
+  },
+  {
+    name: "ToLiucyLinux",
+    desc: "享运维人生，探技术奥秘。ToLiucyLinux，Linux学习优质指南，助你构筑知识体系。",
+    icon: "http://www.liuchenyang.top/picture.jpg",
+    link: "http://liuchenyang.top/",
   }
 ];
 export const invalid: LinkData[] = [
