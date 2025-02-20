@@ -123,7 +123,7 @@ export const friends: LinkData[] = [
   {
     name: "火柴人儿的小站",
     desc: "仰望星空的打工人",
-    icon: "https://bu.dusays.com/2024/09/11/66e1573305b78.jpg",
+    icon: "https://ikun.huochairener-blog.cn/i/2025/02/20/67b69bf2c9531.webp",
     link: "https://huochairener-blog.cn/",
   },
   {
