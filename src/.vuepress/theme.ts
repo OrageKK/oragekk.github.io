@@ -145,7 +145,7 @@ export default MyTheme({
       reaction: true,
       requiredMeta: ["nick", 'mail'],
       wordLimit: 300,
-      pageSize: 5,
+      pageSize: 10,
       emoji: [
         "https://unpkg.com/@waline/emojis@1.1.0/tieba",
         "https://unpkg.com/@waline/emojis@1.1.0/weibo",
