@@ -149,6 +149,12 @@ export const friends: LinkData[] = [
     desc: "享运维人生，探技术奥秘。ToLiucyLinux，Linux学习优质指南，助你构筑知识体系。",
     icon: "http://www.liuchenyang.top/picture.jpg",
     link: "http://liuchenyang.top/",
+  },
+  {
+    name: "XINGJI",
+    desc: "迄今所有人生都大写着失败，但不妨碍我继续向前✨",
+    icon: "https://i.p-i.vip/47/20240920-66ed7b168c38c.jpg",
+    link: "https://vite.xingji.fun",
   }
 ];
 export const invalid: LinkData[] = [
