@@ -1,0 +1,57 @@
+name: 推送脚本
+
+on:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - 'sitemap.xml'
+
+jobs:
+  push_bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: 'gh-pages'
+          path: gh-pages
+          
+      - name: 获取上一次提交SHA
+        id: last-commit
+        run: |
+          cd gh-pages
+          PREV=$(git log --format="%H" -n 2 | tail -n 1)
+          echo "SHA_KEY=$PREV" >> $GITHUB_OUTPUT
+          echo $PREV
+        
+      - name: 拉取prev代码
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ steps.last-commit.outputs.SHA_KEY }}
+          path: prev
+
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: 'main'
+          path: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip" # 设置缓存
+
+      - name: 安装依赖
+        run: |
+          pip install -r main/script/requirements.txt
+      - name: 运行脚本
+        env:
+          #设置secrets的环境变量
+          BAIDU_KEY: ${{ secrets.BAIDU_KEY }}
+          BING_KEY: ${{ secrets.BING_KEY }}
+          GOOGLE_JSON: ${{ secrets.GOOGLE_JSON }}
+        run: |
+          python main/script/submit.py --sitemap gh-pages/sitemap.xml --prevsitemap prev/sitemap.xml
