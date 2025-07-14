@@ -104,8 +104,8 @@ export const friends: LinkData[] = [
   },
   {
     name: "LineXic书屋",
-    desc: "念念不忘，必有回响",
-    icon: "https://linexic.top/logo.png",
+    desc: "难离难舍，想抱紧些",
+    icon: "https://www.linexic.top/avatar.webp",
     link: "https://linexic.top/",
   },
   {
