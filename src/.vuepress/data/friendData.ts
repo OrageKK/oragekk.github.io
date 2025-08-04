@@ -87,8 +87,8 @@ export const friends: LinkData[] = [
   {
     name: "Quantum Bit",
     desc: "Never stop searching, even if only for a brief flash of light.",
-    icon: "https://www.eula.club/avatar.png",
-    link: "https://www.eula.club"
+    icon: "https://www.imiao.top/avatar.png",
+    link: "https://www.imiao.top/"
   },
   {
     name: "Camill",
