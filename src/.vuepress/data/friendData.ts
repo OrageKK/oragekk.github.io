@@ -79,12 +79,6 @@ export const friends: LinkData[] = [
     link: "https://www.ohyee.cc/",
   },
   {
-    name: "寒烟志",
-    desc: "半山腰总是挤的，你得去山顶看看",
-    icon: "https://www.qiaoxiao.top/static/avater/avater.jpg",
-    link: "https://yanyuplus.cn/",
-  },
-  {
     name: "Quantum Bit",
     desc: "Never stop searching, even if only for a brief flash of light.",
     icon: "https://www.imiao.top/avatar.png",
@@ -113,12 +107,6 @@ export const friends: LinkData[] = [
     desc: "给岁月以文明，给机器以生命。",
     icon: "https://richelf.tech/favicon.ico",
     link: "https://richelf.tech/",
-  },
-  {
-    name: "文奚•技术驿站",
-    desc: "代码在手，天下我有",
-    icon: "https://vxcode.top/assets/icon/logo2.png",
-    link: "https://vxcode.top",
   },
   {
     name: "火柴人儿的小站",
@@ -164,5 +152,16 @@ export const friends: LinkData[] = [
   }
 ];
 export const invalid: LinkData[] = [
-  
+  {
+    name: "寒烟志",
+    desc: "半山腰总是挤的，你得去山顶看看",
+    icon: "https://www.qiaoxiao.top/static/avater/avater.jpg",
+    link: "https://yanyuplus.cn/",
+  },
+  {
+    name: "文奚•技术驿站",
+    desc: "代码在手，天下我有",
+    icon: "https://vxcode.top/assets/icon/logo2.png",
+    link: "https://vxcode.top",
+  },
 ];
