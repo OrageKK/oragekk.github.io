@@ -5,7 +5,7 @@
       共{{ items.length }}条碎碎念~ (｡♥‿♥｡)
     </p>
     <figure>
-      <img class="news-top-img" src="http://api.btstu.cn/sjbz/?lx=suiji" alt="图"
+      <img class="news-top-img" src="https://api.isoyu.com/aipc_animation.php" alt="图"
         :key="imageKey" />
     </figure>
     <template v-if="currentArticles.length">
