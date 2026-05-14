@@ -6,8 +6,8 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 09 Feb 2026 07:59:43 GMT</pubDate>
-    <lastBuildDate>Mon, 09 Feb 2026 07:59:43 GMT</lastBuildDate>
+    <pubDate>Thu, 14 May 2026 06:54:04 GMT</pubDate>
+    <lastBuildDate>Thu, 14 May 2026 06:54:04 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
     <category>Vue</category>
@@ -289,7 +289,7 @@
 <h2>4. 思考</h2>
 <p>在<a href="https://www.vueusejs.com/core/useStorage/#usage" target="_blank" rel="noopener noreferrer">vueusejs</a>的文档中，其实<code>useStorage</code>应该是一个同步操作，它还有一个<code>useStorageAsync</code>的API，支持异步的响应式Storage，按理说里边不应该包含太多异步的或者延时性的代码，我也找到源码浅浅看了一下，目前还没找到问题在哪里，按照替换<code>localStorage.setItem('WALINE_COMMENT_BOX_EDITOR', '');</code>可行来看，问题就在<code>useStorage</code>身上无疑，后续有时间，会继续探索一下，给官方的PR<a href="https://github.com/walinejs/waline/pull/2524" target="_blank" rel="noopener noreferrer">#2524</a>也已经提了</p>
 ]]></content:encoded>
-      <enclosure url="https://files.codelife.cc/wallhaven/full/6d/wallhaven-6d7xmx.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
+      <enclosure url="https://w.wallhaven.cc/full/6d/wallhaven-6d7xmx.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
     </item>
     <item>
       <title>Jenkins 远程触发构建踩坑记</title>
@@ -1299,7 +1299,7 @@ Jenkins 需要安装 GitLab Plugin 插件，然后配置 <strong>webhook</strong
 </ol>
 </section>
 ]]></content:encoded>
-      <enclosure url="https://files.codelife.cc/wallhaven/full/5w/wallhaven-5wmyo8.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
+      <enclosure url="https://w.wallhaven.cc/full/5w/wallhaven-5wmyo8.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
     </item>
     <item>
       <title>Dart 中的并发</title>
@@ -1595,7 +1595,7 @@ Jenkins 需要安装 GitLab Plugin 插件，然后配置 <strong>webhook</strong
 <h2>结论</h2>
 <p>Flutter 一切都是 widget 的口号是围绕着通过组合 widget 来构建用户界面， widget 又由更为基础的 widget 构成。这种积极组合的结果是需要精心设计的算法和数据结构才能有效处理大量的 widget。通过一些额外的机制，这些数据结构还能使开发者轻松构建无限滚动列表，以便在 widget 可见时进行按需构建。</p>
 ]]></content:encoded>
-      <enclosure url="https://files.codelife.cc/wallhaven/full/4v/wallhaven-4vp2x3.png?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
+      <enclosure url="https://w.wallhaven.cc/full/4v/wallhaven-4vp2x3.png?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
     </item>
     <item>
       <title>如何利用GitHub Action提交URL到搜索引擎</title>
@@ -1643,7 +1643,7 @@ Jenkins 需要安装 GitLab Plugin 插件，然后配置 <strong>webhook</strong
 <p>字面意思就是持续集成Continuous Intergation/持续分发Continuous Delivery持续部署Continuous Deployment，网上有太多同质的解释都太过于晦涩，</p>
 <p>提到CI/CD就离不开一个词叫流水线。流水线上每个人的工作是分工明确的，而且工程是有先后顺序，就像造一台车，先造零件，然后组装、喷涂、内饰最后还要测试。软件开发同样如此，有前期的产品设计，UI设计、单元的开发，产品的测试，优化迭代等都由不同的人负责。</p>
 ]]></content:encoded>
-      <enclosure url="https://files.codelife.cc/wallhaven/full/j3/wallhaven-j3zvvp.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
+      <enclosure url="https://w.wallhaven.cc/full/j3/wallhaven-j3zvvp.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
     </item>
     <item>
       <title>提交URL到搜索引擎（百度、Bing、Google）</title>
@@ -1662,7 +1662,7 @@ Jenkins 需要安装 GitLab Plugin 插件，然后配置 <strong>webhook</strong
 <!-- more -->
 <h2>流程图</h2>
 ]]></content:encoded>
-      <enclosure url="https://files.codelife.cc/wallhaven/full/ex/wallhaven-ex8j2k.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
+      <enclosure url="https://w.wallhaven.cc/full/ex/wallhaven-ex8j2k.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp" type="image/"/>
     </item>
     <item>
       <title>素材设计</title>
