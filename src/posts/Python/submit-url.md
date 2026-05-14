@@ -5,7 +5,7 @@ icon: "result"
 subtitle: "python"
 date: 2023-04-17
 isOriginal: true
-cover: "https://files.codelife.cc/wallhaven/full/ex/wallhaven-ex8j2k.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
+cover: "https://w.wallhaven.cc/full/ex/wallhaven-ex8j2k.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
 category:
   - python
 tag:
