@@ -4,7 +4,7 @@ icon: hk-waline
 date: 2024-05-23
 star: true
 headerDepth: 3
-cover: "https://files.codelife.cc/wallhaven/full/6d/wallhaven-6d7xmx.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
+cover: "https://w.wallhaven.cc/full/6d/wallhaven-6d7xmx.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
 category:
   - Vue
 tag:
@@ -291,6 +291,5 @@ function nextTick(callback?: () => void): Promise<void>
 
 ## 4. 思考
 在[vueusejs](https://www.vueusejs.com/core/useStorage/#usage)的文档中，其实`useStorage`应该是一个同步操作，它还有一个`useStorageAsync`的API，支持异步的响应式Storage，按理说里边不应该包含太多异步的或者延时性的代码，我也找到源码浅浅看了一下，目前还没找到问题在哪里，按照替换`localStorage.setItem('WALINE_COMMENT_BOX_EDITOR', '');`可行来看，问题就在`useStorage`身上无疑，后续有时间，会继续探索一下，给官方的PR[#2524](https://github.com/walinejs/waline/pull/2524)也已经提了
-
 
 
