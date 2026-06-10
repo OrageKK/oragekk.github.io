@@ -1,0 +1,43 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">ChatGPT 与 Codex 订阅准备清单</title>
+  <desc id="desc">准备土耳其 Apple ID、SEAGM 礼品卡和 iPhone 订阅环境的流程示意图</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#f6f8fb"/>
+      <stop offset="1" stop-color="#e7f2ee"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1f2937" flood-opacity=".16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="82" y="76" width="1036" height="523" rx="28" fill="#ffffff" filter="url(#shadow)"/>
+  <text x="132" y="150" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="46" font-weight="700" fill="#111827">ChatGPT &amp; Codex 订阅准备清单</text>
+  <text x="134" y="196" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#667085">先准备账号与余额，再回到 iPhone 完成 App 内购买</text>
+  <g transform="translate(126 262)">
+    <rect width="278" height="220" rx="20" fill="#f0f7ff" stroke="#b9dcff"/>
+    <circle cx="54" cy="58" r="28" fill="#2563eb"/>
+    <text x="45" y="68" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#fff">1</text>
+    <text x="34" y="120" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" fill="#102a43">土耳其 Apple ID</text>
+    <text x="34" y="158" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#475467">用于切换 App Store 区域</text>
+    <text x="34" y="190" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#475467">建议单独准备，信息保持真实</text>
+  </g>
+  <g transform="translate(461 262)">
+    <rect width="278" height="220" rx="20" fill="#f4fbf2" stroke="#c8e7bf"/>
+    <circle cx="54" cy="58" r="28" fill="#16a34a"/>
+    <text x="45" y="68" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#fff">2</text>
+    <text x="34" y="120" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" fill="#16351f">500 礼品卡</text>
+    <text x="34" y="158" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#475467">在 SEAGM 购买土区 Apple</text>
+    <text x="34" y="190" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#475467">Gift Card，并兑换到账户余额</text>
+  </g>
+  <g transform="translate(796 262)">
+    <rect width="278" height="220" rx="20" fill="#fff7ed" stroke="#fed7aa"/>
+    <circle cx="54" cy="58" r="28" fill="#ea580c"/>
+    <text x="45" y="68" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#fff">3</text>
+    <text x="34" y="120" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" fill="#431407">iPhone 订阅</text>
+    <text x="34" y="158" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#475467">安装 ChatGPT，选择套餐</text>
+    <text x="34" y="190" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#475467">用 Apple 账户余额完成扣款</text>
+  </g>
+  <path d="M405 372h56" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M739 372h56" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+</svg>

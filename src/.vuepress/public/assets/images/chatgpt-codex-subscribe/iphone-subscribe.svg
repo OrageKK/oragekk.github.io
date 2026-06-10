@@ -1,0 +1,44 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">iPhone 上订阅 ChatGPT 与 Codex</title>
+  <desc id="desc">iPhone 中 App Store 兑换余额并在 ChatGPT 应用内订阅的流程示意图</desc>
+  <rect width="1200" height="675" fill="#eef6f4"/>
+  <text x="94" y="105" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="44" font-weight="700" fill="#0f172a">在 iPhone 上完成订阅</text>
+  <text x="96" y="150" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#475569">兑换余额后打开 ChatGPT，选择 Plus / Pro 等可用套餐，按系统弹窗确认</text>
+  <g transform="translate(118 205)">
+    <rect width="238" height="390" rx="42" fill="#111827"/>
+    <rect x="18" y="20" width="202" height="350" rx="28" fill="#ffffff"/>
+    <rect x="75" y="34" width="88" height="10" rx="5" fill="#111827"/>
+    <text x="48" y="88" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#111827">App Store</text>
+    <rect x="42" y="126" width="154" height="46" rx="12" fill="#dbeafe"/>
+    <text x="61" y="155" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#1d4ed8">兑换礼品卡</text>
+    <rect x="42" y="194" width="154" height="64" rx="14" fill="#ecfdf5"/>
+    <text x="63" y="221" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#047857">500 TRY</text>
+    <text x="66" y="245" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#047857">账户余额</text>
+  </g>
+  <g transform="translate(484 205)">
+    <rect width="238" height="390" rx="42" fill="#111827"/>
+    <rect x="18" y="20" width="202" height="350" rx="28" fill="#ffffff"/>
+    <rect x="75" y="34" width="88" height="10" rx="5" fill="#111827"/>
+    <circle cx="119" cy="106" r="38" fill="#10a37f"/>
+    <text x="78" y="174" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#111827">ChatGPT</text>
+    <rect x="40" y="214" width="158" height="50" rx="14" fill="#111827"/>
+    <text x="74" y="245" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#ffffff">升级套餐</text>
+    <rect x="40" y="284" width="158" height="42" rx="13" fill="#f3f4f6"/>
+    <text x="62" y="311" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" fill="#374151">选择可用方案</text>
+  </g>
+  <g transform="translate(850 205)">
+    <rect width="238" height="390" rx="42" fill="#111827"/>
+    <rect x="18" y="20" width="202" height="350" rx="28" fill="#ffffff"/>
+    <rect x="75" y="34" width="88" height="10" rx="5" fill="#111827"/>
+    <text x="53" y="90" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#111827">确认购买</text>
+    <rect x="39" y="126" width="160" height="94" rx="16" fill="#fef3c7"/>
+    <text x="62" y="160" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="700" fill="#92400e">Apple 余额支付</text>
+    <text x="64" y="190" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" fill="#92400e">以弹窗价格为准</text>
+    <rect x="42" y="258" width="154" height="50" rx="14" fill="#22c55e"/>
+    <text x="73" y="289" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#ffffff">完成订阅</text>
+  </g>
+  <path d="M382 400h74" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+  <path d="M442 386l20 14-20 14" fill="none" stroke="#64748b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M748 400h74" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+  <path d="M808 386l20 14-20 14" fill="none" stroke="#64748b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
