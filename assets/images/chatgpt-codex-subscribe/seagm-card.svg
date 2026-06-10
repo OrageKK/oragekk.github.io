@@ -1,0 +1,31 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">SEAGM 礼品卡购买与兑换流程</title>
+  <desc id="desc">在 SEAGM 购买土耳其 Apple 礼品卡后复制兑换码到 App Store 的流程示意</desc>
+  <rect width="1200" height="675" fill="#f9fafb"/>
+  <rect x="82" y="74" width="1036" height="527" rx="30" fill="#111827"/>
+  <text x="132" y="145" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="44" font-weight="700" fill="#ffffff">SEAGM 购买 500 TRY 礼品卡</text>
+  <text x="134" y="190" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" fill="#cbd5e1">确认国家/地区为 Turkey，核对面额和库存后再支付</text>
+  <g transform="translate(130 248)">
+    <rect width="430" height="268" rx="22" fill="#ffffff"/>
+    <rect x="28" y="30" width="374" height="54" rx="12" fill="#eef2ff"/>
+    <text x="48" y="65" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#3730a3">Apple Gift Card Turkey</text>
+    <rect x="28" y="112" width="180" height="88" rx="14" fill="#dcfce7"/>
+    <text x="56" y="146" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#166534">500 TRY</text>
+    <text x="56" y="176" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#166534">选择面额</text>
+    <rect x="230" y="112" width="172" height="88" rx="14" fill="#ffedd5"/>
+    <text x="260" y="146" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#9a3412">库存可用</text>
+    <text x="260" y="176" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" fill="#9a3412">再下单</text>
+    <rect x="28" y="222" width="374" height="18" rx="9" fill="#e5e7eb"/>
+  </g>
+  <g transform="translate(640 248)">
+    <rect width="430" height="268" rx="22" fill="#ffffff"/>
+    <rect x="36" y="34" width="358" height="58" rx="13" fill="#f3f4f6"/>
+    <text x="58" y="70" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#111827">兑换码 / Redeem Code</text>
+    <rect x="36" y="120" width="358" height="74" rx="16" fill="#ecfeff" stroke="#67e8f9"/>
+    <text x="72" y="165" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="#0e7490">XXXX-XXXX-XXXX-XXXX</text>
+    <rect x="92" y="220" width="246" height="26" rx="13" fill="#22c55e"/>
+    <text x="143" y="240" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="16" font-weight="700" fill="#ffffff">复制后到 App Store 兑换</text>
+  </g>
+  <path d="M586 382h28" stroke="#e5e7eb" stroke-width="8" stroke-linecap="round"/>
+  <path d="M600 368l20 14-20 14" fill="none" stroke="#e5e7eb" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
