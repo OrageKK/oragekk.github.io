@@ -18,19 +18,11 @@
     <span id="runtime_span"></span>
     <div class="footer-link">
       <a href="https://www.foreverblog.cn/go.html" target="_blank">
-        <img
-          :src="wormhole"
-          alt=""
-          style="width: auto; height: 32px"
-          title="穿梭虫洞-随机访问十年之约友链博客"
-      /></a>
+        <img :src="wormhole" alt="" style="width: auto; height: 32px" title="穿梭虫洞-随机访问十年之约友链博客" /></a>
       <a href="https://www.travellings.cn/go.html" target="_blank">
-        <img
-          src="https://www.travellings.cn/assets/logo.gif"
-          alt=""
-          style="width: auto; height: 32px"
-          title="开往-友链接力"
-      /></a>
+        <img src="https://www.travellings.cn/assets/logo.gif" alt="" style="width: auto; height: 32px"
+          title="开往-友链接力" /></a>
+      <a href="https://icp.gov.moe/?keyword=20268820" target="_blank" class="icp">萌ICP备20268820号</a>
       <!-- <a href="https://www.foreverblog.cn/" target="_blank">
         <img src="https://img.foreverblog.cn/logo_en_default.png" alt="" style="width: auto; height: 16px" />
       </a> -->
@@ -55,8 +47,8 @@ const dartmode = useDarkmode();
 
 const wormhole = computed(() => {
   return dartmode.status.value == "dark"
-    ? "https://img.foreverblog.cn/wormhole_3.gif"
-    : "https://img.foreverblog.cn/wormhole_1.gif";
+    ? "https://www.foreverblog.cn/assets/logo/wormhole_3.gif"
+    : "https://www.foreverblog.cn/assets/logo/wormhole_1.gif";
 });
 // 或取 当前vue-router 实例
 const router = useRouter();
@@ -84,17 +76,17 @@ const content = computed(() => {
   return footer === false
     ? false
     : isString(footer)
-    ? footer
-    : themeLocale.value.footer || "";
+      ? footer
+      : themeLocale.value.footer || "";
 });
 const copyright = computed(() =>
   "copyright" in frontmatter.value
     ? frontmatter.value["copyright"]
     : "copyright" in themeLocale.value
-    ? themeLocale.value.copyright
-    : author.value.length
-    ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
-    : false
+      ? themeLocale.value.copyright
+      : author.value.length
+        ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
+        : false
 );
 const bgImage = ref("");
 
@@ -200,6 +192,7 @@ onMounted(() => {
 
     a {
       margin: 0.5rem;
+      font-size: 14px;
     }
   }
 
@@ -219,7 +212,7 @@ onMounted(() => {
   }
 }
 
-.page:not(.not-found) + .footer-wrapper {
+.page:not(.not-found)+.footer-wrapper {
   margin-top: -2rem;
 }
 </style>
