@@ -18,11 +18,14 @@
     <span id="runtime_span"></span>
     <div class="footer-link">
       <a href="https://www.foreverblog.cn/go.html" target="_blank">
-        <img :src="wormhole" alt="" style="width: auto; height: 32px" title="穿梭虫洞-随机访问十年之约友链博客" /></a>
+        <img :src="wormhole" alt="" style="width: auto; height: 22px" title="穿梭虫洞-随机访问十年之约友链博客" /></a>
       <a href="https://www.travellings.cn/go.html" target="_blank">
-        <img src="https://www.travellings.cn/assets/logo.gif" alt="" style="width: auto; height: 32px"
+        <img src="https://www.travellings.cn/assets/logo.gif" alt="" style="width: auto; height: 22px"
           title="开往-友链接力" /></a>
-      <a href="https://icp.gov.moe/?keyword=20268820" target="_blank" class="icp">萌ICP备20268820号</a>
+      <a href="https://icp.gov.moe/?keyword=20268820" target="_blank" class="icp">
+        <img src="https://cdn.jsdelivr.net/gh/oragekk/blog-assets/svg/萌ICP备.svg" alt="萌ICP备"
+          style="width: auto; height: 18px" title="萌ICP备" />
+      </a>
       <!-- <a href="https://www.foreverblog.cn/" target="_blank">
         <img src="https://img.foreverblog.cn/logo_en_default.png" alt="" style="width: auto; height: 16px" />
       </a> -->
