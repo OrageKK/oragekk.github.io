@@ -66,6 +66,8 @@ export default MyTheme({
 
     },
     name: "上冬十二",
+    // 首页文章列表布局: "double" 双栏，"single" 单栏
+    articleListLayout: "double",
   },
   locales: {
     /**

@@ -23,6 +23,14 @@ export const MyTheme = (options: ThemeOptions): Theme => {
         __dirname,
         "./components/BlogHero.vue"
       ),
+      "@theme-hope/modules/blog/components/ArticleList": path.resolve(
+        __dirname,
+        "./components/ArticleList.vue"
+      ),
+      "@theme-hope/modules/blog/components/ArticleItem": path.resolve(
+        __dirname,
+        "./components/ArticleItem.vue"
+      ),
     },
   };
 };
