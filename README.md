@@ -21,15 +21,21 @@
 1. **自定义布局**
    - NotFound.vue
    - Layout.vue(增加打赏组件)
-   - News.vue(说说列表布局)
+   - ~~News.vue(说说列表布局)~~
+   - Link.vue(友人帐页面)
+   - Essay.vue(闲言碎语页面)
 
 2. **自定义组件**
 
    - BlogHero.vue
    - PageFooter.vue
    - Sponsor.vue（打赏组件）
-   - NewsList.vue （说说列表）
-   - NewsItem.vue （说说item）
+   - ~~NewsList.vue （说说列表）~~
+   - ~~NewsItem.vue （说说item）~~
+   - ArticleList.vue（双栏文章列表）
+   - ArticleItem.vue（文章 item）
+   - Mylink.vue（友人帐卡片）
+   - MyCoverLink.vue（封面链接样式）
 
 3. **插件开发**
 
@@ -55,7 +61,8 @@
    - 搜索基于[algolia](https://www.algolia.com/developers/?utm_content=powered_by&utm_source=localhost&utm_medium=referral&utm_campaign=docsearch)
    - 启用 copyright 版权信息插件
    - feed rss插件
-   - 增加文章类型-说说，为说说markdown图片添加预览选择器
+   - ~~增加文章类型-说说，为说说markdown图片添加预览选择器~~
+   - 新增友人帐 / 闲言碎语独立页面，并在首页项目区加入入口
 
 6. **零碎**
    - 运行时间统计

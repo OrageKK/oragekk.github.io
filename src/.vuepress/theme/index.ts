@@ -6,7 +6,15 @@ import type { Theme } from "vuepress/core";
 
 const __dirname = getDirname(import.meta.url);
 
-export const MyTheme = (options: ThemeOptions): Theme => {
+type ArticleListLayout = "single" | "double";
+
+type MyThemeOptions = Omit<ThemeOptions, "blog"> & {
+  blog?: ThemeOptions["blog"] & {
+    articleListLayout?: ArticleListLayout;
+  };
+};
+
+export const MyTheme = (options: MyThemeOptions): Theme => {
   return {
     name: "vuepress-theme-local",
 
