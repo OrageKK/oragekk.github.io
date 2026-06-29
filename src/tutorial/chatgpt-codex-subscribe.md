@@ -1,6 +1,6 @@
 ---
 title: "ChatGPT&Codex订阅教程"
-icon: "robot"
+icon: "profile"
 description: "准备土耳其 Apple ID，通过 SEAGM 充值礼品卡，并在 iPhone 上完成 ChatGPT 与 Codex 相关订阅"
 date: 2026-06-10
 star: true
