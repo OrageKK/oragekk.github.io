@@ -20,9 +20,9 @@ projects:
     link: /about
 
   - icon: /assets/link.svg
-    name: 友情链接
+    name: 友人帐
     desc: (●´∀｀●)ﾉ
-    link: /friend
+    link: /link/
 
   - icon: /assets/lyb.svg
     name: 留言板

@@ -315,7 +315,8 @@
 }
 
 .vp-article-title {
-  display: block;
+  display: inline-flex;
+  align-items: baseline;
   margin: 0.45rem 0 1rem;
   font-size: 1.35rem;
   font-weight: 700;
@@ -327,6 +328,16 @@
 
   @media (max-width: hope-config.$mobile) {
     font-size: 1.15rem;
+  }
+
+  .lock-icon,
+  .slides-icon {
+    flex: 0 0 auto;
+    width: 1em;
+    height: 1em;
+    margin-inline-end: 0.25em;
+    color: var(--theme-color);
+    vertical-align: -0.125em;
   }
 }
 

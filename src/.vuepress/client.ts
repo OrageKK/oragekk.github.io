@@ -4,6 +4,7 @@ import NotFound from "./theme/layouts/NotFound.vue";
 import Layout from "./theme/layouts/Layout.vue";
 import About from "./theme/layouts/About.vue";
 import Essay from "./theme/layouts/Essay.vue";
+import Link from "./theme/layouts/Link.vue";
 import Wormhole from "./theme/components/Wormhole";
 import Travelling from "./theme/components/Travelling";
 import { setupCoverFallback } from "./theme/utils/coverFallback";
@@ -16,6 +17,7 @@ export default defineClientConfig({
     NotFound,
     About,
     Essay,
+    Link,
   },
   enhance: ({ app }) => {
     app.component("Wormhole", Wormhole);
