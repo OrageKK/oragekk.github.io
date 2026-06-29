@@ -21,6 +21,27 @@ tag:
 直到偶然间发现vuepress，首先是被`vue3`+`typescript`+`vite`吸引，然后看到默认主题属实有点不合符我的期待，自己动手成本又太高，也没有太急着去折腾，直到无意中发现了
 [vuepress-theme-hope](https://theme-hope.vuejs.press/zh/)，漂亮的外观一下子就吸引到我了，然后去官网深入研究了一番，发现二次开发的成本并不高，对于我来说比较友好，基本都是基于选项的配置型，和一小部分的定制开发，也可以基于vue来写，这让我觉得很合适。所以，一步步折腾了起来……
 
+## 近期更新
+
+### Changelog
+
+#### 2026-06-29 `f38ac1f` - 新增友链页布局
+
+- 新增独立 `/link/` 友链页面，迁移原 `friend.md` 内容到新的 Link layout。
+- 抽离友链数据到 `src/.vuepress/data/link.ts`，统一维护站点信息、分组、申请说明与免责声明。
+- 引入 AnZhiYu 风格的友链横幅、头像滚动、站点卡片和申请入口，并接入主题路由与导航。
+
+#### 2026-06-29 `692ab4d` - 重构关于页与即刻页
+
+- 关于我迁移为独立 `/about/` 页面，基于 AnZhiYu 风格重做卡片布局、动效与个人信息数据源。
+- 新增 `/essay/` 即刻布局与数据配置，替换原 news 说说列表实现。
+- 补充相关静态资源、AnZhiYu 样式、评论背景、地图与站点 Logo 资源，同时保留关于本站为 `/about-site/`。
+
+#### 2026-06-26 `64a093` - 文章列表支持双栏
+
+- 首页文章列表新增 `single` / `double` 两种展示模式，可在主题配置中切换阅读密度。
+- 自定义 `ArticleList` 与 `ArticleItem`，重排封面、标题、分类、标签和日期信息。
+- 为双栏卡片补充响应式样式，移动端自动回落为单栏展示。
 
 ## Markdown增强
 
@@ -94,21 +115,19 @@ hope主题的markdown效果是出乎意料的好，而且支持了很多普通ma
 1. **自定义布局**
    - NotFound.vue
    - Layout.vue(增加打赏组件)
-   - News.vue(说说列表布局)
+   - About.vue（关于我页面）
+   - Essay.vue（即刻列表布局）
+   - Link.vue（友链页面）
 
 2. **自定义组件**
 
    - BlogHero.vue
+   - ArticleList.vue（文章列表）
+   - ArticleItem.vue（文章卡片）
    - PageFooter.vue
    - Sponsor.vue（打赏组件）
-   - NewsList.vue （说说列表）
-   - NewsItem.vue （说说item）
 
-3. **近期更新**
-
-   - 关于我迁移为独立 `/about/` 页面，参考 Hexo AnZhiYu 的配置、卡片布局与动效实现，并保留关于本站为 `/about-site/`。首页文章列表支持 single / double 两种单双栏模式，便于按阅读密度切换展示。
-
-4. **本地插件开发**
+3. **本地插件开发**
 
    - vuepress-plugin-canvas（支持彩虹背景和动态几何图形两种）
    - vuepress-plugin-gradient-cover （遮罩背景）
@@ -116,7 +135,7 @@ hope主题的markdown效果是出乎意料的好，而且支持了很多普通ma
    - vuepress-plugin-live2DAssist （看板娘辅助，由于子页有sidebar，看板娘会挡住，所以写了一个子页隐藏的小东西）
    - vuepress-plugin-popper （鼠标特效，基于[@moefy-canvas/theme-popper](https://github.com/moefyit/moefy-canvas)）
 
-5. **引用外部内容**
+4. **引用外部内容**
 
    - [vuepress-plugin-oh-my-live2d](https://github.com/oh-my-live2d/vuepress-plugin-oh-my-live2d) 看板娘插件
 
@@ -125,16 +144,18 @@ hope主题的markdown效果是出乎意料的好，而且支持了很多普通ma
    - [@moefy-canvas/theme-popper](https://github.com/moefyit/moefy-canvas)原有插件只支持vuepress1.x，自己基于moefy-canvas进行了支持vuepress2.x的本地化插件开发
 
    - [@vuepress/plugin-google-analytics](https://v2.vuepress.vuejs.org/zh/reference/plugin/google-analytics.html) 支持Google Analytics 4 正好看到通知原来的UA也要被强制转换了，所以更换了G4
-6. **配置内容**
+5. **配置内容**
    - navbar
    - sidebar
    - 评论基于 [Waline](https://waline.js.org/)
    - 搜索基于[algolia](https://www.algolia.com/developers/?utm_content=powered_by&utm_source=localhost&utm_medium=referral&utm_campaign=docsearch)
    - 启用 copyright 版权信息插件
    - feed rss插件
-   - 增加文章类型-说说，为说说markdown图片添加预览选择器
+   - 增加文章类型-即刻，为即刻 markdown 图片添加预览选择器
+   - 友链页数据配置，统一维护站点分组、申请模板与免责声明
+   - 文章列表布局配置，支持 single / double 两种展示模式
 
-7. **零碎**
+6. **零碎**
    - 运行时间统计
    - CSS 样式美化
    - 引入字体，品如手写体，夏行楷体
