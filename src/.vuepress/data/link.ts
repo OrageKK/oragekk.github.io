@@ -151,18 +151,6 @@ export const linkGroups: LinkGroup[] = [
         descr: "Never stop searching, even if only for a brief flash of light.",
       }),
       normalizeLinkItem({
-        name: "Camill",
-        link: "https://camill.love",
-        avatar: "https://www.camill.love/img/myself.jpg",
-        descr: "嵌入式、ROS、还有生活！",
-      }),
-      normalizeLinkItem({
-        name: "SMallTIAN's Blog",
-        link: "https://blog.mcsmalltian.com/",
-        avatar: "https://mcsmalltian.com/frontend/img/avatar.webp",
-        descr: "写我想写的，说我想说的。只要自己开心就好。",
-      }),
-      normalizeLinkItem({
         name: "LineXic书屋",
         link: "https://linexic.top/",
         avatar: "https://www.linexic.top/avatar.webp",
@@ -189,7 +177,7 @@ export const linkGroups: LinkGroup[] = [
       normalizeLinkItem({
         name: "Brandon",
         link: "https://heybran.tech/",
-        avatar: "https://heybran.tech/wp-content/uploads/2024/10/heybran-logo-1.svg",
+        avatar: "https://avatars.githubusercontent.com/u/75633537?v=4",
         descr: "Web开发，摄影 & 旅行",
       }),
       normalizeLinkItem({
@@ -203,12 +191,7 @@ export const linkGroups: LinkGroup[] = [
         link: "http://liuchenyang.top/",
         avatar: "http://www.liuchenyang.top/picture.jpg",
         descr: "享运维人生，探技术奥秘。ToLiucyLinux，Linux学习优质指南，助你构筑知识体系。",
-      }),
-      normalizeLinkItem({
-        name: "XINGJI",
-        link: "https://vite.xingji.fun",
-        avatar: "https://i.p-i.vip/47/20240920-66ed7b168c38c.jpg",
-        descr: "迄今所有人生都大写着失败，但不妨碍我继续向前✨",
+        recommend: true,
       }),
       normalizeLinkItem({
         name: "gooseforum",
@@ -244,16 +227,34 @@ export const linkGroups: LinkGroup[] = [
     lost_contact: true,
     link_list: [
       normalizeLinkItem({
+        name: "Camill",
+        link: "",
+        avatar: "https://www.camill.love/img/myself.jpg",
+        descr: "嵌入式、ROS、还有生活！",
+      }),
+      normalizeLinkItem({
+        name: "SMallTIAN's Blog",
+        link: "",
+        avatar: "https://mcsmalltian.com/frontend/img/avatar.webp",
+        descr: "写我想写的，说我想说的。只要自己开心就好。",
+      }),
+      normalizeLinkItem({
         name: "寒烟志",
-        link: "https://yanyuplus.cn/",
+        link: "",
         avatar: "https://www.qiaoxiao.top/static/avater/avater.jpg",
         descr: "半山腰总是挤的，你得去山顶看看",
       }),
       normalizeLinkItem({
         name: "文奚•技术驿站",
-        link: "https://vxcode.top",
+        link: "",
         avatar: "https://vxcode.top/assets/icon/logo2.png",
         descr: "代码在手，天下我有",
+      }),
+      normalizeLinkItem({
+        name: "XINGJI",
+        link: "",
+        avatar: "https://i.p-i.vip/47/20240920-66ed7b168c38c.jpg",
+        descr: "迄今所有人生都大写着失败，但不妨碍我继续向前✨",
       }),
     ],
   },

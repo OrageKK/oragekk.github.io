@@ -66,18 +66,21 @@
                     v-if="group.flink_style === 'anzhiyu'"
                     :class="['anzhiyu-flink-list', { 'cf-friends-lost-contact': group.lost_contact }]"
                   >
-                    <div v-for="item in group.link_list" :key="item.link" class="flink-list-item">
+                    <div v-for="item in group.link_list" :key="`${item.name}-${item.link}`" class="flink-list-item">
                       <span v-if="item.tag || item.recommend" :class="siteCardTagClass(item)" :style="siteCardTagStyle(item)">
                         {{ item.tag || "推荐" }}
                         <i v-if="item.color === 'vip'" class="light"></i>
                       </span>
                       <a
-                        class="cf-friends-link"
-                        :href="item.link"
+                        :class="['cf-friends-link', { 'is-disabled': isLinkDisabled(item, group.lost_contact) }]"
+                        :href="getFriendHref(item, group.lost_contact)"
                         :cf-href="item.link"
                         :title="item.name"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        :target="isLinkDisabled(item, group.lost_contact) ? undefined : '_blank'"
+                        :rel="isLinkDisabled(item, group.lost_contact) ? undefined : 'noopener noreferrer'"
+                        :aria-disabled="isLinkDisabled(item, group.lost_contact)"
+                        :tabindex="isLinkDisabled(item, group.lost_contact) ? -1 : undefined"
+                        @click="handleFriendClick($event, item, group.lost_contact)"
                       >
                         <img
                           class="cf-friends-avatar no-lightbox"
@@ -99,14 +102,21 @@
                   <div v-else class="flexcard-flink-list">
                     <a
                       v-for="item in group.link_list"
-                      :key="item.link"
-                      class="flink-list-card cf-friends-link"
-                      :href="item.link"
+                      :key="`${item.name}-${item.link}`"
+                      :class="[
+                        'flink-list-card',
+                        'cf-friends-link',
+                        { 'is-disabled': isLinkDisabled(item, group.lost_contact) },
+                      ]"
+                      :href="getFriendHref(item, group.lost_contact)"
                       :cf-href="item.link"
                       :data-title="item.descr"
                       :title="item.name"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      :target="isLinkDisabled(item, group.lost_contact) ? undefined : '_blank'"
+                      :rel="isLinkDisabled(item, group.lost_contact) ? undefined : 'noopener noreferrer'"
+                      :aria-disabled="isLinkDisabled(item, group.lost_contact)"
+                      :tabindex="isLinkDisabled(item, group.lost_contact) ? -1 : undefined"
+                      @click="handleFriendClick($event, item, group.lost_contact)"
                     >
                       <div class="wrapper cover">
                         <img class="cover fadeIn no-lightbox" :src="getSiteshot(item)" alt="cover" @error="handleCoverError" />
@@ -227,6 +237,20 @@ const bannerAvatarRows = computed(() => {
 
 const getSiteshot = (item: LinkItem): string =>
   `https://s0.wp.com/mshots/v1/${encodeURIComponent(item.link)}?w=323&h=200`;
+
+const isLinkDisabled = (item: LinkItem, lostContact?: boolean): boolean =>
+  Boolean(lostContact) || !item.link;
+
+const getFriendHref = (item: LinkItem, lostContact?: boolean): string | undefined =>
+  isLinkDisabled(item, lostContact) ? undefined : item.link;
+
+const handleFriendClick = (
+  event: MouseEvent,
+  item: LinkItem,
+  lostContact?: boolean
+) => {
+  if (isLinkDisabled(item, lostContact)) event.preventDefault();
+};
 
 const siteCardTagClass = (item: LinkItem): string[] => [
   "site-card-tag",
@@ -451,6 +475,10 @@ body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .flexcard-fli
 
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #article-container .anzhiyu-flink-list .flink-list-item {
   box-sizing: border-box;
+}
+
+body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .cf-friends-link.is-disabled {
+  cursor: not-allowed !important;
 }
 
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-panel {
