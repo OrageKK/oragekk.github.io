@@ -15,7 +15,7 @@ export default MyTheme({
     // 默认：
     "//at.alicdn.com/t/c/font_2410206_5vb9zlyghj.css",
     // 自己的
-    "//at.alicdn.com/t/c/font_3941380_00g6dc2nedwir.css",
+    "//at.alicdn.com/t/c/font_3941380_6zoqqfuhic.css",
   ],
 
   logo: "/logo.svg",
@@ -86,7 +86,7 @@ export default MyTheme({
 
       blog: {
         description: "到最后，竟庆幸于夕阳仍留在身上",
-        intro: "/intro.html",
+        intro: "/about/",
       },
 
       // page meta
@@ -115,21 +115,6 @@ export default MyTheme({
       components: ["BiliBili", "Badge"],
     },
     blog: {
-      filter: ({ filePathRelative, frontmatter }) => {
-        // 将标记为非文章，并且是说说的加入文章采集中，以便后续筛选
-        if (!frontmatter.article && frontmatter.news) return true;
-
-        return true;
-      },
-
-      type: [
-        {
-          key: "news",
-          filter: (page) => page.frontmatter.news === true,
-          layout: "News",
-          frontmatter: () => ({ title: "说说" }),
-        },
-      ],
     },
     photoSwipe: {
       selector: [

@@ -4,6 +4,15 @@
 @use "md";
 
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap");
+
+// 头像白色圆形边框样式
+.vp-blog-hero-image,
+.vp-nav-logo,
+.vp-blogger-avatar {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
 @font-face {
   font-family: "PRshouxie";
   src: url("https://cdn.jsdelivr.net/gh/oragekk/blog-assets/font/8d6a7466947745f9f211cd17e0ed5dc3.woff2")

@@ -2,7 +2,8 @@ import { onMounted } from "vue";
 import { defineClientConfig } from "vuepress/client";
 import NotFound from "./theme/layouts/NotFound.vue";
 import Layout from "./theme/layouts/Layout.vue";
-import News from "./theme/layouts/News.vue";
+import About from "./theme/layouts/About.vue";
+import Essay from "./theme/layouts/Essay.vue";
 import Wormhole from "./theme/components/Wormhole";
 import Travelling from "./theme/components/Travelling";
 import { setupCoverFallback } from "./theme/utils/coverFallback";
@@ -13,7 +14,8 @@ export default defineClientConfig({
   layouts: {
     Layout,
     NotFound,
-    News,
+    About,
+    Essay,
   },
   enhance: ({ app }) => {
     app.component("Wormhole", Wormhole);

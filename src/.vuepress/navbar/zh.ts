@@ -44,9 +44,9 @@ export const zhNavbar = navbar([
     link: "/collect",
   },
   {
-    text: "说说",
+    text: "即刻",
     icon: "news",
-    link: "/news/",
+    link: "/essay/",
   },
   {
     text: "留言板",
@@ -62,8 +62,8 @@ export const zhNavbar = navbar([
     text: "关于",
     icon: "info",
     children:[
-      { text: "关于我", icon: "people", link: "/intro" },
-      { text: "关于本站", icon: "info", link: "/about" },
+      { text: "关于我", icon: "people", link: "/about/" },
+      { text: "关于本站", icon: "info", link: "/about-site/" },
     ]
   },
 ]);
