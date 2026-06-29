@@ -3,9 +3,10 @@ title: "浏览器的事件循环"
 icon: loop
 date: 2023-04-06
 category:
-  - 浏览器
+  - Web
 tag:
-  - 前端开发
+  - 浏览器
+  - Event Loop
 ---
 
 ## 浏览器的进程模型

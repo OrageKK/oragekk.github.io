@@ -5,7 +5,7 @@ date: 2023-04-14
 star: true
 cover: "https://w.wallhaven.cc/full/j3/wallhaven-j3zvvp.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
 category:
-  - GitHub
+  - 教程
 tag:
   - GitHub Actions
 ---

@@ -2,9 +2,10 @@
 date: 2023-04-06
 icon: box
 category:
-  - CSS
+  - Web
 tag:
-  - 前端开发
+  - CSS
+  - 布局
 ---
 
 # 你不知道的 CSS 之包含块

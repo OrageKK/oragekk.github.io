@@ -2,9 +2,9 @@
 date: 2023-04-06
 icon: calculate
 category:
-  - CSS
+  - Web
 tag:
-  - 前端开发
+  - CSS
 ---
 # CSS 属性计算过程
 

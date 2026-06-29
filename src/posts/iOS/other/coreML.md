@@ -4,7 +4,7 @@ date: 2017-11-21
 category:
   - iOS
 tag:
-  - iOS
+  - Core ML
 ---
 
 > CoreML 是 iOS 11 新推出的机器学习框架，是人工智能的核心内容，他可以在训练好的机器学习模型应用到 APP 中

@@ -3,9 +3,10 @@ title: Git SSH 密钥配置
 icon: safe
 date: 2024-01-11
 category:
-  - Git
+  - 教程
 tag:
-  - ssh_key
+  - Git
+  - SSH
 ---
 
 ## 在 GitLab 中配置 SSH 密钥

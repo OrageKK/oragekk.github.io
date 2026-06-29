@@ -31,6 +31,10 @@ export const MyTheme = (options: ThemeOptions): Theme => {
         __dirname,
         "./components/ArticleItem.vue"
       ),
+      "@theme-hope/modules/blog/components/TimelineItems": path.resolve(
+        __dirname,
+        "./components/TimelineItems.vue"
+      ),
     },
   };
 };

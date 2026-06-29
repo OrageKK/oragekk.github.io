@@ -4,8 +4,8 @@ date: 2017-02-13
 category:
   - iOS
 tag:
-  - iOS
-  - Bug录
+  - UITableView
+  - Bug
 ---
 
 > 今天项目里出现一个问题，就是做一个列表选择，然后点击导航栏的确定按钮返回上级界面，并把选择的 cell 数据传递到上级界面。再使用 accessoryType 属性标记单元格之后会出现重用问题。

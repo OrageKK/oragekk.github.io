@@ -4,8 +4,7 @@ date: 2018-08-05
 category:
   - iOS
 tag:
-  - iOS
-  - JavaScript
+  - JavaScriptBridge
 ---
 
 > 最近一直在忙，今天抽空写一下 H5 和 Native 的交互

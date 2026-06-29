@@ -6,8 +6,7 @@ index: false
 category:
   - 使用指南
 tag:
-  - 禁用
-
+  - 页面配置
 navbar: false
 sidebar: false
 

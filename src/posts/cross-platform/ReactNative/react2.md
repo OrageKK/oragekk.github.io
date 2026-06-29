@@ -4,10 +4,10 @@ description: "ReactNative开发环境配置，ES6语法介绍"
 date: 2019-08-25
 order: 2
 category:
-  - 前端跨平台
+  - 跨平台
 tag:
-  - 前端
   - React Native
+  - TypeScript
 ---
 
 > 接上篇 [ReactNative介绍](/posts/ReactNative/react1.html)

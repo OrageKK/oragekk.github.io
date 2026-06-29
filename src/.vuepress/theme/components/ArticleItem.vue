@@ -28,14 +28,27 @@
 
         <div class="vp-article-footer">
           <div class="vp-article-meta vp-article-meta-bottom">
-            <span class="vp-article-tags">
+            <span v-if="categories.length" class="vp-article-info-group">
+              <CategoryIcon />
+              <RouteLink
+                v-for="category in categories"
+                :key="category"
+                class="vp-article-category"
+                :to="getCategoryPath(category)"
+              >
+                {{ category }}
+              </RouteLink>
+            </span>
+
+            <span v-if="tags.length" class="vp-article-info-group">
+              <TagIcon />
               <RouteLink
                 v-for="tag in tags"
                 :key="tag"
                 class="vp-article-tag"
                 :to="getTagPath(tag)"
               >
-                # {{ tag }}
+                {{ tag }}
               </RouteLink>
             </span>
             <time v-if="localizedDate">{{ localizedDate }}</time>
@@ -47,14 +60,18 @@
 </template>
 
 <script setup lang="ts">
-import { categoriesMap } from "@temp/blog/category";
+import { useBlogCategory } from "@vuepress/plugin-blog/client";
 import { computed, toRef } from "vue";
-import { RouteLink, useRouteLocale, withBase } from "vuepress/client";
+import { RouteLink, withBase } from "vuepress/client";
 import {
   SlideIcon,
   StickyIcon,
 } from "@theme-hope/modules/blog/components/icons/index";
 import { LockIcon } from "@theme-hope/modules/encrypt/components/icons";
+import {
+  CategoryIcon,
+  TagIcon,
+} from "@theme-hope/modules/info/components/icons";
 import type {
   ArticleInfoData,
   PageInfoData,
@@ -65,8 +82,9 @@ const props = defineProps<{
   path: string;
 }>();
 
-const routeLocale = useRouteLocale();
 const articleInfo = toRef(props, "info");
+const categoryMap = useBlogCategory<ArticleInfoData>("category");
+const tagMap = useBlogCategory<ArticleInfoData>("tag");
 
 const title = computed(() => articleInfo.value.t);
 const type = computed(() => articleInfo.value.y);
@@ -76,11 +94,12 @@ const isEncrypted = computed(() => articleInfo.value.n ?? false);
 const categories = computed(() => articleInfo.value.c ?? []);
 const tags = computed(() => articleInfo.value.g ?? []);
 const localizedDate = computed(() => articleInfo.value.l);
-const topMeta = computed(() => [
-  ...(sticky.value ? ["置顶"] : []),
-  ...categories.value,
-]);
+const topMeta = computed(() => (sticky.value ? ["置顶"] : []));
+
+const getCategoryPath = (category: string): string =>
+  categoryMap.value?.map?.[category]?.path ??
+  `/category/${category}/`;
 
 const getTagPath = (tag: string): string =>
-  categoriesMap.tag?.[routeLocale.value]?.map?.[tag]?.path ?? `/tag/${tag}/`;
+  tagMap.value?.map?.[tag]?.path ?? `/tag/${tag}/`;
 </script>

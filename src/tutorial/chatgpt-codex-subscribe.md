@@ -7,7 +7,6 @@ star: true
 isOriginal: true
 cover: "/assets/images/chatgpt-codex-subscribe/checklist.svg"
 category:
-  - AI
   - 教程
 tag:
   - ChatGPT

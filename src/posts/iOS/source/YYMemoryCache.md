@@ -6,7 +6,8 @@ star: true
 category:
   - iOS
 tag:
-  - iOS
+  - YYCache
+  - 缓存
 ---
 
 ## 1.1. 前言

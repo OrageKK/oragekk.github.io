@@ -6,7 +6,8 @@ date: 2017-04-14
 category:
   - Blog
 tag:
-  - Blog
+  - 评论系统
+  - Disqus
 ---
 
 > 由于多说评论系统将于 6 月 1 日下线，所以准备迁移至[disqus](https://disqus.com/)，相比较的话对于国内环境还是多说好用一点，毕竟加载快，支持各大媒体的分享，也不用小伙伴们翻墙；而 disqus 分享也只支持 Facebook 和 twitter。。PS:貌似现在又被墙了，以后有时间再换吧，目前就先这样，国内据说[畅言](http://changyan.kuaizhan.com/static/help/)还不错

@@ -7,9 +7,10 @@ star: true
 isOriginal: true
 order: 2
 category:
-  - Vercel
+  - 教程
 tag:
   - Vercel
+  - CI/CD
 ---
 [[toc]]
 

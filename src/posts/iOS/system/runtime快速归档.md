@@ -4,7 +4,8 @@ date:       2017-04-13
 category:
   - iOS
 tag:
-  - iOS
+  - Runtime
+  - 归档
 ---
 
 > 使用 runtime 进行归档，对我们的最大遍历就是高效，快速。尤其适用于 model 中属性非常多的时候

@@ -4,9 +4,8 @@ description: "前置知识点介绍"
 date: 2019-08-24 09:38:39
 order: 1
 category:
-  - 前端跨平台
+  - 跨平台
 tag:
-  - 前端
   - React Native
 ---
 

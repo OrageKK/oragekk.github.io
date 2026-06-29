@@ -8,7 +8,8 @@ isOriginal: true
 category:
   - AI
 tag:
-  - AI
+  - Project IDX
+  - 开发工具
 ---
 
 [[toc]]

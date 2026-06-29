@@ -5,9 +5,10 @@ subtitle: "python"
 date: 2023-03-24 10:52:27
 isOriginal: true
 category:
-  - python
+  - Python
 tag:
-  - 工具脚本
+  - SEO
+  - 自动化脚本
 ---
 
 :::tip

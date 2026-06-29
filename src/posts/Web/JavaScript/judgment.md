@@ -3,10 +3,9 @@ title: "通过UserAgent判断设备"
 icon: mobile
 date: 2017-02-07
 category:
-  - JavaScript
+  - Web
 tag:
   - JavaScript
-  - 前端开发
 ---
 
 > 通过 js 判断 moblie 端和 pc 端进而加载不同的 css 或者 js

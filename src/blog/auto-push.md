@@ -9,8 +9,8 @@ cover: "https://w.wallhaven.cc/full/l3/wallhaven-l3xk6q.jpg"
 category:
   - Blog
 tag:
-  - Blog
-  - GitHub Action
+  - GitHub Actions
+  - SEO
 ---
 
 :::info

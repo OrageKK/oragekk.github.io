@@ -7,7 +7,7 @@ sidebar: false
 category:
   - Blog
 tag:
-  - Blog
+  - 站点记录
 ---
 # 关于本站
 

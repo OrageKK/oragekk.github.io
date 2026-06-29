@@ -3,10 +3,10 @@ title: "深入理解swift中闭包的捕捉语义"
 icon: hk-swift
 date: 2017-10-19
 category:
-  - Swift
-tag:
   - iOS
+tag:
   - Swift
+  - 闭包
 ---
 
 > 参考链接：[losures Capture Semantics, Part 1: Catch them all!](https://link.juejin.im/?target=https%3A%2F%2Fgold.xitu.io%2Fentry%2F5796308479bc440066443c8e)

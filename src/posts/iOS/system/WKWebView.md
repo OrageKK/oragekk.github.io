@@ -4,7 +4,7 @@ date: 2017-05-26 15:47:40
 category:
   - iOS
 tag:
-  - iOS
+  - WKWebView
 ---
 
 > 记录一下 iOS8 之后的新控件 WKWebView，用以替代之前的 UIWebView，因为需求是在 TableView 的 Cell 中放一个 WebView。就产生了滑动手势冲突，为了解决这个问题就需要让 webView 高度自适应

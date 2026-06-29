@@ -4,10 +4,10 @@ description: "ReactNative State(状态)"
 date: 2019-11-12
 order: 3
 category:
-  - 前端跨平台
+  - 跨平台
 tag:
-  - 前端
   - React Native
+  - 状态管理
 ---
 
 > 接上篇 [ReactNative开发环境配置，ES6语法介绍](/posts/ReactNative/react2.html)

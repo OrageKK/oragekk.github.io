@@ -4,10 +4,11 @@ icon: "asynchronous"
 date: 2023-04-26
 cover: "https://w.wallhaven.cc/full/72/wallhaven-7286w9.png"
 category:
+  - 跨平台
+tag:
   - Flutter
   - Dart
-tag:
-  - Dart
+  - 并发
 ---
 
 Dart 通过 async-await、isolate 以及一些异步类型概念（例如 `Future` 和 `Stream`）支持了并发代码编程。本篇文章会对 async-await、`Future` 和 `Stream` 进行简略的介绍，而侧重点放在 isolate 的讲解上。

@@ -6,10 +6,10 @@ date: 2023-10-11
 star: true
 isOriginal: true
 category:
-  - 开源软件
-  - GitHub
+  - 教程
 tag:
-  - GitHub
+  - 开源软件
+  - 音乐播放器
 ---
 ## 前言
 嘿~

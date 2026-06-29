@@ -7,8 +7,8 @@ star: true
 category:
   - Linux
 tag:
-  - terminal
-  - Linux
+  - Terminal
+  - Zsh
 ---
 
 > MacOS 自带的 bash 作为几乎所有 Linux 发行版的默认终端，正常使用时没什么问题的

@@ -4,7 +4,7 @@ date: 2017-07-05
 category:
   - iOS
 tag:
-  - iOS
+  - Cookie
 ---
 
 > 本文介绍 iOS 中 cookie 的使用包含 AFNetWorking 3.0 中的使用，常用于登录状态信息保存

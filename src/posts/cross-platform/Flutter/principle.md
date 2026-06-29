@@ -3,9 +3,10 @@ icon: "engine"
 date: 2023-04-26
 cover: "https://w.wallhaven.cc/full/4v/wallhaven-4vp2x3.png?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
 category:
-  - Flutter
+  - 跨平台
 tag:
   - Flutter
+  - 渲染原理
 ---
 
 # Flutter 工作原理

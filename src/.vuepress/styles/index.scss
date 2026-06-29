@@ -366,18 +366,97 @@
   font-size: 1rem;
 }
 
-.vp-article-tags {
+.vp-article-info-group {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.7rem;
+  align-items: center;
+  gap: 0.25rem 0.35rem;
+
+  .icon {
+    width: 1em;
+    height: 1em;
+    margin-inline-end: 0.15rem;
+    color: var(--grey3);
+  }
 }
 
+.vp-article-category,
 .vp-article-tag {
-  color: inherit;
-  transition: color var(--color-transition);
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  min-width: 1.5rem;
+  background: var(--tag-bg, var(--bg-color-secondary));
+  color: var(--tag-color, var(--text-color-light));
+  font-weight: bold;
+  text-align: center;
+  transition:
+    background var(--color-transition),
+    color var(--color-transition);
 
   &:hover {
     color: var(--theme-color);
+  }
+}
+
+.vp-article-category {
+  padding: 0 0.35rem;
+  border-radius: 0.25em;
+  font-size: 0.75rem;
+  line-height: 2;
+}
+
+.vp-article-tag {
+  padding: 0.125rem 0.25rem 0.125rem 0.625rem;
+  background:
+    linear-gradient(135deg, transparent 0.75em, var(--tag-bg, var(--bg-color-secondary)) 0) top,
+    linear-gradient(45deg, transparent 0.75em, var(--tag-bg, var(--bg-color-secondary)) 0)
+      bottom;
+  background-repeat: no-repeat !important;
+  background-size: 100% 52% !important;
+  font-size: 0.625rem;
+  line-height: 1.5;
+}
+
+.vp-article-category,
+.vp-article-tag {
+  &:nth-of-type(4n + 1) {
+    --tag-bg: #ddfbf8;
+    --tag-color: #00bfa6;
+  }
+
+  &:nth-of-type(4n + 2) {
+    --tag-bg: #fff3cf;
+    --tag-color: #f6a21a;
+  }
+
+  &:nth-of-type(4n + 3) {
+    --tag-bg: #ffe5f2;
+    --tag-color: #ec5aa1;
+  }
+
+  &:nth-of-type(4n) {
+    --tag-bg: #ffe6dc;
+    --tag-color: #ff7048;
+  }
+}
+
+[data-theme="dark"] .vp-article-category,
+[data-theme="dark"] .vp-article-tag {
+  &:nth-of-type(4n + 1) {
+    --tag-bg: #024c47;
+  }
+
+  &:nth-of-type(4n + 2) {
+    --tag-bg: #5a3b06;
+  }
+
+  &:nth-of-type(4n + 3) {
+    --tag-bg: #5c183c;
+  }
+
+  &:nth-of-type(4n) {
+    --tag-bg: #5f1f12;
   }
 }
 

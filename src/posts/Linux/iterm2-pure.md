@@ -7,8 +7,8 @@ star: true
 category:
   - Linux
 tag:
-  - terminal
-  - Linux
+  - Terminal
+  - iTerm2
 ---
 
 

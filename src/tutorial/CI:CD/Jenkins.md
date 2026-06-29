@@ -6,9 +6,10 @@ date: 2024-01-12
 isOriginal: true
 order: 1
 category:
-  - 工具教程
+  - 教程
 tag:
   - Jenkins
+  - CI/CD
 ---
 
 :::tip

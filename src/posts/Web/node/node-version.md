@@ -4,9 +4,10 @@ icon: shell
 date: 2020-04-03
 star: true
 category:
-  - Linux
+  - Web
 tag:
-  - Node
+  - Node.js
+  - 版本管理
 ---
 
 > 鉴于使用 ReactNative 时，会需要不同的 node 版本，提供一种版本切换方式

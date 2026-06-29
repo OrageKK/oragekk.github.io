@@ -4,8 +4,7 @@ date: 2016-11-09 11:34:47
 category:
   - iOS
 tag:
-  - iOS
-  - 工具集
+  - CocoaPods
 ---
 
 > 之前采用正常的 `sudo gem install cocoapods`更新 cocoapods 版本一直不成功，下面为和我遇到同样问题的兄弟们提供一个解决办法

@@ -4,7 +4,7 @@ date: 2017-05-21
 category:
   - iOS
 tag:
-  - iOS
+  - UITextField
 ---
 
 > 记录一下限制输入字符的判断。不仅局限于中文或英文

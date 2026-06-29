@@ -4,8 +4,8 @@ date:  2017-01-06 11:19:16
 category:
   - iOS
 tag:
-  - iOS
-  - Objectiv-C语法  
+  - Objective-C
+  - 枚举
 ---
 
 >进入正题，今天介绍一下objective-c中的枚举

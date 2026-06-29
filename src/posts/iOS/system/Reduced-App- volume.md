@@ -4,7 +4,7 @@ date: 2016-11-04 18:11:56
 category:
   - iOS
 tag:
-  - iOS
+  - 包体积优化
 ---
 
 ![](https://zero-space.s3.amazonaws.com/photos/2e6cc210-e9a6-4a0f-9c05-2c4056a982acx840.jpg)

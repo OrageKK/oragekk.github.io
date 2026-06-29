@@ -3,10 +3,10 @@ title: "CommonJS，RequireJS，SeaJS 归纳笔记"
 icon: module
 date: 2015-05-25
 category:
-  - JavaScript
+  - Web
 tag:
-  - 前端开发
   - JavaScript
+  - 模块化
 ---
 
 ## Foreword

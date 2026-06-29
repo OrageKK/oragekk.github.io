@@ -5,10 +5,10 @@ icon: "hk-flutter"
 date: 2023-03-20
 star: true
 category:
-  - Flutter
-  - 前端跨平台
+  - 跨平台
 tag:
   - Flutter
+  - 入门
 ---
 
 :::tip

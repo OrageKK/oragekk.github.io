@@ -6,9 +6,11 @@ star: true
 headerDepth: 3
 cover: "https://w.wallhaven.cc/full/6d/wallhaven-6d7xmx.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
 category:
-  - Vue
+  - Web
 tag:
-  - Vue响应式
+  - Vue
+  - Waline
+  - Bug
 ---
 
 [[toc]]

@@ -7,7 +7,7 @@ article: false
 index: false
 comment: false
 category:
-  - About
+  - 生活
 tag:
-  - About
+  - 关于
 ---

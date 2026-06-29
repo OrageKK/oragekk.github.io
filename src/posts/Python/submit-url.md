@@ -7,10 +7,11 @@ date: 2023-04-17
 isOriginal: true
 cover: "https://w.wallhaven.cc/full/ex/wallhaven-ex8j2k.jpg?x-oss-process=image/resize,limit_0,m_fill,w_1366,h_768/quality,Q_92/format,webp"
 category:
-  - python
+  - Python
 tag:
-  - 工具脚本
-  - GitHub Action
+  - SEO
+  - GitHub Actions
+  - 自动化脚本
 ---
 
 :::info

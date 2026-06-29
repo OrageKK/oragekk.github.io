@@ -5,9 +5,10 @@ date: 2023-05-17
 star: true
 cover: 'https://w.wallhaven.cc/full/57/wallhaven-577og5.jpg'
 category:
-  - Vue
+  - Web
 tag:
-  - 优化
+  - Vue
+  - 性能优化
 ---
 
 :::info

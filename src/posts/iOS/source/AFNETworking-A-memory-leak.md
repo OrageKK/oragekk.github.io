@@ -4,8 +4,9 @@ date: 2017-01-19
 category:
   - iOS
 tag:
-  - iOS
-  - Bug录
+  - AFNetworking
+  - 内存泄漏
+  - Bug
 ---
 
 > 细心的你是否也发现了 AFN 的内存泄漏的问题了呢.

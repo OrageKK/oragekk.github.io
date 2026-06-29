@@ -3,7 +3,7 @@ title: "JavaScript ES6"
 icon: es6
 date: 2015-09-22
 category:
-  - JavaScript
+  - Web
 tag:
   - JavaScript
   - 翻译

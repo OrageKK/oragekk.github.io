@@ -4,7 +4,8 @@ date: 2017-08-30
 category:
   - iOS
 tag:
-  - iOS
+  - ijkplayer
+  - 音视频
 ---
 
 > [参考地址](http://www.jianshu.com/p/b7a646a6c80e)

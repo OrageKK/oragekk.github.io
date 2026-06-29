@@ -4,7 +4,7 @@ date:       2018-05-31
 category:
   - iOS
 tag:
-  - iOS
+  - NSError
 ---
 
 > 前言

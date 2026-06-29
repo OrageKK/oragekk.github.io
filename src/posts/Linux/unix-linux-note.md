@@ -5,9 +5,8 @@ date: 2015-04-14
 category:
   - Linux
 tag:
-  - OS
   - Unix
-  - Linux
+  - 操作系统
 ---
 
 > This document is not completed and will be updated anytime.

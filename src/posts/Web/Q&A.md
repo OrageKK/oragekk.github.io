@@ -2,9 +2,10 @@
 date: 2023-04-06
 icon: question
 category:
-  - 浏览器
+  - Web
 tag:
-  - 前端开发
+  - 浏览器
+  - 面试
 dir:
   order: 6
 ---

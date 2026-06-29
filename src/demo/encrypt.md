@@ -5,7 +5,7 @@ article: false
 category:
   - 使用指南
 tag:
-  - 文章加密
+  - 页面加密
 ---
 
 # 密码加密的文章

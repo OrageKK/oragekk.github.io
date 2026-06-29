@@ -4,9 +4,9 @@ icon: "hk-rust"
 subtitle: "python"
 date: 2023-12-07 17:14:55
 category:
-  - rust
+  - Rust
 tag:
-  - rust
+  - 语言入门
 ---
 
 ## Rust 发展历程

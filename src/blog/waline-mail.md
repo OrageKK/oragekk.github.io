@@ -6,7 +6,8 @@ star: true
 category:
   - Blog
 tag:
-  - Blog
+  - Waline
+  - 邮件通知
 ---
 
 # 评论插件 Waline 之邮件通知配置
