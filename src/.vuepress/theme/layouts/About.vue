@@ -249,7 +249,7 @@
                   </div>
                   <div class="about-reward">
                     <div id="con"></div>
-                    <div id="TA-con">
+                    <div id="TA-con" role="button" tabindex="0" @click="openSponsor" @keydown.enter.prevent="openSponsor" @keydown.space.prevent="openSponsor">
                       <div id="text-con">
                         <div id="linght"></div>
                         <div id="TA">为TA充电</div>
@@ -295,6 +295,7 @@
                       </div>
                       <p id="people">共 <b>{{ config.reward_list.length }}</b> 人</p>
                     </div>
+                    <Sponsor ref="sponsor" class="about-sponsor" triggerless />
                   </div>
                 </div>
               </div>
@@ -308,17 +309,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, onUnmounted, resolveComponent } from "vue";
+import { computed, nextTick, onMounted, onUnmounted, ref, resolveComponent } from "vue";
 import CommonWrapper from "@theme-hope/components/CommonWrapper";
 import SkipLink from "@theme-hope/components/SkipLink";
 import { DropTransition } from "@theme-hope/components/transitions/DropTransition";
 import { useDarkmode } from "@theme-hope/modules/outlook/composables/index";
 import { aboutPage, type AboutRewardItem } from "../../data/about";
+import Sponsor from "../components/Sponsor.vue";
 
 const config = aboutPage;
 let pursuitInterval: ReturnType<typeof setInterval> | null = null;
 let cleanupMouseMove: (() => void) | null = null;
 let cleanupStyles: (() => void) | null = null;
+const sponsor = ref<{ open: () => void } | null>(null);
 
 const sortedRewards = computed(() =>
   [...config.reward_list].sort((a, b) => Date.parse(b.datatime) - Date.parse(a.datatime))
@@ -348,6 +351,10 @@ const duplicatedSkillPairs = computed(() => [
 
 const formatAmount = (reward: AboutRewardItem): string => {
   return `¥${reward.amount}${reward.suffix ?? ""}`;
+};
+
+const openSponsor = (): void => {
+  sponsor.value?.open();
 };
 
 const mountAnzhiyuStyles = (): (() => void) => {
@@ -591,6 +598,21 @@ body[data-type="about"] #web_bg {
 
 .anzhiyu-about-page :deep(.theme-hope-content) {
   max-width: none;
+}
+
+.anzhiyu-about-page :deep(#about-reward .about-sponsor) {
+  position: absolute;
+  top: 40px;
+  left: -25px;
+  z-index: 2;
+  width: 320px;
+  height: 100px;
+  pointer-events: none;
+}
+
+.anzhiyu-about-page :deep(#about-reward .about-sponsor #drinks-button-box),
+.anzhiyu-about-page :deep(#about-reward .about-sponsor #drinks-qrcodes) {
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {

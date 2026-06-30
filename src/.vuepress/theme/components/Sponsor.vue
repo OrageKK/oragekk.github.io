@@ -1,5 +1,5 @@
 <template>
-  <div class="sponsor">
+  <div ref="sponsorEl" class="sponsor" :class="{ 'sponsor--triggerless': triggerless }">
     <div id="drinks-box">
       <div id="drinks-box-s" class="drinks-button left-100">
         <div id="drinks-icons" class="left-100 tr3">
@@ -31,8 +31,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed, onMounted } from "vue";
+import { ref, reactive, onMounted } from "vue";
 import { useWindowSize } from "@theme-hope/composables/index";
+
+withDefaults(defineProps<{ triggerless?: boolean }>(), {
+  triggerless: false,
+});
+
 const githubLink = "https://github.com/OrageKK/sponsor-page";
 const paypalLink = "https://www.paypal.me/oragekk";
 const qrCodes = reactive({
@@ -42,16 +47,32 @@ const qrCodes = reactive({
   wechat_donate: "/assets/images/WeChanSQ.JPG",
 });
 const { isMobile } = useWindowSize();
+const sponsorEl = ref<HTMLElement | null>(null);
+let openSponsor = (): void => {};
 
 onMounted(() => {
-  const drink_box_s = document.querySelector("#drinks-box-s");
-  const icon_donate = document.querySelector(".icon-donate");
-  const donate_button = document.querySelector(".donate-button");
-  const donate_button2 = document.querySelector(".donate-button2");
-  const donate_buttons = document.querySelector("#drinks-button-box");
-  const donate_button_bg = document.querySelector("#drinks-button-bg");
-  const drinks_qrcodes = document.querySelector("#drinks-qrcodes");
-  const drinks_qrcode = document.querySelector("#drinks-qrcode") as HTMLElement;
+  const root = sponsorEl.value;
+  if (!root) return;
+
+  const drink_box_s = root.querySelector("#drinks-box-s");
+  const icon_donate = root.querySelector(".icon-donate");
+  const donate_button = root.querySelector(".donate-button");
+  const donate_button2 = root.querySelector(".donate-button2");
+  const donate_buttons = root.querySelector("#drinks-button-box");
+  const donate_button_bg = root.querySelector("#drinks-button-bg");
+  const drinks_qrcodes = root.querySelector("#drinks-qrcodes");
+  const drinks_qrcode = root.querySelector("#drinks-qrcode") as HTMLElement | null;
+
+  if (
+    !drink_box_s ||
+    !icon_donate ||
+    !donate_button ||
+    !donate_button2 ||
+    !donate_buttons ||
+    !donate_button_bg ||
+    !drinks_qrcodes ||
+    !drinks_qrcode
+  ) return;
 
   const drinks_an = {};
   // 弹出菜单
@@ -94,7 +115,8 @@ onMounted(() => {
     // console.log("关闭二维码");
   };
 
-  icon_donate.addEventListener("click", drinks_an[0]);
+  openSponsor = drinks_an[0];
+  icon_donate.addEventListener("click", openSponsor);
 
   donate_button_bg.addEventListener("click", drinks_an[1]);
   donate_button.addEventListener("click", function (event: MouseEvent) {
@@ -117,6 +139,10 @@ onMounted(() => {
   });
 
   drinks_qrcode.addEventListener("click", drinks_an[3]);
+});
+
+defineExpose({
+  open: () => openSponsor(),
 });
 </script>
 <style lang="scss" scoped>
@@ -357,6 +383,10 @@ li[id$="_donate"]:hover::after {
 .donate-animation-3 > #drinks-icons {
   transform: scale(0.4, 0.4);
   filter: blur(2px);
+}
+.sponsor--triggerless #drinks-icons {
+  opacity: 0;
+  pointer-events: none;
 }
 .showBox {
   animation-name: showBox;

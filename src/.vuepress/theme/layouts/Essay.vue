@@ -7,18 +7,18 @@
           <div id="page">
             <div id="essay_page">
               <div class="author-content author-content-item essayPage single"
-                :style="config.top_background ? { background: `url(${config.top_background}) left 28% / cover no-repeat` } : { backgroundImage: 'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)' }">
+                :style="config.top_background ? { background: `url(${config.top_background}) left 60% / cover no-repeat` } : { backgroundImage: 'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)' }">
                 <div class="card-content">
                   <div class="author-content-item-tips">{{ config.title }}</div>
                   <span class="author-content-item-title">{{ config.subTitle }}</span>
                   <div class="content-bottom">
                     <div class="tips">{{ config.tips }}</div>
-                  </div>
-                  <div class="banner-button-group">
-                    <a class="banner-button essay-about-btn" :href="config.buttonLink">
-                      <i class="iconfont icon-hk-yuanxian"></i>
-                      <span class="banner-button-text">{{ config.buttonText }}</span>
-                    </a>
+                    <div class="banner-button-group">
+                      <a class="banner-button essay-about-btn" :href="config.buttonLink">
+                        <i class="iconfont icon-hk-youshangjiantou-yuan-shi"></i>
+                        <span class="banner-button-text">{{ config.buttonText }}</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -121,7 +121,7 @@ const formatDate = (date: string): string => new Date(date).toISOString().slice(
 const mountAnzhiyuStyles = (): (() => void) => {
   const links = [
     { id: "anzhiyu-var-css", href: "/anzhiyu/css/var.css" },
-    { id: "anzhiyu-index-css", href: "/anzhiyu/css/index.css" },
+    { id: "anzhiyu-pages-css", href: "/anzhiyu/css/pages.css" },
   ].map(({ id, href }) => {
     let link = document.getElementById(id) as HTMLLinkElement | null;
     if (!link) {
@@ -256,23 +256,19 @@ body[data-type="essay"] #web_bg {
 }
 
 .essayPage .card-content {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.38) 0%,
-    rgba(0, 0, 0, 0.18) 48%,
-    rgba(0, 0, 0, 0.06) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.18) 48%,
+      rgba(0, 0, 0, 0.06) 100%);
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
 }
 
 :global([data-theme="dark"]) .essayPage .card-content {
-  background: linear-gradient(
-    90deg,
-    rgba(8, 10, 14, 0.72) 0%,
-    rgba(8, 10, 14, 0.46) 52%,
-    rgba(8, 10, 14, 0.2) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(8, 10, 14, 0.72) 0%,
+      rgba(8, 10, 14, 0.46) 52%,
+      rgba(8, 10, 14, 0.2) 100%);
   color: #f4f6fb;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.58);
 }
@@ -362,19 +358,18 @@ body[data-type="essay"] #web_bg {
 .essayPage .banner-button-group {
   display: flex;
   justify-content: center;
-  margin-top: 1.5rem;
 }
 
 .essayPage .essay-about-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.75rem 1.5rem;
+  gap: 0.25rem;
+  padding: 0.5rem 1.2rem;
   border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
   box-shadow:
@@ -416,12 +411,12 @@ body[data-type="essay"] #web_bg {
 }
 
 .essayPage .essay-about-btn i {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
   background: transparent;
   border-radius: 50%;
   color: #fff;
@@ -574,12 +569,10 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #page {
 }
 
 body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .card-content {
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.38) 0%,
-    rgba(0, 0, 0, 0.18) 48%,
-    rgba(0, 0, 0, 0.06) 100%
-  ) !important;
+  background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.18) 48%,
+      rgba(0, 0, 0, 0.06) 100%) !important;
   color: #fff !important;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34) !important;
 }
@@ -616,12 +609,10 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .card-content {
-  background: linear-gradient(
-    90deg,
-    rgba(8, 10, 14, 0.72) 0%,
-    rgba(8, 10, 14, 0.46) 52%,
-    rgba(8, 10, 14, 0.2) 100%
-  ) !important;
+  background: linear-gradient(90deg,
+      rgba(8, 10, 14, 0.72) 0%,
+      rgba(8, 10, 14, 0.46) 52%,
+      rgba(8, 10, 14, 0.2) 100%) !important;
   color: #f4f6fb !important;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.58) !important;
 }
@@ -682,6 +673,41 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
   body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #page {
     width: 100% !important;
     max-width: 100% !important;
+  }
+
+  /* essay-about-btn 移动端保持与 PC 端一致 */
+  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .banner-button-group {
+    right: 2rem !important;
+    bottom: 1.5rem !important;
+  }
+
+  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn {
+    padding: 0.5rem 1.2rem !important;
+    width: auto !important;
+  }
+
+  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn .banner-button-text {
+    display: inline !important;
+  }
+
+  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn i {
+    background: transparent !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    height: 1.2rem !important;
+    width: 1.2rem !important;
+    font-size: 1.3rem !important;
+    color: #fff !important;
+  }
+
+  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn:hover i {
+    background: transparent !important;
+    color: #fff !important;
+  }
+
+  [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn i {
+    color: #f7f8fb !important;
   }
 }
 </style>

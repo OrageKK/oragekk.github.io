@@ -14,43 +14,33 @@
                     <div class="banners-title-big">{{ page.banner.title }}</div>
                   </div>
                   <div class="banner-button-group">
-                    <a class="banner-button secondary no-text-decoration" href="/link/" title="随机访问">
-                      <i class="iconfont icon-hk-random"></i>
+                    <a class="banner-button secondary no-text-decoration" href="/link/" title="随机访问" @click.prevent="handleRandomFriend">
+                      <i class="iconfont icon-hk-Random-outlined"></i>
                       <span class="banner-button-text">随机访问</span>
                     </a>
-                    <button class="banner-button no-text-decoration" type="button" title="申请友链" @click="handleApplyFriend">
+                    <a class="banner-button no-text-decoration" href="#post-comment" title="申请友链" @click.prevent="handleApplyFriend">
                       <i class="iconfont icon-hk-yuanxian"></i>
                       <span class="banner-button-text">申请友链</span>
-                    </button>
+                    </a>
                   </div>
                 </div>
 
                 <div id="skills-tags-group-all">
                   <div class="tags-group-wrapper">
-                    <div class="tags-scroll-row tags-scroll-row-top">
+                    <div v-for="(pair, pairIndex) in bannerAvatarPairs" :key="`pair-${pairIndex}`" class="tags-group-icon-pair">
                       <a
-                        v-for="(item, index) in bannerAvatarRows.top"
-                        :key="`top-${index}-${item.link}`"
+                        v-for="(item, index) in pair"
+                        :key="`pair-${pairIndex}-${index}-${item.link}`"
                         class="tags-group-icon no-text-decoration"
                         :href="item.link"
                         :title="item.name"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <img class="no-lightbox" :title="item.name" :src="item.avatar" :alt="item.name" @error="handleImageError" />
-                      </a>
-                    </div>
-                    <div class="tags-scroll-row tags-scroll-row-bottom">
-                      <a
-                        v-for="(item, index) in bannerAvatarRows.bottom"
-                        :key="`bottom-${index}-${item.link}`"
-                        class="tags-group-icon no-text-decoration"
-                        :href="item.link"
-                        :title="item.name"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img class="no-lightbox" :title="item.name" :src="item.avatar" :alt="item.name" @error="handleImageError" />
+                        <img class="no-lightbox" :src="item.avatar" :alt="item.name" @error="handleImageError" />
+                        <div class="flink-banner-avatar-overlay">
+                          <span>{{ item.name }}</span>
+                        </div>
                       </a>
                     </div>
                   </div>
@@ -204,7 +194,7 @@ let cleanupStyles: (() => void) | null = null;
 const mountAnzhiyuStyles = (): (() => void) => {
   const links = [
     { id: "anzhiyu-var-css", href: "/anzhiyu/css/var.css" },
-    { id: "anzhiyu-index-css", href: "/anzhiyu/css/index.css" },
+    { id: "anzhiyu-pages-css", href: "/anzhiyu/css/pages.css" },
   ].map(({ id, href }) => {
     let link = document.getElementById(id) as HTMLLinkElement | null;
     if (!link) {
@@ -223,16 +213,16 @@ const mountAnzhiyuStyles = (): (() => void) => {
   };
 };
 
-const bannerAvatarRows = computed(() => {
+const bannerAvatarPairs = computed(() => {
   const friends = groups.flatMap((group) => group.link_list).slice(0, 24);
-  const midpoint = Math.ceil(friends.length / 2);
-  const top = friends.slice(0, midpoint);
-  const bottom = friends.slice(midpoint);
+  const repeated = [...friends, ...friends];
+  const pairs: LinkItem[][] = [];
 
-  return {
-    top: [...top, ...top],
-    bottom: [...bottom, ...bottom],
-  };
+  for (let index = 0; index < repeated.length; index += 2) {
+    pairs.push(repeated.slice(index, index + 2));
+  }
+
+  return pairs;
 });
 
 const getSiteshot = (item: LinkItem): string =>
@@ -271,6 +261,13 @@ const handleCoverError = (event: Event) => {
   const image = event.target as HTMLImageElement;
   image.onerror = null;
   image.src = "/assets/home_bg3.jpg";
+};
+
+const handleRandomFriend = () => {
+  const friends = groups.flatMap((group) => group.link_list).filter((item) => item.link);
+  const friend = friends[Math.floor(Math.random() * friends.length)];
+
+  if (friend) window.open(friend.link, "_blank", "noopener,noreferrer");
 };
 
 const handleApplyFriend = () => {
@@ -317,18 +314,53 @@ body[data-type="link"] {
   background: transparent !important;
 }
 
-body[data-type="link"] #web_bg {
-  background: transparent !important;
+// flink-banners 头像 hover 覆盖显示博客名
+#flink-banners #skills-tags-group-all .tags-group-icon {
+  position: relative;
+  overflow: hidden;
+
+  .flink-banner-avatar-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(66, 90, 239, 0.85);
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+    pointer-events: none;
+
+    span {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.3;
+      text-align: center;
+      padding: 6px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &:hover .flink-banner-avatar-overlay {
+    opacity: 1;
+  }
 }
 
-@keyframes link-avatar-scroll {
-  from {
-    transform: translateX(0);
-  }
+[data-theme="dark"] #flink-banners #skills-tags-group-all .tags-group-icon .flink-banner-avatar-overlay {
+  background: rgba(255, 165, 30, 0.85);
 
-  to {
-    transform: translateX(-50%);
+  span {
+    color: var(--anzhiyu-white, #f2f4f8);
   }
+}
+
+body[data-type="link"] #web_bg {
+  background: transparent !important;
 }
 
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page {
@@ -358,91 +390,6 @@ body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #page {
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #article-container {
   width: 100%;
   color: var(--anzhiyu-fontcolor, var(--font-color));
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners {
-  position: relative !important;
-  height: 390px !important;
-  min-height: 0 !important;
-  padding: 0.8rem 1.6rem !important;
-  border: 1px solid var(--link-banner-border, rgba(230, 233, 239, 0.9)) !important;
-  border-radius: 12px !important;
-  background: var(--link-banner-bg, rgba(255, 255, 255, 0.96)) !important;
-  box-shadow: var(--link-banner-shadow, 0 10px 32px rgba(31, 35, 45, 0.08)) !important;
-  overflow: hidden !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banners-title-small {
-  color: var(--link-banner-small-color, #777d88) !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banners-title-big {
-  background: var(--link-banner-title, linear-gradient(90deg, #2c3138 0%, #2c3138 100%)) !important;
-  background-clip: text !important;
-  color: transparent !important;
-  font-size: 2.25rem !important;
-  -webkit-background-clip: text !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group .banner-button {
-  border-color: var(--link-banner-button-border, rgba(51, 56, 66, 0.14)) !important;
-  background: var(--link-banner-button-bg, #1d1f24) !important;
-  color: var(--link-banner-button-color, #fff) !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group .banner-button.secondary {
-  background: var(--link-banner-secondary-bg, rgba(255, 255, 255, 0.74)) !important;
-  color: var(--link-banner-secondary-color, #2c3138) !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all {
-  position: absolute !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  display: block !important;
-  height: 240px !important;
-  min-width: 0 !important;
-  overflow: hidden !important;
-  transform: none !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-group-wrapper {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 1.25rem !important;
-  width: max-content !important;
-  margin-top: 0 !important;
-  animation: none !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-scroll-row {
-  display: flex !important;
-  width: max-content !important;
-  gap: 2.6rem !important;
-  padding-left: 2.5rem !important;
-  animation: link-avatar-scroll 42s linear infinite !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-scroll-row-bottom {
-  margin-left: -5.5rem !important;
-  animation-duration: 48s !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-group-icon {
-  flex: 0 0 auto !important;
-  width: 92px !important;
-  height: 92px !important;
-  border-radius: 50% !important;
-  background: #fff !important;
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-group-icon img {
-  width: 100% !important;
-  height: 100% !important;
-  margin: 0 !important;
-  border-radius: 50% !important;
-  object-fit: cover !important;
 }
 
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .flink {
@@ -591,112 +538,6 @@ body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-pa
     overflow-x: hidden !important;
     width: 100% !important;
     max-width: 100% !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    width: 100% !important;
-    height: 360px !important;
-    min-height: 360px !important;
-    box-sizing: border-box !important;
-    margin-right: 0 !important;
-    margin-bottom: 1rem !important;
-    margin-left: 0 !important;
-    padding: 1.35rem 1.25rem 0 !important;
-    border-right: 0 !important;
-    border-left: 0 !important;
-    border-radius: 0 !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-top-box {
-    position: relative !important;
-    z-index: 2 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    min-height: 158px !important;
-    text-align: center !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .flink-banners-title {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banners-title-small {
-    width: 100% !important;
-    text-align: center !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banners-title-big {
-    width: 100% !important;
-    max-width: 20rem !important;
-    margin-right: auto !important;
-    margin-left: auto !important;
-    font-size: 2rem !important;
-    line-height: 1.15 !important;
-    text-align: center !important;
-    overflow-wrap: anywhere !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group {
-    position: static !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    gap: 0.6rem !important;
-    width: 100% !important;
-    margin-top: 0.9rem !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group .banner-button {
-    height: 38px !important;
-    padding: 0 0.8rem !important;
-    border-radius: 10px !important;
-    font-size: 0.9rem !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all {
-    position: absolute !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    height: 176px !important;
-    padding: 0 0 1rem !important;
-    display: flex !important;
-    align-items: flex-end !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-group-wrapper {
-    gap: 1rem !important;
-    width: max-content !important;
-    margin-top: 0 !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-scroll-row {
-    gap: 1.1rem !important;
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-scroll-row-top {
-    margin-left: -2.25rem !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-scroll-row-bottom {
-    margin-left: -5.25rem !important;
-  }
-
-  body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #flink-banners #skills-tags-group-all .tags-group-icon {
-    width: 72px !important;
-    height: 72px !important;
   }
 
   body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .flink {
