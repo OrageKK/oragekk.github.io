@@ -33,13 +33,10 @@
                     <span class="tips-title1">{{ config.aboutsiteTips.title1 }}</span>
                     <span class="tips-title2">{{ config.aboutsiteTips.title2 }}</span>
                     <span class="mask">
-                      <span
-                        v-for="(word, index) in config.aboutsiteTips.word"
-                        :key="word"
+                      <span v-for="(word, index) in config.aboutsiteTips.word" :key="word"
                         :class="{ 'first-tips': index === 0 }"
                         :data-up="index === config.aboutsiteTips.word.length - 2 ? true : null"
-                        :data-show="index === config.aboutsiteTips.word.length - 1 ? true : null"
-                      >
+                        :data-show="index === config.aboutsiteTips.word.length - 1 ? true : null">
                         {{ word }}
                       </span>
                     </span>
@@ -67,14 +64,12 @@
                     <div class="skills-style-group">
                       <div id="skills-tags-group-all">
                         <div class="tags-group-wrapper">
-                          <div v-for="(pair, index) in duplicatedSkillPairs" :key="`pair-${index}`" class="tags-group-icon-pair">
-                            <div
-                              v-for="skill in pair"
-                              :key="`${index}-${skill.name}`"
-                              class="tags-group-icon"
-                              :style="{ background: skill.color }"
-                            >
-                              <img class="no-lightbox" :title="skill.name" :src="skill.icon" size="60px" :alt="skill.name" />
+                          <div v-for="(pair, index) in duplicatedSkillPairs" :key="`pair-${index}`"
+                            class="tags-group-icon-pair">
+                            <div v-for="skill in pair" :key="`${index}-${skill.name}`" class="tags-group-icon"
+                              :style="{ background: skill.color }">
+                              <img class="no-lightbox" :title="skill.name" :src="skill.icon" size="60px"
+                                :alt="skill.name" />
                             </div>
                           </div>
                         </div>
@@ -109,21 +104,25 @@
 
               <div class="author-content">
                 <div class="author-content-item-group column mapAndInfo">
-                  <div class="author-content-item map single" :style="{ backgroundImage: `url(${config.map.background})` }">
+                  <div class="author-content-item map single"
+                    :style="{ backgroundImage: `url(${config.map.background})` }">
                     <span class="map-title">{{ config.map.title }}<b>{{ config.map.StrengthenTitle }}</b></span>
                   </div>
                   <div class="author-content-item selfInfo single">
                     <div>
                       <span class="selfInfo-title">{{ config.selfInfo.selfInfoTips1 }}</span>
-                      <span id="selfInfo-content-year" class="selfInfo-content" style="color: #43a6c6">{{ config.selfInfo.selfInfoContentYear }}</span>
+                      <span id="selfInfo-content-year" class="selfInfo-content" style="color: #43a6c6">{{
+                        config.selfInfo.selfInfoContentYear }}</span>
                     </div>
                     <div>
                       <span class="selfInfo-title">{{ config.selfInfo.selfInfoTips2 }}</span>
-                      <span class="selfInfo-content" style="color: #c69043">{{ config.selfInfo.selfInfoContent2 }}</span>
+                      <span class="selfInfo-content" style="color: #c69043">{{ config.selfInfo.selfInfoContent2
+                        }}</span>
                     </div>
                     <div>
                       <span class="selfInfo-title">{{ config.selfInfo.selfInfoTips3 }}</span>
-                      <span class="selfInfo-content" style="color: #b04fe6">{{ config.selfInfo.selfInfoContent3 }}</span>
+                      <span class="selfInfo-content" style="color: #b04fe6">{{ config.selfInfo.selfInfoContent3
+                        }}</span>
                     </div>
                   </div>
                 </div>
@@ -136,9 +135,11 @@
                   <div class="title2" style="color: #ac899c">{{ config.personalities.personality_type }}</div>
                   <div class="post-tips">
                     在
-                    <a href="https://www.16personalities.com/" target="_blank" rel="noopener nofollow">16personalities</a>
+                    <a href="https://www.16personalities.com/" target="_blank"
+                      rel="noopener nofollow">16personalities</a>
                     了解更多关于
-                    <a :href="config.personalities.name_url" target="_blank" rel="noopener external nofollow">{{ config.personalities.author_name }}</a>
+                    <a :href="config.personalities.name_url" target="_blank" rel="noopener external nofollow">{{
+                      config.personalities.author_name }}</a>
                   </div>
                   <div class="image">
                     <img class="no-lightbox" :src="config.personalities.personality_img" alt="人格" />
@@ -172,7 +173,8 @@
               </div>
 
               <div class="author-content">
-                <div class="author-content-item game-yuanshen" :style="{ background: `url(${config.game.game_bg}) top / cover no-repeat` }">
+                <div class="author-content-item game-yuanshen"
+                  :style="{ background: `url(${config.game.game_bg}) top / cover no-repeat` }">
                   <div class="card-content">
                     <div class="author-content-item-tips">{{ config.game.game_tips }}</div>
                     <span class="author-content-item-title">{{ config.game.game_title }}</span>
@@ -189,7 +191,8 @@
                     <div class="author-content-item-tips">{{ config.comic.comic_tips }}</div>
                     <div class="author-content-item-title">{{ config.comic.comic_title }}</div>
                     <div class="comic-box">
-                      <a v-for="comic in config.comic.comic_list" :key="comic.name" class="comic-item" :href="comic.href" target="_blank" :title="comic.name">
+                      <a v-for="comic in config.comic.comic_list" :key="comic.name" class="comic-item"
+                        :href="comic.href" target="_blank" :title="comic.name">
                         <div class="comic-item-cover">
                           <img :src="comic.cover" :alt="comic.name" />
                         </div>
@@ -200,7 +203,8 @@
               </div>
 
               <div class="author-content">
-                <div class="author-content-item like-technology" :style="{ background: `url(${config.like.like_bg}) top / cover no-repeat` }">
+                <div class="author-content-item like-technology"
+                  :style="{ background: `url(${config.like.like_bg}) top / cover no-repeat` }">
                   <div class="card-content">
                     <div class="author-content-item-tips">{{ config.like.like_tips }}</div>
                     <span class="author-content-item-title">{{ config.like.like_title }}</span>
@@ -209,18 +213,19 @@
                     </div>
                   </div>
                 </div>
-                <div class="author-content-item like-music" :style="{ background: `url(${config.music.music_bg}) top / cover no-repeat` }">
+                <div class="author-content-item like-music"
+                  :style="{ background: `url(${config.music.music_bg}) top / cover no-repeat` }">
                   <div class="card-content">
                     <div class="author-content-item-tips">{{ config.music.music_tips }}</div>
                     <span class="author-content-item-title">{{ config.music.music_title }}</span>
                     <div class="content-bottom">
                       <div class="tips">跟 {{ config.name }} 一起欣赏更多音乐</div>
-                    </div>
-                    <div class="banner-button-group">
-                      <a class="banner-button" :href="config.music.music_link">
-                        <i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i>
-                        <span class="banner-button-text">更多推荐</span>
-                      </a>
+                      <div class="banner-button-group">
+                        <a class="banner-button" :href="config.music.music_link">
+                          <i class="iconfont icon-hk-youshangjiantou-yuan-shi"></i>
+                          <span class="banner-button-text">更多推荐</span>
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -233,23 +238,28 @@
                   <div class="author-content-item-description">
                     感谢因为有你们，让我更加有创作的动力。
                     <div class="reward-list-all">
-                      <div v-for="reward in amountSortedRewards" :key="`${reward.name}-${reward.datatime}`" class="reward-list-item">
+                      <div v-for="reward in amountSortedRewards" :key="`${reward.name}-${reward.datatime}`"
+                        class="reward-list-item">
                         <div class="reward-list-item-name">{{ reward.name }}</div>
                         <div class="reward-list-bottom-group">
-                          <div class="reward-list-item-money" :style="reward.amount >= 50 ? 'background:var(--anzhiyu-yellow)' : ''">
+                          <div class="reward-list-item-money"
+                            :style="reward.amount >= 50 ? 'background:var(--anzhiyu-yellow)' : ''">
                             {{ formatAmount(reward) }}
                           </div>
-                          <div class="datatime reward-list-item-time" :datatime="reward.datatime">{{ reward.datatime }}</div>
+                          <div class="datatime reward-list-item-time" :datatime="reward.datatime">{{ reward.datatime }}
+                          </div>
                         </div>
                       </div>
                     </div>
                     <div class="reward-list-updateDate">
-                      最新更新时间：<time class="datatime reward-list-updateDate-time" :datatime="latestRewardDate">{{ latestRewardDate }}</time>
+                      最新更新时间：<time class="datatime reward-list-updateDate-time" :datatime="latestRewardDate">{{
+                        latestRewardDate }}</time>
                     </div>
                   </div>
                   <div class="about-reward">
                     <div id="con"></div>
-                    <div id="TA-con" role="button" tabindex="0" @click="openSponsor" @keydown.enter.prevent="openSponsor" @keydown.space.prevent="openSponsor">
+                    <div id="TA-con" role="button" tabindex="0" @click="openSponsor"
+                      @keydown.enter.prevent="openSponsor" @keydown.space.prevent="openSponsor">
                       <div id="text-con">
                         <div id="linght"></div>
                         <div id="TA">为TA充电</div>
@@ -360,7 +370,7 @@ const openSponsor = (): void => {
 const mountAnzhiyuStyles = (): (() => void) => {
   const links = [
     { id: "anzhiyu-var-css", href: "/anzhiyu/css/var.css" },
-    { id: "anzhiyu-index-css", href: "/anzhiyu/css/index.css" },
+    { id: "anzhiyu-pages-css", href: "/anzhiyu/css/pages.css" },
   ].map(({ id, href }) => {
     let link = document.getElementById(id) as HTMLLinkElement | null;
 
@@ -478,53 +488,9 @@ body[data-type="about"] #web_bg {
 </style>
 
 <style lang="scss" scoped>
-.anzhiyu-about-page {
-  max-width: none;
-  margin: 0 !important;
-  padding: calc(var(--navbar-height) + 1rem) 1rem 3rem;
-  background: rgba(255, 255, 255, 0.82) !important;
-  box-shadow: none !important;
-  backdrop-filter: saturate(150%) blur(0.35rem);
-}
-
-:global([data-theme="dark"]) .anzhiyu-about-page {
-  background: rgba(29, 32, 37, 0.88) !important;
-}
-
-.anzhiyu-about-page :deep(#page) {
-  width: min(1200px, calc(100vw - 2rem)) !important;
-  max-width: min(1200px, calc(100vw - 2rem)) !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
 .anzhiyu-about-page :deep(#about-page) {
   width: 100% !important;
   padding-top: 1rem !important;
-}
-
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page) {
-  --anzhiyu-card-bg: rgba(31, 34, 40, 0.86);
-  --anzhiyu-card-border: rgba(255, 255, 255, 0.12);
-  --anzhiyu-fontcolor: #e6e9ef;
-  --anzhiyu-secondtext: #aeb7c4;
-  --anzhiyu-white: #f2f4f8;
-  --anzhiyu-black: #f2f4f8;
-  --font-color: #e6e9ef;
-  color: var(--anzhiyu-fontcolor) !important;
-}
-
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .author-content-item),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .author-tag),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .skill-info),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .reward-list-item) {
-  background-color: var(--anzhiyu-card-bg) !important;
-  border-color: var(--anzhiyu-card-border) !important;
-  color: var(--anzhiyu-fontcolor) !important;
 }
 
 :global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .p),
@@ -616,15 +582,6 @@ body[data-type="about"] #web_bg {
 }
 
 @media (max-width: 768px) {
-  .anzhiyu-about-page {
-    padding-inline: 0.75rem;
-  }
-
-  .anzhiyu-about-page :deep(#page) {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
   .anzhiyu-about-page :deep(#about-page .aboutsiteTips h2) {
     grid-template-columns: 1fr !important;
     grid-template-areas:
@@ -649,7 +606,7 @@ body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page {
   background: rgba(29, 32, 37, 0.9) !important;
 }
 
-body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page > #page,
+body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page>#page,
 body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #page {
   width: min(1200px, calc(100vw - 2rem)) !important;
   max-width: min(1200px, calc(100vw - 2rem)) !important;

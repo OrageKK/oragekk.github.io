@@ -387,11 +387,6 @@ body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #page {
   box-shadow: none !important;
 }
 
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page #article-container {
-  width: 100%;
-  color: var(--anzhiyu-fontcolor, var(--font-color));
-}
-
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .flink {
   overflow: hidden;
 }
@@ -428,16 +423,6 @@ body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .cf-friends-l
   cursor: not-allowed !important;
 }
 
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-panel {
-  clear: both;
-  margin-top: 1.5rem;
-  padding: 1.5rem;
-  border: 1px solid var(--anzhiyu-card-border, var(--border-color));
-  border-radius: 12px;
-  background: var(--anzhiyu-card-bg, rgba(255, 255, 255, 0.86));
-  box-shadow: var(--anzhiyu-shadow-border, 0 2px 8px rgba(0, 0, 0, 0.08));
-}
-
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-panel h2 {
   margin: 1.2rem 0 0.75rem;
   padding-top: 0;
@@ -465,14 +450,6 @@ body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-pa
   width: 7rem;
   color: var(--anzhiyu-fontcolor, var(--font-color));
   background: color-mix(in srgb, var(--anzhiyu-card-bg, #fff) 76%, var(--anzhiyu-theme, #425aef));
-}
-
-body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-panel pre {
-  overflow-x: auto;
-  padding: 1rem;
-  border-radius: 10px;
-  background: #282c34;
-  color: #abb2bf;
 }
 
 body[data-type="link"] main#main-content.anzhiyu-link-page.vp-page .link-info-panel code {

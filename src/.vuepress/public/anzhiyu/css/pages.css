@@ -376,18 +376,6 @@ body[data-type="fcircle"] #page {
 
 
 /* _extra/essay_page/essay_page.css */
-body[data-type="essay"] #page {
-  border: 0;
-  box-shadow: none !important;
-  padding: 0 !important;
-  background: transparent !important;
-}
-body[data-type="essay"] #page .page-title {
-  display: none;
-}
-body[data-type="essay"] #web_bg {
-  background: var(--anzhiyu-background);
-}
 #bber .bber-container-img {
   display: flex;
   align-items: center;
@@ -467,17 +455,6 @@ body[data-type="essay"] #web_bg {
 }
 #bber .timeline ul li.bber-item {
   position: relative;
-  width: 32%;
-  border: var(--style-border-always);
-  border-radius: 12px;
-  padding: 1rem 1rem 0.5rem;
-  transition: all 0.3s ease 0s;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  background: var(--anzhiyu-card-bg);
-  box-shadow: var(--anzhiyu-shadow-border);
   margin-right: 2%;
 }
 #bber .timeline #waterfall.show {
@@ -508,7 +485,6 @@ body[data-type="essay"] #web_bg {
 }
 
 #bber .timeline ul li.bber-item hr {
-  display: flex;
   position: relative;
   margin: 8px 0px;
   border: 1px dashed var(--anzhiyu-theme-op);
@@ -4038,17 +4014,6 @@ body[data-type="link"] #page .page-title {
     display: none;
   }
 }
-#flink-banners .banner-button-group .banner-button {
-  color: var(--anzhiyu-card-bg);
-}
-#flink-banners .banner-button-group .banner-button.secondary {
-  color: var(--anzhiyu-fontcolor);
-}
-#flink-banners .banner-button-group .banner-button:hover {
-  background: var(--anzhiyu-theme);
-  color: var(--anzhiyu-white);
-  text-decoration: none;
-}
 #flink-banners .banner-button-group .banner-button i {
   margin-right: 8px;
   font-size: 1rem;
@@ -5018,26 +4983,6 @@ p.p.gray {
 #article-container.post-content li::marker {
   content: none;
 }
-#article-container ol li:not(.tab),
-#article-container ul li:not(.tab) {
-  position: relative;
-  margin: 0.2rem 0px;
-}
-#article-container ul > li:not(.tab) {
-  padding: 0.2em 0.2em 0.2em 1.4em;
-}
-#article-container ul > li:not(.tab):before {
-  border: 0.21em solid var(--anzhiyu-lighttext);
-  background: var(--anzhiyu-lighttext);
-}
-#article-container ul > li:not(.tab)::before {
-  top: 0.78em;
-  width: 0.42em;
-  height: 0.42em;
-  border-radius: 0.42em;
-  content: "";
-  line-height: 0.42em;
-}
 #article-container ol li::before,
 #article-container ul li::before {
   position: absolute;
@@ -5046,23 +4991,6 @@ p.p.gray {
   background: var(--anzhiyu-main);
   color: rgb(255, 255, 255);
   transition: all 0.3s ease-out 0s;
-}
-#article-container ol > li::before {
-  margin-top: 0.65em;
-  width: 1.45em;
-  height: 1.45em;
-  border-radius: 0.725em;
-  content: counter(li);
-  counter-increment: li 1;
-  text-align: center;
-  font-size: 0.85em;
-  line-height: 1.45em;
-}
-#article-container ol[start] {
-  counter-reset: unset;
-}
-#article-container ol > li:not(.tab) {
-  padding: 0.2em 0.2em 0.2em 1.8em;
 }
 #article-container figure.highlight {
   border-radius: 10px;

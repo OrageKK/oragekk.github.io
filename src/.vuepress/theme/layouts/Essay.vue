@@ -211,73 +211,13 @@ body[data-type="essay"] #web_bg {
 </style>
 
 <style lang="scss" scoped>
-.anzhiyu-essay-page {
-  max-width: none;
-  margin: 0 !important;
-  padding: calc(var(--navbar-height) + 1rem) 1rem 3rem;
-  background: rgba(255, 255, 255, 0.82) !important;
-  box-shadow: none !important;
-  backdrop-filter: saturate(150%) blur(0.35rem);
-}
-
-:global([data-theme="dark"]) .anzhiyu-essay-page {
-  background: rgba(29, 32, 37, 0.88) !important;
-}
-
-.anzhiyu-essay-page :deep(#page) {
-  width: min(1200px, calc(100vw - 2rem)) !important;
-  max-width: min(1200px, calc(100vw - 2rem)) !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
 .anzhiyu-essay-page :deep(#essay_page) {
   width: 100% !important;
-}
-
-:global([data-theme="dark"]) .anzhiyu-essay-page :deep(#essay_page) {
-  --anzhiyu-card-bg: rgba(31, 34, 40, 0.88);
-  --anzhiyu-card-border: rgba(255, 255, 255, 0.12);
-  --anzhiyu-fontcolor: #e6e9ef;
-  --anzhiyu-secondtext: #aeb7c4;
-  --anzhiyu-white: #f2f4f8;
-  --anzhiyu-black: #f2f4f8;
-  --font-color: #e6e9ef;
-  color: var(--anzhiyu-fontcolor) !important;
 }
 
 :global([data-theme="dark"]) .anzhiyu-essay-page :deep(#essay_page .essayPage) {
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28) !important;
   border-color: var(--anzhiyu-card-border) !important;
-}
-
-.essayPage .card-content {
-  background: linear-gradient(90deg,
-      rgba(0, 0, 0, 0.38) 0%,
-      rgba(0, 0, 0, 0.18) 48%,
-      rgba(0, 0, 0, 0.06) 100%);
-  color: #fff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.34);
-}
-
-:global([data-theme="dark"]) .essayPage .card-content {
-  background: linear-gradient(90deg,
-      rgba(8, 10, 14, 0.72) 0%,
-      rgba(8, 10, 14, 0.46) 52%,
-      rgba(8, 10, 14, 0.2) 100%);
-  color: #f4f6fb;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.58);
-}
-
-:global([data-theme="dark"]) .essayPage .card-content .content-bottom,
-:global([data-theme="dark"]) .essayPage .card-content .tips,
-:global([data-theme="dark"]) .essayPage .card-content .author-content-item-tips,
-:global([data-theme="dark"]) .essayPage .card-content .author-content-item-title {
-  color: inherit !important;
 }
 
 #bber .timeline #waterfall {
@@ -305,13 +245,6 @@ body[data-type="essay"] #web_bg {
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-:global([data-theme="dark"]) #bber .timeline #waterfall>li.bber-item {
-  background: rgba(31, 34, 40, 0.88) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  color: #e6e9ef !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24) !important;
-}
-
 #bber .timeline #waterfall>li.bber-item:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
@@ -327,12 +260,6 @@ body[data-type="essay"] #web_bg {
 
 #bber .bber-content .datacont {
   white-space: pre-line !important;
-}
-
-:global([data-theme="dark"]) #bber .bber-content .datacont,
-:global([data-theme="dark"]) #bber .bber-content p,
-:global([data-theme="dark"]) #bber-tips {
-  color: var(--anzhiyu-fontcolor, #e6e9ef) !important;
 }
 
 #bber .bber-bilibili {
@@ -365,49 +292,19 @@ body[data-type="essay"] #web_bg {
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.38);
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 8px 24px rgba(0, 0, 0, 0.16);
   transition:
     background 0.3s ease,
     border-color 0.3s ease,
     box-shadow 0.3s ease,
     transform 0.3s ease;
-  -webkit-backdrop-filter: saturate(180%) blur(16px);
-  backdrop-filter: saturate(180%) blur(16px);
 }
 
 .essayPage .banner-button.essay-about-btn:hover {
-  border-color: rgba(255, 255, 255, 0.58);
-  background: rgba(255, 255, 255, 0.28) !important;
   transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.36),
-    0 12px 30px rgba(0, 0, 0, 0.22);
-}
-
-:global([data-theme="dark"]) .essayPage .essay-about-btn {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(18, 22, 30, 0.46);
-  color: #f7f8fb;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 10px 28px rgba(0, 0, 0, 0.34);
-}
-
-:global([data-theme="dark"]) .essayPage .banner-button.essay-about-btn:hover {
-  border-color: rgba(255, 255, 255, 0.34);
-  background: rgba(34, 39, 52, 0.58) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 14px 34px rgba(0, 0, 0, 0.42);
 }
 
 .essayPage .essay-about-btn i {
@@ -430,15 +327,6 @@ body[data-type="essay"] #web_bg {
 }
 
 @media (max-width: 768px) {
-  .anzhiyu-essay-page {
-    padding-inline: 0.75rem;
-  }
-
-  .anzhiyu-essay-page :deep(#page) {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
   #bber .timeline #waterfall {
     columns: 1 !important;
     column-count: 1 !important;
@@ -447,14 +335,10 @@ body[data-type="essay"] #web_bg {
 
 // 评论按钮样式
 .bber-bottom {
-  display: flex;
   align-items: center;
-  margin-top: 0.5rem;
 }
 
 .bber-info {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
@@ -476,7 +360,8 @@ body[data-type="essay"] #web_bg {
   border-radius: 9999px;
   background: #f0f0f0;
   color: #555;
-  font-size: 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 500;
   line-height: 1.4;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -489,11 +374,6 @@ body[data-type="essay"] #web_bg {
     background: #e0e0e0;
     color: var(--anzhiyu-main, #425aef);
   }
-}
-
-:global([data-theme="dark"]) .bber-info-tag {
-  background: rgba(255, 255, 255, 0.11);
-  color: #aeb7c4;
 }
 
 :global([data-theme="dark"]) a.bber-info-tag:hover {
@@ -533,8 +413,6 @@ body[data-type="essay"] #web_bg {
 }
 
 :global([data-theme="dark"]) .bber-reply-btn {
-  color: #aeb7c4;
-
   &:hover {
     color: #8ea2ff;
     background: rgba(142, 162, 255, 0.16);
