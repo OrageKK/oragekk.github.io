@@ -3,3 +3,8 @@ node_modules/
 src/.vuepress/.cache/
 src/.vuepress/.temp/
 src/.vuepress/dist/
+
+.qoder
+.codex
+openspec
+.pnpm-store
