@@ -290,6 +290,13 @@ const hasGlobalComponent = (componentName: string): boolean => !!resolveComponen
 @use "../styles/animations";
 @use "../styles/skills-tags";
 
+.anzhiyu-link-page > #page {
+  @include variables.styles;
+  @include base.styles;
+  @include animations.styles;
+  @include skills-tags.styles;
+}
+
 body[data-type="link"] {
   background: transparent !important;
 }
@@ -614,7 +621,7 @@ body[data-type="link"] #page .page-title {
   }
 }
 #flink-banners .banner-button-group .banner-button i {
-  margin-right: 8px;
+  margin-right: 0;
   font-size: 1rem;
 }
 #flink-banners #skills-tags-group-all .img-alt {
@@ -623,13 +630,18 @@ body[data-type="link"] #page .page-title {
 #flink-banners #skills-tags-group-all .tags-group-wrapper {
   animation: rowup 120s linear infinite;
 }
-#flink-banners #skills-tags-group-all .tags-group-icon {
+.anzhiyu-link-page > #page #flink-banners #skills-tags-group-all .tags-group-icon {
   border-radius: 50%;
+  overflow: hidden;
 }
-#flink-banners #skills-tags-group-all .tags-group-icon img {
+.anzhiyu-link-page > #page #flink-banners #skills-tags-group-all .tags-group-icon img {
+  width: 100% !important;
+  height: 100% !important;
   min-width: 100%;
   min-height: 100%;
+  margin: 0 !important;
   border-radius: 50%;
+  display: block;
   object-fit: cover;
 }
 .flink-desc {
@@ -1624,10 +1636,26 @@ body[data-type=link] main#main-content.anzhiyu-link-page.vp-page .link-info-pane
   line-height: inherit;
 }
 body[data-type=link] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group .banner-button {
-  color: var(--anzhiyu-card-bg) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem;
+  min-width: auto;
+  padding: 8 12px !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  background: #1d1f24 !important;
+  color: #fff !important;
+  font: inherit !important;
+  font-size: 16px !important;
+  line-height: 2 !important;
+  box-shadow: 0 8px 16px -4px rgba(29, 31, 36, 0.18) !important;
+  text-decoration: none !important;
 }
 body[data-type=link] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group .banner-button.secondary {
-  color: var(--anzhiyu-fontcolor) !important;
+  border-color: var(--anzhiyu-card-border, #e3e8f7) !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  color: var(--anzhiyu-fontcolor, #363636) !important;
+  box-shadow: var(--anzhiyu-shadow-border, 0 8px 16px -4px rgba(44, 45, 48, 0.047)) !important;
 }
 body[data-type=link] main#main-content.anzhiyu-link-page.vp-page #flink-banners .banner-button-group .banner-button:hover {
   background: var(--anzhiyu-theme) !important;

@@ -1,6 +1,8 @@
+@mixin styles {
 .reward-main {
   animation: donate_effcet 0.3s 0.1s ease both;
 }
+@at-root {
 @property --anzhiyu-header-translateY {
   syntax: "<length-percentage>";
   inherits: true;
@@ -1019,4 +1021,6 @@
   100% {
     transform: translate(0, -4px);
   }
+}
+}
 }

@@ -1,3 +1,4 @@
+@mixin styles {
 /* _extra/skills/skills.css */
 #skills-tags-group-all {
   display: flex;
@@ -29,7 +30,7 @@
   width: 60px;
   margin: 0 auto !important;
 }
-[data-theme="dark"] #skills-tags-group-all .tags-group-icon img {
+[data-theme="dark"] & #skills-tags-group-all .tags-group-icon img {
   filter: none;
 }
 #skills-tags-group-all .tags-group-icon-pair .tags-group-icon:nth-child(even) {
@@ -42,6 +43,7 @@
   margin-top: 10px;
 }
 
+@at-root {
 @keyframes rowup {
   0% {
     transform: translateX(0);
@@ -50,5 +52,5 @@
     transform: translateX(-50%);
   }
 }
-
-
+}
+}

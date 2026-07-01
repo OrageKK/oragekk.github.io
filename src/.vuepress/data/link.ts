@@ -221,7 +221,7 @@ export const linkGroups: LinkGroup[] = [
     ],
   },
   {
-    class_name: "失效链接",
+    class_name: "失效链接💔",
     class_desc: "暂时无法联通的小伙伴",
     flink_style: "anzhiyu",
     lost_contact: true,

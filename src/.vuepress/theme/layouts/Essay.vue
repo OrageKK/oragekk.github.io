@@ -180,6 +180,12 @@ const handleReply = (content: string) => {
 @use "../styles/base";
 @use "../styles/animations";
 
+.anzhiyu-essay-page > #page {
+  @include variables.styles;
+  @include base.styles;
+  @include animations.styles;
+}
+
 body[data-type="essay"] {
   background: transparent !important;
 }
@@ -189,7 +195,7 @@ body[data-type="essay"] #web_bg {
 }
 /* Essay page styles (from pages.css essay_page section) */
 /* _extra/essay_page/essay_page.css */
-#bber .bber-container-img {
+.anzhiyu-essay-page #bber .bber-container-img {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -197,17 +203,17 @@ body[data-type="essay"] #web_bg {
   flex-wrap: wrap;
   margin-bottom: 0.3rem;
 }
-#bber .bber-container-img .bber-content-noimg {
+.anzhiyu-essay-page #bber .bber-container-img .bber-content-noimg {
   width: calc(100% / 4 - 5px);
 }
 
-#bber .bber-content-img img {
+.anzhiyu-essay-page #bber .bber-content-img img {
   object-fit: cover;
   max-height: 100%;
 }
 
-#bber .bber-content-img,
-#bber .bber-content-video {
+.anzhiyu-essay-page #bber .bber-content-img,
+.anzhiyu-essay-page #bber .bber-content-video {
   height: 100px;
   border-radius: 8px;
   overflow: hidden;
@@ -218,12 +224,12 @@ body[data-type="essay"] #web_bg {
   margin-bottom: 10px;
 }
 
-#bber .bber-content-video video {
+.anzhiyu-essay-page #bber .bber-content-video video {
   border-radius: 8px;
   object-fit: cover;
   max-height: 100%;
 }
-#bber .bber-content-video::after {
+.anzhiyu-essay-page #bber .bber-content-video::after {
   content: "视频";
   display: inline-block;
   padding: 1px 6px;
@@ -242,7 +248,7 @@ body[data-type="essay"] #web_bg {
   z-index: 2;
 }
 
-#bber .bber-content .datacont {
+.anzhiyu-essay-page #bber .bber-content .datacont {
   order: 0;
   font-size: 0.85rem;
   font-weight: 500;
@@ -256,61 +262,61 @@ body[data-type="essay"] #web_bg {
   text-align: justify;
   word-break: break-all;
 }
-#bber p {
+.anzhiyu-essay-page #bber p {
   margin: 0px;
 }
-#bber div.bber-content {
+.anzhiyu-essay-page #bber div.bber-content {
   display: flex;
   flex-flow: wrap;
   border-radius: 12px;
   width: 100%;
   height: 100%;
 }
-#bber .timeline ul li.bber-item {
+.anzhiyu-essay-page #bber .timeline ul li.bber-item {
   position: relative;
   margin-right: 2%;
 }
-#bber .timeline #waterfall.show {
+.anzhiyu-essay-page #bber .timeline #waterfall.show {
   opacity: 1;
 }
-#bber .timeline #waterfall {
+.anzhiyu-essay-page #bber .timeline #waterfall {
   opacity: 0;
   transition: all 0.3s ease 0s;
 }
-#bber ul.list {
+.anzhiyu-essay-page #bber ul.list {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
-#bber {
+.anzhiyu-essay-page #bber {
   margin-top: 1rem;
   width: 100%;
 }
-#bber > section > ul > li.bber-item {
+.anzhiyu-essay-page #bber > section > ul > li.bber-item {
   margin-bottom: 1rem;
 }
 
-#bber-tips {
+.anzhiyu-essay-page #bber-tips {
   font-size: 14px;
   display: flex;
   justify-content: center;
   margin-top: 1rem;
 }
 
-#bber .timeline ul li.bber-item hr {
+.anzhiyu-essay-page #bber .timeline ul li.bber-item hr {
   position: relative;
   margin: 8px 0px;
   border: 1px dashed var(--anzhiyu-theme-op);
   width: 100%;
 }
 
-#bber .bber-info {
+.anzhiyu-essay-page #bber .bber-info {
   display: flex;
   align-items: center;
 }
 
-#bber > section > ul > li > div .bber-info-time,
-#bber > section > ul > li > div .bber-info-from {
+.anzhiyu-essay-page #bber > section > ul > li > div .bber-info-time,
+.anzhiyu-essay-page #bber > section > ul > li > div .bber-info-from {
   color: var(--anzhiyu-fontcolor);
   font-size: 0.7rem;
   background-color: var(--anzhiyu-gray-op);
@@ -321,42 +327,42 @@ body[data-type="essay"] #web_bg {
   align-items: center;
 }
 
-#bber .bber-info .anzhiyufont.anzhiyu-icon-clock {
+.anzhiyu-essay-page #bber .bber-info .anzhiyufont.anzhiyu-icon-clock {
   margin-right: 4px;
   font-size: 0.7rem;
 }
-#bber > section > ul > li > div .bber-info-from span,
-#bber > section > ul > li > div .bber-info-from {
+.anzhiyu-essay-page #bber > section > ul > li > div .bber-info-from span,
+.anzhiyu-essay-page #bber > section > ul > li > div .bber-info-from {
   margin-left: 4px;
 }
-#bber > section > ul > li > div .bber-info-from i {
+.anzhiyu-essay-page #bber > section > ul > li > div .bber-info-from i {
   font-size: 0.7rem;
 }
-#bber .bber-item hr::before {
+.anzhiyu-essay-page #bber .bber-item hr::before {
   display: none;
 }
 
-#bber .bber-bottom {
+.anzhiyu-essay-page #bber .bber-bottom {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin-top: 10px;
 }
 
-.bber-reply {
+.anzhiyu-essay-page .bber-reply {
   cursor: pointer !important;
 }
 
-.bber-reply:hover {
+.anzhiyu-essay-page .bber-reply:hover {
   color: var(--anzhiyu-main);
   max-height: 35px;
 }
 
-#bber .timeline ul li.bber-item:hover {
+.anzhiyu-essay-page #bber .timeline ul li.bber-item:hover {
   border: var(--style-border-hover);
 }
 
-#bber .bber-content-link {
+.anzhiyu-essay-page #bber .bber-content-link {
   display: flex;
   margin-left: 0.5rem;
   font-size: 0.7rem;
@@ -366,15 +372,15 @@ body[data-type="essay"] #web_bg {
   padding: 0px 8px;
   border-radius: 20px;
 }
-#bber .bber-content-link i {
+.anzhiyu-essay-page #bber .bber-content-link i {
   margin-right: 3px;
   font-size: 0.7rem;
 }
-#bber .bber-content-link:hover {
+.anzhiyu-essay-page #bber .bber-content-link:hover {
   background-color: var(--anzhiyu-main);
   color: var(--anzhiyu-white);
 }
-#bber .bber-music {
+.anzhiyu-essay-page #bber .bber-music {
   width: 100%;
   height: 90px;
   margin: 0.5rem 0;
@@ -383,58 +389,55 @@ body[data-type="essay"] #web_bg {
   border: var(--style-border-always);
   background: var(--anzhiyu-secondbg);
 }
-#bber .aplayer {
+.anzhiyu-essay-page #bber .aplayer {
   margin: 0;
 }
 
-#bber .aplayer.aplayer-withlrc .aplayer-pic {
+.anzhiyu-essay-page #bber .aplayer.aplayer-withlrc .aplayer-pic {
   height: 82px;
   width: 82px;
   margin: 4px;
   border-radius: 4px;
 }
-.bber-music .aplayer.aplayer-withlrc .aplayer-info {
+.anzhiyu-essay-page .bber-music .aplayer.aplayer-withlrc .aplayer-info {
   padding: 5px 7px 0;
 }
-#bber .aplayer .aplayer-info .aplayer-music {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-music {
   height: 23px;
 }
-#bber .aplayer .aplayer-info .aplayer-music .aplayer-title {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-music .aplayer-title {
   font-size: 0.8rem;
   font-weight: 700;
   margin: 0;
   color: var(--anzhiyu-fontcolor);
 }
 
-#bber .aplayer .aplayer-info .aplayer-controller {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller {
   align-items: center;
 }
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap {
   padding: 0;
 }
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller .aplayer-time {
   position: initial;
 }
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar {
   background: var(--anzhiyu-gray);
   height: 8px;
   border-radius: 12px;
   transition: 0.3s;
   overflow: hidden;
 }
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded {
   height: 100%;
   border-radius: 12px;
 }
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played {
   height: 100%;
   border-radius: 12px;
 }
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
+.anzhiyu-essay-page #bber .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb {
   display: none;
-}
-#bber .aplayer .aplayer-info .aplayer-controller .aplayer-time {
-  position: initial;
 }
 
 /* 顶部样式 */
@@ -451,24 +454,24 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
 
 /* 响应式 */
 @media screen and (max-width: 1200px) {
-  #bber .timeline ul li.bber-item {
+  .anzhiyu-essay-page #bber .timeline ul li.bber-item {
     width: 49%;
     margin-right: 1%;
   }
 }
 @media screen and (max-width: 768px) {
-  #bber .timeline ul li.bber-item {
+  .anzhiyu-essay-page #bber .timeline ul li.bber-item {
     width: 100%;
     margin-right: 0px;
   }
 }
-[data-theme="dark"] #bber .bber-music .aplayer,
-[data-theme="dark"] #bber .aplayer .aplayer-lrc:before,
-[data-theme="dark"] #bber .aplayer .aplayer-lrc:after {
+[data-theme="dark"] .anzhiyu-essay-page #bber .bber-music .aplayer,
+[data-theme="dark"] .anzhiyu-essay-page #bber .aplayer .aplayer-lrc:before,
+[data-theme="dark"] .anzhiyu-essay-page #bber .aplayer .aplayer-lrc:after {
   background: var(--anzhiyu-card-bg);
   color: var(--anzhiyu-fontcolor);
 }
-#bber .aplayer .aplayer-lrc p {
+.anzhiyu-essay-page #bber .aplayer .aplayer-lrc p {
   color: var(--anzhiyu-fontcolor);
   min-height: 40px;
   line-height: 30px !important;
@@ -477,19 +480,17 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
 }
 
 
-</style>
 
-<style lang="scss" scoped>
-.anzhiyu-essay-page :deep(#essay_page) {
+.anzhiyu-essay-page #essay_page {
   width: 100% !important;
 }
 
-:global([data-theme="dark"]) .anzhiyu-essay-page :deep(#essay_page .essayPage) {
+[data-theme="dark"] .anzhiyu-essay-page #essay_page .essayPage {
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.28) !important;
   border-color: var(--anzhiyu-card-border) !important;
 }
 
-#bber .timeline #waterfall {
+.anzhiyu-essay-page #bber .timeline #waterfall {
   display: block !important;
   columns: 3 !important;
   column-count: 3 !important;
@@ -499,7 +500,7 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   list-style: none !important;
 }
 
-#bber .timeline #waterfall>li.bber-item {
+.anzhiyu-essay-page #bber .timeline #waterfall>li.bber-item {
   break-inside: avoid !important;
   page-break-inside: avoid !important;
   display: inline-block !important;
@@ -514,24 +515,24 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-#bber .timeline #waterfall>li.bber-item:hover {
+.anzhiyu-essay-page #bber .timeline #waterfall>li.bber-item:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
 }
 
-:global([data-theme="dark"]) #bber .timeline #waterfall>li.bber-item:hover {
+[data-theme="dark"] .anzhiyu-essay-page #bber .timeline #waterfall>li.bber-item:hover {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.34) !important;
 }
 
-#bber .timeline #waterfall hr {
+.anzhiyu-essay-page #bber .timeline #waterfall hr {
   display: none !important;
 }
 
-#bber .bber-content .datacont {
+.anzhiyu-essay-page #bber .bber-content .datacont {
   white-space: pre-line !important;
 }
 
-#bber .bber-bilibili {
+.anzhiyu-essay-page #bber .bber-bilibili {
   position: relative;
   width: 100%;
   padding: 30% 45%;
@@ -539,7 +540,7 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   margin-bottom: 10px;
 }
 
-#bber .bber-bilibili iframe {
+.anzhiyu-essay-page #bber .bber-bilibili iframe {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -551,12 +552,12 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   border: var(--style-border);
 }
 
-.essayPage .banner-button-group {
+.anzhiyu-essay-page .essayPage .banner-button-group {
   display: flex;
   justify-content: center;
 }
 
-.essayPage .essay-about-btn {
+.anzhiyu-essay-page .essayPage .essay-about-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -572,11 +573,11 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
     transform 0.3s ease;
 }
 
-.essayPage .banner-button.essay-about-btn:hover {
+.anzhiyu-essay-page .essayPage .banner-button.essay-about-btn:hover {
   transform: translateY(-2px);
 }
 
-.essayPage .essay-about-btn i {
+.anzhiyu-essay-page .essayPage .essay-about-btn i {
   font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
@@ -589,39 +590,39 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
 }
 
 @media (max-width: 1024px) {
-  #bber .timeline #waterfall {
+  .anzhiyu-essay-page #bber .timeline #waterfall {
     columns: 2 !important;
     column-count: 2 !important;
   }
 }
 
 @media (max-width: 768px) {
-  #bber .timeline #waterfall {
+  .anzhiyu-essay-page #bber .timeline #waterfall {
     columns: 1 !important;
     column-count: 1 !important;
   }
 }
 
 // 评论按钮样式
-.bber-bottom {
+.anzhiyu-essay-page .bber-bottom {
   align-items: center;
 }
 
-.bber-info {
+.anzhiyu-essay-page .bber-info {
   justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.bber-info-tags {
+.anzhiyu-essay-page .bber-info-tags {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.bber-info-tag {
+.anzhiyu-essay-page .bber-info-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -645,12 +646,12 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   }
 }
 
-:global([data-theme="dark"]) a.bber-info-tag:hover {
+[data-theme="dark"] .anzhiyu-essay-page a.bber-info-tag:hover {
   background: rgba(255, 255, 255, 0.18);
   color: #8ea2ff;
 }
 
-.bber-reply-btn {
+.anzhiyu-essay-page .bber-reply-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -681,15 +682,13 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   }
 }
 
-:global([data-theme="dark"]) .bber-reply-btn {
+[data-theme="dark"] .anzhiyu-essay-page .bber-reply-btn {
   &:hover {
     color: #8ea2ff;
     background: rgba(142, 162, 255, 0.16);
   }
 }
-</style>
 
-<style lang="scss">
 body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page {
   max-width: none !important;
   margin: 0 !important;

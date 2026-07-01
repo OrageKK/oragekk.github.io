@@ -457,6 +457,13 @@ const hasGlobalComponent = (componentName: string): boolean => {
 @use "../styles/animations";
 @use "../styles/skills-tags";
 
+.anzhiyu-about-page > #page {
+  @include variables.styles;
+  @include base.styles;
+  @include animations.styles;
+  @include skills-tags.styles;
+}
+
 body[data-type="about"] {
   background: transparent !important;
 }
@@ -653,10 +660,6 @@ body[data-type='about'] #web_bg {
 .inline-word {
   word-break: keep-all;
   white-space: nowrap;
-}
-#about-page .myInfoAndSayHello .title1 {
-  opacity: 0.8;
-  line-height: 1.3;
 }
 .author-content-item.aboutsiteTips {
   display: flex;
@@ -1434,7 +1437,7 @@ body[data-type='about'] #web_bg {
     content: 'Your browser does not support the animation';
   }
 }
-.hello-about {
+#about-page .hello-about {
   margin: 20px auto;
   border-radius: 24px;
   background: var(--anzhiyu-card-bg);
@@ -1444,37 +1447,37 @@ body[data-type='about'] #web_bg {
   overflow: hidden;
   user-select: none;
 }
-.shapes {
+#about-page .hello-about .shapes {
   position: relative;
   height: 315px;
   width: 100%;
   background: #2128bd;
   overflow: hidden;
 }
-.shape {
+#about-page .hello-about .shape {
   will-change: transform;
   position: absolute;
   border-radius: 50%;
 }
-.shape.shape-1 {
+#about-page .hello-about .shape.shape-1 {
   background: #005ffe;
   width: 650px;
   height: 650px;
   margin: -325px 0 0 -325px;
 }
-.shape.shape-2 {
+#about-page .hello-about .shape.shape-2 {
   background: #ffe5e3;
   width: 440px;
   height: 440px;
   margin: -220px 0 0 -220px;
 }
-.shape.shape-3 {
+#about-page .hello-about .shape.shape-3 {
   background: #ffcc57;
   width: 270px;
   height: 270px;
   margin: -135px 0 0 -135px;
 }
-.hello-about .content {
+#about-page .hello-about .content {
   top: 0;
   left: 0;
   position: absolute;
@@ -1486,13 +1489,13 @@ body[data-type='about'] #web_bg {
   background: #fff;
   mix-blend-mode: screen;
 }
-[data-theme='dark'] .hello-about .content {
+[data-theme='dark'] #about-page .hello-about .content {
   background: transparent;
 }
-[data-theme='dark'] .hello-about h1 {
+[data-theme='dark'] #about-page .hello-about h1 {
   color: var(--anzhiyu-white);
 }
-.hello-about h1 {
+#about-page .hello-about h1 {
   font-size: 200px;
   color: #000;
   margin: 0;
@@ -1508,16 +1511,16 @@ body[data-type='about'] #web_bg {
   justify-content: center;
 }
 @media (min-width: 419px) {
-  .hello-about h1 {
+  #about-page .hello-about h1 {
     font-size: calc(0.0989119683 * 100vw + 58.5558852621px);
   }
 }
 @media (max-width: 768px) {
-  .hello-about {
+  #about-page .hello-about {
     margin: 20px 0 auto;
   }
 }
-.cursor {
+#about-page .hello-about .cursor {
   position: absolute;
   background: #2128bd;
   width: 20px;
@@ -1746,52 +1749,50 @@ body[data-type='about'] #web_bg {
     width: 500px;
   }
 }
-</style>
 
-<style lang="scss" scoped>
-.anzhiyu-about-page :deep(#about-page) {
+.anzhiyu-about-page #about-page {
   width: 100% !important;
   padding-top: 1rem !important;
 }
 
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .p),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .author-content-item-title),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .author-content-item-tips),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .career-item .name),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .selfInfo-title),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .skill-name),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .post-tips),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .reward-list-updateDate) {
+[data-theme="dark"] .anzhiyu-about-page #about-page .p,
+[data-theme="dark"] .anzhiyu-about-page #about-page .author-content-item-title,
+[data-theme="dark"] .anzhiyu-about-page #about-page .author-content-item-tips,
+[data-theme="dark"] .anzhiyu-about-page #about-page .career-item .name,
+[data-theme="dark"] .anzhiyu-about-page #about-page .selfInfo-title,
+[data-theme="dark"] .anzhiyu-about-page #about-page .skill-name,
+[data-theme="dark"] .anzhiyu-about-page #about-page .post-tips,
+[data-theme="dark"] .anzhiyu-about-page #about-page .reward-list-updateDate {
   color: var(--anzhiyu-fontcolor) !important;
 }
 
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .author-content-item-tips),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .p.small),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .post-tips) {
+[data-theme="dark"] .anzhiyu-about-page #about-page .author-content-item-tips,
+[data-theme="dark"] .anzhiyu-about-page #about-page .p.small,
+[data-theme="dark"] .anzhiyu-about-page #about-page .post-tips {
   color: var(--anzhiyu-secondtext) !important;
 }
 
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .hello-about .content) {
+[data-theme="dark"] .anzhiyu-about-page #about-page .hello-about .content {
   background: rgba(31, 34, 40, 0.76) !important;
   color: var(--anzhiyu-fontcolor) !important;
 }
 
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .hello-about h1) {
+[data-theme="dark"] .anzhiyu-about-page #about-page .hello-about h1 {
   color: var(--anzhiyu-fontcolor) !important;
 }
 
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .map.single::before),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .game-yuanshen::before),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .like-technology::before),
-:global([data-theme="dark"]) .anzhiyu-about-page :deep(#about-page .like-music::before) {
+[data-theme="dark"] .anzhiyu-about-page #about-page .map.single::before,
+[data-theme="dark"] .anzhiyu-about-page #about-page .game-yuanshen::before,
+[data-theme="dark"] .anzhiyu-about-page #about-page .like-technology::before,
+[data-theme="dark"] .anzhiyu-about-page #about-page .like-music::before {
   background: rgba(0, 0, 0, 0.22) !important;
 }
 
-.anzhiyu-about-page :deep(#about-page .author-content-item.aboutsiteTips) {
+.anzhiyu-about-page #about-page .author-content-item.aboutsiteTips {
   align-items: flex-start !important;
 }
 
-.anzhiyu-about-page :deep(#about-page .aboutsiteTips h2) {
+.anzhiyu-about-page #about-page .aboutsiteTips h2 {
   display: grid !important;
   grid-template-columns: auto minmax(6em, 1fr) !important;
   grid-template-areas:
@@ -1803,31 +1804,31 @@ body[data-type='about'] #web_bg {
   margin-right: 0 !important;
 }
 
-.anzhiyu-about-page :deep(#about-page .aboutsiteTips .tips-title1) {
+.anzhiyu-about-page #about-page .aboutsiteTips .tips-title1 {
   grid-area: title1 !important;
 }
 
-.anzhiyu-about-page :deep(#about-page .aboutsiteTips .tips-title2) {
+.anzhiyu-about-page #about-page .aboutsiteTips .tips-title2 {
   grid-area: title2 !important;
   white-space: nowrap !important;
 }
 
-.anzhiyu-about-page :deep(#about-page .aboutsiteTips .mask) {
+.anzhiyu-about-page #about-page .aboutsiteTips .mask {
   grid-area: mask !important;
   min-width: 4em !important;
   height: 1.06em !important;
   margin-top: 0 !important;
 }
 
-.anzhiyu-about-page :deep(#about-page .aboutsiteTips .mask span) {
+.anzhiyu-about-page #about-page .aboutsiteTips .mask span {
   top: 1.06em !important;
 }
 
-.anzhiyu-about-page :deep(.theme-hope-content) {
+.anzhiyu-about-page .theme-hope-content {
   max-width: none;
 }
 
-.anzhiyu-about-page :deep(#about-reward .about-sponsor) {
+.anzhiyu-about-page #about-reward .about-sponsor {
   position: absolute;
   top: 40px;
   left: -25px;
@@ -1837,13 +1838,13 @@ body[data-type='about'] #web_bg {
   pointer-events: none;
 }
 
-.anzhiyu-about-page :deep(#about-reward .about-sponsor #drinks-button-box),
-.anzhiyu-about-page :deep(#about-reward .about-sponsor #drinks-qrcodes) {
+.anzhiyu-about-page #about-reward .about-sponsor #drinks-button-box,
+.anzhiyu-about-page #about-reward .about-sponsor #drinks-qrcodes {
   pointer-events: auto;
 }
 
 @media (max-width: 768px) {
-  .anzhiyu-about-page :deep(#about-page .aboutsiteTips h2) {
+  .anzhiyu-about-page #about-page .aboutsiteTips h2 {
     grid-template-columns: 1fr !important;
     grid-template-areas:
       "title1"
@@ -1851,9 +1852,7 @@ body[data-type='about'] #web_bg {
       "mask" !important;
   }
 }
-</style>
 
-<style lang="scss">
 body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page {
   max-width: none !important;
   margin: 0 !important;
@@ -1908,5 +1907,44 @@ body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #page {
     width: 100% !important;
     max-width: 100% !important;
   }
+}
+
+body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button {
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 8px 24px rgba(0, 0, 0, 0.16) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(16px) !important;
+  backdrop-filter: saturate(180%) blur(16px) !important;
+}
+
+body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
+  border-color: rgba(255, 255, 255, 0.58) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    0 12px 30px rgba(0, 0, 0, 0.22) !important;
+}
+
+[data-theme="dark"] body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(18, 22, 30, 0.46) !important;
+  color: #f7f8fb !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 28px rgba(0, 0, 0, 0.34) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(16px) !important;
+  backdrop-filter: saturate(180%) blur(16px) !important;
+}
+
+[data-theme="dark"] body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+  background: rgba(34, 39, 52, 0.58) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 34px rgba(0, 0, 0, 0.42) !important;
 }
 </style>
