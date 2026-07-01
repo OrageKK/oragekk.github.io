@@ -869,48 +869,44 @@ body[data-type='about'] #web_bg {
 }
 
 .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button {
-  height: 40px;
-  border-radius: 20px;
-  justify-content: center;
-  background: var(--anzhiyu-white-op);
-  color: var(--anzhiyu-white);
   display: inline-flex;
   align-items: center;
+  gap: 0.25rem;
+  height: 46px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 23px;
+  justify-content: center;
   z-index: 1;
-  transition: 0.3s;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
   cursor: pointer;
   border-bottom: 0 !important;
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   transform: translateZ(0);
 }
 
 .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button i,
 .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button svg {
+  font-size: 1.2rem;
   margin-right: 0.25rem;
-  font-size: 22px;
-}
-
-.anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button .banner-button-text {
-  margin-left: 4px;
-}
-
-.anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button i,
-.anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button svg {
-  font-size: 22px;
-  margin-right: 0.25rem;
-  height: 40px;
-  max-width: 40px;
-  display: flex;
-  border-radius: 50px;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: inline-flex;
+  border-radius: 50%;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  color: #fff;
 }
 
 .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
-  background: var(--anzhiyu-main);
-  color: var(--anzhiyu-white);
-  border-radius: 20px !important;
+  border-radius: 23px !important;
+  transform: translateY(-2px);
 }
 
 .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button:hover i,
@@ -1341,7 +1337,7 @@ body[data-type='about'] #web_bg {
   }
 
   .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button-text {
-    display: none;
+    display: inline;
   }
 
   .anzhiyu-about-page .author-content-item .card-content .banner-button-group {
@@ -1350,31 +1346,8 @@ body[data-type='about'] #web_bg {
   }
 
   .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button {
-    background: none;
-    padding: 0;
+    padding: 0.5rem 1.2rem;
     width: auto;
-    backdrop-filter: unset;
-  }
-
-  .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button i,
-  .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button svg {
-    margin-right: 0.25rem;
-    font-size: 1.5rem;
-    background: #fff;
-    border-radius: 50%;
-    padding: 6px;
-    margin-left: 80px;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--anzhiyu-fontcolor);
-  }
-
-  .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button:hover i {
-    background: var(--anzhiyu-background) !important;
-    color: var(--anzhiyu-theme);
   }
 
   #selfInfo-content-year {
@@ -2134,19 +2107,21 @@ body[data-type='about'] #web_bg {
   color: var(--anzhiyu-fontcolor) !important;
 }
 
-body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button {
+body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button {
   @include buttons.glass-button;
 }
 
-body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
+body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
   @include buttons.glass-button-hover;
+  border-radius: 23px !important;
 }
 
-[data-theme="dark"] body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button {
+[data-theme="dark"] body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button {
   @include buttons.glass-button-dark;
 }
 
-[data-theme="dark"] body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page .anzhiyu-about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
+[data-theme="dark"] body[data-type="about"] main#main-content.anzhiyu-about-page.vp-page #about-page .author-content-item .card-content .banner-button-group .banner-button:hover {
   @include buttons.glass-button-dark-hover;
+  border-radius: 23px !important;
 }
 </style>

@@ -481,10 +481,6 @@ body[data-type="essay"] #web_bg {
   align-items: center;
   justify-content: space-between;
 }
-body[data-type="essay"] #page .author-content-item .card-content .banner-button-group .banner-button:hover {
-  color: var(--anzhiyu-white);
-  border-radius: 20px !important;
-}
 
 /* 响应式 */
 @media screen and (max-width: 1200px) {
@@ -596,7 +592,8 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem 1.2rem;
-  border-radius: 9999px;
+  border-radius: 23px;
+  height: 46px;
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
@@ -608,16 +605,18 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
 }
 
 .anzhiyu-essay-page .essayPage .banner-button.essay-about-btn:hover {
+  border-radius: 23px;
   transform: translateY(-2px);
 }
 
 .anzhiyu-essay-page .essayPage .essay-about-btn i {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.2rem;
   height: 1.2rem;
+  margin-right: 0.25rem;
   background: transparent;
   border-radius: 50%;
   color: #fff;
@@ -738,6 +737,7 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 
 body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .banner-button.essay-about-btn:hover {
   @include buttons.glass-button-hover;
+  border-radius: 23px !important;
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #essay_page {
@@ -773,6 +773,7 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .banner-button.essay-about-btn:hover {
   @include buttons.glass-button-dark-hover;
+  border-radius: 23px !important;
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #bber .timeline #waterfall>li.bber-item {
@@ -811,26 +812,6 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 
   body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn .banner-button-text {
     display: inline !important;
-  }
-
-  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn i {
-    background: transparent !important;
-    border-radius: 50% !important;
-    padding: 0 !important;
-    margin-left: 0 !important;
-    height: 1.2rem !important;
-    width: 1.2rem !important;
-    font-size: 1.3rem !important;
-    color: #fff !important;
-  }
-
-  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn:hover i {
-    background: transparent !important;
-    color: #fff !important;
-  }
-
-  [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn i {
-    color: #f7f8fb !important;
   }
 }
 </style>
