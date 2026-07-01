@@ -9,7 +9,7 @@ export const zhNavbar = navbar([
     children: [
       {
         text: "代码笔记",
-        prefix:"/posts/",
+        prefix: "/posts/",
         children: [
           { text: "iOS笔记", icon: "hk-apple", link: "iOS/" },
           { text: "前端笔记", icon: "code", link: "Web/" },
@@ -26,7 +26,7 @@ export const zhNavbar = navbar([
       },
       {
         text: "博客相关",
-        prefix:"/blog/",
+        prefix: "/blog/",
         children: [
           { text: "博客相关", icon: "blog", link: "" },
         ],
@@ -34,14 +34,9 @@ export const zhNavbar = navbar([
     ],
   },
   {
-    text: "软件教程",
-    icon: "software",
-    link: "/tutorial/",
-  },
-  {
-    text: "收藏",
-    icon: "hk-shoucang1",
-    link: "/collect",
+    text: "音乐馆",
+    icon: "hk-music",
+    link: "/music/"
   },
   {
     text: "即刻",
@@ -59,11 +54,12 @@ export const zhNavbar = navbar([
     link: "/link/",
   },
   {
-    text: "关于",
+    text: "我的",
     icon: "info",
-    children:[
+    children: [
       { text: "关于我", icon: "people", link: "/about/" },
       { text: "关于本站", icon: "info", link: "/about-site/" },
+      { text: "收藏", icon: "hk-shoucang1", link: "/collect" },
     ]
   },
 ]);

@@ -58,7 +58,7 @@ export default defineUserConfig({
       metingOptions: {
         global: true,
         server: "tencent",
-        api: "https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&auth=:auth&r=:r",
+        api: "https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&r=:r",
         type: "playlist",
         mid: "851947617",
         aplayerOptions: {
