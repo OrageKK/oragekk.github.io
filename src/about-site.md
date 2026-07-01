@@ -25,6 +25,25 @@ tag:
 
 ### Changelog
 
+#### 2026-07-01 `e1a2760` - 新增音乐页
+
+- 新增独立 `/music/` 音乐页面，基于自定义 `Music.vue` 布局，配置导航栏入口与主题路由。
+- 重构布局 CSS，将 `_base.scss` 拆分为 `_buttons.scss`、`_layout.scss` 等独立模块，提升样式可维护性。
+- 修复 `banner-button` 按钮样式，精简 About 和 Essay 页面冗余代码。
+- 优化 About、Essay、Link 布局样式细节与动画配置。
+
+#### 2026-06-30 `61885d4` - 移除 pages.css，SCSS 模块化迁移
+
+- 移除 5000+ 行的第三方 `pages.css`，将样式迁移至 SCSS 模块（`_animations.scss`、`_base.scss`、`_variables.scss`、`_skills-tags.scss`）。
+- About、Essay、Link 布局组件内联对应样式，减少全局 CSS 依赖。
+- 删除重复样式内容，修复样式错乱问题。
+- 更新 `.gitignore` 配置。
+
+#### 2026-06-29 `f636cd3` - 双栏布局 tag 样式与时间轴修复
+
+- 优化双栏文章列表 tag 样式展示。
+- 新增 `TimelineItems.vue` 自定义组件，修复时间轴页面渲染问题。
+
 #### 2026-06-29 `f38ac1f` - 新增友链页布局
 
 - 新增独立 `/link/` 友链页面，迁移原 `friend.md` 内容到新的 Link layout。
