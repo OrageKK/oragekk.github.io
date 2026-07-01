@@ -8,7 +8,7 @@
           <h1 class="error-title">
             {{ getTitle }}
           </h1>
-          <p class="error-hint">{{ getMsg() }}</p>
+          <p class="error-hint">{{ getMsg }}</p>
         </div>
         <div class="actions">
           <button class="action-button left" @click="goBack">返回上一页</button>
@@ -26,7 +26,7 @@ import { useLink } from "vue-router";
 import CommonWrapper from "@theme-hope/components/CommonWrapper";
 import SkipLink from "@theme-hope/components/SkipLink";
 import { useThemeLocaleData } from "@theme-hope/composables/index";
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 
 const goBack = () => {
   window.history.go(-1);
@@ -37,14 +37,20 @@ const { navigate } = useLink({
   to: themeLocale.value.home ?? routeLocale.value,
 });
 const getTitle = ref(themeLocale.value.routeLocales["notFoundTitle"]);
-const getMsg = () => {
-  const messages = themeLocale.value.routeLocales["notFoundMsg"];
-  return messages[Math.floor(Math.random() * messages.length)];
-};
+// SSR-safe: 初始使用第一条消息，挂载后随机选择，避免 Math.random() 导致 hydration mismatch
+const getMsg = ref(themeLocale.value.routeLocales["notFoundMsg"][0]);
 const images = ref(["404_bg_1.png", "404_bg_2.png"]);
-const background = computed(() => {
+// SSR-safe: 初始使用第一张图片，挂载后随机选择
+const background = ref({
+  backgroundImage: `url(/assets/images/${images.value[0]})`,
+});
+
+onMounted(() => {
+  const messages = themeLocale.value.routeLocales["notFoundMsg"];
+  getMsg.value = messages[Math.floor(Math.random() * messages.length)];
+
   const randomIndex = Math.floor(Math.random() * images.value.length);
-  return {
+  background.value = {
     backgroundImage: `url(/assets/images/${images.value[randomIndex]})`,
   };
 });

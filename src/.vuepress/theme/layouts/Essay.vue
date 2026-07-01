@@ -104,7 +104,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, resolveComponent } from "vue";
+import { computed, onMounted, onUnmounted } from "vue";
+import { hasGlobalComponent } from "@vuepress/helper/client";
 import CommonWrapper from "@theme-hope/components/CommonWrapper";
 import SkipLink from "@theme-hope/components/SkipLink";
 import { DropTransition } from "@theme-hope/components/transitions/DropTransition";
@@ -129,10 +130,6 @@ const { isDarkmode } = useDarkmode();
 const commentService = computed(() =>
   hasGlobalComponent("CommentService") ? "CommentService" : null
 );
-
-const hasGlobalComponent = (componentName: string): boolean => {
-  return !!resolveComponent(componentName);
-};
 
 const handleReply = (content: string) => {
   // 将内容格式化为Markdown引用格式
@@ -179,12 +176,16 @@ const handleReply = (content: string) => {
 @use "../styles/variables";
 @use "../styles/base";
 @use "../styles/animations";
+@use "../styles/layout";
+@use "../styles/buttons";
 
 .anzhiyu-essay-page > #page {
   @include variables.styles;
   @include base.styles;
   @include animations.styles;
 }
+
+@include layout.page-shell("essay", "anzhiyu-essay-page");
 
 body[data-type="essay"] {
   background: transparent !important;
@@ -441,11 +442,44 @@ body[data-type="essay"] #web_bg {
 }
 
 /* 顶部样式 */
-.author-content.author-content-item.essayPage {
+.anzhiyu-essay-page .author-content.author-content-item.essayPage {
   height: 19rem;
+  width: 100%;
   color: var(--anzhiyu-white);
+  border-radius: 24px;
+  border: var(--style-border-always);
+  box-shadow: var(--anzhiyu-shadow-border);
+  position: relative;
+  padding: 1rem 2rem;
   overflow: hidden;
   margin-top: 0px;
+}
+.anzhiyu-essay-page .essayPage .card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+}
+.anzhiyu-essay-page .essayPage .author-content-item-title {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.anzhiyu-essay-page .essayPage .author-content-item-tips {
+  opacity: 0.8;
+  font-size: 12px;
+  margin-bottom: 0.5rem;
+}
+.anzhiyu-essay-page .essayPage .content-bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 body[data-type="essay"] #page .author-content-item .card-content .banner-button-group .banner-button:hover {
   color: var(--anzhiyu-white);
@@ -689,31 +723,6 @@ body[data-type="essay"] #page .author-content-item .card-content .banner-button-
   }
 }
 
-body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page {
-  max-width: none !important;
-  margin: 0 !important;
-  padding: calc(var(--navbar-height) + 1rem) 1rem 3rem !important;
-  background: rgba(255, 255, 255, 0.82) !important;
-  box-shadow: none !important;
-  backdrop-filter: saturate(150%) blur(0.35rem) !important;
-}
-
-[data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page {
-  background: rgba(29, 32, 37, 0.9) !important;
-}
-
-body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page>#page,
-body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #page {
-  width: min(1200px, calc(100vw - 2rem)) !important;
-  max-width: min(1200px, calc(100vw - 2rem)) !important;
-  margin-right: auto !important;
-  margin-left: auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
 body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .card-content {
   background: linear-gradient(90deg,
       rgba(0, 0, 0, 0.38) 0%,
@@ -724,23 +733,11 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 }
 
 body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn {
-  border: 1px solid rgba(255, 255, 255, 0.38) !important;
-  background: rgba(255, 255, 255, 0.18) !important;
-  color: #fff !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 8px 24px rgba(0, 0, 0, 0.16) !important;
-  -webkit-backdrop-filter: saturate(180%) blur(16px) !important;
-  backdrop-filter: saturate(180%) blur(16px) !important;
+  @include buttons.glass-button;
 }
 
 body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .banner-button.essay-about-btn:hover {
-  border-color: rgba(255, 255, 255, 0.58) !important;
-  background: rgba(255, 255, 255, 0.28) !important;
-  color: #fff !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.36),
-    0 12px 30px rgba(0, 0, 0, 0.22) !important;
+  @include buttons.glass-button-hover;
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #essay_page {
@@ -771,22 +768,11 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .essay-about-btn {
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  background: rgba(18, 22, 30, 0.46) !important;
-  color: #f7f8fb !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 10px 28px rgba(0, 0, 0, 0.34) !important;
-  -webkit-backdrop-filter: saturate(180%) blur(16px) !important;
-  backdrop-filter: saturate(180%) blur(16px) !important;
+  @include buttons.glass-button-dark;
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .banner-button.essay-about-btn:hover {
-  border-color: rgba(255, 255, 255, 0.34) !important;
-  background: rgba(34, 39, 52, 0.58) !important;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 14px 34px rgba(0, 0, 0, 0.42) !important;
+  @include buttons.glass-button-dark-hover;
 }
 
 [data-theme="dark"] body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #bber .timeline #waterfall>li.bber-item {
@@ -812,15 +798,6 @@ body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage 
 }
 
 @media (max-width: 768px) {
-  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page {
-    padding-inline: 0.75rem !important;
-  }
-
-  body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page #page {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
   /* essay-about-btn 移动端保持与 PC 端一致 */
   body[data-type="essay"] main#main-content.anzhiyu-essay-page.vp-page .essayPage .banner-button-group {
     right: 2rem !important;

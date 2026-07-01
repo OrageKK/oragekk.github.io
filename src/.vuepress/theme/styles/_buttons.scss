@@ -1,0 +1,38 @@
+@mixin glass-button {
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 8px 24px rgba(0, 0, 0, 0.16) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(16px) !important;
+  backdrop-filter: saturate(180%) blur(16px) !important;
+}
+
+@mixin glass-button-hover {
+  border-color: rgba(255, 255, 255, 0.58) !important;
+  background: rgba(255, 255, 255, 0.28) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.36),
+    0 12px 30px rgba(0, 0, 0, 0.22) !important;
+}
+
+@mixin glass-button-dark {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  background: rgba(18, 22, 30, 0.46) !important;
+  color: #f7f8fb !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 28px rgba(0, 0, 0, 0.34) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(16px) !important;
+  backdrop-filter: saturate(180%) blur(16px) !important;
+}
+
+@mixin glass-button-dark-hover {
+  border-color: rgba(255, 255, 255, 0.34) !important;
+  background: rgba(34, 39, 52, 0.58) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 34px rgba(0, 0, 0, 0.42) !important;
+}

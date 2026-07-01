@@ -48,11 +48,9 @@ import { ref } from "vue";
 import { useDarkmode } from "@theme-hope/modules/outlook/composables/index";
 const dartmode = useDarkmode();
 
-const wormhole = computed(() => {
-  return dartmode.status.value == "dark"
-    ? "https://www.foreverblog.cn/assets/logo/wormhole_3.gif"
-    : "https://www.foreverblog.cn/assets/logo/wormhole_1.gif";
-});
+// SSR-safe: 初始使用亮色模式图片，挂载后根据实际暗色模式更新
+// 避免 useStorage 在 SSR(返回默认值 "auto") 和客户端(读取 localStorage) 之间不一致
+const wormhole = ref("https://www.foreverblog.cn/assets/logo/wormhole_1.gif");
 // 或取 当前vue-router 实例
 const router = useRouter();
 // 可以直接侦听一个 ref
@@ -82,13 +80,15 @@ const content = computed(() => {
       ? footer
       : themeLocale.value.footer || "";
 });
+// SSR-safe: 在 setup 阶段计算一次年份，避免 computed 反复调用 new Date()
+const currentYear = new Date().getFullYear();
 const copyright = computed(() =>
   "copyright" in frontmatter.value
     ? frontmatter.value["copyright"]
     : "copyright" in themeLocale.value
       ? themeLocale.value.copyright
       : author.value.length
-        ? `Copyright © 2016-${new Date().getFullYear()} ${author.value[0].name}`
+        ? `Copyright © 2016-${currentYear} ${author.value[0].name}`
         : false
 );
 const bgImage = ref("");
@@ -96,6 +96,15 @@ const bgImage = ref("");
 onMounted(() => {
   const defaultHeroBgImagePath = window.localStorage.getItem("bgImage");
   bgImage.value = `url(${defaultHeroBgImagePath})`;
+
+  // 挂载后根据实际暗色模式状态更新 wormhole 图标
+  const updateWormhole = () => {
+    wormhole.value = dartmode.status.value === "dark"
+      ? "https://www.foreverblog.cn/assets/logo/wormhole_3.gif"
+      : "https://www.foreverblog.cn/assets/logo/wormhole_1.gif";
+  };
+  updateWormhole();
+  watch(() => dartmode.status.value, updateWormhole);
 });
 </script>
 

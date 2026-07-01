@@ -1,0 +1,37 @@
+@mixin page-shell($type, $page-class) {
+body[data-type="#{$type}"] main#main-content.#{$page-class}.vp-page {
+  max-width: none !important;
+  margin: 0 !important;
+  padding: calc(var(--navbar-height) + 1rem) 1rem 3rem !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  box-shadow: none !important;
+  backdrop-filter: saturate(150%) blur(0.35rem) !important;
+}
+
+[data-theme="dark"] body[data-type="#{$type}"] main#main-content.#{$page-class}.vp-page {
+  background: rgba(29, 32, 37, 0.9) !important;
+}
+
+body[data-type="#{$type}"] main#main-content.#{$page-class}.vp-page > #page,
+body[data-type="#{$type}"] main#main-content.#{$page-class}.vp-page #page {
+  width: min(1200px, calc(100vw - 2rem)) !important;
+  max-width: min(1200px, calc(100vw - 2rem)) !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  body[data-type="#{$type}"] main#main-content.#{$page-class}.vp-page {
+    padding-inline: 0.75rem !important;
+  }
+
+  body[data-type="#{$type}"] main#main-content.#{$page-class}.vp-page #page {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+}
