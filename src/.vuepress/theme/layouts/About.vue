@@ -331,7 +331,40 @@ import Sponsor from "../components/Sponsor.vue";
 const config = aboutPage;
 let pursuitInterval: ReturnType<typeof setInterval> | null = null;
 let cleanupMouseMove: (() => void) | null = null;
+let isAboutMounted = false;
 const sponsor = ref<{ open: () => void } | null>(null);
+
+interface GsapLite {
+  set: (target: string, vars: { x: number; y: number }) => void;
+  to: (target: string, vars: { x: number; y: number; stagger: number }) => void;
+}
+
+const getGsap = (): GsapLite | undefined =>
+  (window as Window & { gsap?: GsapLite }).gsap;
+
+const loadGsap = (): Promise<void> =>
+  new Promise((resolve, reject) => {
+    const existingScript = document.querySelector<HTMLScriptElement>("script[data-about-gsap]");
+
+    if (getGsap()) {
+      resolve();
+      return;
+    }
+
+    if (existingScript) {
+      existingScript.addEventListener("load", () => resolve(), { once: true });
+      existingScript.addEventListener("error", reject, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/gsap/gsap.min.js";
+    script.async = true;
+    script.dataset.aboutGsap = "true";
+    script.onload = () => resolve();
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
 
 const sortedRewards = computed(() =>
   [...config.reward_list].sort((a, b) => Date.parse(b.datatime) - Date.parse(a.datatime))
@@ -384,22 +417,23 @@ const setupWordRotation = (): void => {
 
 const setupHelloMotion = (): void => {
   const helloAboutEl = document.querySelector(".hello-about") as HTMLElement | null;
-  const cursor = document.querySelector(".hello-about .cursor") as HTMLElement | null;
-  const shapes = Array.from(document.querySelectorAll(".hello-about .shape")) as HTMLElement[];
+  const gsap = getGsap();
 
-  if (!helloAboutEl || !cursor || shapes.length === 0) return;
+  if (!helloAboutEl || !gsap) return;
 
   const move = (evt: MouseEvent) => {
-    const rect = helloAboutEl.getBoundingClientRect();
-    const mouseX = evt.clientX - rect.left;
-    const mouseY = evt.clientY - rect.top;
+    const mouseX = evt.offsetX;
+    const mouseY = evt.offsetY;
 
-    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    shapes.forEach((shape, index) => {
-      const delay = index * 22;
-      window.setTimeout(() => {
-        shape.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-      }, delay);
+    gsap.set(".cursor", {
+      x: mouseX,
+      y: mouseY,
+    });
+
+    gsap.to(".shape", {
+      x: mouseX,
+      y: mouseY,
+      stagger: -0.1,
     });
   };
 
@@ -427,16 +461,20 @@ const animateYear = (): void => {
 };
 
 onMounted(() => {
+  isAboutMounted = true;
   document.body.setAttribute("data-type", "about");
 
   void nextTick(() => {
     setupWordRotation();
-    setupHelloMotion();
+    void loadGsap().then(() => {
+      if (isAboutMounted) setupHelloMotion();
+    }).catch(() => undefined);
     animateYear();
   });
 });
 
 onUnmounted(() => {
+  isAboutMounted = false;
   if (pursuitInterval) clearInterval(pursuitInterval);
   cleanupMouseMove?.();
   document.body.removeAttribute("data-type");
