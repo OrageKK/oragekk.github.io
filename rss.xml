@@ -6,13 +6,13 @@
     <link>https://oragekk.me/</link>
     <description>上冬十二的博客</description>
     <language>zh-CN</language>
-    <pubDate>Mon, 06 Jul 2026 02:22:55 GMT</pubDate>
-    <lastBuildDate>Mon, 06 Jul 2026 02:22:55 GMT</lastBuildDate>
+    <pubDate>Mon, 17 Aug 2026 02:49:00 GMT</pubDate>
+    <lastBuildDate>Mon, 17 Aug 2026 02:49:00 GMT</lastBuildDate>
     <generator>@vuepress/plugin-feed</generator>
     <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-    <category>教程</category>
-    <category>AI</category>
     <category>Web</category>
+    <category>AI</category>
+    <category>教程</category>
     <category>Rust</category>
     <category>跨平台</category>
     <category>Blog</category>
@@ -22,6 +22,53 @@
     <category>生活</category>
     <category>iOS</category>
     <category>使用指南</category>
+    <item>
+      <title>A2UI：当 AI Agent 开始直接生成界面</title>
+      <link>https://oragekk.me/posts/Web/a2ui-protocol.html</link>
+      <guid>https://oragekk.me/posts/Web/a2ui-protocol.html</guid>
+      <source url="https://oragekk.me/rss.xml">A2UI：当 AI Agent 开始直接生成界面</source>
+      <description>从协议原理到 Vue 渲染器，用 8 分钟理解 A2UI 与大厂工程实践</description>
+      <category>Web</category>
+      <category>AI</category>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+      <content:encoded><![CDATA[
+<figure><img src="/assets/images/a2ui/a2ui-protocol.png" alt="A2UI 将智能体输出转换为多端原生界面" tabindex="0" loading="lazy"><figcaption>A2UI 将智能体输出转换为多端原生界面</figcaption></figure>
+<p>过去，Agent 最常见的输出是一段文字。即使它已经查到航班、算好预算，也只能告诉你“有三个选项”，然后让你自己在文本里找重点。</p>
+<p>当 Agent 从“陪聊”走向“办事”，纯文本很快会遇到瓶颈：数据对比更适合图表，信息收集更适合表单，地点推荐更适合地图，审批任务也应该直接给出确认按钮。</p>
+<p>A2UI（Agent-to-User Interface）想解决的正是这个问题：<strong>让 Agent 不只回答内容，还能声明此刻最合适的交互界面。</strong></p>
+<!-- more -->
+<h2>从 Markdown 组件到生成式 UI</h2>
+<p>在 A2UI 之前，很多团队已经在聊天消息里嵌入自定义组件。例如让模型输出一段特殊标记：</p>
+<div class="language-text" data-ext="text" data-title="text"><pre class="shiki shiki-themes one-dark-pro one-dark-pro vp-code" style="background-color:#282c34;--shiki-dark-bg:#282c34;color:#abb2bf;--shiki-dark:#abb2bf" tabindex="0"><code><span class="line"><span>::: ProductCard {"productId": "123"}</span></span>
+<span class="line"><span>:::</span></span></code></pre>
+</div><p>前端识别标记后渲染商品卡片。这种方案足够简单，适合组件少、流程固定的业务，但它本质上仍是“模型填模板”：</p>
+<ul>
+<li>Agent 必须记住每个组件的私有语法。</li>
+<li>前端、后端和 Prompt 共享一套隐式约定，修改一端容易影响另外两端。</li>
+<li>模型只能选择预设模板，很难动态组合表单、图表和操作按钮。</li>
+<li>不同客户端需要重复实现同一套解析逻辑。</li>
+</ul>
+<p>B 站商业广告团队也经历了类似演进：早期 AI 助手通过 Markdown 和自定义组件输出内容，随着广告诊断、数据分析等场景变复杂，开始基于 A2UI 建设 Agent、后端与 Vue 渲染器工具链。这说明生成式 UI 的价值并不是“界面更炫”，而是让 Agent 的表达能力跟上它的任务能力。详见<a href="https://juejin.cn/post/7644233699760324662" target="_blank" rel="noopener noreferrer">哔哩哔哩技术实践</a>。</p>
+<h2>A2UI 到底是什么？</h2>
+<p>A2UI 是 Google 发起的开放协议。Agent 发送的不是 HTML、CSS 或 JavaScript，而是一组声明式 JSON 消息：这里需要一张卡片、那里需要一个日期选择器，这个按钮触发哪个 action。客户端再把这些抽象组件映射成已有的 React、Angular、Lit、Flutter 或业务组件。</p>
+<p>因此，同一份 UI 意图可以在 Web、Android、iOS 上呈现为各自的原生体验，同时继续遵守宿主应用的品牌、无障碍与安全规则。</p>
+<p>截至 2026 年 8 月，官网将 <strong>v0.9.1 标记为 Current，v1.0 仍是 Candidate</strong>。协议已经可用，但仍在快速演进，生产接入应锁定协议与 Catalog 版本。详见 <a href="https://a2ui.org/specification/v0.9.1-a2ui/" target="_blank" rel="noopener noreferrer">A2UI 官方规范</a>。</p>
+<h3>四个核心设计</h3>
+<p><strong>1. 声明式，而不是可执行代码</strong></p>
+<p>Agent 只描述“需要什么组件、组件之间是什么关系”，客户端决定如何渲染。它既比纯文本丰富，又比执行模型生成的 JavaScript 安全。</p>
+<p><strong>2. 扁平组件列表</strong></p>
+<p>组件通过 ID 相互引用，而不是生成一棵很深的 JSON 树。扁平结构更适合模型逐块生成，也方便后续只更新某个组件。</p>
+<p><strong>3. 结构和数据分离</strong></p>
+<p><code>updateComponents</code> 管结构，<code>updateDataModel</code> 管状态。价格发生变化时只更新数据，绑定该路径的组件会自动刷新，不必重发整个界面。</p>
+<p><strong>4. Catalog 决定能力边界</strong></p>
+<p>Catalog 是 Agent 与客户端之间的组件合同。客户端可以声明自己支持 <code>Text</code>、<code>Card</code>、<code>DatePicker</code>，也可以注册企业内部的 <code>CampaignChart</code>。未注册的组件不应进入渲染链路。</p>
+<h2>一次交互是怎样发生的？</h2>
+<p>服务端主要发送四类消息：</p>
+<p>| v0.9+ 消息 | 作用 |<br>
+|</p>
+]]></content:encoded>
+      <enclosure url="https://oragekk.me/assets/images/a2ui/a2ui-protocol.png" type="image/png"/>
+    </item>
     <item>
       <title>OpenSpec 技术分享：用规格驱动 AI 编程</title>
       <link>https://oragekk.me/tutorial/openspec.html</link>
